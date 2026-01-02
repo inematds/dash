@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 3 - Avancado | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-2">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 3 - AVANCADO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">
+        🚀 Integracao e Deploy
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">
+        Integracoes empresariais com ERPs, CRMs, autenticacao avancada, performance, deploy e projeto final completo.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm">
+        <span class="px-4 py-2 bg-dark-700 rounded-lg">8 Modulos</span>
+        <span class="px-4 py-2 bg-dark-700 rounded-lg">48 Topicos</span>
+        <span class="px-4 py-2 bg-dark-700 rounded-lg">~10h Conteudo</span>
+        <span class="px-4 py-2 bg-dark-700 rounded-lg">Avancado</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- MODULO 3.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.1</span>
+          <span class="text-xs text-neutral-500">~75 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">🗄️ Integracao com Bancos de Dados</h3>
+        <p class="text-neutral-400 text-sm">Conexoes de banco, queries otimizadas, ORMs, migrations e estrategias de caching para dashboards de alta performance.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">🔌</span>
+            <span class="font-medium">Conexoes e Connection Pooling</span>
+            <span class="text-neutral-500 text-sm ml-2">- Gerenciamento de conexoes</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Estrategias para gerenciar conexoes com banco de dados de forma eficiente usando pools.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Connection pooling previne esgotamento de conexoes e melhora drasticamente a performance.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Pool size, connection timeout, idle timeout, max connections, prepared statements.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">⚡</span>
+            <span class="font-medium">Queries Otimizadas</span>
+            <span class="text-neutral-500 text-sm ml-2">- Performance de consultas</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tecnicas para escrever queries SQL eficientes e evitar problemas de performance.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Queries mal escritas podem tornar um dashboard inutilizavel com grandes volumes de dados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">EXPLAIN, indices, N+1 problem, joins vs subqueries, query plans, pagination.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🛠️</span>
+            <span class="font-medium">ORMs - Prisma e Drizzle</span>
+            <span class="text-neutral-500 text-sm ml-2">- Abstracoes de banco</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Object-Relational Mappers que permitem trabalhar com banco de dados usando codigo TypeScript.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">ORMs modernos oferecem type safety, migrations automaticas e developer experience superior.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Schema definition, relations, transactions, raw queries, type generation.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">📦</span>
+            <span class="font-medium">Migrations e Versionamento</span>
+            <span class="text-neutral-500 text-sm ml-2">- Evolucao do schema</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Sistema para versionar e aplicar mudancas no schema do banco de dados de forma controlada.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Migrations garantem que todos os ambientes tenham o mesmo schema e facilitam rollbacks.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Up/down migrations, seed data, migration history, schema drift, blue-green deploys.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">🔍</span>
+            <span class="font-medium">Indices e Otimizacao</span>
+            <span class="text-neutral-500 text-sm ml-2">- Busca eficiente</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Estruturas de dados que aceleram buscas em tabelas grandes sacrificando espaco de armazenamento.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Indices bem planejados podem transformar queries de segundos em milissegundos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">B-tree, composite index, partial index, covering index, index bloat.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">💾</span>
+            <span class="font-medium">Caching de Dados</span>
+            <span class="text-neutral-500 text-sm ml-2">- Redis e estrategias</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Armazenamento temporario de dados frequentemente acessados para reduzir carga no banco.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Caching e essencial para dashboards com muitos usuarios simultaneos e dados pesados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Redis, TTL, cache invalidation, write-through, cache-aside, stale-while-revalidate.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-1.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.2</span>
+          <span class="text-xs text-neutral-500">~70 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">🔗 APIs e Data Layer</h3>
+        <p class="text-neutral-400 text-sm">REST, GraphQL, data fetching patterns, gerenciamento de estado server-side e estrategias de cache no frontend.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">🌐</span>
+            <span class="font-medium">REST vs GraphQL</span>
+            <span class="text-neutral-500 text-sm ml-2">- Escolhendo a arquitetura</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Duas abordagens diferentes para criar APIs: endpoints fixos vs queries flexiveis.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A escolha certa depende do tipo de dashboard e complexidade das consultas de dados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Overfetching, underfetching, N+1, batching, schema stitching, fragments.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">🔄</span>
+            <span class="font-medium">TanStack Query / SWR</span>
+            <span class="text-neutral-500 text-sm ml-2">- Server state management</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Bibliotecas para gerenciar estado que vem do servidor com caching, revalidacao e sincronizacao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Eliminam boilerplate de fetch, loading states, error handling e cache manual.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Queries, mutations, invalidation, prefetching, optimistic updates, infinite queries.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <span class="font-medium">Error Handling e Retry</span>
+            <span class="text-neutral-500 text-sm ml-2">- Resiliencia de APIs</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Estrategias para lidar com falhas de rede, timeouts e erros de API de forma elegante.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dashboards enterprise precisam funcionar mesmo quando partes do sistema falham.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Retry logic, exponential backoff, circuit breaker, fallback data, error boundaries.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">⏳</span>
+            <span class="font-medium">Loading States e Skeletons</span>
+            <span class="text-neutral-500 text-sm ml-2">- Feedback visual</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tecnicas visuais para indicar carregamento de dados mantendo layout estavel.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skeletons reduzem perceived latency e evitam layout shifts indesejados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Skeleton screens, shimmer effect, suspense, progressive loading, placeholder.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">📊</span>
+            <span class="font-medium">Data Normalization</span>
+            <span class="text-neutral-500 text-sm ml-2">- Estrutura de dados</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Organizar dados vindos da API em estruturas normalizadas para acesso eficiente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dados normalizados evitam duplicacao e facilitam atualizacoes parciais.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Entity normalization, lookup tables, denormalization tradeoffs, selectors.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">🔔</span>
+            <span class="font-medium">Real-time e WebSockets</span>
+            <span class="text-neutral-500 text-sm ml-2">- Dados em tempo real</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Comunicacao bidirecional para atualizar dados no dashboard sem refresh manual.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dashboards de monitoramento exigem atualizacoes em tempo real para serem uteis.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">WebSocket, SSE, Socket.io, Pusher, polling vs push, reconnection.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-2.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.3</span>
+          <span class="text-xs text-neutral-500">~80 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">🏢 Integracao com ERPs</h3>
+        <p class="text-neutral-400 text-sm">SAP, Oracle, Totvs, mapeamento de dados empresariais, sincronizacao e webhooks para dashboards corporativos.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">🔷</span>
+            <span class="font-medium">Arquitetura de ERPs</span>
+            <span class="text-neutral-500 text-sm ml-2">- Entendendo sistemas legados</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como ERPs como SAP, Oracle e Totvs estruturam dados e expoe informacoes.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dashboards enterprise precisam consumir dados de ERPs que sao fonte de verdade.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Modulos ERP, master data, transactional data, RFC, BAPI, OData.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">🗺️</span>
+            <span class="font-medium">Mapeamento de Dados</span>
+            <span class="text-neutral-500 text-sm ml-2">- ETL e transformacao</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Processo de extrair dados do ERP, transformar para formato util e carregar no dashboard.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dados de ERPs raramente estao no formato ideal para visualizacao direta.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">ETL, data pipelines, schema mapping, data cleansing, aggregation.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🔄</span>
+            <span class="font-medium">Sincronizacao de Dados</span>
+            <span class="text-neutral-500 text-sm ml-2">- Batch vs real-time</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Estrategias para manter dados do dashboard atualizados com o ERP fonte.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Decisao entre freshness dos dados vs carga no sistema fonte e crucial.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Batch sync, CDC, delta sync, full sync, scheduling, conflict resolution.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">🪝</span>
+            <span class="font-medium">Webhooks e Eventos</span>
+            <span class="text-neutral-500 text-sm ml-2">- Notificacoes push</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Mecanismo onde o ERP notifica o dashboard quando dados mudam, em vez de polling.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Webhooks sao mais eficientes que polling constante e oferecem dados mais frescos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Webhook endpoints, payload validation, retry, idempotency, event sourcing.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">🔐</span>
+            <span class="font-medium">Autenticacao com ERPs</span>
+            <span class="text-neutral-500 text-sm ml-2">- Credenciais e tokens</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Metodos de autenticacao usados por ERPs: OAuth, API keys, certificados, SSO.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cada ERP tem seu metodo preferido e seguranca e critica em dados empresariais.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Service accounts, token rotation, certificate management, vault.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">🇧🇷</span>
+            <span class="font-medium">ERPs Brasileiros</span>
+            <span class="text-neutral-500 text-sm ml-2">- Totvs, Sankhya, Senior</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Integracao com ERPs populares no mercado brasileiro e suas APIs especificas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Grande parte das empresas brasileiras usa ERPs nacionais com particularidades.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Totvs Fluig, Protheus API, Sankhya Sync, NFe integration, fiscal modules.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-3.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.4</span>
+          <span class="text-xs text-neutral-500">~70 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">💼 Integracao com CRMs</h3>
+        <p class="text-neutral-400 text-sm">Salesforce, HubSpot, Pipedrive - dashboards de vendas, pipelines e automacoes de marketing.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">☁️</span>
+            <span class="font-medium">Salesforce API</span>
+            <span class="text-neutral-500 text-sm ml-2">- SOQL e REST</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">APIs do Salesforce para acessar leads, oportunidades, contas e objetos customizados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Salesforce e o CRM mais usado no mundo enterprise, integracao e frequente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">SOQL, Bulk API, Streaming API, Connected Apps, OAuth flow.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">🧡</span>
+            <span class="font-medium">HubSpot Integration</span>
+            <span class="text-neutral-500 text-sm ml-2">- Marketing e vendas</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">APIs do HubSpot para acessar contatos, deals, campanhas e analytics de marketing.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">HubSpot e popular em startups e SMBs, com API bem documentada e moderna.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Private apps, CRM objects, associations, timeline events, workflows.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">📈</span>
+            <span class="font-medium">Pipeline Visualization</span>
+            <span class="text-neutral-500 text-sm ml-2">- Funil de vendas</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Visualizacao de pipeline de vendas com stages, valores e probabilidades de fechamento.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Pipeline e a metrica mais importante para gestores de vendas tomarem decisoes.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Funnel chart, stage conversion, weighted pipeline, forecast, win rate.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">🤖</span>
+            <span class="font-medium">Automacoes e Workflows</span>
+            <span class="text-neutral-500 text-sm ml-2">- Triggers e acoes</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Configurar acoes automaticas baseadas em eventos do CRM para atualizar o dashboard.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Automacoes mantém dados sincronizados e criam alertas proativos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Zapier, Make, n8n, custom webhooks, event-driven updates.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">📊</span>
+            <span class="font-medium">Metricas de Vendas</span>
+            <span class="text-neutral-500 text-sm ml-2">- KPIs comerciais</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Indicadores essenciais: CAC, LTV, churn, MRR, ARR, quota attainment.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Metricas corretas de vendas sao base para decisoes de crescimento da empresa.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Unit economics, cohort analysis, sales velocity, ACV, deal size.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">👥</span>
+            <span class="font-medium">Lead Scoring Dashboard</span>
+            <span class="text-neutral-500 text-sm ml-2">- Qualificacao de leads</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Visualizacao de leads qualificados por score, fonte e comportamento.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Lead scoring ajuda vendedores a priorizar leads com maior chance de conversao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">MQL, SQL, scoring models, lead source attribution, conversion funnel.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-4.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.5</span>
+          <span class="text-xs text-neutral-500">~75 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">🔐 Autenticacao e Seguranca</h3>
+        <p class="text-neutral-400 text-sm">OAuth2, JWT, SSO, RBAC, protecao de rotas e auditoria para dashboards enterprise seguros.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">🎫</span>
+            <span class="font-medium">OAuth 2.0 e OpenID Connect</span>
+            <span class="text-neutral-500 text-sm ml-2">- Autenticacao moderna</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Protocolo padrao para autenticacao e autorizacao delegada em aplicacoes web.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">OAuth e o padrao da industria para login social e integracao com identity providers.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Authorization code, PKCE, refresh tokens, scopes, ID token, access token.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">🔑</span>
+            <span class="font-medium">JWT - JSON Web Tokens</span>
+            <span class="text-neutral-500 text-sm ml-2">- Tokens seguros</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Formato compacto para transmitir claims entre partes de forma assinada e verificavel.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">JWTs sao o metodo mais comum para autenticacao stateless em SPAs e APIs.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Header, payload, signature, RS256 vs HS256, expiration, refresh flow.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🏢</span>
+            <span class="font-medium">SSO - Single Sign-On</span>
+            <span class="text-neutral-500 text-sm ml-2">- Login unificado</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Sistema que permite login unico para acessar multiplas aplicacoes corporativas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Empresas exigem SSO para integrar dashboard com seu identity provider existente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">SAML, Okta, Auth0, Azure AD, Google Workspace, federation.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">👮</span>
+            <span class="font-medium">RBAC - Role-Based Access</span>
+            <span class="text-neutral-500 text-sm ml-2">- Permissoes por papel</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Sistema onde permissoes sao atribuidas a papeis (admin, viewer, editor) e usuarios recebem papeis.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">RBAC e essencial para dashboards multi-tenant com diferentes niveis de acesso.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Roles, permissions, inheritance, row-level security, tenant isolation.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">🛡️</span>
+            <span class="font-medium">Protecao de Rotas</span>
+            <span class="text-neutral-500 text-sm ml-2">- Middleware e guards</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Implementar guards que verificam autenticacao e autorizacao antes de acessar paginas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Proteger rotas evita acesso nao autorizado a dados sensiveis do dashboard.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Route guards, middleware, HOC, server-side checks, redirect flows.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">📋</span>
+            <span class="font-medium">Audit Logs e Compliance</span>
+            <span class="text-neutral-500 text-sm ml-2">- Rastreabilidade</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Registrar todas as acoes de usuarios para auditoria, compliance e investigacao de incidentes.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Regulamentacoes como LGPD e SOC2 exigem audit trails completos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Activity logs, immutable logs, retention policy, SIEM integration, PII masking.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-5.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.6</span>
+          <span class="text-xs text-neutral-500">~70 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">⚡ Performance e Otimizacao</h3>
+        <p class="text-neutral-400 text-sm">Code splitting, lazy loading, memoization, virtualizacao e bundle optimization para dashboards rapidos.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">✂️</span>
+            <span class="font-medium">Code Splitting</span>
+            <span class="text-neutral-500 text-sm ml-2">- Divisao de bundles</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Dividir o codigo JavaScript em chunks menores carregados sob demanda.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Bundles menores significam carregamento inicial mais rapido e melhor TTI.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Dynamic import, route-based splitting, vendor chunks, prefetch, preload.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">😴</span>
+            <span class="font-medium">Lazy Loading</span>
+            <span class="text-neutral-500 text-sm ml-2">- Carregamento sob demanda</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Carregar componentes, imagens e dados apenas quando necessarios, nao no load inicial.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Lazy loading reduz drasticamente o tempo de carregamento inicial do dashboard.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">React.lazy, Suspense, intersection observer, skeleton fallback.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🧠</span>
+            <span class="font-medium">Memoization</span>
+            <span class="text-neutral-500 text-sm ml-2">- Cache de computacoes</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Armazenar resultados de funcoes caras para evitar recalculo desnecessario.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dashboards com muitos dados precisam de memoization para manter 60fps.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">useMemo, useCallback, React.memo, selector memoization, reselect.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">📜</span>
+            <span class="font-medium">Virtualizacao de Listas</span>
+            <span class="text-neutral-500 text-sm ml-2">- Renderizacao eficiente</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Renderizar apenas os itens visiveis de listas grandes, reciclando elementos DOM.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Tabelas com milhares de linhas ficam impossiveis sem virtualizacao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">react-window, TanStack Virtual, windowing, overscan, variable heights.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">📦</span>
+            <span class="font-medium">Bundle Analysis</span>
+            <span class="text-neutral-500 text-sm ml-2">- Identificando bloat</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Ferramentas para visualizar o tamanho do bundle e identificar dependencias pesadas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Bundles inflados por dependencias desnecessarias prejudicam todos os usuarios.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">webpack-bundle-analyzer, source-map-explorer, tree shaking, sideEffects.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">🌍</span>
+            <span class="font-medium">CDN e Edge Caching</span>
+            <span class="text-neutral-500 text-sm ml-2">- Distribuicao global</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Servir assets estaticos de servidores edge proximos ao usuario para menor latencia.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">CDN pode reduzir tempo de load de segundos para centenas de milissegundos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cloudflare, Vercel Edge, cache headers, immutable assets, purge.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-6.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.7 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.7</span>
+          <span class="text-xs text-neutral-500">~80 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-purple-300">🚀 Deploy e Infraestrutura</h3>
+        <p class="text-neutral-400 text-sm">Vercel, AWS, Docker, CI/CD, monitoramento e observabilidade para dashboards em producao.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">▲</span>
+            <span class="font-medium">Deploy na Vercel</span>
+            <span class="text-neutral-500 text-sm ml-2">- Serverless simplificado</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Plataforma de deploy para aplicacoes frontend com edge functions e preview deployments.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Vercel e a forma mais rapida de colocar um dashboard Next.js em producao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Git integration, preview URLs, environment variables, edge functions.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">☁️</span>
+            <span class="font-medium">AWS para Dashboards</span>
+            <span class="text-neutral-500 text-sm ml-2">- Infraestrutura enterprise</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Servicos AWS relevantes para dashboards: S3, CloudFront, Lambda, RDS.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Empresas grandes frequentemente exigem deploy em sua propria infraestrutura AWS.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Amplify, ECS, Lambda@Edge, VPC, IAM roles, CloudWatch.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🐳</span>
+            <span class="font-medium">Docker e Containers</span>
+            <span class="text-neutral-500 text-sm ml-2">- Empacotamento</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Containerizar aplicacao para deploy consistente em qualquer ambiente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Containers garantem que o dashboard funcione igual em dev, staging e prod.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Dockerfile, multi-stage builds, docker-compose, registry, kubernetes.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">🔄</span>
+            <span class="font-medium">CI/CD Pipelines</span>
+            <span class="text-neutral-500 text-sm ml-2">- Automacao de deploy</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Pipelines automatizados para build, test e deploy a cada push no repositorio.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">CI/CD elimina deploys manuais propensos a erros e acelera ciclo de releases.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">GitHub Actions, GitLab CI, pipeline stages, artifacts, secrets.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">📊</span>
+            <span class="font-medium">Monitoramento e APM</span>
+            <span class="text-neutral-500 text-sm ml-2">- Observabilidade</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Ferramentas para monitorar performance, erros e comportamento em producao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Impossivel manter um dashboard saudavel sem visibilidade do que acontece em prod.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Sentry, DataDog, New Relic, RUM, Core Web Vitals, alerting.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">📝</span>
+            <span class="font-medium">Logging e Debugging</span>
+            <span class="text-neutral-500 text-sm ml-2">- Investigacao de problemas</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-purple-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Estrategias de logging estruturado e ferramentas para debuggar issues em producao.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Logs bem estruturados sao essenciais para resolver problemas rapidamente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Structured logging, log levels, correlation IDs, log aggregation, ELK.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-7.html" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors text-sm font-medium">
+          <span>Acessar Modulo</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULO 3.8 -->
+    <div class="bg-dark-800 rounded-xl border border-yellow-500/30 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600 bg-gradient-to-r from-yellow-900/20 to-transparent">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-yellow-400 font-bold">3.8</span>
+          <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded">PROJETO FINAL</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">🏆 Dashboard Enterprise Completo</h3>
+        <p class="text-neutral-400 text-sm">Projeto final integrando todos os conceitos: banco, APIs, ERP, CRM, auth, performance e deploy.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">1</span>
+            <span class="text-lg mr-2">📋</span>
+            <span class="font-medium">Planejamento e Arquitetura</span>
+            <span class="text-neutral-500 text-sm ml-2">- Definindo escopo</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Definir requisitos, escolher stack, desenhar arquitetura e planejar sprints.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">Documento de arquitetura com diagramas, ADRs e cronograma.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">2</span>
+            <span class="text-lg mr-2">🗄️</span>
+            <span class="font-medium">Backend e Integracao</span>
+            <span class="text-neutral-500 text-sm ml-2">- APIs e banco</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Implementar APIs, configurar banco de dados e integrar com sistemas externos.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">API funcional com endpoints documentados e integracao com mock ERP/CRM.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">3</span>
+            <span class="text-lg mr-2">🎨</span>
+            <span class="font-medium">Frontend e Componentes</span>
+            <span class="text-neutral-500 text-sm ml-2">- UI completa</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Desenvolver todas as telas, componentes, graficos e interacoes do dashboard.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">Dashboard com 5+ paginas, 10+ componentes e responsivo.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">4</span>
+            <span class="text-lg mr-2">🔐</span>
+            <span class="font-medium">Autenticacao e RBAC</span>
+            <span class="text-neutral-500 text-sm ml-2">- Seguranca</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Implementar login, permissoes por papel e protecao de rotas sensiveis.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">Sistema de auth com 3 roles (admin, manager, viewer) e row-level security.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">5</span>
+            <span class="text-lg mr-2">⚡</span>
+            <span class="font-medium">Otimizacao e Testes</span>
+            <span class="text-neutral-500 text-sm ml-2">- Qualidade</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Otimizar performance, escrever testes e garantir qualidade do codigo.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">Lighthouse 90+, cobertura de testes 70%+, zero erros criticos.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center text-left hover:bg-dark-700/50 transition-colors">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center mr-3">6</span>
+            <span class="text-lg mr-2">🚀</span>
+            <span class="font-medium">Deploy e Documentacao</span>
+            <span class="text-neutral-500 text-sm ml-2">- Finalizacao</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4 pl-16">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div><span class="text-yellow-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Deploy em producao, configurar monitoramento e documentar o projeto.</p></div>
+              <div><span class="text-yellow-400 font-semibold">Entregavel:</span><p class="text-neutral-300 text-sm">Dashboard em producao com CI/CD, README e video demo.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <a href="modulo-3-8.html" class="inline-flex items-center px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-dark-900 rounded-lg transition-colors text-sm font-bold">
+          <span>Iniciar Projeto Final</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Navegacao entre Trilhas -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <div class="flex flex-col sm:flex-row justify-between gap-4">
+      <a href="../trilha2/index.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors text-center">
+        ← Trilha 2: Tecnicas
+      </a>
+      <a href="../../index.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-white rounded-lg transition-colors text-center">
+        Voltar ao Inicio
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-800 border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        Dashboard Mastery 2025 - <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTopic(btn) {
+      const explanation = btn.nextElementSibling;
+      explanation.classList.toggle('active');
+    }
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('color-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+</body>
+</html>

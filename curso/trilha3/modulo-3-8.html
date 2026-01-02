@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.8: Projeto Final - Dashboard Enterprise | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 600: '#4a5568', 700: '#374151', 800: '#1f2937', 900: '#111827' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen transition-colors duration-300">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.8</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Trilha 3 - Avancado</span>
+        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Projeto Final</span>
+      </div>
+      <h1 class="text-4xl font-bold mb-4">🏆 Projeto Final: Dashboard Enterprise Completo</h1>
+      <p class="text-xl text-neutral-400 mb-6">Integre todos os conhecimentos das 3 trilhas em um dashboard de producao real com autenticacao, integracao de dados, visualizacoes avancadas e deploy na nuvem.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">8h</div>
+          <div class="text-sm text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Expert</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Pratico</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Visao Geral do Projeto -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-purple-900/40 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+        <h2 class="text-2xl font-bold mb-4 flex items-center">
+          <span class="mr-3">🎯</span> Visao Geral do Projeto
+        </h2>
+        <p class="text-neutral-300 mb-6">Voce construira um <strong class="text-white">Dashboard Analytics Enterprise</strong> completo que integra multiplas fontes de dados, oferece visualizacoes interativas, controle de acesso por roles, e pode ser deployado em producao.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-dark-800 rounded-lg p-4">
+            <div class="text-3xl mb-2">📊</div>
+            <div class="font-semibold text-white">Frontend</div>
+            <div class="text-sm text-neutral-400 mt-1">React + TailwindCSS + Recharts + TanStack Query</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4">
+            <div class="text-3xl mb-2">⚙️</div>
+            <div class="font-semibold text-white">Backend</div>
+            <div class="text-sm text-neutral-400 mt-1">Node.js + TypeScript + Prisma + Redis</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4">
+            <div class="text-3xl mb-2">☁️</div>
+            <div class="font-semibold text-white">Infraestrutura</div>
+            <div class="text-sm text-neutral-400 mt-1">Docker + GitHub Actions + Vercel/Cloud Run</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 1: Especificacao -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">📋 Especificacao do Projeto</h2>
+          <p class="text-neutral-400 mt-1">Requisitos funcionais, nao-funcionais e escopo</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🎯 Requisitos Funcionais</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="text-white font-medium mb-2">Autenticacao e Acesso</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>☑️ Login com email/senha e OAuth (Google)</li>
+                <li>☑️ Roles: Admin, Manager, Analyst, Viewer</li>
+                <li>☑️ Convite de usuarios por email</li>
+                <li>☑️ Audit log de acoes</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-white font-medium mb-2">Dashboard Core</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>☑️ KPIs em tempo real</li>
+                <li>☑️ Graficos interativos (linha, barra, pizza)</li>
+                <li>☑️ Filtros por periodo, departamento, categoria</li>
+                <li>☑️ Export para PDF e Excel</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-white font-medium mb-2">Dados e Integracoes</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>☑️ Conexao com banco PostgreSQL</li>
+                <li>☑️ API REST para dados</li>
+                <li>☑️ Import de CSV/Excel</li>
+                <li>☑️ Webhook para updates externos</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-white font-medium mb-2">UX e Configuracao</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>☑️ Dark/Light mode</li>
+                <li>☑️ Responsivo (desktop, tablet, mobile)</li>
+                <li>☑️ Dashboards customizaveis</li>
+                <li>☑️ Notificacoes de alertas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">⚡ Requisitos Nao-Funcionais</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-green-400 text-2xl mb-1">📈</div>
+              <div class="text-sm font-medium">Performance</div>
+              <div class="text-xs text-neutral-500">LCP &lt; 2.5s</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-blue-400 text-2xl mb-1">🔒</div>
+              <div class="text-sm font-medium">Seguranca</div>
+              <div class="text-xs text-neutral-500">OWASP Top 10</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-purple-400 text-2xl mb-1">📱</div>
+              <div class="text-sm font-medium">Responsivo</div>
+              <div class="text-xs text-neutral-500">Mobile-first</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-yellow-400 text-2xl mb-1">♿</div>
+              <div class="text-sm font-medium">Acessibilidade</div>
+              <div class="text-xs text-neutral-500">WCAG 2.1 AA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📁 Estrutura de Pastas</h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">dashboard-enterprise/
+├── apps/
+│   ├── web/                    # Frontend React
+│   │   ├── src/
+│   │   │   ├── components/     # UI components
+│   │   │   ├── features/       # Feature modules
+│   │   │   ├── hooks/          # Custom hooks
+│   │   │   ├── lib/            # Utilities
+│   │   │   ├── pages/          # Route pages
+│   │   │   └── stores/         # State management
+│   │   └── package.json
+│   │
+│   └── api/                    # Backend Node.js
+│       ├── src/
+│       │   ├── modules/        # Feature modules
+│       │   ├── middleware/     # Express middlewares
+│       │   ├── services/       # Business logic
+│       │   └── utils/          # Helpers
+│       ├── prisma/
+│       │   └── schema.prisma   # Database schema
+│       └── package.json
+│
+├── packages/
+│   ├── ui/                     # Shared UI components
+│   ├── config/                 # ESLint, TS configs
+│   └── types/                  # Shared TypeScript types
+│
+├── docker-compose.yml
+├── turbo.json                  # Monorepo config
+└── package.json</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: Arquitetura -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🏗️ Arquitetura do Sistema</h2>
+          <p class="text-neutral-400 mt-1">Design de alto nivel e decisoes tecnicas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📐 Diagrama de Arquitetura</h3>
+          <div class="bg-dark-700 rounded-lg p-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center text-sm">
+              <!-- Camada Usuario -->
+              <div class="space-y-2">
+                <div class="text-xs text-neutral-500 uppercase">Usuarios</div>
+                <div class="bg-blue-500/20 rounded-lg p-3 border border-blue-500/30">
+                  <div class="text-2xl mb-1">👥</div>
+                  <div class="text-blue-400 font-medium">Browsers</div>
+                </div>
+              </div>
+              <!-- CDN -->
+              <div class="space-y-2">
+                <div class="text-xs text-neutral-500 uppercase">Edge</div>
+                <div class="bg-orange-500/20 rounded-lg p-3 border border-orange-500/30">
+                  <div class="text-2xl mb-1">🌐</div>
+                  <div class="text-orange-400 font-medium">CDN</div>
+                  <div class="text-xs text-neutral-500">Vercel Edge</div>
+                </div>
+              </div>
+              <!-- Frontend -->
+              <div class="space-y-2">
+                <div class="text-xs text-neutral-500 uppercase">Frontend</div>
+                <div class="bg-green-500/20 rounded-lg p-3 border border-green-500/30">
+                  <div class="text-2xl mb-1">⚛️</div>
+                  <div class="text-green-400 font-medium">React SPA</div>
+                  <div class="text-xs text-neutral-500">Static hosting</div>
+                </div>
+              </div>
+              <!-- Backend -->
+              <div class="space-y-2">
+                <div class="text-xs text-neutral-500 uppercase">Backend</div>
+                <div class="bg-purple-500/20 rounded-lg p-3 border border-purple-500/30">
+                  <div class="text-2xl mb-1">⚙️</div>
+                  <div class="text-purple-400 font-medium">API</div>
+                  <div class="text-xs text-neutral-500">Cloud Run</div>
+                </div>
+              </div>
+              <!-- Data -->
+              <div class="space-y-2">
+                <div class="text-xs text-neutral-500 uppercase">Data</div>
+                <div class="bg-yellow-500/20 rounded-lg p-3 border border-yellow-500/30">
+                  <div class="text-2xl mb-1">🗄️</div>
+                  <div class="text-yellow-400 font-medium">PostgreSQL</div>
+                  <div class="text-xs text-neutral-500">+ Redis cache</div>
+                </div>
+              </div>
+            </div>
+            <!-- Fluxo -->
+            <div class="flex justify-center mt-4 text-neutral-600 text-2xl">
+              ← → ← → ← → ← →
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🔧 Stack Tecnologico</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 text-neutral-400">Camada</th>
+                  <th class="text-left py-3 text-neutral-400">Tecnologia</th>
+                  <th class="text-left py-3 text-neutral-400">Justificativa</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">Frontend</td>
+                  <td>React 18 + Vite</td>
+                  <td>Ecosystem, performance, DX</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">Styling</td>
+                  <td>TailwindCSS + Radix UI</td>
+                  <td>Utility-first, acessibilidade</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">State</td>
+                  <td>TanStack Query + Zustand</td>
+                  <td>Server state vs client state</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">Charts</td>
+                  <td>Recharts</td>
+                  <td>React-native, customizavel</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">Backend</td>
+                  <td>Node.js + Express</td>
+                  <td>TypeScript, performance</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">ORM</td>
+                  <td>Prisma</td>
+                  <td>Type safety, migrations</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400">Auth</td>
+                  <td>JWT + OAuth (Auth.js)</td>
+                  <td>Stateless, social login</td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-purple-400">Cache</td>
+                  <td>Redis</td>
+                  <td>Sessions, rate limiting</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Schema do Banco de Dados
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String?
+  role          Role      @default(VIEWER)
+  department    String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  dashboards    Dashboard[]
+  auditLogs     AuditLog[]
+  sessions      Session[]
+}
+
+model Dashboard {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  config      Json     // Layout, widgets config
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     String
+
+  widgets     Widget[]
+}
+
+model Widget {
+  id          String   @id @default(cuid())
+  type        WidgetType
+  title       String
+  config      Json     // Chart config, data source
+  position    Json     // x, y, width, height
+
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+  dashboardId String
+}
+
+model DataSource {
+  id          String   @id @default(cuid())
+  name        String
+  type        DataSourceType
+  config      Json     // Connection details (encrypted)
+  lastSync    DateTime?
+  createdAt   DateTime @default(now())
+}
+
+model Metric {
+  id          String   @id @default(cuid())
+  name        String
+  value       Float
+  category    String
+  department  String?
+  timestamp   DateTime @default(now())
+
+  @@index([category, timestamp])
+  @@index([department, timestamp])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  resource  String
+  details   Json?
+  ip        String?
+  timestamp DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+
+  @@index([userId, timestamp])
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  ANALYST
+  VIEWER
+}
+
+enum WidgetType {
+  LINE_CHART
+  BAR_CHART
+  PIE_CHART
+  KPI_CARD
+  TABLE
+  MAP
+}
+
+enum DataSourceType {
+  POSTGRESQL
+  MYSQL
+  API
+  CSV
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3: Backend Implementation -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚙️ Implementacao Backend</h2>
+          <p class="text-neutral-400 mt-1">APIs, autenticacao e servicos de dados</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📡 Endpoints da API</h3>
+          <div class="space-y-2 text-sm">
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-mono">POST</span>
+                <span class="text-neutral-300">/api/auth/login</span>
+              </div>
+              <span class="text-neutral-500">Login com credenciais</span>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-mono">GET</span>
+                <span class="text-neutral-300">/api/dashboards</span>
+              </div>
+              <span class="text-neutral-500">Listar dashboards</span>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-mono">GET</span>
+                <span class="text-neutral-300">/api/metrics?range=7d</span>
+              </div>
+              <span class="text-neutral-500">Metricas com filtros</span>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-mono">POST</span>
+                <span class="text-neutral-300">/api/metrics/aggregate</span>
+              </div>
+              <span class="text-neutral-500">Agregacoes customizadas</span>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs font-mono">PUT</span>
+                <span class="text-neutral-300">/api/dashboards/:id</span>
+              </div>
+              <span class="text-neutral-500">Atualizar dashboard</span>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-mono">POST</span>
+                <span class="text-neutral-300">/api/export/:format</span>
+              </div>
+              <span class="text-neutral-500">Export PDF/Excel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: API de Metricas
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// src/modules/metrics/metrics.controller.ts
+import { Router } from 'express';
+import { authenticate, authorize } from '../../middleware/auth';
+import { validateRequest } from '../../middleware/validation';
+import { metricsService } from './metrics.service';
+import { z } from 'zod';
+
+const router = Router();
+
+const getMetricsSchema = z.object({
+  query: z.object({
+    range: z.enum(['24h', '7d', '30d', '90d', '1y']).default('7d'),
+    department: z.string().optional(),
+    category: z.string().optional(),
+    granularity: z.enum(['hour', 'day', 'week', 'month']).default('day'),
+  }),
+});
+
+router.get(
+  '/',
+  authenticate,
+  validateRequest(getMetricsSchema),
+  async (req, res) => {
+    const { range, department, category, granularity } = req.query;
+
+    // Cache key baseado nos parametros
+    const cacheKey = `metrics:${range}:${department || 'all'}:${category || 'all'}`;
+
+    // Tenta buscar do cache
+    const cached = await redis.get(cacheKey);
+    if (cached) {
+      return res.json(JSON.parse(cached));
+    }
+
+    const metrics = await metricsService.getMetrics({
+      range,
+      department: req.user.role === 'ADMIN' ? department : req.user.department,
+      category,
+      granularity,
+    });
+
+    // Cache por 5 minutos
+    await redis.setex(cacheKey, 300, JSON.stringify(metrics));
+
+    res.json(metrics);
+  }
+);
+
+// Agregacao customizada
+const aggregateSchema = z.object({
+  body: z.object({
+    metrics: z.array(z.string()),
+    groupBy: z.array(z.enum(['department', 'category', 'date'])),
+    aggregation: z.enum(['sum', 'avg', 'count', 'min', 'max']),
+    filters: z.record(z.any()).optional(),
+    dateRange: z.object({
+      start: z.string().datetime(),
+      end: z.string().datetime(),
+    }),
+  }),
+});
+
+router.post(
+  '/aggregate',
+  authenticate,
+  authorize(['ADMIN', 'MANAGER', 'ANALYST']),
+  validateRequest(aggregateSchema),
+  async (req, res) => {
+    const result = await metricsService.aggregate(req.body);
+    res.json(result);
+  }
+);
+
+export default router;</pre>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Middleware de Autenticacao
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// src/middleware/auth.ts
+import { Request, Response, NextFunction } from 'express';
+import { verifyToken } from '../lib/jwt';
+import { prisma } from '../lib/prisma';
+import { auditService } from '../services/audit.service';
+
+export interface AuthRequest extends Request {
+  user: {
+    id: string;
+    email: string;
+    role: 'ADMIN' | 'MANAGER' | 'ANALYST' | 'VIEWER';
+    department?: string;
+  };
+}
+
+export const authenticate = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+
+  try {
+    const token = authHeader.split(' ')[1];
+    const payload = await verifyToken(token);
+
+    const user = await prisma.user.findUnique({
+      where: { id: payload.sub },
+      select: { id: true, email: true, role: true, department: true },
+    });
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+
+    (req as AuthRequest).user = user;
+    next();
+  } catch (error) {
+    auditService.log({
+      action: 'AUTH_FAILED',
+      resource: 'api',
+      details: { error: error.message },
+      ip: req.ip,
+    });
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+};
+
+export const authorize = (allowedRoles: string[]) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const user = (req as AuthRequest).user;
+
+    if (!allowedRoles.includes(user.role)) {
+      auditService.log({
+        action: 'ACCESS_DENIED',
+        resource: req.path,
+        userId: user.id,
+        details: { requiredRoles: allowedRoles, userRole: user.role },
+        ip: req.ip,
+      });
+      return res.status(403).json({ error: 'Insufficient permissions' });
+    }
+
+    next();
+  };
+};</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4: Frontend Implementation -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚛️ Implementacao Frontend</h2>
+          <p class="text-neutral-400 mt-1">Componentes, estado e visualizacoes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🧩 Componentes Principais</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📊</div>
+              <div class="text-sm font-medium">KPICard</div>
+              <div class="text-xs text-neutral-500">Metricas em destaque</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📈</div>
+              <div class="text-sm font-medium">LineChart</div>
+              <div class="text-xs text-neutral-500">Series temporais</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📊</div>
+              <div class="text-sm font-medium">BarChart</div>
+              <div class="text-xs text-neutral-500">Comparacoes</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🥧</div>
+              <div class="text-sm font-medium">PieChart</div>
+              <div class="text-xs text-neutral-500">Distribuicoes</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📋</div>
+              <div class="text-sm font-medium">DataTable</div>
+              <div class="text-xs text-neutral-500">Listas virtuais</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🔍</div>
+              <div class="text-sm font-medium">FilterBar</div>
+              <div class="text-xs text-neutral-500">Filtros globais</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📅</div>
+              <div class="text-sm font-medium">DatePicker</div>
+              <div class="text-xs text-neutral-500">Selecao de periodo</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📤</div>
+              <div class="text-sm font-medium">ExportMenu</div>
+              <div class="text-xs text-neutral-500">PDF, Excel, CSV</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Dashboard Page
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// src/pages/Dashboard.tsx
+import { useMetrics } from '@/hooks/useMetrics';
+import { useDashboardFilters } from '@/stores/filters';
+import { KPIGrid } from '@/components/KPIGrid';
+import { ChartGrid } from '@/components/ChartGrid';
+import { FilterBar } from '@/components/FilterBar';
+import { DateRangePicker } from '@/components/DateRangePicker';
+import { ExportMenu } from '@/components/ExportMenu';
+import { Skeleton } from '@/components/ui/Skeleton';
+
+export function DashboardPage() {
+  const { dateRange, department, setDateRange } = useDashboardFilters();
+
+  const { data: metrics, isLoading, error } = useMetrics({
+    range: dateRange,
+    department,
+  });
+
+  if (error) {
+    return &lt;ErrorBoundary error={error} /&gt;;
+  }
+
+  return (
+    &lt;div className="space-y-6"&gt;
+      {/* Header com filtros */}
+      &lt;div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"&gt;
+        &lt;div&gt;
+          &lt;h1 className="text-2xl font-bold"&gt;Dashboard&lt;/h1&gt;
+          &lt;p className="text-neutral-400"&gt;Visao geral das metricas&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className="flex items-center gap-3"&gt;
+          &lt;DateRangePicker value={dateRange} onChange={setDateRange} /&gt;
+          &lt;FilterBar /&gt;
+          &lt;ExportMenu data={metrics} /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* KPIs */}
+      {isLoading ? (
+        &lt;div className="grid grid-cols-2 md:grid-cols-4 gap-4"&gt;
+          {[...Array(4)].map((_, i) =&gt; (
+            &lt;Skeleton key={i} className="h-24" /&gt;
+          ))}
+        &lt;/div&gt;
+      ) : (
+        &lt;KPIGrid
+          metrics={[
+            {
+              label: 'Receita Total',
+              value: metrics.revenue,
+              change: metrics.revenueChange,
+              format: 'currency',
+            },
+            {
+              label: 'Usuarios Ativos',
+              value: metrics.activeUsers,
+              change: metrics.usersChange,
+              format: 'number',
+            },
+            {
+              label: 'Conversao',
+              value: metrics.conversionRate,
+              change: metrics.conversionChange,
+              format: 'percent',
+            },
+            {
+              label: 'Ticket Medio',
+              value: metrics.avgTicket,
+              change: metrics.ticketChange,
+              format: 'currency',
+            },
+          ]}
+        /&gt;
+      )}
+
+      {/* Charts Grid */}
+      &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
+        &lt;ChartCard title="Receita por Periodo"&gt;
+          &lt;LineChart
+            data={metrics?.revenueTimeSeries}
+            loading={isLoading}
+          /&gt;
+        &lt;/ChartCard&gt;
+
+        &lt;ChartCard title="Vendas por Categoria"&gt;
+          &lt;BarChart
+            data={metrics?.salesByCategory}
+            loading={isLoading}
+          /&gt;
+        &lt;/ChartCard&gt;
+
+        &lt;ChartCard title="Distribuicao por Regiao"&gt;
+          &lt;PieChart
+            data={metrics?.salesByRegion}
+            loading={isLoading}
+          /&gt;
+        &lt;/ChartCard&gt;
+
+        &lt;ChartCard title="Top Produtos"&gt;
+          &lt;DataTable
+            columns={productColumns}
+            data={metrics?.topProducts}
+            loading={isLoading}
+          /&gt;
+        &lt;/ChartCard&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Hook de Metricas
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// src/hooks/useMetrics.ts
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { api } from '@/lib/api';
+
+interface MetricsParams {
+  range: '24h' | '7d' | '30d' | '90d' | '1y';
+  department?: string;
+  category?: string;
+}
+
+interface MetricsData {
+  revenue: number;
+  revenueChange: number;
+  activeUsers: number;
+  usersChange: number;
+  conversionRate: number;
+  conversionChange: number;
+  avgTicket: number;
+  ticketChange: number;
+  revenueTimeSeries: TimeSeriesPoint[];
+  salesByCategory: CategoryData[];
+  salesByRegion: RegionData[];
+  topProducts: Product[];
+}
+
+export function useMetrics(
+  params: MetricsParams,
+  options?: UseQueryOptions&lt;MetricsData&gt;
+) {
+  return useQuery({
+    queryKey: ['metrics', params],
+    queryFn: async () => {
+      const { data } = await api.get&lt;MetricsData&gt;('/metrics', { params });
+      return data;
+    },
+    staleTime: 5 * 60 * 1000, // 5 minutos
+    refetchInterval: 60 * 1000, // Refetch a cada minuto
+    refetchOnWindowFocus: true,
+    retry: 3,
+    ...options,
+  });
+}
+
+// Hook para metricas em tempo real via WebSocket
+export function useRealtimeMetrics(dashboardId: string) {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const ws = new WebSocket(`${WS_URL}/metrics/${dashboardId}`);
+
+    ws.onmessage = (event) => {
+      const update = JSON.parse(event.data);
+
+      // Atualiza cache do React Query
+      queryClient.setQueryData(['metrics', { dashboardId }], (old: MetricsData) => ({
+        ...old,
+        ...update,
+      }));
+    };
+
+    return () => ws.close();
+  }, [dashboardId, queryClient]);
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5: Testes e Integracao -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">🧪 Testes e Integracao</h2>
+          <p class="text-neutral-400 mt-1">Garantia de qualidade em todas as camadas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🎯 Piramide de Testes</h3>
+          <div class="flex flex-col items-center space-y-2">
+            <div class="bg-red-900/30 border border-red-500/30 rounded-lg px-8 py-3 text-center">
+              <div class="text-red-400 font-medium">E2E (Playwright)</div>
+              <div class="text-xs text-neutral-500">5% - Fluxos criticos</div>
+            </div>
+            <div class="bg-yellow-900/30 border border-yellow-500/30 rounded-lg px-12 py-3 text-center">
+              <div class="text-yellow-400 font-medium">Integracao (Testing Library)</div>
+              <div class="text-xs text-neutral-500">20% - APIs, componentes complexos</div>
+            </div>
+            <div class="bg-green-900/30 border border-green-500/30 rounded-lg px-20 py-3 text-center">
+              <div class="text-green-400 font-medium">Unitarios (Vitest)</div>
+              <div class="text-xs text-neutral-500">75% - Funcoes, hooks, utils</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Testes de Componente
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// src/components/__tests__/KPICard.test.tsx
+import { render, screen } from '@testing-library/react';
+import { KPICard } from '../KPICard';
+
+describe('KPICard', () => {
+  it('renders metric value correctly', () => {
+    render(
+      &lt;KPICard
+        label="Receita"
+        value={150000}
+        format="currency"
+        change={12.5}
+      /&gt;
+    );
+
+    expect(screen.getByText('Receita')).toBeInTheDocument();
+    expect(screen.getByText('R$ 150.000,00')).toBeInTheDocument();
+    expect(screen.getByText('+12.5%')).toBeInTheDocument();
+  });
+
+  it('shows negative change with correct styling', () => {
+    render(
+      &lt;KPICard
+        label="Custos"
+        value={50000}
+        format="currency"
+        change={-8.3}
+      /&gt;
+    );
+
+    const changeElement = screen.getByText('-8.3%');
+    expect(changeElement).toHaveClass('text-red-400');
+  });
+
+  it('renders skeleton when loading', () => {
+    render(&lt;KPICard label="Receita" loading /&gt;);
+
+    expect(screen.getByTestId('kpi-skeleton')).toBeInTheDocument();
+  });
+});
+
+// Teste de hook com mock
+describe('useMetrics', () => {
+  it('fetches and caches metrics', async () => {
+    const { result } = renderHook(() =>
+      useMetrics({ range: '7d' }),
+      { wrapper: QueryWrapper }
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.revenue).toBeDefined();
+    expect(mockApi.get).toHaveBeenCalledWith('/metrics', {
+      params: { range: '7d' },
+    });
+  });
+});</pre>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Teste E2E
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// e2e/dashboard.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.describe('Dashboard', () => {
+  test.beforeEach(async ({ page }) => {
+    // Login via API para speed
+    await page.request.post('/api/auth/login', {
+      data: { email: 'test@example.com', password: 'test123' },
+    });
+
+    await page.goto('/dashboard');
+  });
+
+  test('displays KPIs and charts', async ({ page }) => {
+    // Aguarda carregamento
+    await expect(page.getByText('Receita Total')).toBeVisible();
+    await expect(page.getByText('Usuarios Ativos')).toBeVisible();
+
+    // Verifica charts
+    await expect(page.locator('[data-testid="line-chart"]')).toBeVisible();
+    await expect(page.locator('[data-testid="bar-chart"]')).toBeVisible();
+  });
+
+  test('filters update charts', async ({ page }) => {
+    // Muda filtro de periodo
+    await page.getByRole('button', { name: '7 dias' }).click();
+    await page.getByRole('option', { name: '30 dias' }).click();
+
+    // Verifica que charts atualizaram (via network)
+    await page.waitForResponse(resp =>
+      resp.url().includes('/api/metrics') &&
+      resp.url().includes('range=30d')
+    );
+  });
+
+  test('export generates PDF', async ({ page }) => {
+    // Clica em exportar
+    await page.getByRole('button', { name: 'Exportar' }).click();
+    await page.getByRole('menuitem', { name: 'PDF' }).click();
+
+    // Verifica download
+    const download = await page.waitForEvent('download');
+    expect(download.suggestedFilename()).toContain('.pdf');
+  });
+});</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6: Deploy e Producao -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">🚀 Deploy e Producao</h2>
+          <p class="text-neutral-400 mt-1">Levando o projeto para o ar</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📋 Checklist de Deploy</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <div class="text-white font-medium mb-3">Pre-Deploy</div>
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-green-400">✓</span>
+                  <span class="text-neutral-300">Testes passando (unit, integration, e2e)</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-green-400">✓</span>
+                  <span class="text-neutral-300">Build otimizado (bundle analyzer)</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-green-400">✓</span>
+                  <span class="text-neutral-300">Environment variables configuradas</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-green-400">✓</span>
+                  <span class="text-neutral-300">Migrations aplicadas em staging</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-green-400">✓</span>
+                  <span class="text-neutral-300">Security scan (npm audit, SAST)</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="text-white font-medium mb-3">Pos-Deploy</div>
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-blue-400">→</span>
+                  <span class="text-neutral-300">Smoke tests em producao</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-blue-400">→</span>
+                  <span class="text-neutral-300">Monitorar metricas (LCP, error rate)</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-blue-400">→</span>
+                  <span class="text-neutral-300">Verificar logs de erro</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-blue-400">→</span>
+                  <span class="text-neutral-300">Rollback plan pronto</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm">
+                  <span class="text-blue-400">→</span>
+                  <span class="text-neutral-300">Notificar stakeholders</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🌐 Infraestrutura de Producao</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+              <div class="space-y-2">
+                <div class="bg-green-500/20 rounded-lg p-3 border border-green-500/30">
+                  <div class="text-2xl mb-1">▲</div>
+                  <div class="text-green-400 font-medium">Vercel</div>
+                  <div class="text-xs text-neutral-500">Frontend</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-blue-500/20 rounded-lg p-3 border border-blue-500/30">
+                  <div class="text-2xl mb-1">☁️</div>
+                  <div class="text-blue-400 font-medium">Cloud Run</div>
+                  <div class="text-xs text-neutral-500">API Backend</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-purple-500/20 rounded-lg p-3 border border-purple-500/30">
+                  <div class="text-2xl mb-1">🐘</div>
+                  <div class="text-purple-400 font-medium">Supabase</div>
+                  <div class="text-xs text-neutral-500">PostgreSQL</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-red-500/20 rounded-lg p-3 border border-red-500/30">
+                  <div class="text-2xl mb-1">📊</div>
+                  <div class="text-red-400 font-medium">Upstash</div>
+                  <div class="text-xs text-neutral-500">Redis</div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 text-center text-xs text-neutral-500">
+              Custo estimado: $50-100/mes para MVPs
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> GitHub Actions Completo
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># .github/workflows/deploy.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm type-check
+      - run: pnpm test:coverage
+
+      - uses: codecov/codecov-action@v3
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v4
+
+      - run: pnpm install
+      - run: pnpm exec playwright install --with-deps
+
+      - name: Run E2E tests
+        run: pnpm test:e2e
+        env:
+          DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+
+  deploy-preview:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, e2e-tests]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, e2e-tests]
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      # Deploy Frontend (Vercel)
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # Deploy Backend (Cloud Run)
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: dashboard-api
+          region: us-central1
+          source: ./apps/api
+
+      # Notify
+      - uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {"text": "🚀 Dashboard deployed to production!"}</pre>
+          </div>
+        </div>
+
+        <!-- Resultado Final -->
+        <div class="bg-gradient-to-r from-yellow-900/30 to-dark-800 rounded-xl border border-yellow-500/30 p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-4 flex items-center">
+            <span class="mr-2">🏆</span> Resultado Final
+          </h3>
+          <p class="text-neutral-300 mb-4">Ao completar este projeto, voce tera construido:</p>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>✅ Dashboard completo com autenticacao multi-tenant</li>
+            <li>✅ API RESTful com TypeScript e validacao</li>
+            <li>✅ Visualizacoes interativas e responsivas</li>
+            <li>✅ Pipeline CI/CD automatizado</li>
+            <li>✅ Infraestrutura escalavel na nuvem</li>
+            <li>✅ Suite de testes completa</li>
+            <li>✅ Documentacao e codigo limpo</li>
+          </ul>
+          <div class="mt-4 p-4 bg-dark-800 rounded-lg">
+            <div class="text-sm text-neutral-400">Repositorio do projeto:</div>
+            <div class="text-purple-400 font-mono">github.com/seuuser/dashboard-enterprise</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusao do Curso -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">🎓</div>
+          <h2 class="text-3xl font-bold mb-2">Parabens! Voce Completou o Dashboard Mastery</h2>
+          <p class="text-xl text-neutral-400">144 topicos, 3 trilhas, conhecimento completo</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 text-center">
+            <div class="text-emerald-400 font-bold text-lg mb-1">Trilha 1</div>
+            <div class="text-sm text-neutral-300">Fundamentos</div>
+            <div class="text-xs text-neutral-500 mt-2">8 modulos, 48 topicos</div>
+          </div>
+          <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 text-center">
+            <div class="text-blue-400 font-bold text-lg mb-1">Trilha 2</div>
+            <div class="text-sm text-neutral-300">Tecnicas</div>
+            <div class="text-xs text-neutral-500 mt-2">8 modulos, 48 topicos</div>
+          </div>
+          <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4 text-center">
+            <div class="text-purple-400 font-bold text-lg mb-1">Trilha 3</div>
+            <div class="text-sm text-neutral-300">Avancado</div>
+            <div class="text-xs text-neutral-500 mt-2">8 modulos, 48 topicos</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 mb-8">
+          <div class="text-center text-neutral-300">
+            <p>Agora voce tem o conhecimento para construir dashboards profissionais de nivel enterprise.</p>
+            <p class="mt-2">Continue praticando, explorando novas tecnologias e compartilhando conhecimento!</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha 3
+          </a>
+          <a href="../../index.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            🏠 Pagina Inicial
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center text-neutral-500 text-sm">
+        <p>Dashboard Mastery - Projeto Final Concluido 🎉</p>
+        <p class="mt-2">Desenvolvido para <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.2 - APIs e Data Layer | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-300">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header com Stats -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4">
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULO 3.2</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔗 APIs e Data Layer</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mb-8">REST, GraphQL, data fetching patterns, gerenciamento de estado server-side e estrategias de cache no frontend.</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-xl font-bold text-purple-400">6</div>
+          <div class="text-xs text-neutral-500">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xl font-bold text-purple-400">70min</div>
+          <div class="text-xs text-neutral-500">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-xl font-bold text-purple-400">Avancado</div>
+          <div class="text-xs text-neutral-500">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xl font-bold text-purple-400">Full Stack</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- ==================== TOPICO 1 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🌐 REST vs GraphQL</h2>
+          <p class="text-neutral-400 text-sm">Escolhendo a arquitetura certa</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">REST</strong> usa endpoints fixos que retornam estruturas predefinidas. <strong class="text-purple-400">GraphQL</strong> oferece um unico endpoint com queries flexiveis. A escolha impacta desenvolvimento, performance e manutencao.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Para dashboards, a decisao depende da complexidade. <strong class="text-white">Dashboards simples com dados fixos = REST. Dashboards com muitas views diferentes = GraphQL.</strong>
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⚖️</span> Comparacao REST vs GraphQL
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-4 text-neutral-400">Aspecto</th>
+                  <th class="text-left py-3 px-4 text-blue-400">REST</th>
+                  <th class="text-left py-3 px-4 text-pink-400">GraphQL</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Overfetching</td>
+                  <td class="py-3 px-4">Comum - recebe tudo</td>
+                  <td class="py-3 px-4">Nunca - pede so o que precisa</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Underfetching</td>
+                  <td class="py-3 px-4">Precisa de multiplas requests</td>
+                  <td class="py-3 px-4">Uma query resolve</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Caching</td>
+                  <td class="py-3 px-4">HTTP cache nativo</td>
+                  <td class="py-3 px-4">Requer Apollo/URQL</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Complexidade</td>
+                  <td class="py-3 px-4">Simples de implementar</td>
+                  <td class="py-3 px-4">Schema, resolvers, types</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Ideal para</td>
+                  <td class="py-3 px-4">APIs publicas, CRUD simples</td>
+                  <td class="py-3 px-4">Apps complexos, mobile</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: REST vs GraphQL
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <div class="text-blue-400 mb-2">// REST - Multiplas requests</div>
+              <pre class="text-green-400 text-xs">// 3 requests para montar dashboard
+const user = await fetch('/api/users/1');
+const orders = await fetch('/api/users/1/orders');
+const stats = await fetch('/api/users/1/stats');
+
+// Overfetching: recebe 50 campos
+// mas precisa de apenas 5</pre>
+            </div>
+            <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <div class="text-pink-400 mb-2">// GraphQL - Uma query</div>
+              <pre class="text-green-400 text-xs">const { data } = await client.query({
+  query: gql`
+    query Dashboard($userId: ID!) {
+      user(id: $userId) {
+        name
+        orders(limit: 5) { total }
+        stats { revenue, count }
+      }
+    }
+  `,
+  variables: { userId: 1 }
+});</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Para dashboards Next.js:</strong> Use REST com Route Handlers para casos simples. Para dashboards complexos com muitos componentes buscando dados diferentes, GraphQL com Apollo Client oferece melhor DX e cache automatico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 2 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔄 TanStack Query / SWR</h2>
+          <p class="text-neutral-400 text-sm">Server state management</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">TanStack Query</strong> (ex React Query) e <strong class="text-purple-400">SWR</strong> sao bibliotecas para gerenciar dados que vem do servidor. Elas abstraem fetching, caching, revalidacao, retries e sincronizacao.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Antes delas, cada projeto reinventava a roda com useEffect + useState. <strong class="text-white">Agora loading, error, data, refetch, cache sao tratados automaticamente.</strong>
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🎯</span> Recursos Principais
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Auto Caching</div>
+              <p class="text-neutral-400 text-sm">Dados ficam em cache e sao reutilizados entre componentes.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Background Refetch</div>
+              <p class="text-neutral-400 text-sm">Atualiza dados em background quando usuario volta a aba.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Stale Time</div>
+              <p class="text-neutral-400 text-sm">Define quanto tempo dados sao considerados frescos.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Retry Logic</div>
+              <p class="text-neutral-400 text-sm">Retenta automaticamente em caso de falha de rede.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: TanStack Query em Dashboard
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+// Hook para buscar metricas
+function useMetrics(dateRange: string) {
+  return useQuery({
+    queryKey: ['metrics', dateRange],
+    queryFn: () => fetch(`/api/metrics?range=${dateRange}`).then(r => r.json()),
+    staleTime: 1000 * 60 * 5, // 5 minutos antes de refetch
+    refetchOnWindowFocus: true, // Atualiza ao voltar a aba
+  });
+}
+
+// Componente usando o hook
+function MetricsCard() {
+  const { data, isLoading, error, refetch } = useMetrics('30d');
+
+  if (isLoading) return <Skeleton />;
+  if (error) return <Error onRetry={refetch} />;
+
+  return (
+    <div>
+      <h3>Receita: {data.revenue}</h3>
+      <p>Clientes: {data.customers}</p>
+    </div>
+  );
+}
+
+// Mutation para atualizar dados
+function useUpdateMetric() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data) => fetch('/api/metrics', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }),
+    onSuccess: () => {
+      // Invalida cache para refetch
+      queryClient.invalidateQueries({ queryKey: ['metrics'] });
+    }
+  });
+}</pre>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Query keys consistentes e hierarquicas</li>
+                <li>• staleTime apropriado ao tipo de dado</li>
+                <li>• Invalidar queries apos mutations</li>
+                <li>• Prefetch em hover para UX rapida</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• useQuery dentro de loops</li>
+                <li>• Query keys dinamicas sem memoize</li>
+                <li>• Ignorar estados de loading/error</li>
+                <li>• refetchOnMount em dados estaticos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 3 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚠️ Error Handling e Retry</h2>
+          <p class="text-neutral-400 text-sm">Resiliencia de APIs</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Error handling robusto</strong> e essencial para dashboards enterprise. Falhas de rede, timeouts e erros de API vao acontecer - a questao e como seu app reage.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Um dashboard que mostra tela branca quando a API falha e inutil. <strong class="text-white">Usuarios precisam ver dados stale, fallbacks ou pelo menos mensagens claras.</strong>
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Estrategias de Retry
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-purple-500">
+              <div class="font-semibold text-white mb-2">Exponential Backoff</div>
+              <p class="text-neutral-400 text-sm mb-2">Aumenta o intervalo entre retries exponencialmente.</p>
+              <div class="text-xs font-mono text-neutral-300">1s → 2s → 4s → 8s → desiste</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-white mb-2">Circuit Breaker</div>
+              <p class="text-neutral-400 text-sm mb-2">Para de tentar temporariamente apos muitas falhas.</p>
+              <div class="text-xs font-mono text-neutral-300">5 falhas → circuito aberto por 30s → tenta novamente</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-emerald-500">
+              <div class="font-semibold text-white mb-2">Fallback Data</div>
+              <p class="text-neutral-400 text-sm mb-2">Mostra dados em cache ou defaults quando falha.</p>
+              <div class="text-xs font-mono text-neutral-300">API falhou → mostra dados de 5min atras</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Error Handling Completo
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Hook com retry e fallback
+function useMetricsWithFallback() {
+  return useQuery({
+    queryKey: ['metrics'],
+    queryFn: async () => {
+      const res = await fetch('/api/metrics');
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      return res.json();
+    },
+    retry: 3,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000),
+    // Fallback: mantem dados antigos em erro
+    placeholderData: (previousData) => previousData,
+    // Ou dados estaticos
+    initialData: { revenue: 0, customers: 0 },
+  });
+}
+
+// Error Boundary para erros de render
+function DashboardErrorBoundary({ children }) {
+  return (
+    <ErrorBoundary
+      fallback={({ error, resetErrorBoundary }) => (
+        <div className="p-6 bg-red-900/20 rounded-xl">
+          <h3 className="text-red-400 font-bold">Erro ao carregar dashboard</h3>
+          <p className="text-neutral-400 text-sm">{error.message}</p>
+          <button onClick={resetErrorBoundary} className="mt-4 px-4 py-2 bg-red-600 rounded">
+            Tentar novamente
+          </button>
+        </div>
+      )}
+    >
+      {children}
+    </ErrorBoundary>
+  );
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 4 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">⏳ Loading States e Skeletons</h2>
+          <p class="text-neutral-400 text-sm">Feedback visual durante carregamento</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Skeleton screens</strong> mostram a estrutura da UI enquanto dados carregam. Diferente de spinners, skeletons mantem o layout estavel e reduzem a percepcao de espera.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Estudos mostram que <strong class="text-white">usuarios percebem skeletons como 30% mais rapidos</strong> que spinners para o mesmo tempo de carga. E a diferenca entre "lento" e "fluido".
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">👁️</span> Exemplo Visual de Skeleton
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="text-sm text-neutral-400 mb-3">Carregando...</div>
+              <div class="animate-pulse space-y-3">
+                <div class="h-4 bg-dark-600 rounded w-1/3"></div>
+                <div class="h-8 bg-dark-600 rounded w-2/3"></div>
+                <div class="h-3 bg-dark-600 rounded w-1/2"></div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="text-sm text-neutral-400 mb-3">Carregado!</div>
+              <div class="text-neutral-400 text-sm">Receita</div>
+              <div class="text-2xl font-bold">R$ 1.234.567</div>
+              <div class="text-emerald-400 text-sm">▲ 12.5%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Skeleton Component
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Skeleton base reutilizavel
+function Skeleton({ className }: { className?: string }) {
+  return (
+    <div className={`animate-pulse bg-dark-600 rounded ${className}`} />
+  );
+}
+
+// Skeleton para card de metricas
+function MetricCardSkeleton() {
+  return (
+    <div className="bg-dark-800 rounded-xl p-6 border border-dark-600">
+      <Skeleton className="h-4 w-20 mb-3" />
+      <Skeleton className="h-8 w-32 mb-2" />
+      <Skeleton className="h-3 w-16" />
+    </div>
+  );
+}
+
+// Uso com React Suspense
+function Dashboard() {
+  return (
+    <Suspense fallback={<MetricCardSkeleton />}>
+      <MetricCard />
+    </Suspense>
+  );
+}
+
+// Ou com TanStack Query
+function MetricCard() {
+  const { data, isLoading } = useMetrics();
+
+  if (isLoading) return <MetricCardSkeleton />;
+
+  return (
+    <div className="bg-dark-800 rounded-xl p-6">
+      <p className="text-neutral-400">{data.label}</p>
+      <p className="text-2xl font-bold">{data.value}</p>
+    </div>
+  );
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 5 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">📊 Data Normalization</h2>
+          <p class="text-neutral-400 text-sm">Estrutura de dados eficiente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Data normalization</strong> e organizar dados aninhados vindos da API em estruturas planas com referencias por ID. Isso evita duplicacao e facilita atualizacoes parciais.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Quando o mesmo usuario aparece em 10 lugares, <strong class="text-white">atualizar o nome dele em um lugar deve refletir em todos</strong>. Sem normalizacao, voce precisa atualizar 10 lugares manualmente.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Antes vs Depois de Normalizar
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-2">❌ Nao Normalizado</div>
+              <pre class="text-xs text-neutral-300 font-mono overflow-x-auto">{
+  orders: [
+    {
+      id: 1,
+      user: { id: 10, name: 'Ana' },
+      items: [...]
+    },
+    {
+      id: 2,
+      user: { id: 10, name: 'Ana' }, // duplicado!
+      items: [...]
+    }
+  ]
+}</pre>
+            </div>
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-2">✅ Normalizado</div>
+              <pre class="text-xs text-neutral-300 font-mono overflow-x-auto">{
+  users: {
+    10: { id: 10, name: 'Ana' }
+  },
+  orders: {
+    1: { id: 1, userId: 10, itemIds: [1,2] },
+    2: { id: 2, userId: 10, itemIds: [3] }
+  },
+  orderIds: [1, 2]
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Normalizando com normalizr
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { normalize, schema } from 'normalizr';
+
+// Definir schemas
+const userSchema = new schema.Entity('users');
+const orderSchema = new schema.Entity('orders', {
+  user: userSchema
+});
+
+// Dados da API
+const apiResponse = {
+  orders: [
+    { id: 1, user: { id: 10, name: 'Ana' }, total: 100 },
+    { id: 2, user: { id: 10, name: 'Ana' }, total: 200 }
+  ]
+};
+
+// Normalizar
+const normalized = normalize(apiResponse, {
+  orders: [orderSchema]
+});
+
+// Resultado:
+// {
+//   entities: {
+//     users: { 10: { id: 10, name: 'Ana' } },
+//     orders: {
+//       1: { id: 1, userId: 10, total: 100 },
+//       2: { id: 2, userId: 10, total: 200 }
+//     }
+//   },
+//   result: { orders: [1, 2] }
+// }</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 6 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔔 Real-time e WebSockets</h2>
+          <p class="text-neutral-400 text-sm">Dados em tempo real</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">WebSockets</strong> permitem comunicacao bidirecional entre cliente e servidor. Diferente de HTTP que e request-response, WebSockets mantém uma conexao aberta para push de dados.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Para dashboards de monitoramento, <strong class="text-white">dados precisam atualizar em segundos, nao minutos</strong>. WebSockets ou Server-Sent Events (SSE) sao essenciais para isso.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⚖️</span> Polling vs WebSocket vs SSE
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-semibold text-white">Polling</span>
+                <span class="text-yellow-400 text-sm">Simples</span>
+              </div>
+              <p class="text-neutral-400 text-sm">Cliente pergunta "tem novidade?" a cada X segundos. Simples mas ineficiente.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-semibold text-white">WebSocket</span>
+                <span class="text-purple-400 text-sm">Bidirecional</span>
+              </div>
+              <p class="text-neutral-400 text-sm">Conexao persistente. Cliente e servidor enviam mensagens a qualquer momento.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-semibold text-white">SSE (Server-Sent Events)</span>
+                <span class="text-blue-400 text-sm">Unidirecional</span>
+              </div>
+              <p class="text-neutral-400 text-sm">Servidor envia eventos para cliente. Mais simples que WebSocket, HTTP nativo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Real-time com Socket.io
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Cliente React
+import { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
+
+function useRealtimeMetrics() {
+  const [metrics, setMetrics] = useState(null);
+  const [connected, setConnected] = useState(false);
+
+  useEffect(() => {
+    const socket = io('wss://api.example.com', {
+      auth: { token: getToken() }
+    });
+
+    socket.on('connect', () => setConnected(true));
+    socket.on('disconnect', () => setConnected(false));
+
+    // Escuta eventos de metricas
+    socket.on('metrics:update', (data) => {
+      setMetrics(data);
+    });
+
+    // Subscribe a sala especifica
+    socket.emit('subscribe', { room: 'dashboard-metrics' });
+
+    return () => socket.disconnect();
+  }, []);
+
+  return { metrics, connected };
+}
+
+// Uso no componente
+function LiveDashboard() {
+  const { metrics, connected } = useRealtimeMetrics();
+
+  return (
+    <div>
+      <div className={connected ? 'text-green-400' : 'text-red-400'}>
+        {connected ? '● Ao vivo' : '○ Desconectado'}
+      </div>
+      {metrics && <MetricCards data={metrics} />}
+    </div>
+  );
+}</pre>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Para Next.js com Vercel:</strong> Use Pusher, Ably ou Supabase Realtime. Vercel serverless nao suporta WebSockets persistentes nativamente. SSE funciona mas com limitacoes. Servicos gerenciados sao a melhor opcao.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESUMO ==================== -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">REST vs GraphQL</strong>
+              <span class="text-neutral-400"> - REST para simples, GraphQL para complexo</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">TanStack Query</strong>
+              <span class="text-neutral-400"> - Server state com cache, retry, revalidacao automatica</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Error Handling</strong>
+              <span class="text-neutral-400"> - Exponential backoff, circuit breaker, fallback data</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Skeletons</strong>
+              <span class="text-neutral-400"> - Feedback visual que reduz percepcao de espera</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Normalization</strong>
+              <span class="text-neutral-400"> - Dados planos com referencias, sem duplicacao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Real-time</strong>
+              <span class="text-neutral-400"> - WebSocket/SSE para dados ao vivo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-3-1.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Anterior: Bancos de Dados
+          </a>
+          <a href="modulo-3-3.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo: Integracao com ERPs →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Modulo 3.2: APIs e Data Layer</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.6: Performance e Otimizacao | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 600: '#4a5568', 700: '#374151', 800: '#1f2937', 900: '#111827' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen transition-colors duration-300">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.6</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Trilha 3 - Avancado</span>
+        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">Performance</span>
+      </div>
+      <h1 class="text-4xl font-bold mb-4">⚡ Performance e Otimizacao</h1>
+      <p class="text-xl text-neutral-400 mb-6">Construa dashboards que carregam instantaneamente e respondem suavemente mesmo com milhares de dados.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">4h</div>
+          <div class="text-sm text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Expert</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Alto</div>
+          <div class="text-sm text-neutral-400">Impacto</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Topico 1: Lazy Loading e Code Splitting -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">📦 Lazy Loading e Code Splitting</h2>
+          <p class="text-neutral-400 mt-1">Carregue apenas o codigo necessario, quando necessario</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que e Code Splitting
+          </h3>
+          <p class="text-neutral-300 mb-4">Code Splitting divide seu bundle JavaScript em pedacos menores (chunks) que sao carregados sob demanda. Em vez de carregar toda a aplicacao no primeiro acesso, carrega apenas o necessario para a pagina atual.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-2">❌ Sem Code Splitting</div>
+              <div class="text-sm text-neutral-400 mb-2">Bundle unico: 2.5MB</div>
+              <div class="w-full bg-dark-700 rounded-full h-3">
+                <div class="bg-red-500 h-3 rounded-full" style="width: 100%"></div>
+              </div>
+              <div class="text-xs text-neutral-500 mt-2">Carrega tudo no inicio</div>
+            </div>
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">✅ Com Code Splitting</div>
+              <div class="text-sm text-neutral-400 mb-2">Inicial: 400KB | Resto: sob demanda</div>
+              <div class="w-full bg-dark-700 rounded-full h-3">
+                <div class="bg-green-500 h-3 rounded-full" style="width: 16%"></div>
+              </div>
+              <div class="text-xs text-neutral-500 mt-2">84% menos JS inicial</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estrategias -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🎯 Estrategias de Splitting</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-purple-500">
+              <div class="font-semibold text-purple-400 mb-1">Route-based Splitting</div>
+              <p class="text-sm text-neutral-400">Cada rota carrega seu proprio chunk. Ideal para SPAs com muitas paginas.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-blue-400 mb-1">Component-based Splitting</div>
+              <p class="text-sm text-neutral-400">Componentes pesados (graficos, editores) carregados sob demanda.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-green-500">
+              <div class="font-semibold text-green-400 mb-1">Vendor Splitting</div>
+              <p class="text-sm text-neutral-400">Separa bibliotecas de terceiros para melhor cache.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: React Lazy Loading
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+// Lazy load de rotas
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Analytics = lazy(() => import('./pages/Analytics'));
+const Reports = lazy(() => import('./pages/Reports'));
+
+// Lazy load com retry
+const ChartComponent = lazy(() =>
+  import('./components/HeavyChart').catch(() => {
+    // Retry em caso de falha de rede
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('./components/HeavyChart')), 1500);
+    });
+  })
+);
+
+// Preload em hover (prefetch)
+const preloadAnalytics = () => {
+  import('./pages/Analytics');
+};
+
+// Loading fallback customizado
+const PageLoader = () => (
+  &lt;div className="flex items-center justify-center h-64"&gt;
+    &lt;div className="animate-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full" /&gt;
+  &lt;/div&gt;
+);
+
+// Componente com Suspense
+function App() {
+  return (
+    &lt;Suspense fallback={&lt;PageLoader /&gt;}&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Dashboard /&gt;} /&gt;
+        &lt;Route
+          path="/analytics"
+          element={
+            &lt;div onMouseEnter={preloadAnalytics}&gt;
+              &lt;Analytics /&gt;
+            &lt;/div&gt;
+          }
+        /&gt;
+        &lt;Route path="/reports" element={&lt;Reports /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/Suspense&gt;
+  );
+}
+
+// Named exports para chunks nomeados
+const DashboardPage = lazy(() =>
+  import(/* webpackChunkName: "dashboard" */ './pages/Dashboard')
+);
+
+// Prefetch via link tags
+&lt;link rel="prefetch" href="/static/js/analytics.chunk.js" /&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Vite Config -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⚙️</span> Configuracao Vite para Splitting
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// vite.config.ts
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendors em chunks separados
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-charts': ['recharts', 'd3'],
+          'vendor-ui': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          'vendor-query': ['@tanstack/react-query'],
+        },
+      },
+    },
+    // Divide chunks grandes
+    chunkSizeWarningLimit: 500,
+  },
+});</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: Virtualizacao de Listas -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">📜 Virtualizacao de Listas</h2>
+          <p class="text-neutral-400 mt-1">Renderize milhares de itens sem travar o browser</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Por que Virtualizar
+          </h3>
+          <p class="text-neutral-300 mb-4">Listas virtuais renderizam apenas os itens visiveis na viewport, mais um buffer. Em vez de criar 10.000 elementos DOM para uma tabela, cria apenas ~50 e recicla conforme o scroll.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📊</div>
+              <div class="text-sm font-medium text-white">10.000 linhas</div>
+              <div class="text-xs text-neutral-500 mt-1">Sem virtualizacao: ~3s render</div>
+              <div class="text-xs text-green-400 mt-1">Com virtualizacao: ~50ms</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">💾</div>
+              <div class="text-sm font-medium text-white">Memoria</div>
+              <div class="text-xs text-neutral-500 mt-1">Sem: 200MB+ DOM nodes</div>
+              <div class="text-xs text-green-400 mt-1">Com: ~5MB (fixo)</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🎯</div>
+              <div class="text-sm font-medium text-white">Scroll</div>
+              <div class="text-xs text-neutral-500 mt-1">Sem: Travado, jank</div>
+              <div class="text-xs text-green-400 mt-1">Com: 60fps suave</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bibliotecas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📚 Bibliotecas Populares</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 text-neutral-400">Biblioteca</th>
+                  <th class="text-left py-3 text-neutral-400">Uso</th>
+                  <th class="text-left py-3 text-neutral-400">Bundle</th>
+                  <th class="text-left py-3 text-neutral-400">Features</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400 font-medium">@tanstack/virtual</td>
+                  <td>Headless, flexivel</td>
+                  <td>~3KB</td>
+                  <td>✅ Grid, ✅ Dynamic, ✅ Infinite</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-blue-400 font-medium">react-window</td>
+                  <td>Simples, rapido</td>
+                  <td>~6KB</td>
+                  <td>✅ Grid, ⚠️ Fixed size</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-green-400 font-medium">react-virtuoso</td>
+                  <td>Full-featured</td>
+                  <td>~15KB</td>
+                  <td>✅ Grid, ✅ Dynamic, ✅ Groups</td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-yellow-400 font-medium">AG Grid</td>
+                  <td>Enterprise tables</td>
+                  <td>~200KB+</td>
+                  <td>✅ Tudo (sort, filter, pivot)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Codigo TanStack Virtual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: TanStack Virtual
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { useVirtualizer } from '@tanstack/react-virtual';
+
+interface DataRow {
+  id: string;
+  name: string;
+  value: number;
+  status: 'active' | 'inactive';
+}
+
+function VirtualizedTable({ data }: { data: DataRow[] }) {
+  const parentRef = useRef&lt;HTMLDivElement&gt;(null);
+
+  const virtualizer = useVirtualizer({
+    count: data.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 48, // Altura estimada de cada linha
+    overscan: 5, // Renderiza 5 itens extras acima/abaixo
+  });
+
+  const virtualItems = virtualizer.getVirtualItems();
+
+  return (
+    &lt;div
+      ref={parentRef}
+      className="h-[600px] overflow-auto"
+    &gt;
+      {/* Container com altura total para scroll correto */}
+      &lt;div
+        style={{
+          height: `${virtualizer.getTotalSize()}px`,
+          width: '100%',
+          position: 'relative',
+        }}
+      &gt;
+        {/* Apenas itens visiveis sao renderizados */}
+        {virtualItems.map((virtualRow) => {
+          const row = data[virtualRow.index];
+
+          return (
+            &lt;div
+              key={row.id}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: `${virtualRow.size}px`,
+                transform: `translateY(${virtualRow.start}px)`,
+              }}
+              className="flex items-center border-b border-dark-700 px-4"
+            &gt;
+              &lt;span className="w-1/3"&gt;{row.name}&lt;/span&gt;
+              &lt;span className="w-1/3"&gt;{row.value.toLocaleString()}&lt;/span&gt;
+              &lt;span className="w-1/3"&gt;
+                &lt;span className={`px-2 py-1 rounded text-xs ${
+                  row.status === 'active'
+                    ? 'bg-green-500/20 text-green-400'
+                    : 'bg-red-500/20 text-red-400'
+                }`}&gt;
+                  {row.status}
+                &lt;/span&gt;
+              &lt;/span&gt;
+            &lt;/div&gt;
+          );
+        })}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Com alturas dinamicas
+const virtualizerDynamic = useVirtualizer({
+  count: data.length,
+  getScrollElement: () => parentRef.current,
+  estimateSize: () => 50,
+  measureElement: (element) => element.getBoundingClientRect().height,
+});</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica de Performance
+          </h3>
+          <p class="text-neutral-300">Para tabelas com muitas colunas, considere virtualizar tambem horizontalmente (grid virtual 2D). Use `columnVirtualizer` junto com `rowVirtualizer` para renderizar apenas as celulas visiveis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3: Memoization -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">🧠 Memoization e Re-renders</h2>
+          <p class="text-neutral-400 mt-1">Evite calculos e renderizacoes desnecessarias</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que e Memoization
+          </h3>
+          <p class="text-neutral-300 mb-4">Memoization e uma tecnica de otimizacao que armazena resultados de funcoes/componentes para evitar recomputacao quando os inputs nao mudam. Em React, temos `useMemo`, `useCallback` e `React.memo`.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">useMemo</div>
+              <p class="text-sm text-neutral-400">Memoriza valores computados</p>
+              <div class="text-xs text-neutral-500 mt-2 font-mono">const total = useMemo(() => calc(), [deps])</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">useCallback</div>
+              <p class="text-sm text-neutral-400">Memoriza funcoes</p>
+              <div class="text-xs text-neutral-500 mt-2 font-mono">const fn = useCallback(() => {}, [deps])</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">React.memo</div>
+              <p class="text-sm text-neutral-400">Memoriza componentes</p>
+              <div class="text-xs text-neutral-500 mt-2 font-mono">const Comp = memo(Component)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quando usar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">⚖️ Quando Usar (e Quando Nao)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-3">✅ Use Quando</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Calculos pesados (sort, filter, aggregations)</li>
+                <li>• Componentes filhos com memo</li>
+                <li>• Callbacks passados para listas virtuais</li>
+                <li>• Referencias estaveis para useEffect</li>
+                <li>• Context values que mudam raramente</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evite Quando</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Operacoes triviais (soma, concat)</li>
+                <li>• Componentes que sempre re-renderizam</li>
+                <li>• Deps mudam toda renderizacao</li>
+                <li>• Otimizacao prematura</li>
+                <li>• Valores primitivos simples</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Patterns de Memoization
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// 1. useMemo para calculos pesados
+function DashboardMetrics({ data, filters }: Props) {
+  // ✅ Recalcula apenas quando data ou filters mudam
+  const filteredData = useMemo(() => {
+    console.log('Filtering...'); // Para debug
+    return data
+      .filter(item => matchesFilters(item, filters))
+      .sort((a, b) => b.value - a.value);
+  }, [data, filters]);
+
+  const aggregations = useMemo(() => ({
+    total: filteredData.reduce((sum, item) => sum + item.value, 0),
+    average: filteredData.length ? filteredData.reduce((s, i) => s + i.value, 0) / filteredData.length : 0,
+    max: Math.max(...filteredData.map(i => i.value)),
+    min: Math.min(...filteredData.map(i => i.value)),
+  }), [filteredData]);
+
+  return &lt;MetricsDisplay data={aggregations} /&gt;;
+}
+
+// 2. useCallback para handlers estaveis
+function DataTable({ data, onRowClick, onSort }: Props) {
+  // ✅ Callback estavel para itens memorizados
+  const handleRowClick = useCallback((id: string) => {
+    onRowClick(id);
+  }, [onRowClick]);
+
+  // ✅ Factory de callbacks para itens de lista
+  const getRowHandler = useCallback((id: string) => () => {
+    handleRowClick(id);
+  }, [handleRowClick]);
+
+  return (
+    &lt;VirtualList
+      data={data}
+      renderItem={({ item }) => (
+        &lt;MemoizedRow
+          key={item.id}
+          data={item}
+          onClick={getRowHandler(item.id)}
+        /&gt;
+      )}
+    /&gt;
+  );
+}
+
+// 3. React.memo com comparador customizado
+interface ChartProps {
+  data: DataPoint[];
+  config: ChartConfig;
+}
+
+const MemoizedChart = memo(function Chart({ data, config }: ChartProps) {
+  return &lt;ResponsiveContainer&gt;{/* ... */}&lt;/ResponsiveContainer&gt;;
+}, (prevProps, nextProps) => {
+  // Comparacao profunda apenas nos campos relevantes
+  return (
+    prevProps.data.length === nextProps.data.length &&
+    prevProps.data.every((d, i) => d.value === nextProps.data[i].value) &&
+    prevProps.config.type === nextProps.config.type
+  );
+});
+
+// 4. Context otimizado - separar estado que muda frequentemente
+const DashboardContext = createContext&lt;DashboardState&gt;(null!);
+const DashboardActionsContext = createContext&lt;DashboardActions&gt;(null!);
+
+function DashboardProvider({ children }: PropsWithChildren) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // ✅ Actions nunca mudam, evita re-render em consumers
+  const actions = useMemo(() => ({
+    setFilter: (f: Filter) => dispatch({ type: 'SET_FILTER', payload: f }),
+    refresh: () => dispatch({ type: 'REFRESH' }),
+  }), []);
+
+  return (
+    &lt;DashboardContext.Provider value={state}&gt;
+      &lt;DashboardActionsContext.Provider value={actions}&gt;
+        {children}
+      &lt;/DashboardActionsContext.Provider&gt;
+    &lt;/DashboardContext.Provider&gt;
+  );
+}</pre>
+          </div>
+        </div>
+
+        <!-- React Compiler -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔮</span> React Compiler (Futuro)
+          </h3>
+          <p class="text-neutral-300 mb-3">O React Compiler (anteriormente React Forget) automatiza memoization. Quando disponivel em producao, muito do codigo manual de useMemo/useCallback se tornara desnecessario.</p>
+          <div class="bg-dark-700 rounded-lg p-3 text-sm text-neutral-400">
+            <span class="text-yellow-400">⚠️</span> Por enquanto, continue usando hooks de memoization em codigo critico de performance.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4: Web Workers -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚙️ Web Workers</h2>
+          <p class="text-neutral-400 mt-1">Processamento pesado sem bloquear a UI</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que sao Web Workers
+          </h3>
+          <p class="text-neutral-300 mb-4">Web Workers permitem executar JavaScript em threads separadas do main thread. Isso evita que operacoes pesadas bloqueiem a UI, mantendo a interface responsiva durante processamentos intensivos.</p>
+
+          <div class="bg-dark-700 rounded-lg p-4 mt-4">
+            <div class="flex items-center justify-between text-sm">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <span class="text-2xl">🖥️</span>
+                </div>
+                <div class="text-blue-400 font-medium">Main Thread</div>
+                <div class="text-xs text-neutral-500">UI, eventos, render</div>
+              </div>
+              <div class="text-2xl text-neutral-600">↔️</div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <span class="text-2xl">⚙️</span>
+                </div>
+                <div class="text-purple-400 font-medium">Worker Thread</div>
+                <div class="text-xs text-neutral-500">Calculos pesados</div>
+              </div>
+            </div>
+            <div class="text-center mt-4 text-xs text-neutral-500">
+              Comunicacao via postMessage (serializado)
+            </div>
+          </div>
+        </div>
+
+        <!-- Casos de uso -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🎯 Casos de Uso em Dashboards</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3 flex items-start space-x-3">
+              <span class="text-2xl">📊</span>
+              <div>
+                <div class="font-medium text-white">Agregacoes de dados</div>
+                <div class="text-sm text-neutral-400">Somas, medias, pivots em datasets grandes</div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-start space-x-3">
+              <span class="text-2xl">📈</span>
+              <div>
+                <div class="font-medium text-white">Parsing de CSV/Excel</div>
+                <div class="text-sm text-neutral-400">Importar arquivos sem travar UI</div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-start space-x-3">
+              <span class="text-2xl">🔍</span>
+              <div>
+                <div class="font-medium text-white">Busca e filtros complexos</div>
+                <div class="text-sm text-neutral-400">Full-text search, fuzzy matching</div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 flex items-start space-x-3">
+              <span class="text-2xl">🔐</span>
+              <div>
+                <div class="font-medium text-white">Criptografia</div>
+                <div class="text-sm text-neutral-400">Hashing, encryption de dados</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Worker com Comlink
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// analytics.worker.ts
+import { expose } from 'comlink';
+
+interface DataPoint {
+  timestamp: Date;
+  value: number;
+  category: string;
+}
+
+const analyticsWorker = {
+  // Agregacao pesada
+  async aggregate(data: DataPoint[], groupBy: 'day' | 'week' | 'month') {
+    const groups = new Map&lt;string, number[]&gt;();
+
+    for (const point of data) {
+      const key = formatDate(point.timestamp, groupBy);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(point.value);
+    }
+
+    return Array.from(groups.entries()).map(([key, values]) => ({
+      period: key,
+      sum: values.reduce((a, b) => a + b, 0),
+      avg: values.reduce((a, b) => a + b, 0) / values.length,
+      min: Math.min(...values),
+      max: Math.max(...values),
+      count: values.length,
+    }));
+  },
+
+  // Busca fuzzy em dataset grande
+  async fuzzySearch(data: DataPoint[], query: string, threshold = 0.6) {
+    const results: Array&lt;DataPoint & { score: number }&gt; = [];
+
+    for (const item of data) {
+      const score = calculateFuzzyScore(item.category, query);
+      if (score >= threshold) {
+        results.push({ ...item, score });
+      }
+    }
+
+    return results.sort((a, b) => b.score - a.score);
+  },
+
+  // Parse de CSV grande
+  async parseCSV(csvString: string): Promise&lt;DataPoint[]&gt; {
+    const lines = csvString.split('\n');
+    const headers = lines[0].split(',');
+
+    return lines.slice(1).map(line => {
+      const values = line.split(',');
+      return {
+        timestamp: new Date(values[0]),
+        value: parseFloat(values[1]),
+        category: values[2],
+      };
+    });
+  },
+};
+
+expose(analyticsWorker);
+
+// ================================
+// useAnalyticsWorker.ts - Hook
+// ================================
+import { wrap } from 'comlink';
+
+type AnalyticsWorker = typeof analyticsWorker;
+
+let worker: Worker | null = null;
+let api: AnalyticsWorker | null = null;
+
+function getWorker(): AnalyticsWorker {
+  if (!worker) {
+    worker = new Worker(
+      new URL('./analytics.worker.ts', import.meta.url),
+      { type: 'module' }
+    );
+    api = wrap&lt;AnalyticsWorker&gt;(worker);
+  }
+  return api!;
+}
+
+export function useAnalyticsWorker() {
+  const workerApi = useMemo(() => getWorker(), []);
+
+  const aggregate = useCallback(async (data: DataPoint[], groupBy: GroupBy) => {
+    return workerApi.aggregate(data, groupBy);
+  }, [workerApi]);
+
+  const search = useCallback(async (data: DataPoint[], query: string) => {
+    return workerApi.fuzzySearch(data, query);
+  }, [workerApi]);
+
+  return { aggregate, search };
+}
+
+// ================================
+// Uso no componente
+// ================================
+function AnalyticsDashboard() {
+  const { aggregate } = useAnalyticsWorker();
+  const [aggregated, setAggregated] = useState&lt;AggregatedData[]&gt;([]);
+
+  useEffect(() => {
+    // Nao bloqueia a UI
+    aggregate(rawData, 'month').then(setAggregated);
+  }, [rawData, aggregate]);
+
+  return &lt;Chart data={aggregated} /&gt;;
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5: Bundle Optimization -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">📦 Otimizacao de Bundle</h2>
+          <p class="text-neutral-400 mt-1">Reduza o tamanho do JavaScript enviado ao browser</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Por que Otimizar Bundle
+          </h3>
+          <p class="text-neutral-300 mb-4">Cada KB de JavaScript adiciona tempo de download, parse e execucao. Em conexoes 3G, 100KB extras podem significar 1-2 segundos a mais de carregamento.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-4">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl font-bold text-red-400">2.5MB</div>
+              <div class="text-xs text-neutral-500">Bundle nao otimizado</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl font-bold text-yellow-400">800KB</div>
+              <div class="text-xs text-neutral-500">Com tree shaking</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl font-bold text-blue-400">400KB</div>
+              <div class="text-xs text-neutral-500">+ Code splitting</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl font-bold text-green-400">120KB</div>
+              <div class="text-xs text-neutral-500">+ Gzip/Brotli</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analise -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🔍 Ferramentas de Analise</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">rollup-plugin-visualizer</span>
+                <span class="text-xs text-neutral-500">Vite/Rollup</span>
+              </div>
+              <div class="text-sm text-neutral-400">Treemap interativo mostrando tamanho de cada modulo</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">source-map-explorer</span>
+                <span class="text-xs text-neutral-500">Qualquer bundler</span>
+              </div>
+              <div class="text-sm text-neutral-400">Analisa source maps para identificar codigo duplicado</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">bundlephobia.com</span>
+                <span class="text-xs text-neutral-500">Online</span>
+              </div>
+              <div class="text-sm text-neutral-400">Verifica tamanho de pacotes npm antes de instalar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tecnicas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🛠️ Tecnicas de Otimizacao</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-green-500 pl-4">
+              <div class="font-semibold text-green-400">Tree Shaking</div>
+              <p class="text-sm text-neutral-400 mb-2">Remocao automatica de codigo nao utilizado. Requer ES modules.</p>
+              <div class="bg-dark-900 rounded p-2 text-xs font-mono">
+                <span class="text-red-400">// Ruim:</span> import _ from 'lodash' <span class="text-neutral-500">// 70KB</span><br>
+                <span class="text-green-400">// Bom:</span> import { debounce } from 'lodash-es' <span class="text-neutral-500">// 2KB</span>
+              </div>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4">
+              <div class="font-semibold text-blue-400">Substituicao de dependencias</div>
+              <p class="text-sm text-neutral-400 mb-2">Troque libs pesadas por alternativas leves.</p>
+              <div class="bg-dark-900 rounded p-2 text-xs font-mono">
+                moment.js (300KB) → date-fns (50KB) → dayjs (2KB)<br>
+                lodash (70KB) → remeda (tree-shakeable)
+              </div>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4">
+              <div class="font-semibold text-purple-400">Dynamic imports condicionais</div>
+              <p class="text-sm text-neutral-400 mb-2">Carregue features apenas quando necessario.</p>
+              <div class="bg-dark-900 rounded p-2 text-xs font-mono text-green-400">
+                const pdf = user.canExport ? await import('pdf-lib') : null;
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuracao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Configuracao Vite Otimizada
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer';
+import { compression } from 'vite-plugin-compression2';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    compression({ algorithm: 'brotliCompress' }),
+    visualizer({ open: true, gzipSize: true }),
+  ],
+  build: {
+    target: 'es2020',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.log
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Vendors pesados em chunks separados
+          if (id.includes('node_modules')) {
+            if (id.includes('recharts') || id.includes('d3')) {
+              return 'vendor-charts';
+            }
+            if (id.includes('react')) {
+              return 'vendor-react';
+            }
+            return 'vendor';
+          }
+        },
+      },
+    },
+    // Otimizacoes de CSS
+    cssCodeSplit: true,
+    // Gera source maps apenas em staging
+    sourcemap: process.env.NODE_ENV === 'staging',
+  },
+  // Aliases para versoes otimizadas
+  resolve: {
+    alias: {
+      'lodash': 'lodash-es',
+    },
+  },
+});</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6: Monitoring e Core Web Vitals -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">📊 Monitoring e Core Web Vitals</h2>
+          <p class="text-neutral-400 mt-1">Metricas de performance real e como otimizar</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Core Web Vitals
+          </h3>
+          <p class="text-neutral-300 mb-4">Metricas do Google que medem a experiencia real do usuario. Afetam SEO e sao essenciais para aplicacoes de qualidade.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4 border-t-4 border-green-500">
+              <div class="text-green-400 font-bold text-lg mb-1">LCP</div>
+              <div class="text-sm text-neutral-300 mb-2">Largest Contentful Paint</div>
+              <div class="text-xs text-neutral-500 mb-3">Tempo ate o maior elemento renderizar</div>
+              <div class="flex items-center space-x-2 text-xs">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded">Bom: &lt;2.5s</span>
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded">OK: &lt;4s</span>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-t-4 border-blue-500">
+              <div class="text-blue-400 font-bold text-lg mb-1">INP</div>
+              <div class="text-sm text-neutral-300 mb-2">Interaction to Next Paint</div>
+              <div class="text-xs text-neutral-500 mb-3">Responsividade a interacoes</div>
+              <div class="flex items-center space-x-2 text-xs">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded">Bom: &lt;200ms</span>
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded">OK: &lt;500ms</span>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-t-4 border-purple-500">
+              <div class="text-purple-400 font-bold text-lg mb-1">CLS</div>
+              <div class="text-sm text-neutral-300 mb-2">Cumulative Layout Shift</div>
+              <div class="text-xs text-neutral-500 mb-3">Estabilidade visual da pagina</div>
+              <div class="flex items-center space-x-2 text-xs">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded">Bom: &lt;0.1</span>
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded">OK: &lt;0.25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Otimizacoes por metrica -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🎯 Otimizacoes por Metrica</h3>
+          <div class="space-y-4">
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">LCP - Melhorar carregamento</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Preload de recursos criticos: &lt;link rel="preload"&gt;</li>
+                <li>• Otimizar imagens (WebP, lazy load, srcset)</li>
+                <li>• Server-side rendering ou static generation</li>
+                <li>• CDN para assets estaticos</li>
+              </ul>
+            </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">INP - Melhorar interatividade</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Evitar long tasks (&gt;50ms no main thread)</li>
+                <li>• Usar Web Workers para processamento pesado</li>
+                <li>• Debounce/throttle em handlers de eventos</li>
+                <li>• Virtualizar listas longas</li>
+              </ul>
+            </div>
+            <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">CLS - Melhorar estabilidade</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Reservar espaco para imagens (width/height ou aspect-ratio)</li>
+                <li>• Evitar injecao de conteudo acima do existente</li>
+                <li>• Fontes com font-display: swap e preload</li>
+                <li>• Skeletons com tamanho fixo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Monitoramento com web-vitals
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// performance.ts
+import { onLCP, onINP, onCLS, onFCP, onTTFB, Metric } from 'web-vitals';
+
+interface PerformanceReport {
+  name: string;
+  value: number;
+  rating: 'good' | 'needs-improvement' | 'poor';
+  entries: PerformanceEntry[];
+}
+
+// Envia metricas para analytics
+function sendToAnalytics(metric: Metric) {
+  const report: PerformanceReport = {
+    name: metric.name,
+    value: metric.value,
+    rating: metric.rating,
+    entries: metric.entries,
+  };
+
+  // Beacon API para envio confiavel mesmo em page unload
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon('/api/analytics/performance', JSON.stringify(report));
+  } else {
+    fetch('/api/analytics/performance', {
+      method: 'POST',
+      body: JSON.stringify(report),
+      keepalive: true,
+    });
+  }
+
+  // Log em desenvolvimento
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[${metric.name}]`, metric.value.toFixed(2), metric.rating);
+  }
+}
+
+// Registra todas as metricas
+export function initPerformanceMonitoring() {
+  onLCP(sendToAnalytics);
+  onINP(sendToAnalytics);
+  onCLS(sendToAnalytics);
+  onFCP(sendToAnalytics);
+  onTTFB(sendToAnalytics);
+}
+
+// Custom metrics para dashboards
+export function measureDashboardLoad(dashboardId: string) {
+  const start = performance.now();
+
+  return {
+    markDataLoaded: () => {
+      performance.measure('dashboard-data-load', {
+        start,
+        end: performance.now(),
+      });
+    },
+    markRenderComplete: () => {
+      const duration = performance.now() - start;
+      sendToAnalytics({
+        name: 'dashboard-full-load',
+        value: duration,
+        rating: duration < 2000 ? 'good' : duration < 4000 ? 'needs-improvement' : 'poor',
+        id: dashboardId,
+      } as any);
+    },
+  };
+}
+
+// Uso
+function Dashboard({ id }: { id: string }) {
+  const metrics = useRef(measureDashboardLoad(id));
+
+  const { data } = useQuery({
+    queryKey: ['dashboard', id],
+    queryFn: fetchDashboard,
+    onSuccess: () => metrics.current.markDataLoaded(),
+  });
+
+  useEffect(() => {
+    if (data) {
+      // Aguarda render completo
+      requestAnimationFrame(() => {
+        metrics.current.markRenderComplete();
+      });
+    }
+  }, [data]);
+
+  return &lt;DashboardContent data={data} /&gt;;
+}</pre>
+          </div>
+        </div>
+
+        <!-- Dashboard de Performance -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 Dashboard de Performance</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-xs text-neutral-500 mb-1">LCP (p75)</div>
+              <div class="text-xl font-bold text-green-400">1.8s</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-xs text-neutral-500 mb-1">INP (p75)</div>
+              <div class="text-xl font-bold text-green-400">145ms</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-xs text-neutral-500 mb-1">CLS</div>
+              <div class="text-xl font-bold text-green-400">0.05</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-xs text-neutral-500 mb-1">Bundle Size</div>
+              <div class="text-xl font-bold text-blue-400">142KB</div>
+            </div>
+          </div>
+          <div class="h-24 bg-dark-700 rounded-lg flex items-end p-4 space-x-1">
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 90%"></div>
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 85%"></div>
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 88%"></div>
+            <div class="flex-1 bg-yellow-500 rounded-t" style="height: 65%"></div>
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 92%"></div>
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 95%"></div>
+            <div class="flex-1 bg-green-500 rounded-t" style="height: 89%"></div>
+          </div>
+          <div class="text-xs text-neutral-500 text-center mt-2">% de usuarios com "Bom" LCP nos ultimos 7 dias</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Code Splitting</strong>
+              <span class="text-neutral-400"> - Lazy loading de rotas e componentes, reducao de bundle inicial</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Virtualizacao</strong>
+              <span class="text-neutral-400"> - Renderizar milhares de itens sem impacto na performance</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Memoization</strong>
+              <span class="text-neutral-400"> - useMemo, useCallback, React.memo para evitar re-renders</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Web Workers</strong>
+              <span class="text-neutral-400"> - Processamento pesado sem bloquear a UI principal</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Bundle Optimization</strong>
+              <span class="text-neutral-400"> - Tree shaking, compression, analise de dependencias</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Core Web Vitals</strong>
+              <span class="text-neutral-400"> - LCP, INP, CLS e como otimizar cada metrica</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha
+          </a>
+          <a href="modulo-3-7.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center text-neutral-500 text-sm">
+        <p>Dashboard Mastery - Trilha 3: Avancado</p>
+        <p class="mt-2">Desenvolvido para <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

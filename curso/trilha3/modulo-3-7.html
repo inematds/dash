@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.7: Deploy e Infraestrutura | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 600: '#4a5568', 700: '#374151', 800: '#1f2937', 900: '#111827' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen transition-colors duration-300">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.7</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Trilha 3 - Avancado</span>
+        <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium">DevOps</span>
+      </div>
+      <h1 class="text-4xl font-bold mb-4">🚀 Deploy e Infraestrutura</h1>
+      <p class="text-xl text-neutral-400 mb-6">Leve seus dashboards do desenvolvimento a producao com CI/CD, containers e cloud infrastructure.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">5h</div>
+          <div class="text-sm text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Expert</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">DevOps</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Topico 1: Docker e Containers -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🐳 Docker e Containers</h2>
+          <p class="text-neutral-400 mt-1">Empacote sua aplicacao com todas as dependencias</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que e Docker
+          </h3>
+          <p class="text-neutral-300 mb-4">Docker permite empacotar sua aplicacao junto com todas as dependencias (Node.js, bibliotecas, configs) em uma imagem que roda de forma identica em qualquer ambiente - development, staging, production.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📦</div>
+              <div class="font-medium text-white">Image</div>
+              <div class="text-sm text-neutral-400 mt-1">Template imutavel com app + deps</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🏃</div>
+              <div class="font-medium text-white">Container</div>
+              <div class="text-sm text-neutral-400 mt-1">Instancia executando da image</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🗄️</div>
+              <div class="font-medium text-white">Registry</div>
+              <div class="text-sm text-neutral-400 mt-1">Docker Hub, ECR, GCR</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dockerfile -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Dockerfile Otimizado para Dashboard
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># Multi-stage build para imagem minima
+# Stage 1: Dependencies
+FROM node:20-alpine AS deps
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
+
+# Stage 2: Builder
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Build-time env vars
+ARG VITE_API_URL
+ARG VITE_ANALYTICS_ID
+ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_ANALYTICS_ID=$VITE_ANALYTICS_ID
+
+RUN pnpm build
+
+# Stage 3: Runner (producao)
+FROM nginx:alpine AS runner
+
+# Configuracao nginx otimizada
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Security headers e compression
+RUN chmod -R 755 /usr/share/nginx/html
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost/ || exit 1
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</pre>
+          </div>
+        </div>
+
+        <!-- Docker Compose -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🎼</span> Docker Compose para Desenvolvimento
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># docker-compose.yml
+version: '3.8'
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://api:4000
+    depends_on:
+      - api
+      - db
+      - redis
+
+  api:
+    build: ./api
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABASE_URL=postgres://user:pass@db:5432/dashboard
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: dashboard
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Servico de metricas
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+volumes:
+  postgres_data:
+  redis_data:</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dicas de Otimizacao
+          </h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• <strong>Alpine images:</strong> Use versoes alpine (~50MB vs ~900MB)</li>
+            <li>• <strong>Layer caching:</strong> Coloque COPY package.json antes de COPY . para cache de deps</li>
+            <li>• <strong>Multi-stage:</strong> Imagem final nao inclui ferramentas de build</li>
+            <li>• <strong>.dockerignore:</strong> Exclua node_modules, .git, dist do build context</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: CI/CD Pipelines -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔄 CI/CD Pipelines</h2>
+          <p class="text-neutral-400 mt-1">Automatize build, test e deploy a cada commit</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Fluxo CI/CD
+          </h3>
+          <p class="text-neutral-300 mb-4">CI/CD (Continuous Integration/Continuous Deployment) automatiza todo o processo desde o commit ate producao, garantindo qualidade e velocidade de entrega.</p>
+
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
+            <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg px-4 py-2 text-sm">
+              <span class="text-blue-400">📝 Commit</span>
+            </div>
+            <span class="text-neutral-600">→</span>
+            <div class="bg-yellow-900/30 border border-yellow-500/30 rounded-lg px-4 py-2 text-sm">
+              <span class="text-yellow-400">🔍 Lint/Test</span>
+            </div>
+            <span class="text-neutral-600">→</span>
+            <div class="bg-purple-900/30 border border-purple-500/30 rounded-lg px-4 py-2 text-sm">
+              <span class="text-purple-400">🏗️ Build</span>
+            </div>
+            <span class="text-neutral-600">→</span>
+            <div class="bg-orange-900/30 border border-orange-500/30 rounded-lg px-4 py-2 text-sm">
+              <span class="text-orange-400">🐳 Docker</span>
+            </div>
+            <span class="text-neutral-600">→</span>
+            <div class="bg-green-900/30 border border-green-500/30 rounded-lg px-4 py-2 text-sm">
+              <span class="text-green-400">🚀 Deploy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GitHub Actions -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> GitHub Actions Pipeline
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># .github/workflows/deploy.yml
+name: Deploy Dashboard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # Job 1: Lint e Testes
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm type-check
+      - run: pnpm test:ci
+
+  # Job 2: Build e Push Docker
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            VITE_API_URL=${{ vars.API_URL }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # Job 3: Deploy
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: dashboard
+          region: us-central1
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+
+      - name: Notify Slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {"text": "Dashboard deployed! 🚀"}</pre>
+          </div>
+        </div>
+
+        <!-- Comparacao CI/CD -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🔧 Plataformas de CI/CD</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 text-neutral-400">Plataforma</th>
+                  <th class="text-left py-3 text-neutral-400">Preco</th>
+                  <th class="text-left py-3 text-neutral-400">Integracao</th>
+                  <th class="text-left py-3 text-neutral-400">Ideal Para</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-purple-400 font-medium">GitHub Actions</td>
+                  <td>2000 min/mes free</td>
+                  <td>GitHub nativo</td>
+                  <td>Projetos no GitHub</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-blue-400 font-medium">GitLab CI</td>
+                  <td>400 min/mes free</td>
+                  <td>GitLab nativo</td>
+                  <td>Self-hosted, Enterprise</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 text-green-400 font-medium">CircleCI</td>
+                  <td>6000 min/mes free</td>
+                  <td>GitHub/GitLab</td>
+                  <td>Builds complexos</td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-orange-400 font-medium">Vercel/Netlify</td>
+                  <td>Free tier generoso</td>
+                  <td>Git providers</td>
+                  <td>Frontends estaticos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3: Cloud Providers -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">☁️ Cloud Providers</h2>
+          <p class="text-neutral-400 mt-1">AWS, GCP, Azure - escolha a infraestrutura certa</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🏢 Comparativo dos Big 3</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4">
+              <div class="text-orange-400 font-bold text-lg mb-2">☁️ AWS</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Maior market share (~32%)</li>
+                <li>• Mais servicos (+200)</li>
+                <li>• EC2, S3, Lambda, RDS</li>
+                <li>• Complexo, muitas opcoes</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Dashboard: ECS/Fargate + CloudFront</div>
+            </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+              <div class="text-blue-400 font-bold text-lg mb-2">🔷 Azure</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Forte em enterprise</li>
+                <li>• Integracao Microsoft</li>
+                <li>• Active Directory nativo</li>
+                <li>• App Service, Functions</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Dashboard: App Service + CDN</div>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-bold text-lg mb-2">🔴 GCP</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Melhor DX</li>
+                <li>• BigQuery top</li>
+                <li>• Cloud Run simples</li>
+                <li>• Precos competitivos</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Dashboard: Cloud Run + Cloud CDN</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arquitetura de referencia -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🏗️ Arquitetura de Referencia (AWS)</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center text-sm">
+              <div class="space-y-2">
+                <div class="bg-blue-500/20 rounded-lg p-3">
+                  <div class="text-2xl mb-1">👥</div>
+                  <div class="text-blue-400 font-medium">Users</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-orange-500/20 rounded-lg p-3">
+                  <div class="text-2xl mb-1">🌐</div>
+                  <div class="text-orange-400 font-medium">CloudFront</div>
+                  <div class="text-xs text-neutral-500">CDN + Cache</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-purple-500/20 rounded-lg p-3">
+                  <div class="text-2xl mb-1">⚖️</div>
+                  <div class="text-purple-400 font-medium">ALB</div>
+                  <div class="text-xs text-neutral-500">Load Balancer</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-green-500/20 rounded-lg p-3">
+                  <div class="text-2xl mb-1">🐳</div>
+                  <div class="text-green-400 font-medium">ECS Fargate</div>
+                  <div class="text-xs text-neutral-500">Containers</div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-yellow-500/20 rounded-lg p-3">
+                  <div class="text-2xl mb-1">🗄️</div>
+                  <div class="text-yellow-400 font-medium">RDS + Redis</div>
+                  <div class="text-xs text-neutral-500">Data Layer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terraform -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Infraestrutura como Codigo (Terraform)
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># main.tf - AWS ECS Fargate
+terraform {
+  required_providers {
+    aws = { source = "hashicorp/aws", version = "~> 5.0" }
+  }
+}
+
+# VPC
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.0.0"
+
+  name = "dashboard-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-east-1a", "us-east-1b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+
+  enable_nat_gateway = true
+  single_nat_gateway = true
+}
+
+# ECS Cluster
+resource "aws_ecs_cluster" "main" {
+  name = "dashboard-cluster"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+# ECS Service
+resource "aws_ecs_service" "dashboard" {
+  name            = "dashboard"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.dashboard.arn
+  desired_count   = 2
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    subnets         = module.vpc.private_subnets
+    security_groups = [aws_security_group.ecs.id]
+  }
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.dashboard.arn
+    container_name   = "dashboard"
+    container_port   = 80
+  }
+}
+
+# Task Definition
+resource "aws_ecs_task_definition" "dashboard" {
+  family                   = "dashboard"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  cpu                      = 256
+  memory                   = 512
+  execution_role_arn       = aws_iam_role.ecs_execution.arn
+
+  container_definitions = jsonencode([{
+    name  = "dashboard"
+    image = "${aws_ecr_repository.dashboard.repository_url}:latest"
+    portMappings = [{ containerPort = 80 }]
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/ecs/dashboard"
+        "awslogs-region"        = "us-east-1"
+        "awslogs-stream-prefix" = "ecs"
+      }
+    }
+  }])
+}</pre>
+          </div>
+        </div>
+
+        <!-- Alternativas serverless -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🚀 Opcoes Serverless/Managed</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="font-semibold text-white mb-2">Para Frontend (SPA)</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• <span class="text-green-400">Vercel</span> - Zero config, edge functions</li>
+                <li>• <span class="text-blue-400">Netlify</span> - Similar, bom para JAMstack</li>
+                <li>• <span class="text-orange-400">Cloudflare Pages</span> - Edge global, gratis generoso</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="font-semibold text-white mb-2">Para Full-Stack</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• <span class="text-red-400">Google Cloud Run</span> - Container serverless</li>
+                <li>• <span class="text-purple-400">AWS App Runner</span> - ECS simplificado</li>
+                <li>• <span class="text-yellow-400">Railway/Render</span> - PaaS moderno</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4: Kubernetes -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">☸️ Kubernetes Essentials</h2>
+          <p class="text-neutral-400 mt-1">Orquestracao de containers em escala</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Quando Usar Kubernetes
+          </h3>
+          <p class="text-neutral-300 mb-4">Kubernetes e poderoso mas adiciona complexidade. Use quando precisar de: multiplos servicos, auto-scaling avancado, deploys complexos (blue-green, canary), ou multi-cloud.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">✅ Use K8s Quando</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Muitos microservicos</li>
+                <li>• Time de DevOps dedicado</li>
+                <li>• Requisitos de escala complexos</li>
+                <li>• Multi-cloud/hybrid</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-2">❌ Evite K8s Quando</div>
+              <ul class="text-sm text-neutral-300 space-y-1">
+                <li>• Equipe pequena</li>
+                <li>• Aplicacao simples/monolito</li>
+                <li>• Custo e prioridade</li>
+                <li>• Serverless resolve</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conceitos K8s -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📚 Conceitos Fundamentais</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🐳</div>
+              <div class="text-sm font-medium text-white">Pod</div>
+              <div class="text-xs text-neutral-500">1+ containers juntos</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">📦</div>
+              <div class="text-sm font-medium text-white">Deployment</div>
+              <div class="text-xs text-neutral-500">Gerencia replicas</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🔗</div>
+              <div class="text-sm font-medium text-white">Service</div>
+              <div class="text-xs text-neutral-500">Networking interno</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🚪</div>
+              <div class="text-sm font-medium text-white">Ingress</div>
+              <div class="text-xs text-neutral-500">Entrada externa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manifests K8s -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Manifests Kubernetes
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  labels:
+    app: dashboard
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+      - name: dashboard
+        image: ghcr.io/empresa/dashboard:v1.2.0
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        env:
+        - name: API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: dashboard-config
+              key: api_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard
+spec:
+  selector:
+    app: dashboard
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashboard
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - dashboard.empresa.com
+    secretName: dashboard-tls
+  rules:
+  - host: dashboard.empresa.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard
+            port:
+              number: 80</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5: Monitoring e Observabilidade -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">📡 Monitoring e Observabilidade</h2>
+          <p class="text-neutral-400 mt-1">Metricas, logs e traces para entender sua aplicacao</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 Os 3 Pilares da Observabilidade</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+              <div class="text-blue-400 font-bold text-lg mb-2">📈 Metrics</div>
+              <p class="text-sm text-neutral-300 mb-3">Numeros agregados ao longo do tempo</p>
+              <ul class="text-xs text-neutral-400 space-y-1">
+                <li>• CPU, memoria, latencia</li>
+                <li>• Request rate, error rate</li>
+                <li>• Business metrics</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Tools: Prometheus, Datadog, CloudWatch</div>
+            </div>
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-bold text-lg mb-2">📝 Logs</div>
+              <p class="text-sm text-neutral-300 mb-3">Eventos discretos com contexto</p>
+              <ul class="text-xs text-neutral-400 space-y-1">
+                <li>• Erros e exceptions</li>
+                <li>• Audit trail</li>
+                <li>• Debug info</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Tools: ELK, Loki, CloudWatch Logs</div>
+            </div>
+            <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+              <div class="text-purple-400 font-bold text-lg mb-2">🔍 Traces</div>
+              <p class="text-sm text-neutral-300 mb-3">Jornada de uma request</p>
+              <ul class="text-xs text-neutral-400 space-y-1">
+                <li>• Request flow</li>
+                <li>• Latencia por servico</li>
+                <li>• Dependencias</li>
+              </ul>
+              <div class="text-xs text-neutral-500 mt-3">Tools: Jaeger, Tempo, X-Ray</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stack recomendada -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🛠️ Stack de Observabilidade</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">Grafana Stack (Open Source)</span>
+                <span class="text-xs text-green-400">Recomendado</span>
+              </div>
+              <div class="text-sm text-neutral-400">Grafana + Prometheus + Loki + Tempo. Self-hosted ou Grafana Cloud.</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">Datadog (SaaS)</span>
+                <span class="text-xs text-blue-400">Enterprise</span>
+              </div>
+              <div class="text-sm text-neutral-400">All-in-one pago. Excelente UX, APM integrado.</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium text-white">AWS CloudWatch / GCP Operations</span>
+                <span class="text-xs text-orange-400">Cloud Native</span>
+              </div>
+              <div class="text-sm text-neutral-400">Integrado no cloud provider. Simples para comececar.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alertas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🚨</span> Alertas Essenciais
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-4 bg-red-900/20 rounded-lg p-3 border border-red-500/30">
+              <span class="text-red-400 text-xl">🔴</span>
+              <div class="flex-1">
+                <div class="font-medium text-red-400">Critico - PagerDuty</div>
+                <div class="text-sm text-neutral-400">Error rate &gt; 5%, Latencia p99 &gt; 5s, Service down</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4 bg-yellow-900/20 rounded-lg p-3 border border-yellow-500/30">
+              <span class="text-yellow-400 text-xl">🟡</span>
+              <div class="flex-1">
+                <div class="font-medium text-yellow-400">Warning - Slack</div>
+                <div class="text-sm text-neutral-400">CPU &gt; 80%, Memory &gt; 85%, Error rate &gt; 1%</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4 bg-blue-900/20 rounded-lg p-3 border border-blue-500/30">
+              <span class="text-blue-400 text-xl">🔵</span>
+              <div class="flex-1">
+                <div class="font-medium text-blue-400">Info - Dashboard</div>
+                <div class="text-sm text-neutral-400">Deploy completed, Scale event, Anomaly detected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo instrumentacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Instrumentacao com OpenTelemetry
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// instrumentation.ts
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
+
+const sdk = new NodeSDK({
+  serviceName: 'dashboard-api',
+  traceExporter: new OTLPTraceExporter({
+    url: 'http://otel-collector:4318/v1/traces',
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: 'http://otel-collector:4318/v1/metrics',
+    }),
+    exportIntervalMillis: 30000,
+  }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+
+sdk.start();
+
+// Custom metrics
+import { metrics } from '@opentelemetry/api';
+
+const meter = metrics.getMeter('dashboard');
+const requestCounter = meter.createCounter('dashboard.requests', {
+  description: 'Total dashboard requests',
+});
+const latencyHistogram = meter.createHistogram('dashboard.latency', {
+  description: 'Request latency',
+  unit: 'ms',
+});
+
+// Uso
+export function trackRequest(route: string, duration: number) {
+  requestCounter.add(1, { route });
+  latencyHistogram.record(duration, { route });
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6: Escalabilidade -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">📈 Escalabilidade</h2>
+          <p class="text-neutral-400 mt-1">Prepare sua aplicacao para crescer</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">⚖️ Vertical vs Horizontal Scaling</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-yellow-400 font-semibold mb-2">📐 Vertical (Scale Up)</div>
+              <p class="text-sm text-neutral-300 mb-3">Aumentar recursos da maquina (CPU, RAM)</p>
+              <ul class="text-xs text-neutral-400 space-y-1">
+                <li>✓ Simples, sem mudanca de codigo</li>
+                <li>✗ Limite fisico, single point of failure</li>
+                <li>→ Bom para: bancos de dados</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">↔️ Horizontal (Scale Out)</div>
+              <p class="text-sm text-neutral-300 mb-3">Adicionar mais instancias</p>
+              <ul class="text-xs text-neutral-400 space-y-1">
+                <li>✓ Sem limite teorico, alta disponibilidade</li>
+                <li>✗ Requer aplicacao stateless, load balancer</li>
+                <li>→ Bom para: APIs, frontends</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto Scaling -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🤖 Auto Scaling</h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="font-medium text-white mb-2">Metricas para Escalar</div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                <div class="bg-dark-600 rounded p-2 text-center">
+                  <div class="text-blue-400">CPU</div>
+                  <div class="text-xs text-neutral-500">Target: 70%</div>
+                </div>
+                <div class="bg-dark-600 rounded p-2 text-center">
+                  <div class="text-green-400">Memory</div>
+                  <div class="text-xs text-neutral-500">Target: 80%</div>
+                </div>
+                <div class="bg-dark-600 rounded p-2 text-center">
+                  <div class="text-purple-400">Requests/s</div>
+                  <div class="text-xs text-neutral-500">Target: 1000</div>
+                </div>
+                <div class="bg-dark-600 rounded p-2 text-center">
+                  <div class="text-yellow-400">Queue Length</div>
+                  <div class="text-xs text-neutral-500">Target: 10</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="font-medium text-white mb-2">Configuracao Tipica</div>
+              <div class="text-sm text-neutral-400 space-y-1">
+                <div>• <strong>Min instances:</strong> 2 (alta disponibilidade)</div>
+                <div>• <strong>Max instances:</strong> 10 (limite de custo)</div>
+                <div>• <strong>Scale up:</strong> CPU &gt; 70% por 2 min</div>
+                <div>• <strong>Scale down:</strong> CPU &lt; 30% por 5 min</div>
+                <div>• <strong>Cooldown:</strong> 3 min entre acoes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caching -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">💾 Estrategias de Cache</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-blue-400 mb-1">CDN Edge Cache</div>
+              <p class="text-sm text-neutral-400">Assets estaticos (JS, CSS, imagens) cacheados globalmente. CloudFront, Cloudflare.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-green-500">
+              <div class="font-semibold text-green-400 mb-1">Application Cache (Redis)</div>
+              <p class="text-sm text-neutral-400">Dados frequentes, sessoes, resultados de queries. TTL de segundos a horas.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-purple-500">
+              <div class="font-semibold text-purple-400 mb-1">Database Query Cache</div>
+              <p class="text-sm text-neutral-400">Queries repetidas cacheadas. Materialized views para agregacoes.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-yellow-400 mb-1">Browser Cache</div>
+              <p class="text-sm text-neutral-400">Service workers, HTTP cache headers. Cache-Control, ETag.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist de producao -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">✅</span> Checklist de Producao
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-neutral-300 font-medium mb-2">Seguranca</div>
+              <ul class="text-neutral-400 space-y-1">
+                <li>□ HTTPS everywhere</li>
+                <li>□ Security headers (CSP, HSTS)</li>
+                <li>□ Secrets em vault/env vars</li>
+                <li>□ WAF configurado</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-neutral-300 font-medium mb-2">Resiliencia</div>
+              <ul class="text-neutral-400 space-y-1">
+                <li>□ Health checks configurados</li>
+                <li>□ Graceful shutdown</li>
+                <li>□ Retry com backoff</li>
+                <li>□ Circuit breakers</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-neutral-300 font-medium mb-2">Observabilidade</div>
+              <ul class="text-neutral-400 space-y-1">
+                <li>□ Logs estruturados</li>
+                <li>□ Metricas de negocio</li>
+                <li>□ Alertas configurados</li>
+                <li>□ Dashboards de SRE</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-neutral-300 font-medium mb-2">Backup & DR</div>
+              <ul class="text-neutral-400 space-y-1">
+                <li>□ Backups automaticos</li>
+                <li>□ Multi-AZ/region</li>
+                <li>□ RTO/RPO definidos</li>
+                <li>□ Runbook de incidentes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Docker</strong>
+              <span class="text-neutral-400"> - Containers, multi-stage builds, Docker Compose</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">CI/CD</strong>
+              <span class="text-neutral-400"> - GitHub Actions, pipelines automatizados, deploy continuo</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Cloud Providers</strong>
+              <span class="text-neutral-400"> - AWS, GCP, Azure, arquiteturas de referencia, Terraform</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Kubernetes</strong>
+              <span class="text-neutral-400"> - Pods, Deployments, Services, Ingress, quando usar</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Observabilidade</strong>
+              <span class="text-neutral-400"> - Metricas, logs, traces, OpenTelemetry, alertas</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Escalabilidade</strong>
+              <span class="text-neutral-400"> - Auto scaling, caching, checklist de producao</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha
+          </a>
+          <a href="modulo-3-8.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Projeto Final →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center text-neutral-500 text-sm">
+        <p>Dashboard Mastery - Trilha 3: Avancado</p>
+        <p class="mt-2">Desenvolvido para <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

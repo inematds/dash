@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.1 - Integracao com Bancos de Dados | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-300">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header com Stats -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4">
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULO 3.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🗄️ Integracao com Bancos de Dados</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mb-8">Conexoes de banco, queries otimizadas, ORMs modernos, migrations e estrategias de caching para dashboards de alta performance.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-xl font-bold text-purple-400">6</div>
+          <div class="text-xs text-neutral-500">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xl font-bold text-purple-400">75min</div>
+          <div class="text-xs text-neutral-500">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-xl font-bold text-purple-400">Avancado</div>
+          <div class="text-xs text-neutral-500">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xl font-bold text-purple-400">Backend</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- ==================== TOPICO 1 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔌 Conexoes e Connection Pooling</h2>
+          <p class="text-neutral-400 text-sm">Gerenciamento eficiente de conexoes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Connection Pooling</strong> e a tecnica de manter um conjunto de conexoes de banco de dados pre-estabelecidas e reusa-las entre requisicoes. Abrir uma conexao e uma operacao custosa - envolve handshake TCP, autenticacao e alocacao de memoria no servidor de banco.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Em dashboards com muitos usuarios simultaneos, <strong class="text-white">cada requisicao que abre e fecha conexao causa latencia perceptivel</strong>. Um pool bem configurado pode reduzir o tempo de resposta de 200ms para 20ms ao eliminar o overhead de conexao.
+          </p>
+        </div>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Parametros de um Connection Pool
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">min/max connections</div>
+              <p class="text-neutral-400 text-sm">Limites do pool. Min evita cold starts, max previne sobrecarga do banco.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">connection timeout</div>
+              <p class="text-neutral-400 text-sm">Tempo maximo para obter conexao do pool. Evita travamentos.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">idle timeout</div>
+              <p class="text-neutral-400 text-sm">Tempo que conexao ociosa permanece no pool antes de ser fechada.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">max lifetime</div>
+              <p class="text-neutral-400 text-sm">Tempo maximo de vida de uma conexao. Previne leaks e problemas de memoria.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagrama Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Fluxo de Connection Pool
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-neutral-300">
+┌─────────────────────────────────────────────────────────────┐
+│                     APPLICATION                              │
+│  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐          │
+│  │ Req1 │  │ Req2 │  │ Req3 │  │ Req4 │  │ Req5 │          │
+│  └──┬───┘  └──┬───┘  └──┬───┘  └──┬───┘  └──┬───┘          │
+│     │         │         │         │         │              │
+│     └─────────┴─────────┴─────────┴─────────┘              │
+│                         │                                   │
+│              ┌──────────▼──────────┐                        │
+│              │   CONNECTION POOL   │                        │
+│              │   ┌───┐ ┌───┐ ┌───┐ │                        │
+│              │   │C1 │ │C2 │ │C3 │ │  (min: 3, max: 10)    │
+│              │   └───┘ └───┘ └───┘ │                        │
+│              └──────────┬──────────┘                        │
+│                         │                                   │
+│              ┌──────────▼──────────┐                        │
+│              │     DATABASE        │                        │
+│              └─────────────────────┘                        │
+└─────────────────────────────────────────────────────────────┘
+
+SEM POOL: Req → Open → Query → Close → Response (200ms)
+COM POOL: Req → Borrow → Query → Return → Response (20ms)</pre>
+          </div>
+        </div>
+
+        <!-- Codigo de Exemplo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Configuracao de Pool com pg
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { Pool } from 'pg';
+
+// Configuracao recomendada para dashboards
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: 5432,
+
+  // Pool configuration
+  min: 2,                    // Conexoes minimas sempre prontas
+  max: 20,                   // Maximo de conexoes simultaneas
+  idleTimeoutMillis: 30000,  // 30s ocioso = fechar conexao
+  connectionTimeoutMillis: 5000, // 5s para obter conexao
+
+  // Prepared statements
+  statement_timeout: 10000,  // Queries longas = erro
+});
+
+// Uso em uma rota de API
+export async function GET(request: Request) {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      'SELECT * FROM metrics WHERE date >= $1',
+      [new Date().toISOString()]
+    );
+    return Response.json(result.rows);
+  } finally {
+    client.release(); // SEMPRE devolver ao pool!
+  }
+}</pre>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Regra do max connections:</strong> Seu max de pool deve ser menor que o max_connections do PostgreSQL. Se 10 instancias da app usam pool de 20, voce precisa de pelo menos 200 conexoes no banco. Use a formula: <code class="bg-dark-700 px-2 py-1 rounded">pool_max * app_instances < db_max_connections</code>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 2 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚡ Queries Otimizadas</h2>
+          <p class="text-neutral-400 text-sm">Performance de consultas SQL</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Queries otimizadas</strong> sao consultas SQL escritas para minimizar tempo de execucao e uso de recursos. O mesmo resultado pode ser obtido de formas muito diferentes - uma query mal escrita pode ser 1000x mais lenta.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Em dashboards, queries lentas sao o principal gargalo de performance. <strong class="text-white">Um dashboard que demora 10 segundos para carregar e abandonado pelos usuarios</strong>. Otimizacao de queries e uma habilidade critica.
+          </p>
+        </div>
+
+        <!-- Problemas Comuns -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⚠️</span> Problemas Comuns de Performance
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="font-semibold text-red-400 mb-2">N+1 Problem</div>
+              <p class="text-neutral-400 text-sm mb-2">1 query para lista + N queries para detalhes de cada item.</p>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-red-300">
+                -- RUIM: 1 + 100 queries
+                SELECT * FROM orders; -- 1 query
+                SELECT * FROM items WHERE order_id = 1; -- 100x
+              </div>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="font-semibold text-red-400 mb-2">SELECT * (Overfetching)</div>
+              <p class="text-neutral-400 text-sm mb-2">Buscar colunas que nao serao usadas desperica I/O e memoria.</p>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-red-300">
+                -- RUIM: busca blob de 10MB que nao sera usado
+                SELECT * FROM products;
+              </div>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="font-semibold text-red-400 mb-2">Funcoes em WHERE</div>
+              <p class="text-neutral-400 text-sm mb-2">Funcoes na coluna impedem uso de indices.</p>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-red-300">
+                -- RUIM: nao usa indice
+                WHERE YEAR(created_at) = 2024
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solucoes -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">✅</span> Solucoes Otimizadas
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="font-semibold text-emerald-400 mb-2">JOIN ao inves de N+1</div>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-emerald-300">
+-- BOM: 1 query com JOIN
+SELECT o.*, i.* FROM orders o
+LEFT JOIN items i ON i.order_id = o.id;
+              </div>
+            </div>
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="font-semibold text-emerald-400 mb-2">Selecionar apenas colunas necessarias</div>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-emerald-300">
+-- BOM: apenas o necessario
+SELECT id, name, price FROM products;
+              </div>
+            </div>
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="font-semibold text-emerald-400 mb-2">Range query amigavel a indice</div>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-emerald-300">
+-- BOM: usa indice em created_at
+WHERE created_at >= '2024-01-01'
+  AND created_at < '2025-01-01'
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPLAIN -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Usando EXPLAIN ANALYZE
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">-- Analisar plano de execucao
+EXPLAIN ANALYZE
+SELECT * FROM orders
+WHERE customer_id = 123
+  AND created_at >= '2024-01-01';
+
+-- Output (exemplo):
+-- Index Scan using idx_orders_customer_date on orders
+--   (cost=0.43..8.45 rows=1 width=156)
+--   (actual time=0.023..0.025 rows=5 loops=1)
+-- Planning Time: 0.095 ms
+-- Execution Time: 0.041 ms  ← MUITO BOM!
+
+-- Se mostrar "Seq Scan" com muitos rows = problema!
+-- Seq Scan on orders (cost=0.00..20000.00 rows=500000)
+-- Execution Time: 3500.123 ms  ← MUITO RUIM!</pre>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Usar EXPLAIN antes de queries complexas</li>
+                <li>• Limitar resultados com LIMIT</li>
+                <li>• Usar indices para colunas em WHERE</li>
+                <li>• Paginar resultados grandes</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• SELECT * em tabelas grandes</li>
+                <li>• Queries sem WHERE em prod</li>
+                <li>• Funcoes em colunas indexadas</li>
+                <li>• LIKE '%termo%' (nao usa indice)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 3 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">🛠️ ORMs - Prisma e Drizzle</h2>
+          <p class="text-neutral-400 text-sm">Abstracoes modernas de banco de dados</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">ORMs (Object-Relational Mappers)</strong> permitem interagir com o banco de dados usando codigo TypeScript/JavaScript ao inves de SQL puro. Modernos como Prisma e Drizzle oferecem type-safety completo.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            A grande vantagem e que <strong class="text-white">erros de tipagem sao capturados em tempo de compilacao</strong>, nao em runtime. Se a coluna "email" nao existir na tabela, o TypeScript vai reclamar imediatamente.
+          </p>
+        </div>
+
+        <!-- Comparacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⚖️</span> Prisma vs Drizzle
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-4 text-neutral-400">Aspecto</th>
+                  <th class="text-left py-3 px-4 text-purple-400">Prisma</th>
+                  <th class="text-left py-3 px-4 text-blue-400">Drizzle</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Schema</td>
+                  <td class="py-3 px-4">Arquivo .prisma proprio</td>
+                  <td class="py-3 px-4">TypeScript nativo</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Query Builder</td>
+                  <td class="py-3 px-4">API propria, abstrata</td>
+                  <td class="py-3 px-4">SQL-like, proximo do metal</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Bundle Size</td>
+                  <td class="py-3 px-4">~2MB (engine binario)</td>
+                  <td class="py-3 px-4">~50KB</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Performance</td>
+                  <td class="py-3 px-4">Boa (engine Rust)</td>
+                  <td class="py-3 px-4">Excelente (zero overhead)</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Ideal para</td>
+                  <td class="py-3 px-4">Apps complexos, DX</td>
+                  <td class="py-3 px-4">Serverless, edge, performance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Prisma Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Prisma
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// prisma/schema.prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  total     Decimal
+  status    String
+}
+
+// Uso no codigo
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+// Query com type-safety completo
+const usersWithOrders = await prisma.user.findMany({
+  where: { email: { contains: '@empresa.com' } },
+  include: {
+    orders: {
+      where: { status: 'completed' },
+      orderBy: { total: 'desc' }
+    }
+  }
+});</pre>
+          </div>
+        </div>
+
+        <!-- Drizzle Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Drizzle
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// db/schema.ts
+import { pgTable, serial, text, decimal, timestamp } from 'drizzle-orm/pg-core';
+
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  name: text('name'),
+  createdAt: timestamp('created_at').defaultNow()
+});
+
+export const orders = pgTable('orders', {
+  id: serial('id').primaryKey(),
+  userId: serial('user_id').references(() => users.id),
+  total: decimal('total', { precision: 10, scale: 2 }),
+  status: text('status')
+});
+
+// Uso - muito proximo de SQL
+import { db } from './db';
+import { users, orders } from './schema';
+import { eq, like } from 'drizzle-orm';
+
+const result = await db
+  .select()
+  .from(users)
+  .leftJoin(orders, eq(users.id, orders.userId))
+  .where(like(users.email, '%@empresa.com%'));</pre>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Para dashboards em serverless/edge:</strong> Use Drizzle. O bundle size pequeno e crucial em plataformas como Vercel Edge Functions ou Cloudflare Workers que tem limite de tamanho. Prisma e melhor em Node.js tradicional onde o binary engine nao e problema.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 4 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">📦 Migrations e Versionamento</h2>
+          <p class="text-neutral-400 text-sm">Evolucao controlada do schema</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Migrations</strong> sao scripts versionados que alteram o schema do banco de dados de forma incremental e reversivel. Assim como Git versiona codigo, migrations versionam a estrutura do banco.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Sem migrations, times acabam com bancos de dados em estados diferentes. <strong class="text-white">"Funciona na minha maquina"</strong> vira um problema real quando schemas divergem entre dev, staging e producao.
+          </p>
+        </div>
+
+        <!-- Timeline de Migrations -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📅</span> Timeline de Migrations
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
+                <span class="text-purple-400 font-bold text-sm">1</span>
+              </div>
+              <div class="flex-1 bg-dark-700/50 rounded-lg p-4 border border-dark-600">
+                <div class="font-semibold text-neutral-200 mb-1">20240101_create_users</div>
+                <p class="text-sm text-neutral-400">CREATE TABLE users (id, email, name)</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
+                <span class="text-purple-400 font-bold text-sm">2</span>
+              </div>
+              <div class="flex-1 bg-dark-700/50 rounded-lg p-4 border border-dark-600">
+                <div class="font-semibold text-neutral-200 mb-1">20240115_add_orders</div>
+                <p class="text-sm text-neutral-400">CREATE TABLE orders (id, user_id, total)</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
+                <span class="text-purple-400 font-bold text-sm">3</span>
+              </div>
+              <div class="flex-1 bg-dark-700/50 rounded-lg p-4 border border-dark-600">
+                <div class="font-semibold text-neutral-200 mb-1">20240201_add_user_avatar</div>
+                <p class="text-sm text-neutral-400">ALTER TABLE users ADD COLUMN avatar_url</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Migration com Prisma
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400"># Criar nova migration apos alterar schema
+npx prisma migrate dev --name add_user_role
+
+# Isso gera arquivo em:
+# prisma/migrations/20240201123456_add_user_role/migration.sql
+
+-- migration.sql gerado automaticamente:
+ALTER TABLE "users" ADD COLUMN "role" TEXT DEFAULT 'user';
+
+# Aplicar migrations em producao
+npx prisma migrate deploy
+
+# Rollback (manual - Prisma nao tem rollback automatico)
+# Criar nova migration que reverte a alteracao</pre>
+          </div>
+        </div>
+
+        <!-- Alerta -->
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-3 flex items-center">
+            <span class="mr-2">⚠️</span> Cuidados com Migrations em Producao
+          </h3>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• <strong>NUNCA</strong> edite migrations ja aplicadas em producao</li>
+            <li>• Migrations devem ser <strong>idempotentes</strong> (rodar 2x = mesmo resultado)</li>
+            <li>• Adicionar colunas: sempre com DEFAULT ou nullable</li>
+            <li>• Remover colunas: primeiro pare de usar, depois remova</li>
+            <li>• Renomear: crie nova coluna, migre dados, remova antiga</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 5 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔍 Indices e Otimizacao</h2>
+          <p class="text-neutral-400 text-sm">Estruturas para busca eficiente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Indices</strong> sao estruturas de dados que aceleram buscas em tabelas. Funcionam como o indice de um livro - ao inves de ler todas as paginas, voce vai direto ao topico.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            O tradeoff: indices <strong class="text-white">ocupam espaco e tornam INSERTs mais lentos</strong>. Cada insert precisa atualizar todos os indices. Em tabelas de leitura pesada (dashboards!), indices sao essenciais.
+          </p>
+        </div>
+
+        <!-- Tipos de Indices -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📊</span> Tipos de Indices
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-purple-500">
+              <div class="font-semibold text-white mb-2">B-tree (Padrao)</div>
+              <p class="text-neutral-400 text-sm">Para igualdade e range queries. O mais comum.</p>
+              <code class="text-xs text-purple-400">WHERE status = 'active'</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-white mb-2">Hash</div>
+              <p class="text-neutral-400 text-sm">Apenas igualdade, mais rapido para isso.</p>
+              <code class="text-xs text-blue-400">WHERE id = 123</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-emerald-500">
+              <div class="font-semibold text-white mb-2">GIN (Generalized Inverted)</div>
+              <p class="text-neutral-400 text-sm">Para arrays, JSONB, full-text search.</p>
+              <code class="text-xs text-emerald-400">WHERE tags @> ARRAY['react']</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-white mb-2">BRIN (Block Range)</div>
+              <p class="text-neutral-400 text-sm">Para dados ordenados (timestamps). Muito pequeno.</p>
+              <code class="text-xs text-yellow-400">WHERE created_at > '2024-01-01'</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Criando Indices
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">-- Indice simples
+CREATE INDEX idx_users_email ON users(email);
+
+-- Indice composto (ordem importa!)
+CREATE INDEX idx_orders_customer_date
+ON orders(customer_id, created_at DESC);
+
+-- Indice parcial (apenas parte dos dados)
+CREATE INDEX idx_orders_pending
+ON orders(created_at)
+WHERE status = 'pending';
+
+-- Indice para JSONB
+CREATE INDEX idx_products_metadata
+ON products USING GIN(metadata);
+
+-- Verificar indices existentes
+SELECT indexname, indexdef
+FROM pg_indexes
+WHERE tablename = 'orders';
+
+-- Verificar tamanho dos indices
+SELECT pg_size_pretty(pg_indexes_size('orders'));
+
+-- Remover indice nao usado
+DROP INDEX idx_unused;</pre>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Indices para dashboards:</strong> Crie indices para todas as colunas usadas em WHERE, ORDER BY e JOIN. Para queries de data, use indice DESC se voce sempre busca "mais recentes primeiro". Use BRIN para tabelas de logs/eventos ordenados por tempo - sao 1000x menores que B-tree.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 6 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">💾 Caching de Dados</h2>
+          <p class="text-neutral-400 text-sm">Redis e estrategias de cache</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-purple-400">Caching</strong> e armazenar dados frequentemente acessados em memoria rapida (Redis, Memcached) para evitar consultas repetidas ao banco. E a forma mais eficaz de escalar leitura.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Para dashboards, o impacto e enorme: <strong class="text-white">query de 500ms no banco vira 5ms no cache</strong>. Com muitos usuarios acessando os mesmos dados, cache reduz carga no banco em 90%+.
+          </p>
+        </div>
+
+        <!-- Estrategias -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Estrategias de Cache
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-2">Cache-Aside (Lazy Loading)</div>
+              <p class="text-neutral-400 text-sm mb-2">App busca no cache primeiro. Se miss, busca no DB e popula cache.</p>
+              <div class="bg-dark-800 rounded p-2 text-xs font-mono text-neutral-300">
+                1. GET cache:users:123 → MISS<br>
+                2. SELECT * FROM users WHERE id = 123<br>
+                3. SET cache:users:123 = resultado
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-2">Write-Through</div>
+              <p class="text-neutral-400 text-sm mb-2">Toda escrita no DB tambem atualiza o cache.</p>
+              <div class="bg-dark-800 rounded p-2 text-xs font-mono text-neutral-300">
+                1. INSERT INTO users (name) VALUES ('Ana')<br>
+                2. SET cache:users:124 = novo registro
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-2">Stale-While-Revalidate</div>
+              <p class="text-neutral-400 text-sm mb-2">Retorna cache stale imediatamente, atualiza em background.</p>
+              <div class="bg-dark-800 rounded p-2 text-xs font-mono text-neutral-300">
+                1. GET cache:metrics → dados de 1min atras (stale)<br>
+                2. Retorna stale para usuario<br>
+                3. Background: atualiza cache com dados novos
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Cache com Redis + Node.js
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">import { Redis } from 'ioredis';
+
+const redis = new Redis(process.env.REDIS_URL);
+
+// Funcao generica de cache
+async function getCached<T>(
+  key: string,
+  fetcher: () => Promise<T>,
+  ttlSeconds = 300 // 5 minutos padrao
+): Promise<T> {
+  // Tentar cache primeiro
+  const cached = await redis.get(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  // Cache miss - buscar dados
+  const data = await fetcher();
+
+  // Salvar no cache
+  await redis.setex(key, ttlSeconds, JSON.stringify(data));
+
+  return data;
+}
+
+// Uso em rota de API
+export async function GET() {
+  const metrics = await getCached(
+    'dashboard:metrics:today',
+    async () => {
+      // Query lenta ao banco
+      return await prisma.metric.findMany({
+        where: { date: new Date() }
+      });
+    },
+    60 // TTL de 1 minuto para dados frescos
+  );
+
+  return Response.json(metrics);
+}
+
+// Invalidar cache quando dados mudam
+export async function POST(req: Request) {
+  await prisma.metric.create({ data: req.body });
+
+  // Invalidar cache relacionado
+  await redis.del('dashboard:metrics:today');
+
+  return Response.json({ success: true });
+}</pre>
+          </div>
+        </div>
+
+        <!-- TTL Guidelines -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">⏱️</span> Guia de TTL por Tipo de Dado
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-4 text-neutral-400">Tipo de Dado</th>
+                  <th class="text-left py-3 px-4 text-neutral-400">TTL</th>
+                  <th class="text-left py-3 px-4 text-neutral-400">Motivo</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Metricas em tempo real</td>
+                  <td class="py-3 px-4 text-red-400">30s - 1min</td>
+                  <td class="py-3 px-4">Precisam ser frescos</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Dados de hoje</td>
+                  <td class="py-3 px-4 text-yellow-400">5 - 15min</td>
+                  <td class="py-3 px-4">Mudam frequentemente</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4">Dados historicos</td>
+                  <td class="py-3 px-4 text-emerald-400">1h - 24h</td>
+                  <td class="py-3 px-4">Nao mudam mais</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Configuracoes/metadados</td>
+                  <td class="py-3 px-4 text-purple-400">1h+</td>
+                  <td class="py-3 px-4">Raramente mudam</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Cache dados que nao mudam frequentemente</li>
+                <li>• Usar TTL apropriado ao tipo de dado</li>
+                <li>• Invalidar cache ao atualizar dados</li>
+                <li>• Monitorar hit rate do cache</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Cache sem TTL (dados eternos)</li>
+                <li>• Esquecer de invalidar em updates</li>
+                <li>• Cache de dados sensiveis sem criptografia</li>
+                <li>• Depender 100% do cache (falha = erro)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESUMO ==================== -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Connection Pooling</strong>
+              <span class="text-neutral-400"> - Reutilizar conexoes para evitar overhead de conexao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Queries Otimizadas</strong>
+              <span class="text-neutral-400"> - EXPLAIN, evitar N+1, usar indices corretamente</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">ORMs Modernos</strong>
+              <span class="text-neutral-400"> - Prisma para DX, Drizzle para performance/serverless</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Migrations</strong>
+              <span class="text-neutral-400"> - Versionamento de schema, nunca editar migrations aplicadas</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Indices</strong>
+              <span class="text-neutral-400"> - B-tree, GIN, BRIN - escolher tipo certo para cada caso</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Caching</strong>
+              <span class="text-neutral-400"> - Redis, TTL apropriado, invalidacao ao atualizar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha 3
+          </a>
+          <a href="modulo-3-2.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo: APIs e Data Layer →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Modulo 3.1: Integracao com Bancos de Dados</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

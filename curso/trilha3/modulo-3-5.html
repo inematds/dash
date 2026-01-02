@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.5: Autenticacao e Seguranca | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 600: '#4a5568', 700: '#374151', 800: '#1f2937', 900: '#111827' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen transition-colors duration-300">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 3</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400">Modulo 3.5</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Trilha 3 - Avancado</span>
+        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm font-medium">Seguranca</span>
+      </div>
+      <h1 class="text-4xl font-bold mb-4">🔐 Autenticacao e Seguranca</h1>
+      <p class="text-xl text-neutral-400 mb-6">Proteja seus dashboards enterprise com autenticacao robusta, controle de acesso granular e auditoria completa de acoes.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">4h</div>
+          <div class="text-sm text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Expert</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-purple-400">Critico</div>
+          <div class="text-sm text-neutral-400">Importancia</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Topico 1: OAuth2/OIDC -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔑 OAuth2 e OpenID Connect</h2>
+          <p class="text-neutral-400 mt-1">Fluxos de autenticacao modernos para aplicacoes enterprise</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <!-- O que e -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que e OAuth2/OIDC
+          </h3>
+          <p class="text-neutral-300 mb-4">OAuth2 e um protocolo de autorizacao que permite que aplicacoes obtenham acesso limitado a contas de usuarios sem expor credenciais. OpenID Connect (OIDC) e uma camada de identidade sobre OAuth2 que adiciona autenticacao, permitindo verificar a identidade do usuario.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">OAuth2</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• Autoriza acesso a recursos</li>
+                <li>• Access Token para APIs</li>
+                <li>• Refresh Token para renovacao</li>
+                <li>• Scopes definem permissoes</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">OIDC</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• Autentica identidade do usuario</li>
+                <li>• ID Token com claims do usuario</li>
+                <li>• UserInfo endpoint</li>
+                <li>• Discovery e JWKS endpoints</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fluxos OAuth2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Fluxos de Autorizacao
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-green-500">
+              <div class="font-semibold text-green-400 mb-2">Authorization Code + PKCE (Recomendado)</div>
+              <p class="text-sm text-neutral-400 mb-3">Mais seguro para SPAs e apps mobile. PKCE previne ataques de interceptacao.</p>
+              <div class="text-xs text-neutral-500 font-mono">
+                1. App gera code_verifier e code_challenge<br>
+                2. Usuario autoriza no IdP<br>
+                3. IdP retorna authorization_code<br>
+                4. App troca code + verifier por tokens
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-blue-400 mb-2">Client Credentials</div>
+              <p class="text-sm text-neutral-400">Para comunicacao machine-to-machine (M2M). Nao envolve usuario.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-yellow-400 mb-2">Device Authorization</div>
+              <p class="text-sm text-neutral-400">Para dispositivos sem browser (TVs, CLIs, IoT).</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-red-500">
+              <div class="font-semibold text-red-400 mb-2">Implicit (Deprecado)</div>
+              <p class="text-sm text-neutral-400">Inseguro - tokens expostos na URL. Use Authorization Code + PKCE.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Implementacao PKCE
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Geracao PKCE
+function generatePKCE() {
+  const verifier = crypto.randomBytes(32).toString('base64url');
+  const challenge = crypto
+    .createHash('sha256')
+    .update(verifier)
+    .digest('base64url');
+  return { verifier, challenge };
+}
+
+// Inicio do fluxo
+const { verifier, challenge } = generatePKCE();
+sessionStorage.setItem('pkce_verifier', verifier);
+
+const authUrl = new URL('https://auth.empresa.com/authorize');
+authUrl.searchParams.set('client_id', CLIENT_ID);
+authUrl.searchParams.set('redirect_uri', REDIRECT_URI);
+authUrl.searchParams.set('response_type', 'code');
+authUrl.searchParams.set('scope', 'openid profile email');
+authUrl.searchParams.set('code_challenge', challenge);
+authUrl.searchParams.set('code_challenge_method', 'S256');
+authUrl.searchParams.set('state', crypto.randomUUID());
+
+window.location.href = authUrl.toString();
+
+// Callback - troca do code por tokens
+async function handleCallback(code: string) {
+  const verifier = sessionStorage.getItem('pkce_verifier');
+
+  const response = await fetch('https://auth.empresa.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'authorization_code',
+      client_id: CLIENT_ID,
+      redirect_uri: REDIRECT_URI,
+      code,
+      code_verifier: verifier!,
+    }),
+  });
+
+  const { access_token, id_token, refresh_token } = await response.json();
+  // Armazenar tokens de forma segura
+}</pre>
+          </div>
+        </div>
+
+        <!-- Providers -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🏢 Identity Providers Populares</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🔵</div>
+              <div class="text-sm font-medium">Auth0</div>
+              <div class="text-xs text-neutral-500">Enterprise</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🟠</div>
+              <div class="text-sm font-medium">Okta</div>
+              <div class="text-xs text-neutral-500">Enterprise</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🔷</div>
+              <div class="text-sm font-medium">Azure AD</div>
+              <div class="text-xs text-neutral-500">Microsoft</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center">
+              <div class="text-2xl mb-1">🔴</div>
+              <div class="text-sm font-medium">Keycloak</div>
+              <div class="text-xs text-neutral-500">Open Source</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: JWT e Sessions -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🎫 JWT e Gestao de Sessions</h2>
+          <p class="text-neutral-400 mt-1">Tokens seguros e gerenciamento de sessoes de usuario</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Anatomia do JWT
+          </h3>
+          <p class="text-neutral-300 mb-4">JSON Web Token (JWT) e um formato compacto e seguro para transmitir informacoes entre partes. Consiste em tres partes separadas por pontos: Header, Payload e Signature.</p>
+
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm mb-4">
+            <div class="text-red-400">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9</div>
+            <div class="text-yellow-400">.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ</div>
+            <div class="text-green-400">.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+              <div class="text-red-400 font-semibold mb-2">Header</div>
+              <div class="text-xs text-neutral-400 font-mono">{"alg": "RS256", "typ": "JWT"}</div>
+            </div>
+            <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-3">
+              <div class="text-yellow-400 font-semibold mb-2">Payload (Claims)</div>
+              <div class="text-xs text-neutral-400 font-mono">{"sub": "123", "role": "admin"}</div>
+            </div>
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
+              <div class="text-green-400 font-semibold mb-2">Signature</div>
+              <div class="text-xs text-neutral-400">HMAC ou RSA do header+payload</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JWT vs Session -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">⚖️ JWT vs Sessions Tradicionais</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-3">🎫 JWT (Stateless)</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Escalavel horizontalmente</li>
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Sem estado no servidor</li>
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Funciona entre dominios</li>
+                <li class="flex items-start"><span class="text-red-400 mr-2">✗</span>Dificil invalidar antes do expiry</li>
+                <li class="flex items-start"><span class="text-red-400 mr-2">✗</span>Payload visivel (nao criptografado)</li>
+              </ul>
+            </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-3">🍪 Sessions (Stateful)</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Revogacao imediata</li>
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Dados sensiveis no servidor</li>
+                <li class="flex items-start"><span class="text-green-400 mr-2">✓</span>Controle total de sessoes</li>
+                <li class="flex items-start"><span class="text-red-400 mr-2">✗</span>Requer storage centralizado</li>
+                <li class="flex items-start"><span class="text-red-400 mr-2">✗</span>Mais complexo escalar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo Token Refresh -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Token Refresh Automatico
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Token Manager com Refresh Automatico
+class TokenManager {
+  private accessToken: string | null = null;
+  private refreshToken: string | null = null;
+  private refreshPromise: Promise&lt;void&gt; | null = null;
+
+  async getAccessToken(): Promise&lt;string&gt; {
+    if (this.isTokenValid()) {
+      return this.accessToken!;
+    }
+
+    // Evita multiplas chamadas de refresh simultaneas
+    if (!this.refreshPromise) {
+      this.refreshPromise = this.refreshAccessToken();
+    }
+
+    await this.refreshPromise;
+    this.refreshPromise = null;
+    return this.accessToken!;
+  }
+
+  private isTokenValid(): boolean {
+    if (!this.accessToken) return false;
+
+    const payload = JSON.parse(atob(this.accessToken.split('.')[1]));
+    const expiresAt = payload.exp * 1000;
+    const bufferMs = 60000; // 1 min de buffer
+
+    return Date.now() < expiresAt - bufferMs;
+  }
+
+  private async refreshAccessToken(): Promise&lt;void&gt; {
+    const response = await fetch('/api/auth/refresh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: this.refreshToken }),
+    });
+
+    if (!response.ok) {
+      this.logout();
+      throw new Error('Session expired');
+    }
+
+    const { access_token, refresh_token } = await response.json();
+    this.accessToken = access_token;
+    this.refreshToken = refresh_token;
+  }
+}
+
+// Axios Interceptor para refresh automatico
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401 && !error.config._retry) {
+      error.config._retry = true;
+      const token = await tokenManager.getAccessToken();
+      error.config.headers.Authorization = `Bearer ${token}`;
+      return axios(error.config);
+    }
+    return Promise.reject(error);
+  }
+);</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica de Seguranca
+          </h3>
+          <p class="text-neutral-300">Nunca armazene JWTs no localStorage para aplicacoes sensiveis - use httpOnly cookies para o refresh token e mantenha o access token apenas em memoria. Isso protege contra ataques XSS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3: SSO Empresarial -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">🏢 SSO Empresarial</h2>
+          <p class="text-neutral-400 mt-1">Single Sign-On com Active Directory, SAML e integracao corporativa</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> O que e SSO
+          </h3>
+          <p class="text-neutral-300 mb-4">Single Sign-On permite que usuarios autentiquem uma vez e acessem multiplos sistemas sem login repetido. Em ambientes corporativos, geralmente integra com Active Directory (AD) ou outros Identity Providers via protocolos como SAML, OIDC ou LDAP.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🔷</div>
+              <div class="font-semibold text-white">Azure AD / Entra ID</div>
+              <div class="text-sm text-neutral-400 mt-1">Microsoft cloud identity</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📁</div>
+              <div class="font-semibold text-white">Active Directory</div>
+              <div class="text-sm text-neutral-400 mt-1">On-premise Windows</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🔐</div>
+              <div class="font-semibold text-white">LDAP</div>
+              <div class="text-sm text-neutral-400 mt-1">Protocolo directory</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAML vs OIDC -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 SAML vs OpenID Connect</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 text-neutral-400">Aspecto</th>
+                  <th class="text-left py-3 text-purple-400">SAML 2.0</th>
+                  <th class="text-left py-3 text-blue-400">OIDC</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3">Formato</td>
+                  <td>XML (verboso)</td>
+                  <td>JSON (compacto)</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3">Transporte</td>
+                  <td>HTTP POST/Redirect</td>
+                  <td>REST APIs</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3">Ideal para</td>
+                  <td>Enterprise legado</td>
+                  <td>Apps modernas, mobile</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3">Complexidade</td>
+                  <td>Alta</td>
+                  <td>Media</td>
+                </tr>
+                <tr>
+                  <td class="py-3">Suporte</td>
+                  <td>Corporacoes tradicionais</td>
+                  <td>Providers modernos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Fluxo SAML -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Fluxo SAML SP-Initiated
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-4">
+              <div class="w-8 h-8 rounded-full bg-purple-500/30 text-purple-400 flex items-center justify-center font-bold">1</div>
+              <div class="flex-1 bg-dark-700 rounded-lg p-3">
+                <span class="text-neutral-300">Usuario acessa dashboard (Service Provider)</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-8 h-8 rounded-full bg-purple-500/30 text-purple-400 flex items-center justify-center font-bold">2</div>
+              <div class="flex-1 bg-dark-700 rounded-lg p-3">
+                <span class="text-neutral-300">SP gera SAML AuthnRequest e redireciona para IdP</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-8 h-8 rounded-full bg-purple-500/30 text-purple-400 flex items-center justify-center font-bold">3</div>
+              <div class="flex-1 bg-dark-700 rounded-lg p-3">
+                <span class="text-neutral-300">Usuario autentica no IdP (Active Directory)</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-8 h-8 rounded-full bg-purple-500/30 text-purple-400 flex items-center justify-center font-bold">4</div>
+              <div class="flex-1 bg-dark-700 rounded-lg p-3">
+                <span class="text-neutral-300">IdP envia SAML Response assinado para SP (ACS URL)</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-8 h-8 rounded-full bg-green-500/30 text-green-400 flex items-center justify-center font-bold">5</div>
+              <div class="flex-1 bg-dark-700 rounded-lg p-3">
+                <span class="text-neutral-300">SP valida assinatura, extrai atributos e cria sessao</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo Azure AD -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Integracao Azure AD (MSAL)
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Configuracao MSAL para Azure AD
+import { PublicClientApplication, Configuration } from '@azure/msal-browser';
+
+const msalConfig: Configuration = {
+  auth: {
+    clientId: 'SEU_CLIENT_ID',
+    authority: 'https://login.microsoftonline.com/SEU_TENANT_ID',
+    redirectUri: 'https://dashboard.empresa.com/callback',
+  },
+  cache: {
+    cacheLocation: 'sessionStorage',
+    storeAuthStateInCookie: false,
+  },
+};
+
+const msalInstance = new PublicClientApplication(msalConfig);
+
+// Scopes para Graph API
+const loginRequest = {
+  scopes: ['User.Read', 'GroupMember.Read.All'],
+};
+
+// Login
+async function signIn() {
+  try {
+    const response = await msalInstance.loginPopup(loginRequest);
+    console.log('Usuario:', response.account?.username);
+
+    // Obter token para API
+    const tokenResponse = await msalInstance.acquireTokenSilent({
+      scopes: ['api://SEU_API_ID/.default'],
+      account: response.account!,
+    });
+
+    return tokenResponse.accessToken;
+  } catch (error) {
+    console.error('Erro de login:', error);
+    throw error;
+  }
+}
+
+// Obter grupos do usuario para RBAC
+async function getUserGroups(token: string) {
+  const response = await fetch('https://graph.microsoft.com/v1.0/me/memberOf', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const data = await response.json();
+  return data.value
+    .filter((item: any) => item['@odata.type'] === '#microsoft.graph.group')
+    .map((group: any) => group.displayName);
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4: RBAC -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">👥 RBAC - Role-Based Access Control</h2>
+          <p class="text-neutral-400 mt-1">Controle de acesso granular baseado em papeis e permissoes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Modelo RBAC
+          </h3>
+          <p class="text-neutral-300 mb-4">Role-Based Access Control atribui permissoes a roles (papeis), e usuarios recebem roles. Isso simplifica a gestao de acesso - ao inves de gerenciar permissoes individuais por usuario, voce gerencia roles.</p>
+
+          <div class="bg-dark-700 rounded-lg p-4 mt-4">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-2xl">👤</span>
+                </div>
+                <div class="text-sm text-neutral-300">Usuario</div>
+              </div>
+              <div class="text-2xl text-neutral-600">→</div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-2xl">🎭</span>
+                </div>
+                <div class="text-sm text-neutral-300">Role</div>
+              </div>
+              <div class="text-2xl text-neutral-600">→</div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-2xl">🔓</span>
+                </div>
+                <div class="text-sm text-neutral-300">Permissoes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hierarquia de Roles -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">🏛️ Exemplo: Hierarquia de Roles para Dashboard</h3>
+          <div class="space-y-3">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-red-400 font-semibold">🔴 Super Admin</span>
+                  <p class="text-sm text-neutral-400 mt-1">Acesso total ao sistema</p>
+                </div>
+                <div class="text-xs text-neutral-500">*</div>
+              </div>
+            </div>
+            <div class="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4 ml-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-orange-400 font-semibold">🟠 Admin</span>
+                  <p class="text-sm text-neutral-400 mt-1">Gerencia usuarios, configs, dashboards</p>
+                </div>
+                <div class="text-xs text-neutral-500">users:*, config:*, dashboard:*</div>
+              </div>
+            </div>
+            <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 ml-8">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-yellow-400 font-semibold">🟡 Manager</span>
+                  <p class="text-sm text-neutral-400 mt-1">Cria dashboards, ve todos os dados</p>
+                </div>
+                <div class="text-xs text-neutral-500">dashboard:create, data:read:all</div>
+              </div>
+            </div>
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4 ml-12">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-green-400 font-semibold">🟢 Analyst</span>
+                  <p class="text-sm text-neutral-400 mt-1">Ve dashboards do seu departamento</p>
+                </div>
+                <div class="text-xs text-neutral-500">dashboard:read:own, data:read:dept</div>
+              </div>
+            </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 ml-16">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-blue-400 font-semibold">🔵 Viewer</span>
+                  <p class="text-sm text-neutral-400 mt-1">Apenas visualiza dashboards compartilhados</p>
+                </div>
+                <div class="text-xs text-neutral-500">dashboard:read:shared</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo RBAC -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Sistema RBAC Completo
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Definicao de permissoes
+type Permission =
+  | 'dashboard:create' | 'dashboard:read' | 'dashboard:update' | 'dashboard:delete'
+  | 'data:read:all' | 'data:read:dept' | 'data:export'
+  | 'users:read' | 'users:manage'
+  | 'config:read' | 'config:update';
+
+type Role = 'super_admin' | 'admin' | 'manager' | 'analyst' | 'viewer';
+
+// Matriz de permissoes por role
+const rolePermissions: Record&lt;Role, Permission[]&gt; = {
+  super_admin: ['*'] as any, // Todas as permissoes
+  admin: [
+    'dashboard:create', 'dashboard:read', 'dashboard:update', 'dashboard:delete',
+    'data:read:all', 'data:export',
+    'users:read', 'users:manage',
+    'config:read', 'config:update',
+  ],
+  manager: [
+    'dashboard:create', 'dashboard:read', 'dashboard:update',
+    'data:read:all', 'data:export',
+    'users:read',
+  ],
+  analyst: [
+    'dashboard:read',
+    'data:read:dept',
+  ],
+  viewer: [
+    'dashboard:read',
+  ],
+};
+
+// Verificador de permissao
+class PermissionChecker {
+  constructor(private user: { roles: Role[]; department?: string }) {}
+
+  hasPermission(permission: Permission): boolean {
+    return this.user.roles.some(role => {
+      const perms = rolePermissions[role];
+      return perms.includes('*' as any) || perms.includes(permission);
+    });
+  }
+
+  canAccessDepartment(deptId: string): boolean {
+    if (this.hasPermission('data:read:all')) return true;
+    return this.user.department === deptId;
+  }
+
+  canAccessDashboard(dashboard: { ownerId: string; shared: boolean; deptId: string }): boolean {
+    if (this.hasPermission('dashboard:read') && this.hasPermission('data:read:all')) {
+      return true;
+    }
+    if (dashboard.shared) return true;
+    return this.canAccessDepartment(dashboard.deptId);
+  }
+}
+
+// Middleware Express
+const requirePermission = (permission: Permission) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const checker = new PermissionChecker(req.user);
+
+    if (!checker.hasPermission(permission)) {
+      return res.status(403).json({
+        error: 'Forbidden',
+        required: permission,
+      });
+    }
+
+    next();
+  };
+};
+
+// Uso
+app.post('/api/dashboards',
+  requirePermission('dashboard:create'),
+  createDashboardHandler
+);</pre>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Principio do menor privilegio</li>
+                <li>• Revisar permissoes periodicamente</li>
+                <li>• Usar grupos/roles, nao permissoes diretas</li>
+                <li>• Implementar heranca de roles</li>
+                <li>• Logar todas as mudancas de acesso</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Permissoes hardcoded no codigo</li>
+                <li>• Verificacao apenas no frontend</li>
+                <li>• Roles muito amplas (God mode)</li>
+                <li>• Ignorar separacao de ambientes</li>
+                <li>• Nao ter processo de offboarding</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5: Protecao de Rotas -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">🛡️ Protecao de Rotas</h2>
+          <p class="text-neutral-400 mt-1">Guards, middlewares e protecao em multiplas camadas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Defesa em Profundidade
+          </h3>
+          <p class="text-neutral-300 mb-4">Protecao de rotas deve acontecer em multiplas camadas - frontend, API gateway, backend e banco de dados. Nunca confie apenas na verificacao do frontend.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-4">
+            <div class="bg-dark-700 rounded-lg p-3 text-center border-t-4 border-blue-500">
+              <div class="text-2xl mb-2">🖥️</div>
+              <div class="text-sm font-medium text-blue-400">Frontend</div>
+              <div class="text-xs text-neutral-500 mt-1">Route Guards, UI hiding</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center border-t-4 border-purple-500">
+              <div class="text-2xl mb-2">🚪</div>
+              <div class="text-sm font-medium text-purple-400">API Gateway</div>
+              <div class="text-xs text-neutral-500 mt-1">Rate limiting, Auth</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center border-t-4 border-green-500">
+              <div class="text-2xl mb-2">⚙️</div>
+              <div class="text-sm font-medium text-green-400">Backend</div>
+              <div class="text-xs text-neutral-500 mt-1">Middlewares, RBAC</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 text-center border-t-4 border-yellow-500">
+              <div class="text-2xl mb-2">🗄️</div>
+              <div class="text-sm font-medium text-yellow-400">Database</div>
+              <div class="text-xs text-neutral-500 mt-1">RLS, Row filters</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend Guards -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: React Route Guards
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// ProtectedRoute component
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requiredPermissions?: Permission[];
+  requiredRoles?: Role[];
+  fallback?: React.ReactNode;
+}
+
+function ProtectedRoute({
+  children,
+  requiredPermissions = [],
+  requiredRoles = [],
+  fallback = &lt;Navigate to="/unauthorized" /&gt;
+}: ProtectedRouteProps) {
+  const { user, isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return &lt;LoadingSpinner /&gt;;
+  }
+
+  if (!isAuthenticated) {
+    return &lt;Navigate to="/login" state={{ from: location }} /&gt;;
+  }
+
+  const hasRequiredRoles = requiredRoles.length === 0 ||
+    requiredRoles.some(role => user.roles.includes(role));
+
+  const hasRequiredPermissions = requiredPermissions.length === 0 ||
+    requiredPermissions.every(perm => user.permissions.includes(perm));
+
+  if (!hasRequiredRoles || !hasRequiredPermissions) {
+    return fallback;
+  }
+
+  return children;
+}
+
+// Uso nas rotas
+&lt;Routes&gt;
+  &lt;Route path="/login" element={&lt;LoginPage /&gt;} /&gt;
+
+  &lt;Route element={&lt;ProtectedRoute&gt;&lt;MainLayout /&gt;&lt;/ProtectedRoute&gt;}&gt;
+    &lt;Route path="/dashboard" element={&lt;DashboardPage /&gt;} /&gt;
+
+    &lt;Route
+      path="/admin"
+      element={
+        &lt;ProtectedRoute requiredRoles={['admin', 'super_admin']}&gt;
+          &lt;AdminPage /&gt;
+        &lt;/ProtectedRoute&gt;
+      }
+    /&gt;
+
+    &lt;Route
+      path="/reports/export"
+      element={
+        &lt;ProtectedRoute requiredPermissions={['data:export']}&gt;
+          &lt;ExportPage /&gt;
+        &lt;/ProtectedRoute&gt;
+      }
+    /&gt;
+  &lt;/Route&gt;
+
+  &lt;Route path="/unauthorized" element={&lt;UnauthorizedPage /&gt;} /&gt;
+&lt;/Routes&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Backend Middleware -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Backend Middleware Chain
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Middleware de autenticacao
+const authenticate = async (req: Request, res: Response, next: NextFunction) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Token required' });
+  }
+
+  try {
+    const token = authHeader.split(' ')[1];
+    const payload = await verifyJWT(token);
+
+    req.user = {
+      id: payload.sub,
+      email: payload.email,
+      roles: payload.roles,
+      permissions: await getPermissionsForRoles(payload.roles),
+    };
+
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+};
+
+// Middleware de rate limiting por usuario
+const rateLimitByUser = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 100,
+  keyGenerator: (req) => req.user?.id || req.ip,
+  handler: (req, res) => {
+    res.status(429).json({ error: 'Too many requests' });
+  },
+});
+
+// Middleware de audit logging
+const auditLog = (action: string) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const originalSend = res.send;
+
+    res.send = function(body) {
+      logger.info({
+        action,
+        userId: req.user?.id,
+        method: req.method,
+        path: req.path,
+        statusCode: res.statusCode,
+        ip: req.ip,
+        userAgent: req.headers['user-agent'],
+        timestamp: new Date().toISOString(),
+      });
+
+      return originalSend.call(this, body);
+    };
+
+    next();
+  };
+};
+
+// Aplicacao em cascata
+app.use('/api', authenticate);
+app.use('/api', rateLimitByUser);
+app.use('/api/admin', requireRole('admin'));
+app.use('/api/admin', auditLog('admin_action'));</pre>
+          </div>
+        </div>
+
+        <!-- Row Level Security -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">🗄️</span> Row Level Security (PostgreSQL)
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">-- Habilitar RLS na tabela
+ALTER TABLE dashboards ENABLE ROW LEVEL SECURITY;
+
+-- Policy: usuarios veem apenas dashboards do seu departamento
+CREATE POLICY department_isolation ON dashboards
+  FOR SELECT
+  USING (
+    department_id = current_setting('app.current_department')::uuid
+    OR shared = true
+    OR created_by = current_setting('app.current_user')::uuid
+  );
+
+-- Policy: apenas admins podem deletar
+CREATE POLICY admin_delete ON dashboards
+  FOR DELETE
+  USING (
+    current_setting('app.current_role') IN ('admin', 'super_admin')
+  );
+
+-- Setar contexto na conexao (via aplicacao)
+-- No backend, antes de cada query:
+SET LOCAL app.current_user = 'user-uuid-here';
+SET LOCAL app.current_department = 'dept-uuid-here';
+SET LOCAL app.current_role = 'analyst';</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6: Audit Logs -->
+    <section class="mb-12">
+      <div class="flex items-start mb-6">
+        <span class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex items-center justify-center mr-4 flex-shrink-0">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">📜 Audit Logs e Rastreabilidade</h2>
+          <p class="text-neutral-400 mt-1">Registre todas as acoes para compliance, seguranca e debugging</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Por que Audit Logs
+          </h3>
+          <p class="text-neutral-300 mb-4">Audit logs sao registros imutaveis de todas as acoes significativas no sistema. Sao essenciais para compliance (LGPD, SOX, HIPAA), investigacao de incidentes de seguranca, e debugging de problemas em producao.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-green-400 font-semibold mb-2">🛡️ Seguranca</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• Detectar acessos suspeitos</li>
+                <li>• Identificar vazamentos</li>
+                <li>• Forense de incidentes</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">📋 Compliance</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• LGPD - quem acessou dados</li>
+                <li>• SOX - controles financeiros</li>
+                <li>• ISO 27001 - auditoria</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-yellow-400 font-semibold mb-2">🔧 Operacional</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li>• Debug de problemas</li>
+                <li>• Analise de uso</li>
+                <li>• Rollback de acoes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- O que logar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📝 O que Registrar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <div class="font-semibold text-white mb-2">Sempre Logar:</div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Login/Logout</div>
+              </div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Falhas de autenticacao</div>
+              </div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Mudancas de permissao</div>
+              </div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Acesso a dados sensiveis</div>
+              </div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Exportacao de dados</div>
+              </div>
+              <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3 text-sm">
+                <div class="text-green-400">✓ Alteracoes de configuracao</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="font-semibold text-white mb-2">Nunca Logar:</div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ Senhas (mesmo hasheadas)</div>
+              </div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ Tokens de acesso</div>
+              </div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ Dados de cartao de credito</div>
+              </div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ PII completo desnecessario</div>
+              </div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ Secrets/API keys</div>
+              </div>
+              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-sm">
+                <div class="text-red-400">✗ Health check requests</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo Audit System -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Sistema de Audit Log
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Schema do Audit Log
+interface AuditLog {
+  id: string;
+  timestamp: Date;
+
+  // Quem
+  userId: string;
+  userEmail: string;
+  userRoles: string[];
+
+  // O que
+  action: AuditAction;
+  resourceType: string;
+  resourceId: string;
+
+  // Como
+  method: string;
+  path: string;
+  statusCode: number;
+
+  // Contexto
+  ip: string;
+  userAgent: string;
+  sessionId: string;
+
+  // Detalhes
+  changes?: {
+    before: Record&lt;string, any&gt;;
+    after: Record&lt;string, any&gt;;
+  };
+  metadata?: Record&lt;string, any&gt;;
+}
+
+type AuditAction =
+  | 'LOGIN' | 'LOGOUT' | 'LOGIN_FAILED'
+  | 'CREATE' | 'READ' | 'UPDATE' | 'DELETE'
+  | 'EXPORT' | 'SHARE' | 'PERMISSION_CHANGE'
+  | 'CONFIG_CHANGE' | 'BULK_OPERATION';
+
+// Servico de Audit
+class AuditService {
+  private queue: AuditLog[] = [];
+  private batchSize = 100;
+  private flushInterval = 5000; // 5s
+
+  constructor(private storage: AuditStorage) {
+    setInterval(() => this.flush(), this.flushInterval);
+  }
+
+  log(entry: Omit&lt;AuditLog, 'id' | 'timestamp'&gt;) {
+    this.queue.push({
+      ...entry,
+      id: crypto.randomUUID(),
+      timestamp: new Date(),
+    });
+
+    if (this.queue.length >= this.batchSize) {
+      this.flush();
+    }
+  }
+
+  private async flush() {
+    if (this.queue.length === 0) return;
+
+    const batch = this.queue.splice(0, this.batchSize);
+    await this.storage.writeBatch(batch);
+  }
+
+  // Helper para detectar mudancas
+  static diff(before: any, after: any): { before: any; after: any } {
+    const changes = { before: {}, after: {} };
+
+    const allKeys = new Set([...Object.keys(before || {}), ...Object.keys(after || {})]);
+
+    for (const key of allKeys) {
+      if (JSON.stringify(before?.[key]) !== JSON.stringify(after?.[key])) {
+        changes.before[key] = before?.[key];
+        changes.after[key] = after?.[key];
+      }
+    }
+
+    return changes;
+  }
+}
+
+// Uso com decorators
+function Audited(action: AuditAction, resourceType: string) {
+  return function(target: any, key: string, descriptor: PropertyDescriptor) {
+    const original = descriptor.value;
+
+    descriptor.value = async function(...args: any[]) {
+      const before = await this.getResource?.(args);
+      const result = await original.apply(this, args);
+      const after = await this.getResource?.(args);
+
+      auditService.log({
+        action,
+        resourceType,
+        resourceId: result?.id || args[0],
+        changes: AuditService.diff(before, after),
+        ...getCurrentContext(), // userId, ip, etc
+      });
+
+      return result;
+    };
+
+    return descriptor;
+  };
+}
+
+// Uso
+class DashboardService {
+  @Audited('UPDATE', 'dashboard')
+  async updateDashboard(id: string, data: UpdateDashboardDTO) {
+    return this.repository.update(id, data);
+  }
+}</pre>
+          </div>
+        </div>
+
+        <!-- Dashboard de Auditoria -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 Dashboard de Auditoria</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-green-400">12,847</div>
+              <div class="text-xs text-neutral-500">Logins hoje</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-red-400">23</div>
+              <div class="text-xs text-neutral-500">Falhas de auth</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-yellow-400">156</div>
+              <div class="text-xs text-neutral-500">Exportacoes</div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-purple-400">8</div>
+              <div class="text-xs text-neutral-500">Mudancas config</div>
+            </div>
+          </div>
+          <div class="text-sm text-neutral-400">
+            <div class="flex items-center justify-between py-2 border-b border-dark-600">
+              <span>🔴 3 tentativas de login falhas do IP 192.168.1.100</span>
+              <span class="text-xs">2 min atras</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-dark-600">
+              <span>🟡 Usuario admin@empresa.com exportou relatorio financeiro</span>
+              <span class="text-xs">15 min atras</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span>🟢 Novo usuario joao@empresa.com criado por admin</span>
+              <span class="text-xs">1 hora atras</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Retencao -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Politica de Retencao
+          </h3>
+          <p class="text-neutral-300 mb-3">Defina politicas claras de retencao de logs considerando requisitos legais e custos de armazenamento:</p>
+          <ul class="text-sm text-neutral-400 space-y-1">
+            <li>• <strong>Hot storage (30 dias):</strong> Elasticsearch/OpenSearch para busca rapida</li>
+            <li>• <strong>Warm storage (1 ano):</strong> S3 Standard para acesso ocasional</li>
+            <li>• <strong>Cold storage (7 anos):</strong> S3 Glacier para compliance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">OAuth2/OIDC</strong>
+              <span class="text-neutral-400"> - Fluxos de autenticacao modernos, PKCE para SPAs</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">JWT e Sessions</strong>
+              <span class="text-neutral-400"> - Gestao de tokens, refresh automatico, storage seguro</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">SSO Empresarial</strong>
+              <span class="text-neutral-400"> - SAML, Azure AD, integracao com Active Directory</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">RBAC</strong>
+              <span class="text-neutral-400"> - Controle de acesso baseado em roles e permissoes</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Protecao de Rotas</strong>
+              <span class="text-neutral-400"> - Guards, middlewares, defesa em profundidade</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Audit Logs</strong>
+              <span class="text-neutral-400"> - Rastreabilidade, compliance, deteccao de anomalias</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha
+          </a>
+          <a href="modulo-3-6.html" class="flex-1 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center text-neutral-500 text-sm">
+        <p>Dashboard Mastery - Trilha 3: Avancado</p>
+        <p class="mt-2">Desenvolvido para <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
