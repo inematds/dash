@@ -8,32 +8,42 @@ Padrao visual e estrutural baseado nos projetos SHIA e NanoBanana.
 
 ```html
 [📊 Dashboard Mastery] | [INEMA.CLUB]
-[Trilha 1] [Trilha 2] [Trilha 3] [🌙 Theme]
+[Fundamentos] [Tecnicas] [Avancado] [🌙 Theme]
 ```
 
 **Elementos:**
 - Logo com emoji + nome do curso
-- Link externo para INEMA.CLUB
-- Botoes das trilhas (ativo com cor, outros neutros)
+- Link externo para INEMA.CLUB (azul claro `text-sky-400`)
+- Botoes das trilhas com descricao (ativo com cor, outros neutros)
+  - T1: Fundamentos (emerald)
+  - T2: Tecnicas (blue)
+  - T3: Avancado (purple)
 - Toggle de tema (dark/light)
+
+**INEMA.CLUB deve aparecer em TODAS as paginas (index, trilhas, modulos)**
 
 ---
 
-## 2. Topicos Expansiveis com Toggle
+## 2. Topicos Expansiveis com Numeros
 
 **Estrutura:**
 ```
-▸ 🎯 Titulo do Topico - Descricao breve
+[1] 🎯 Titulo do Topico - Descricao breve
   └─ O que e: [Explicacao]
   └─ Por que aprender: [Justificativa]
   └─ Conceitos-chave: [Lista]
 ```
 
 **Comportamento:**
-- Seta `▸` vira `▾` ao expandir
+- Numero em circulo (nao seta) como indicador
 - Fecha outros topicos do mesmo modulo ao abrir um novo
 - Conteudo oculto com classe `.topic-explanation`
 - Toggle via JavaScript `toggleTopic(button)`
+
+**HTML do numero:**
+```html
+<span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span>
+```
 
 ---
 
@@ -67,12 +77,12 @@ Cada topico DEVE ter 3 secoes internas:
 
 ---
 
-## 4. Botoes Modal e Completo
+## 4. Botoes Modal e Completo (ESQUERDA)
 
-Cada modulo tem 2 botoes no rodape:
+Cada modulo tem 2 botoes no rodape, **alinhados a esquerda**:
 
 ```html
-<div class="p-4 bg-dark-700/30 flex justify-end space-x-3">
+<div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
   <button onclick="openModal('modal-1-1')">
     📖 Ver em Modal
   </button>
@@ -107,7 +117,8 @@ Cada modulo tem 2 botoes no rodape:
   <div class="divide-y divide-dark-600">
     <div class="topic-item">
       <button onclick="toggleTopic(this)">
-        ▸ 🎯 Topico 1 - Descricao
+        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400">1</span>
+        🎯 Topico 1 - Descricao
       </button>
       <div class="topic-explanation">
         <!-- O que e, Por que aprender, Conceitos-chave -->
@@ -116,8 +127,8 @@ Cada modulo tem 2 botoes no rodape:
     <!-- Mais topicos... -->
   </div>
 
-  <!-- Botoes -->
-  <div class="p-4 bg-dark-700/30 flex justify-end space-x-3">
+  <!-- Botoes (ESQUERDA) -->
+  <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
     <button>📖 Ver em Modal</button>
     <a href="modulo-x-x.html">📄 Ver Completo</a>
   </div>
@@ -130,24 +141,21 @@ Cada modulo tem 2 botoes no rodape:
 ## JavaScript Necessario
 
 ```javascript
-// Toggle de topicos
+// Toggle de topicos (sem mudanca de seta, usa numeros)
 function toggleTopic(button) {
   const topicItem = button.closest('.topic-item');
   const explanation = topicItem.querySelector('.topic-explanation');
-  const arrow = button.querySelector('.text-emerald-400');
 
   // Fecha outros do mesmo modulo
   const moduleCard = button.closest('.bg-dark-800');
   moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
     if (exp !== explanation) {
       exp.classList.remove('active');
-      exp.previousElementSibling.querySelector('.text-emerald-400').textContent = '▸';
     }
   });
 
   // Toggle atual
   explanation.classList.toggle('active');
-  arrow.textContent = explanation.classList.contains('active') ? '▾' : '▸';
 }
 
 // Modal
@@ -173,8 +181,16 @@ function closeModal() {
 
 ## Cores por Trilha
 
-| Trilha | Cor Principal | Classes |
-|--------|---------------|---------|
-| Trilha 1 | Emerald | `text-emerald-400`, `bg-emerald-500/20` |
-| Trilha 2 | Blue | `text-blue-400`, `bg-blue-500/20` |
-| Trilha 3 | Purple | `text-purple-400`, `bg-purple-500/20` |
+| Trilha | Nome | Cor Principal | Classes |
+|--------|------|---------------|---------|
+| Trilha 1 | Fundamentos | Emerald | `text-emerald-400`, `bg-emerald-500/20` |
+| Trilha 2 | Tecnicas | Blue | `text-blue-400`, `bg-blue-500/20` |
+| Trilha 3 | Avancado | Purple | `text-purple-400`, `bg-purple-500/20` |
+
+---
+
+## Link INEMA.CLUB
+
+- Cor: `text-sky-400 hover:text-sky-300`
+- Deve aparecer em TODAS as paginas
+- Posicao: ao lado do logo, separado por `|`
