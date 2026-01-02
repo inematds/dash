@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 2.8 - Integracao de Componentes | Dashboard Mastery</title>
+  <title>Módulo 2.8 - Projeto Final | Dashboard Mastery</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,468 +19,1069 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .light body { background: #f8fafc; color: #1e293b; }
+  </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 dark:bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
         <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
             <span class="text-2xl">📊</span>
             <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
           </a>
           <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors">INEMA.CLUB</a>
         </div>
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm transition-colors">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center text-sm text-neutral-400">
+        <a href="../../index.html" class="hover:text-blue-400 transition-colors">Início</a>
+        <span class="mx-2">→</span>
+        <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+        <span class="mx-2">→</span>
+        <span class="text-neutral-200">Módulo 2.8</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.8</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧩 Integracao de Componentes</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Composicao, comunicacao entre componentes, slots e patterns de reutilizacao.</p>
+      <div class="inline-flex items-center px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-semibold rounded-full mb-4">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2 animate-pulse"></span>
+        PROJETO FINAL
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏆 Projeto Final - Dashboard Completo</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">Aplicando todos os conceitos da Trilha 2 para construir um dashboard de analytics profissional e responsivo.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-yellow-400">6</div>
+          <div class="text-xs text-neutral-500">Etapas</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-yellow-400">90min</div>
+          <div class="text-xs text-neutral-500">Duração</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-yellow-400">Avançado</div>
+          <div class="text-xs text-neutral-500">Nível</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-yellow-400">Hands-on</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
     </div>
   </header>
+
+  <!-- Project Preview -->
+  <section class="bg-gradient-to-r from-blue-900/10 to-purple-900/10 border-b border-dark-600 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-center mb-6">O que você vai construir</h2>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <!-- Mini Dashboard Preview -->
+        <div class="space-y-4">
+          <!-- Header preview -->
+          <div class="flex items-center justify-between p-3 bg-dark-700 rounded-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-blue-500/20 rounded-lg"></div>
+              <div class="h-3 w-24 bg-dark-600 rounded"></div>
+            </div>
+            <div class="flex gap-2">
+              <div class="h-6 w-16 bg-dark-600 rounded"></div>
+              <div class="h-6 w-6 bg-dark-600 rounded"></div>
+            </div>
+          </div>
+          <!-- Stats row preview -->
+          <div class="grid grid-cols-4 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3">
+              <div class="h-2 w-12 bg-dark-600 rounded mb-2"></div>
+              <div class="h-4 w-16 bg-blue-500/30 rounded"></div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <div class="h-2 w-12 bg-dark-600 rounded mb-2"></div>
+              <div class="h-4 w-16 bg-emerald-500/30 rounded"></div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <div class="h-2 w-12 bg-dark-600 rounded mb-2"></div>
+              <div class="h-4 w-16 bg-yellow-500/30 rounded"></div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <div class="h-2 w-12 bg-dark-600 rounded mb-2"></div>
+              <div class="h-4 w-16 bg-purple-500/30 rounded"></div>
+            </div>
+          </div>
+          <!-- Chart + Table preview -->
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3 h-32">
+              <div class="h-2 w-16 bg-dark-600 rounded mb-3"></div>
+              <div class="flex items-end gap-1 h-20">
+                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 60%"></div>
+                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 80%"></div>
+                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 45%"></div>
+                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 90%"></div>
+                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 70%"></div>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3 h-32">
+              <div class="h-2 w-16 bg-dark-600 rounded mb-3"></div>
+              <div class="space-y-2">
+                <div class="flex gap-2">
+                  <div class="h-2 flex-1 bg-dark-600 rounded"></div>
+                  <div class="h-2 w-8 bg-dark-600 rounded"></div>
+                </div>
+                <div class="flex gap-2">
+                  <div class="h-2 flex-1 bg-dark-600 rounded"></div>
+                  <div class="h-2 w-8 bg-dark-600 rounded"></div>
+                </div>
+                <div class="flex gap-2">
+                  <div class="h-2 flex-1 bg-dark-600 rounded"></div>
+                  <div class="h-2 w-8 bg-dark-600 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-sm text-neutral-500 mt-4">Dashboard de Analytics com KPIs, gráficos, tabela de dados e filtros interativos</p>
+    </div>
+  </section>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Composicao de Componentes</h2>
+    <!-- ETAPA 1 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">1</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📋</span>
+            <h2 class="text-2xl font-bold">Planejamento e Estrutura Base</h2>
+          </div>
+          <p class="text-neutral-400">Definindo o escopo e criando a estrutura HTML inicial</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Composicao e o padrao de construir componentes complexos a partir de componentes menores. Um Card compoe Header, Body e Footer. Uma Table compoe Header, Row, Cell. Permite reutilizacao e flexibilidade.</p>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Antes de escrever qualquer código, é essencial planejar o que vamos construir. Nosso <strong class="text-white">Dashboard de Analytics</strong> terá: uma barra de navegação com filtro de período, cards de KPIs (métricas principais), um gráfico de barras mostrando vendas por mês, e uma tabela com os últimos pedidos.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            A estrutura do projeto será: layout responsivo com grid de 12 colunas, dark mode por padrão com toggle para light mode, animações sutis em hovers e transições, e design mobile-first que se adapta a todas as telas.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Vamos usar apenas HTML e Tailwind CSS (via CDN), sem frameworks JavaScript - isso reforça os fundamentos e mostra que dashboards profissionais podem ser criados com tecnologias simples.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Dashboards tem muita repeticao visual com variacoes sutis. Composicao permite criar variantes sem duplicar codigo. Um Card de metrica e um Card de grafico usam o mesmo Card base.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Composicao com compound components
-// Card.js
-const Card = ({ children, className }) => (
-  &lt;div className={`bg-dark-800 rounded-xl border border-dark-600
-                   ${className}`}&gt;
-    {children}
-  &lt;/div&gt;
-);
 
-Card.Header = ({ children }) => (
-  &lt;div className="px-6 py-4 border-b border-dark-600"&gt;{children}&lt;/div&gt;
-);
-
-Card.Body = ({ children }) => (
-  &lt;div className="p-6"&gt;{children}&lt;/div&gt;
-);
-
-Card.Footer = ({ children }) => (
-  &lt;div className="px-6 py-4 border-t border-dark-600 bg-dark-700/30"&gt;
-    {children}
-  &lt;/div&gt;
-);
-
-// Uso - MUITO flexivel
-&lt;Card&gt;
-  &lt;Card.Header&gt;
-    &lt;h3&gt;Titulo do Card&lt;/h3&gt;
-  &lt;/Card.Header&gt;
-  &lt;Card.Body&gt;
-    &lt;p&gt;Conteudo principal aqui&lt;/p&gt;
-    &lt;Chart data={data} /&gt;
-  &lt;/Card.Body&gt;
-  &lt;Card.Footer&gt;
-    &lt;Button&gt;Ver mais&lt;/Button&gt;
-  &lt;/Card.Footer&gt;
-&lt;/Card&gt;
-
-// Card simples (sem header/footer)
-&lt;Card&gt;
-  &lt;Card.Body&gt;Apenas conteudo&lt;/Card.Body&gt;
-&lt;/Card&gt;</pre>
+        <!-- Componentes do Dashboard -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Componentes do Dashboard</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Header/Navbar</div>
+              <ul class="text-xs text-neutral-500 space-y-1">
+                <li>• Logo e título do dashboard</li>
+                <li>• Seletor de período (7d, 30d, 90d)</li>
+                <li>• Toggle de tema (dark/light)</li>
+                <li>• Avatar/menu do usuário</li>
+              </ul>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">KPI Cards</div>
+              <ul class="text-xs text-neutral-500 space-y-1">
+                <li>• Receita Total</li>
+                <li>• Pedidos do Período</li>
+                <li>• Ticket Médio</li>
+                <li>• Taxa de Conversão</li>
+              </ul>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Gráfico de Vendas</div>
+              <ul class="text-xs text-neutral-500 space-y-1">
+                <li>• Gráfico de barras CSS puro</li>
+                <li>• Eixo X: meses</li>
+                <li>• Eixo Y: valores</li>
+                <li>• Tooltips no hover</li>
+              </ul>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Tabela de Pedidos</div>
+              <ul class="text-xs text-neutral-500 space-y-1">
+                <li>• Colunas: ID, Cliente, Valor, Status</li>
+                <li>• Ordenação visual</li>
+                <li>• Status badges coloridos</li>
+                <li>• Scroll horizontal em mobile</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Topico 2 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">Props e Variantes</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Props sao parametros passados para componentes. Variantes sao conjuntos pre-definidos de props para casos comuns. Um Button pode ter variantes "primary", "secondary", "danger" que definem cores e estilos.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Props permitem customizacao. Variantes garantem consistencia. Sem variantes, cada uso do Button pode ter cores ligeiramente diferentes. Variantes enforçam design system.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Sistema de variantes com Tailwind
-const buttonVariants = {
-  variant: {
-    primary: 'bg-blue-600 hover:bg-blue-500 text-white',
-    secondary: 'bg-dark-700 hover:bg-dark-600 text-neutral-200',
-    danger: 'bg-red-600 hover:bg-red-500 text-white',
-    ghost: 'bg-transparent hover:bg-dark-700 text-neutral-300',
-  },
-  size: {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2',
-    lg: 'px-6 py-3 text-lg',
-  }
-};
-
-function Button({
-  variant = 'primary',
-  size = 'md',
-  children,
-  ...props
-}) {
-  const classes = `
-    rounded-lg font-medium transition-colors
-    ${buttonVariants.variant[variant]}
-    ${buttonVariants.size[size]}
-  `;
-
-  return &lt;button className={classes} {...props}&gt;{children}&lt;/button&gt;;
-}
-
-// Uso
-&lt;Button&gt;Primary (default)&lt;/Button&gt;
-&lt;Button variant="secondary" size="sm"&gt;Secondary Small&lt;/Button&gt;
-&lt;Button variant="danger" size="lg"&gt;Delete&lt;/Button&gt;
-
-// Com class-variance-authority (CVA) - mais robusto
-import { cva } from 'class-variance-authority';
-
-const button = cva('rounded-lg font-medium transition-colors', {
-  variants: {
-    variant: { primary: '...', secondary: '...' },
-    size: { sm: '...', md: '...' }
-  },
-  defaultVariants: { variant: 'primary', size: 'md' }
-});</pre>
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Estrutura HTML Base</span>
+            <span class="text-xs text-neutral-500">dashboard.html</span>
           </div>
-        </div>
-      </div>
-    </section>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR" class="dark"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Analytics Dashboard&lt;/title&gt;
+  &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+              600: '#475569'
+            }
+          }
+        }
+      }
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body class="bg-dark-900 text-neutral-100 min-h-screen"&gt;
 
-    <!-- Topico 3 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Comunicacao Entre Componentes</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Como componentes trocam informacao. Props fluem de pai para filho. Callbacks (onChange, onClick) fluem de filho para pai. Context ou state managers permitem comunicacao entre irmaos ou distantes.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Dashboards tem muita interacao entre partes. Filtro muda → tabela atualiza. Clique em grafico → mostra detalhes. Sem padrao de comunicacao, codigo vira espaguete.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// 1. PROPS DOWN (pai → filho)
-function Dashboard() {
-  const [filters, setFilters] = useState({});
+  &lt;!-- Header --&gt;
+  &lt;header class="..."&gt;...&lt;/header&gt;
 
-  return (
-    &lt;div&gt;
-      &lt;FilterBar filters={filters} /&gt;  {/* passa dados */}
-      &lt;DataTable filters={filters} /&gt;  {/* mesmo dados */}
-    &lt;/div&gt;
-  );
-}
+  &lt;!-- Main Content --&gt;
+  &lt;main class="max-w-7xl mx-auto px-4 py-8"&gt;
 
-// 2. CALLBACKS UP (filho → pai)
-function FilterBar({ filters, onFilterChange }) {
-  return (
-    &lt;select onChange={(e) => onFilterChange({
-      ...filters,
-      status: e.target.value
-    })}&gt;
-      ...
-    &lt;/select&gt;
-  );
-}
+    &lt;!-- KPI Cards Grid --&gt;
+    &lt;section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"&gt;
+      &lt;!-- Cards aqui --&gt;
+    &lt;/section&gt;
 
-// Uso no pai
-&lt;FilterBar
-  filters={filters}
-  onFilterChange={(newFilters) => setFilters(newFilters)}
-/&gt;
+    &lt;!-- Charts + Table Grid --&gt;
+    &lt;section class="grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
+      &lt;!-- Gráfico --&gt;
+      &lt;div class="bg-dark-800 rounded-xl p-6"&gt;...&lt;/div&gt;
+      &lt;!-- Tabela --&gt;
+      &lt;div class="bg-dark-800 rounded-xl p-6"&gt;...&lt;/div&gt;
+    &lt;/section&gt;
 
-// 3. CONTEXT (qualquer nivel)
-const FilterContext = createContext();
-
-function Dashboard() {
-  const [filters, setFilters] = useState({});
-
-  return (
-    &lt;FilterContext.Provider value={{ filters, setFilters }}&gt;
-      &lt;Sidebar&gt;
-        &lt;FilterPanel /&gt;  {/* pode acessar context */}
-      &lt;/Sidebar&gt;
-      &lt;MainContent&gt;
-        &lt;DataTable /&gt;    {/* pode acessar context */}
-      &lt;/MainContent&gt;
-    &lt;/FilterContext.Provider&gt;
-  );
-}
-
-// Em qualquer componente filho
-const { filters } = useContext(FilterContext);</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 4 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Slots e Children</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Slots sao "buracos" em componentes onde conteudo custom pode ser inserido. Em React, children e o slot padrao. Named slots permitem multiplas areas de insercao: header, content, footer.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Slots permitem criar layouts flexiveis. Um Modal pode ter slot para titulo, conteudo e botoes. Usuario define o que vai em cada area, componente controla layout e comportamento.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Children como slot padrao
-function Modal({ children, isOpen }) {
-  if (!isOpen) return null;
-
-  return (
-    &lt;div className="fixed inset-0 bg-black/50 flex items-center justify-center"&gt;
-      &lt;div className="bg-dark-800 rounded-xl p-6"&gt;
-        {children}  {/* qualquer conteudo */}
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-// Named slots com props
-function Modal({ title, children, footer, isOpen }) {
-  return (
-    &lt;div className="..."&gt;
-      &lt;div className="..."&gt;
-        {/* Slot: titulo */}
-        &lt;div className="border-b border-dark-600 pb-4 mb-4"&gt;
-          {title}
-        &lt;/div&gt;
-
-        {/* Slot: conteudo */}
-        &lt;div className="mb-4"&gt;
-          {children}
-        &lt;/div&gt;
-
-        {/* Slot: footer */}
-        &lt;div className="border-t border-dark-600 pt-4"&gt;
-          {footer}
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-// Uso com named slots
-&lt;Modal
-  isOpen={true}
-  title={&lt;h2 className="text-xl font-bold"&gt;Confirmacao&lt;/h2&gt;}
-  footer={
-    &lt;div className="flex justify-end space-x-2"&gt;
-      &lt;Button variant="secondary"&gt;Cancelar&lt;/Button&gt;
-      &lt;Button&gt;Confirmar&lt;/Button&gt;
-    &lt;/div&gt;
-  }
-&gt;
-  &lt;p&gt;Tem certeza que deseja continuar?&lt;/p&gt;
-&lt;/Modal&gt;</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 5 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Render Props e HOCs</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Render Props passam funcao como children, permitindo que componente pai controle como filho renderiza dados. HOCs (Higher Order Components) envolvem componentes adicionando funcionalidade. Patterns avanços para reutilizacao de logica.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Sao patterns classicos de React. Embora hooks tenham substituido muitos casos, ainda sao uteis para bibliotecas de componentes e integracao com libs externas. Entender ajuda a usar libs como React Query, Formik.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// RENDER PROPS: componente fornece dados, pai decide como renderizar
-function DataFetcher({ url, children }) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => { setData(data); setLoading(false); });
-  }, [url]);
-
-  // Passa dados para funcao children
-  return children({ data, loading });
-}
-
-// Uso - flexibilidade total na renderizacao
-&lt;DataFetcher url="/api/users"&gt;
-  {({ data, loading }) => (
-    loading
-      ? &lt;Skeleton /&gt;
-      : &lt;UserTable users={data} /&gt;
-  )}
-&lt;/DataFetcher&gt;
-
-// HOC: funcao que envolve componente
-function withAuth(WrappedComponent) {
-  return function AuthenticatedComponent(props) {
-    const { user } = useAuth();
-
-    if (!user) return &lt;LoginRedirect /&gt;;
-
-    return &lt;WrappedComponent {...props} user={user} /&gt;;
-  };
-}
-
-// Uso
-const ProtectedDashboard = withAuth(Dashboard);
-
-// Hoje, custom hooks sao mais comuns
-function useDataFetcher(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  // ...
-  return { data, loading };
-}</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 6 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Patterns de Layout para Dashboards</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Patterns de layout especificos para dashboards: Sidebar + Main, Header + Sidebar + Main, Split View, Master-Detail. Cada pattern otimizado para diferentes tipos de dashboard.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Nao reinventar a roda. Patterns testados resolvem problemas comuns de navegacao, hierarquia e uso de espaco. Escolher o pattern certo acelera desenvolvimento e melhora UX.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- PATTERN 1: Sidebar + Main (mais comum) --&gt;
-&lt;div class="flex min-h-screen"&gt;
-  &lt;aside class="w-64 bg-dark-800 border-r border-dark-600 shrink-0"&gt;
-    &lt;nav&gt;...&lt;/nav&gt;
-  &lt;/aside&gt;
-  &lt;main class="flex-1 p-6"&gt;
-    &lt;!-- Conteudo --&gt;
   &lt;/main&gt;
-&lt;/div&gt;
 
-&lt;!-- PATTERN 2: Header + Sidebar + Main --&gt;
-&lt;div class="flex flex-col min-h-screen"&gt;
-  &lt;header class="h-14 bg-dark-800 border-b"&gt;...&lt;/header&gt;
-  &lt;div class="flex flex-1"&gt;
-    &lt;aside class="w-64"&gt;...&lt;/aside&gt;
-    &lt;main class="flex-1"&gt;...&lt;/main&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
 
-&lt;!-- PATTERN 3: Master-Detail --&gt;
-&lt;div class="flex min-h-screen"&gt;
-  &lt;!-- Master: lista --&gt;
-  &lt;div class="w-80 border-r overflow-y-auto"&gt;
-    &lt;ul&gt;...items...&lt;/ul&gt;
-  &lt;/div&gt;
-  &lt;!-- Detail: conteudo do item selecionado --&gt;
-  &lt;div class="flex-1 p-6"&gt;
-    &lt;!-- Detalhes do item --&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- PATTERN 4: Split View (comparacao) --&gt;
-&lt;div class="flex min-h-screen"&gt;
-  &lt;div class="w-1/2 p-4 border-r"&gt;
-    &lt;!-- Painel A --&gt;
-  &lt;/div&gt;
-  &lt;div class="w-1/2 p-4"&gt;
-    &lt;!-- Painel B --&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+        <!-- Dica -->
+        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 text-xl">💡</span>
+            <div>
+              <h4 class="font-semibold text-yellow-400 mb-1">Dica de Organização</h4>
+              <p class="text-sm text-yellow-200/80">Antes de codar, faça um esboço no papel ou no Figma. Defina quais dados cada componente vai exibir e como eles se relacionam. Isso economiza tempo e evita retrabalho.</p>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 2 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">2</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🎯</span>
+            <h2 class="text-2xl font-bold">Header e Navegação</h2>
+          </div>
+          <p class="text-neutral-400">Criando a barra superior com filtros e controles</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            O header é o primeiro ponto de contato do usuário com o dashboard. Ele deve conter: identidade visual (logo/título), controles globais (filtro de período, toggle de tema), e informações do usuário. O design deve ser compacto mas funcional.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Usaremos <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">position: sticky</code> para manter o header visível durante scroll, e <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">backdrop-blur</code> para um efeito de transparência elegante.
+          </p>
+        </div>
+
+        <!-- Preview -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Preview do Header</h3>
+          <div class="bg-dark-700/50 rounded-xl p-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">📊</span>
+                  <span class="font-bold text-lg">Analytics</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="flex bg-dark-600 rounded-lg p-1">
+                  <button class="px-3 py-1 text-xs rounded bg-blue-600 text-white">7 dias</button>
+                  <button class="px-3 py-1 text-xs rounded text-neutral-400 hover:text-white transition-colors">30 dias</button>
+                  <button class="px-3 py-1 text-xs rounded text-neutral-400 hover:text-white transition-colors">90 dias</button>
+                </div>
+                <button class="p-2 rounded-lg bg-dark-600 hover:bg-dark-500 transition-colors">
+                  ☀️
+                </button>
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold">
+                  U
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Header Component</span>
+            <span class="text-xs text-neutral-500">header.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;header class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm
+               border-b border-dark-700"&gt;
+  &lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;
+    &lt;div class="flex items-center justify-between h-16"&gt;
+
+      &lt;!-- Logo --&gt;
+      &lt;div class="flex items-center gap-3"&gt;
+        &lt;span class="text-2xl"&gt;📊&lt;/span&gt;
+        &lt;span class="font-bold text-xl hidden sm:block"&gt;Analytics&lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Controls --&gt;
+      &lt;div class="flex items-center gap-4"&gt;
+
+        &lt;!-- Period Selector --&gt;
+        &lt;div class="flex bg-dark-800 rounded-lg p-1 border border-dark-700"&gt;
+          &lt;button class="px-3 py-1.5 text-sm rounded-md bg-blue-600 text-white
+                         transition-all duration-200"&gt;
+            7 dias
+          &lt;/button&gt;
+          &lt;button class="px-3 py-1.5 text-sm rounded-md text-neutral-400
+                         hover:text-white hover:bg-dark-700
+                         transition-all duration-200"&gt;
+            30 dias
+          &lt;/button&gt;
+          &lt;button class="px-3 py-1.5 text-sm rounded-md text-neutral-400
+                         hover:text-white hover:bg-dark-700
+                         transition-all duration-200"&gt;
+            90 dias
+          &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Theme Toggle --&gt;
+        &lt;button id="theme-toggle"
+                class="p-2 rounded-lg bg-dark-800 border border-dark-700
+                       hover:bg-dark-700 transition-colors"&gt;
+          &lt;span class="dark:hidden"&gt;🌙&lt;/span&gt;
+          &lt;span class="hidden dark:inline"&gt;☀️&lt;/span&gt;
+        &lt;/button&gt;
+
+        &lt;!-- User Avatar --&gt;
+        &lt;div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600
+                    rounded-full flex items-center justify-center
+                    text-sm font-bold cursor-pointer
+                    hover:ring-2 hover:ring-blue-400 transition-all"&gt;
+          JD
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 3 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">3</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📈</span>
+            <h2 class="text-2xl font-bold">Cards de KPI</h2>
+          </div>
+          <p class="text-neutral-400">Métricas principais com indicadores de tendência</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Os <strong class="text-white">KPI Cards</strong> (Key Performance Indicators) são o coração do dashboard. Eles mostram as métricas mais importantes de forma rápida e visual. Cada card deve ter: ícone, título da métrica, valor principal, e indicador de tendência (seta + percentual).
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Usaremos um grid responsivo: 1 coluna em mobile, 2 em tablet, 4 em desktop. Cada card terá hover com elevação sutil para indicar interatividade.
+          </p>
+        </div>
+
+        <!-- Preview -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Preview dos KPI Cards</h3>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Card 1 -->
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">💰</span>
+                <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">+12.5%</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">R$ 48.290</div>
+              <div class="text-xs text-neutral-500">Receita Total</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">📦</span>
+                <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">+8.2%</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">1.284</div>
+              <div class="text-xs text-neutral-500">Pedidos</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">🎯</span>
+                <span class="text-xs text-red-400 bg-red-400/10 px-2 py-1 rounded-full">-2.4%</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">R$ 376</div>
+              <div class="text-xs text-neutral-500">Ticket Médio</div>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">📊</span>
+                <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">+5.1%</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">3.42%</div>
+              <div class="text-xs text-neutral-500">Conversão</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">KPI Card Component</span>
+            <span class="text-xs text-neutral-500">kpi-card.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Grid de KPIs --&gt;
+&lt;section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"&gt;
+
+  &lt;!-- KPI Card Template --&gt;
+  &lt;div class="bg-dark-800 rounded-xl p-5 border border-dark-700
+              hover:border-blue-500/50 hover:-translate-y-1
+              transition-all duration-200 cursor-pointer group"&gt;
+
+    &lt;!-- Header: Icon + Trend --&gt;
+    &lt;div class="flex items-center justify-between mb-4"&gt;
+      &lt;div class="w-10 h-10 rounded-lg bg-blue-500/10
+                  flex items-center justify-center
+                  group-hover:bg-blue-500/20 transition-colors"&gt;
+        &lt;span class="text-xl"&gt;💰&lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Trend Badge (verde = positivo, vermelho = negativo) --&gt;
+      &lt;span class="text-xs font-medium text-emerald-400
+                   bg-emerald-400/10 px-2.5 py-1 rounded-full
+                   flex items-center gap-1"&gt;
+        &lt;svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
+          &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"/&gt;
+        &lt;/svg&gt;
+        12.5%
+      &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Value --&gt;
+    &lt;div class="text-2xl sm:text-3xl font-bold mb-1"&gt;
+      R$ 48.290
+    &lt;/div&gt;
+
+    &lt;!-- Label --&gt;
+    &lt;div class="text-sm text-neutral-500"&gt;
+      Receita Total
+    &lt;/div&gt;
+
+    &lt;!-- Optional: Sparkline or mini chart --&gt;
+    &lt;div class="mt-4 flex items-end gap-0.5 h-8"&gt;
+      &lt;div class="flex-1 bg-blue-500/30 rounded-sm" style="height: 40%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500/30 rounded-sm" style="height: 60%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500/30 rounded-sm" style="height: 45%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500/30 rounded-sm" style="height: 80%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500/30 rounded-sm" style="height: 70%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500/40 rounded-sm" style="height: 90%"&gt;&lt;/div&gt;
+      &lt;div class="flex-1 bg-blue-500 rounded-sm" style="height: 100%"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;!-- Repetir para outros KPIs... --&gt;
+
+&lt;/section&gt;</code></pre>
+        </div>
+
+        <!-- Variantes de Trend -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-emerald-400 mb-3">Tendência Positiva</h4>
+            <code class="text-xs text-emerald-200/80 bg-dark-700 px-2 py-1 rounded block">
+              text-emerald-400 bg-emerald-400/10
+            </code>
+            <p class="text-xs text-neutral-400 mt-2">Seta para cima + cor verde</p>
+          </div>
+          <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-red-400 mb-3">Tendência Negativa</h4>
+            <code class="text-xs text-red-200/80 bg-dark-700 px-2 py-1 rounded block">
+              text-red-400 bg-red-400/10
+            </code>
+            <p class="text-xs text-neutral-400 mt-2">Seta para baixo + cor vermelha</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 4 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">4</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📊</span>
+            <h2 class="text-2xl font-bold">Gráfico de Barras CSS</h2>
+          </div>
+          <p class="text-neutral-400">Visualização de vendas mensais sem JavaScript</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            É possível criar gráficos de barras impressionantes usando apenas CSS! A técnica usa <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">flexbox</code> com <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">align-items: flex-end</code> para alinhar as barras na base, e alturas em porcentagem para representar valores.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Adicionamos hovers interativos que mostram o valor exato (tooltip) e animações de entrada para uma experiência mais dinâmica.
+          </p>
+        </div>
+
+        <!-- Preview -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-lg font-semibold text-white">Vendas por Mês</h3>
+            <span class="text-xs text-neutral-500">Últimos 6 meses</span>
+          </div>
+
+          <!-- Chart -->
+          <div class="relative">
+            <!-- Y Axis Labels -->
+            <div class="absolute left-0 top-0 bottom-8 w-12 flex flex-col justify-between text-xs text-neutral-500">
+              <span>50k</span>
+              <span>40k</span>
+              <span>30k</span>
+              <span>20k</span>
+              <span>10k</span>
+              <span>0</span>
+            </div>
+
+            <!-- Bars Container -->
+            <div class="ml-14 flex items-end gap-4 h-48">
+              <!-- Bar 1 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500/80 hover:bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 60%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 32.400
+                  </div>
+                </div>
+              </div>
+              <!-- Bar 2 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500/80 hover:bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 75%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 38.900
+                  </div>
+                </div>
+              </div>
+              <!-- Bar 3 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500/80 hover:bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 45%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 24.100
+                  </div>
+                </div>
+              </div>
+              <!-- Bar 4 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500/80 hover:bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 90%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 45.200
+                  </div>
+                </div>
+              </div>
+              <!-- Bar 5 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500/80 hover:bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 70%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 36.800
+                  </div>
+                </div>
+              </div>
+              <!-- Bar 6 -->
+              <div class="flex-1 group relative">
+                <div class="bg-blue-500 rounded-t-lg transition-all duration-300 cursor-pointer" style="height: 95%">
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    R$ 48.290
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- X Axis Labels -->
+            <div class="ml-14 flex gap-4 mt-3">
+              <div class="flex-1 text-center text-xs text-neutral-500">Jul</div>
+              <div class="flex-1 text-center text-xs text-neutral-500">Ago</div>
+              <div class="flex-1 text-center text-xs text-neutral-500">Set</div>
+              <div class="flex-1 text-center text-xs text-neutral-500">Out</div>
+              <div class="flex-1 text-center text-xs text-neutral-500">Nov</div>
+              <div class="flex-1 text-center text-xs text-neutral-500 font-medium text-blue-400">Dez</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Bar Chart CSS</span>
+            <span class="text-xs text-neutral-500">chart.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-700"&gt;
+  &lt;h3 class="text-lg font-semibold mb-6"&gt;Vendas por Mês&lt;/h3&gt;
+
+  &lt;!-- Chart Container --&gt;
+  &lt;div class="flex items-end gap-3 h-48"&gt;
+
+    &lt;!-- Single Bar --&gt;
+    &lt;div class="flex-1 group relative"&gt;
+      &lt;!-- Bar (altura define o valor) --&gt;
+      &lt;div class="bg-blue-500/80 hover:bg-blue-500
+                  rounded-t-lg transition-all duration-300 cursor-pointer"
+           style="height: 75%"&gt;
+
+        &lt;!-- Tooltip --&gt;
+        &lt;div class="absolute -top-8 left-1/2 -translate-x-1/2
+                    bg-dark-900 text-white text-xs px-2 py-1 rounded
+                    opacity-0 group-hover:opacity-100
+                    transition-opacity pointer-events-none"&gt;
+          R$ 38.900
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Repetir para outras barras... --&gt;
+
+  &lt;/div&gt;
+
+  &lt;!-- X Axis Labels --&gt;
+  &lt;div class="flex gap-3 mt-3 border-t border-dark-700 pt-3"&gt;
+    &lt;div class="flex-1 text-center text-xs text-neutral-500"&gt;Jul&lt;/div&gt;
+    &lt;div class="flex-1 text-center text-xs text-neutral-500"&gt;Ago&lt;/div&gt;
+    &lt;!-- ... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+/* Animação de entrada das barras */
+@keyframes growUp {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.bar {
+  transform-origin: bottom;
+  animation: growUp 0.5s ease-out forwards;
+}
+.bar:nth-child(1) { animation-delay: 0ms; }
+.bar:nth-child(2) { animation-delay: 100ms; }
+.bar:nth-child(3) { animation-delay: 200ms; }
+/* ... stagger effect */
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 5 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">5</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📋</span>
+            <h2 class="text-2xl font-bold">Tabela de Pedidos</h2>
+          </div>
+          <p class="text-neutral-400">Listagem de dados com status badges e responsividade</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            A tabela de pedidos exibe os dados mais recentes com colunas para ID, Cliente, Valor, Data e Status. Usaremos badges coloridos para status (Aprovado, Pendente, Cancelado) e um container com scroll horizontal para mobile.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Cada linha terá hover state sutil e os headers serão sticky para facilitar navegação em listas longas.
+          </p>
+        </div>
+
+        <!-- Preview -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-4 border-b border-dark-700">
+            <h3 class="text-lg font-semibold">Últimos Pedidos</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-dark-700/50">
+                <tr class="text-left text-xs text-neutral-400 uppercase tracking-wider">
+                  <th class="px-4 py-3 font-medium">Pedido</th>
+                  <th class="px-4 py-3 font-medium">Cliente</th>
+                  <th class="px-4 py-3 font-medium">Valor</th>
+                  <th class="px-4 py-3 font-medium">Data</th>
+                  <th class="px-4 py-3 font-medium">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-dark-700">
+                <tr class="hover:bg-dark-700/30 transition-colors">
+                  <td class="px-4 py-3 text-sm font-medium">#12847</td>
+                  <td class="px-4 py-3 text-sm">Maria Silva</td>
+                  <td class="px-4 py-3 text-sm">R$ 459,90</td>
+                  <td class="px-4 py-3 text-sm text-neutral-400">Hoje, 14:32</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400">Aprovado</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-dark-700/30 transition-colors">
+                  <td class="px-4 py-3 text-sm font-medium">#12846</td>
+                  <td class="px-4 py-3 text-sm">João Santos</td>
+                  <td class="px-4 py-3 text-sm">R$ 234,50</td>
+                  <td class="px-4 py-3 text-sm text-neutral-400">Hoje, 13:15</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-yellow-400/10 text-yellow-400">Pendente</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-dark-700/30 transition-colors">
+                  <td class="px-4 py-3 text-sm font-medium">#12845</td>
+                  <td class="px-4 py-3 text-sm">Ana Costa</td>
+                  <td class="px-4 py-3 text-sm">R$ 789,00</td>
+                  <td class="px-4 py-3 text-sm text-neutral-400">Ontem, 18:42</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400">Aprovado</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-dark-700/30 transition-colors">
+                  <td class="px-4 py-3 text-sm font-medium">#12844</td>
+                  <td class="px-4 py-3 text-sm">Pedro Lima</td>
+                  <td class="px-4 py-3 text-sm">R$ 156,80</td>
+                  <td class="px-4 py-3 text-sm text-neutral-400">Ontem, 16:20</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-red-400/10 text-red-400">Cancelado</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p-4 border-t border-dark-700 flex items-center justify-between">
+            <span class="text-xs text-neutral-500">Mostrando 4 de 1.284 pedidos</span>
+            <button class="text-xs text-blue-400 hover:text-blue-300 transition-colors">Ver todos →</button>
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Status Badges</span>
+            <span class="text-xs text-neutral-500">badges.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Aprovado (verde) --&gt;
+&lt;span class="text-xs font-medium px-2.5 py-1 rounded-full
+             bg-emerald-400/10 text-emerald-400"&gt;
+  Aprovado
+&lt;/span&gt;
+
+&lt;!-- Pendente (amarelo) --&gt;
+&lt;span class="text-xs font-medium px-2.5 py-1 rounded-full
+             bg-yellow-400/10 text-yellow-400"&gt;
+  Pendente
+&lt;/span&gt;
+
+&lt;!-- Cancelado (vermelho) --&gt;
+&lt;span class="text-xs font-medium px-2.5 py-1 rounded-full
+             bg-red-400/10 text-red-400"&gt;
+  Cancelado
+&lt;/span&gt;
+
+&lt;!-- Processando (azul) --&gt;
+&lt;span class="text-xs font-medium px-2.5 py-1 rounded-full
+             bg-blue-400/10 text-blue-400"&gt;
+  Processando
+&lt;/span&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 6 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">6</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🚀</span>
+            <h2 class="text-2xl font-bold">Responsividade e Toques Finais</h2>
+          </div>
+          <p class="text-neutral-400">Ajustes mobile, animações e polish final</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Na etapa final, garantimos que o dashboard funcione perfeitamente em todas as telas. Isso inclui: ajustar o grid de KPIs para empilhar em mobile, garantir scroll horizontal na tabela, esconder elementos secundários em telas pequenas, e adicionar animações de entrada.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Também implementamos o toggle de tema (dark/light) e adicionamos micro-interações como hovers suaves e transições em todos os elementos clicáveis.
+          </p>
+        </div>
+
+        <!-- Checklist -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Checklist de Responsividade</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Header compacto em mobile</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">KPIs: 1 col mobile → 2 tablet → 4 desktop</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Gráfico: barras mais finas em mobile</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Tabela: scroll horizontal</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Touch targets mínimo 44px</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Fontes legíveis (min 14px body)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Espaçamentos adequados</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-sm text-neutral-300">Testado em 320px, 768px, 1024px+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Toggle Code -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Theme Toggle Script</span>
+            <span class="text-xs text-neutral-500">theme.js</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;script&gt;
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Check for saved preference or system preference
+  if (localStorage.getItem('theme') === 'light' ||
+      (!localStorage.getItem('theme') &&
+       window.matchMedia('(prefers-color-scheme: light)').matches)) {
+    html.classList.remove('dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme',
+      html.classList.contains('dark') ? 'dark' : 'light'
+    );
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <!-- Dica Final -->
+        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 text-xl">💡</span>
+            <div>
+              <h4 class="font-semibold text-yellow-400 mb-1">Próximos Passos</h4>
+              <p class="text-sm text-yellow-200/80">Este projeto usa dados estáticos. Na Trilha 3, você aprenderá a conectar com APIs reais, adicionar interatividade com JavaScript, implementar filtros dinâmicos e criar estados de loading. O dashboard vai ganhar vida!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-12 bg-gradient-to-r from-yellow-900/20 to-dark-800 rounded-2xl border border-yellow-700/50 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">🏆</span>
+        Conclusão da Trilha 2
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h3 class="font-semibold text-yellow-400 mb-3">O que você construiu:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Header responsivo com filtros e theme toggle</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Grid de KPI cards com indicadores de tendência</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Gráfico de barras CSS puro com tooltips</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Tabela de dados com status badges</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Layout totalmente responsivo</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">✓</span>
+              <span>Suporte a dark/light mode</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-yellow-400 mb-3">Skills dominadas:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Componentes de dados (cards, stats)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Gráficos e visualizações CSS</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Tabelas responsivas</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Layouts com CSS Grid</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Animações e transições</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">⚡</span>
+              <span>Design responsivo mobile-first</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-dark-800/50 rounded-xl p-6 text-center">
+        <p class="text-lg font-semibold text-white mb-2">Parabéns! Você completou a Trilha 2!</p>
+        <p class="text-neutral-400 mb-4">
+          Agora você domina a criação de componentes visuais profissionais para dashboards.
+        </p>
+        <a href="../trilha3/index.html" class="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
+          <span>Iniciar Trilha 3: Interatividade</span>
+          <span class="ml-2">→</span>
+        </a>
       </div>
     </section>
 
     <!-- Navigation -->
-    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="modulo-2-7.html" class="text-blue-400 hover:text-blue-300">← Notificacoes e Alertas</a>
-      <a href="index.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Voltar para Trilha 2 →</a>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-dark-600">
+      <a href="modulo-2-7.html" class="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+        <span class="mr-2">←</span>
+        <span>Animações e Transições</span>
+      </a>
+      <a href="index.html" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+        <span>Voltar para Trilha 2</span>
+        <span class="ml-2">→</span>
+      </a>
     </div>
 
   </main>
 
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Integracao de Componentes</p>
-      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      <p>Dashboard Mastery - Projeto Final Trilha 2</p>
+      <p class="mt-2">
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">INEMA.CLUB</a>
+      </p>
     </div>
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check saved preference
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
 
 </body>
 </html>

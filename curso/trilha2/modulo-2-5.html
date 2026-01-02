@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 2.5 - Estados e Feedback | Dashboard Mastery</title>
+  <title>Modulo 2.5 - Layouts e Grid Systems | Dashboard Mastery</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,7 +23,7 @@
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
+  <!-- Navigation Global -->
   <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
@@ -35,385 +35,909 @@
           <span class="text-neutral-600">|</span>
           <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
         </div>
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm font-medium">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400">Modulo 2.5</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.5</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Estados e Feedback</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Loading states, empty states, error handling e feedback visual para usuarios.</p>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📐 Layouts e Grid Systems</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">Estruturas de layout profissionais com CSS Grid e Flexbox para organizar dashboards de forma eficiente.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-sm text-neutral-400">6 Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-sm text-neutral-400">55 min</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-sm text-neutral-400">Intermediario</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-sm text-neutral-400">Pratico</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Loading States - Skeletons e Spinners</h2>
+    <!-- Topico 1: CSS Grid vs Flexbox -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>🔀</span> CSS Grid vs Flexbox
+          </h2>
+          <p class="text-neutral-400 mt-1">Entendendo quando usar cada tecnologia de layout</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Loading states indicam que dados estao sendo carregados. Skeletons sao placeholders que imitam a estrutura do conteudo. Spinners sao indicadores genericos de atividade. Skeletons sao preferidos por reduzirem perceived loading time.</p>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-blue-400">CSS Grid</strong> e <strong class="text-blue-400">Flexbox</strong> nao sao concorrentes - sao complementares. Grid e ideal para layouts 2D (linhas E colunas simultaneamente), enquanto Flexbox e perfeito para layouts 1D (linha OU coluna). Entender quando usar cada um e fundamental para criar dashboards eficientes.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Regra pratica: use <strong class="text-white">Grid para a estrutura macro</strong> (sidebar + content + header) e <strong class="text-white">Flexbox para componentes internos</strong> (alinhamento de itens em uma toolbar, distribuicao de botoes). Ambos podem ser combinados sem problemas.
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">CSS Grid - Use quando</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Layout de pagina inteira (header, sidebar, content)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Grid de cards com tamanhos definidos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Layouts onde itens ocupam multiplas linhas/colunas</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Controle preciso de gaps entre elementos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Areas nomeadas (grid-template-areas)</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Flexbox - Use quando</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Alinhar itens em uma direcao (horizontal ou vertical)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Distribuir espacos entre itens (justify-content)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Centralizar conteudo vertical e horizontalmente</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Itens que crescem/encolhem dinamicamente</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Navegacao, toolbars, grupos de botoes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Interface sem feedback de loading parece quebrada ou lenta. Usuarios abandonam apos 3 segundos sem resposta. Skeletons bem feitos fazem a interface parecer mais rapida, mesmo quando nao e.</p>
+
+        <!-- Comparacao Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Comparacao Visual</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-sm text-neutral-400 mb-3">Grid (2D)</p>
+              <div class="grid grid-cols-3 grid-rows-2 gap-2 h-32">
+                <div class="bg-blue-500/30 rounded flex items-center justify-center text-xs">1</div>
+                <div class="bg-blue-500/30 rounded flex items-center justify-center text-xs">2</div>
+                <div class="bg-blue-500/30 rounded flex items-center justify-center text-xs row-span-2">3</div>
+                <div class="bg-blue-500/30 rounded flex items-center justify-center text-xs col-span-2">4</div>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm text-neutral-400 mb-3">Flexbox (1D)</p>
+              <div class="flex gap-2 h-32">
+                <div class="bg-emerald-500/30 rounded flex-1 flex items-center justify-center text-xs">1</div>
+                <div class="bg-emerald-500/30 rounded flex-2 flex items-center justify-center text-xs">2</div>
+                <div class="bg-emerald-500/30 rounded flex-1 flex items-center justify-center text-xs">3</div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">97%</div>
+              <div class="text-sm text-neutral-400">Suporte browsers</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">2D</div>
+              <div class="text-sm text-neutral-400">Grid = linhas + colunas</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">1D</div>
+              <div class="text-sm text-neutral-400">Flex = linha OU coluna</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">100%</div>
+              <div class="text-sm text-neutral-400">Compativel juntos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            Com <strong class="text-white">Tailwind CSS</strong>, use <code class="text-emerald-400">grid grid-cols-*</code> para Grid e <code class="text-emerald-400">flex</code> para Flexbox. A combinacao <code class="text-emerald-400">grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3</code> e o padrao mais usado para grids responsivos de cards.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: Dashboard Layout Patterns -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">2</div>
         <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Skeleton Card --&gt;
-&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600 animate-pulse"&gt;
-  &lt;!-- Header skeleton --&gt;
-  &lt;div class="flex items-center justify-between mb-4"&gt;
-    &lt;div class="h-4 bg-dark-600 rounded w-24"&gt;&lt;/div&gt;
-    &lt;div class="h-8 w-8 bg-dark-600 rounded-lg"&gt;&lt;/div&gt;
-  &lt;/div&gt;
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>🏗️</span> Dashboard Layout Patterns
+          </h2>
+          <p class="text-neutral-400 mt-1">Estruturas classicas usadas em dashboards profissionais</p>
+        </div>
+      </div>
 
-  &lt;!-- Value skeleton --&gt;
-  &lt;div class="h-8 bg-dark-600 rounded w-32 mb-2"&gt;&lt;/div&gt;
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          Dashboards seguem padroes de layout bem estabelecidos. O mais comum e o <strong class="text-blue-400">Sidebar + Header + Content</strong>, onde a sidebar contem navegacao, o header tem busca e perfil, e o content area exibe os dados. Variacoes incluem sidebar colapsavel, header fixo ou topbar-only.
+        </p>
 
-  &lt;!-- Trend skeleton --&gt;
-  &lt;div class="h-4 bg-dark-600 rounded w-20"&gt;&lt;/div&gt;
-&lt;/div&gt;
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-white">CSS Grid</strong> e perfeito para estruturar esses layouts com <code class="text-blue-400">grid-template-areas</code>, permitindo nomear cada regiao e reorganiza-las facilmente para diferentes breakpoints.
+        </p>
 
-&lt;!-- Spinner simples --&gt;
-&lt;div class="flex items-center justify-center p-8"&gt;
-  &lt;div class="w-8 h-8 border-4 border-blue-500 border-t-transparent
-              rounded-full animate-spin"&gt;&lt;/div&gt;
-&lt;/div&gt;
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h5 class="font-medium text-white mb-2">Sidebar Left</h5>
+              <div class="h-24 grid grid-cols-4 gap-1">
+                <div class="bg-blue-500/30 rounded row-span-2"></div>
+                <div class="bg-dark-500 rounded col-span-3"></div>
+                <div class="bg-dark-600 rounded col-span-3"></div>
+              </div>
+              <p class="text-xs text-neutral-400 mt-2">Mais comum. Menu fixo a esquerda.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h5 class="font-medium text-white mb-2">Topbar Only</h5>
+              <div class="h-24 grid grid-rows-4 gap-1">
+                <div class="bg-blue-500/30 rounded"></div>
+                <div class="bg-dark-600 rounded row-span-3"></div>
+              </div>
+              <p class="text-xs text-neutral-400 mt-2">Simples. Ideal para apps menores.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h5 class="font-medium text-white mb-2">Double Sidebar</h5>
+              <div class="h-24 grid grid-cols-6 gap-1">
+                <div class="bg-blue-500/30 rounded row-span-2"></div>
+                <div class="bg-blue-500/20 rounded row-span-2"></div>
+                <div class="bg-dark-500 rounded col-span-4"></div>
+                <div class="bg-dark-600 rounded col-span-4"></div>
+              </div>
+              <p class="text-xs text-neutral-400 mt-2">Icones + labels expandidos.</p>
+            </div>
+          </div>
+        </div>
 
-&lt;!-- Skeleton com shimmer effect (CSS) --&gt;
-&lt;style&gt;
-.skeleton-shimmer {
-  background: linear-gradient(90deg,
-    #374151 25%, #4b5563 50%, #374151 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">layout.css</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">/* Layout classico de dashboard com CSS Grid */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content";
+  min-height: 100vh;
 }
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+
+.sidebar { grid-area: sidebar; }
+.header  { grid-area: header; }
+.content { grid-area: content; }
+
+/* Responsivo: sidebar vira drawer em mobile */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "content";
+  }
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    /* Toggle via JS */
+  }
 }
-&lt;/style&gt;</pre>
+
+/* Tailwind equivalente */
+/* grid grid-cols-[280px_1fr] grid-rows-[64px_1fr] */
+/* md:grid-cols-1 (mobile) */</code></pre>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-emerald-400 mb-3">✓ Fazer</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Header fixo para acesso rapido a busca/perfil</li>
+              <li>• Sidebar colapsavel para mais espaco de conteudo</li>
+              <li>• Content area com scroll independente</li>
+              <li>• Usar grid-template-areas para clareza</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-red-400 mb-3">✗ Evitar</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Sidebar fixa muito larga (> 300px)</li>
+              <li>• Header muito alto roubando espaco vertical</li>
+              <li>• Layout que nao funciona em tablet</li>
+              <li>• Scroll horizontal no conteudo principal</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 2 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">Empty States</h2>
+    <!-- Topico 3: Grid Systems (12-column) -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>📏</span> Grid Systems (12-Column)
+          </h2>
+          <p class="text-neutral-400 mt-1">Sistema de grid modular para layouts consistentes</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Empty States aparecem quando nao ha dados para exibir: lista vazia, busca sem resultados, usuario novo sem atividade. Bem projetados, guiam o usuario para a proxima acao ao inves de mostrar tela vazia.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Empty states sao oportunidades de onboarding disfarçadas. "Voce ainda nao tem pedidos. Criar primeiro pedido?" converte melhor que tabela vazia. Transformam momento vazio em acao.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Empty State - Sem dados --&gt;
-&lt;div class="flex flex-col items-center justify-center py-16 text-center"&gt;
-  &lt;div class="w-16 h-16 bg-dark-700 rounded-full flex items-center
-              justify-center mb-4"&gt;
-    &lt;span class="text-3xl"&gt;📭&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;h3 class="text-lg font-semibold mb-2"&gt;Nenhum pedido encontrado&lt;/h3&gt;
-  &lt;p class="text-neutral-400 max-w-sm mb-6"&gt;
-    Voce ainda nao tem pedidos. Comece criando seu primeiro pedido agora.
-  &lt;/p&gt;
-  &lt;button class="px-6 py-2 bg-blue-600 hover:bg-blue-500
-                 text-white rounded-lg"&gt;
-    + Criar Pedido
-  &lt;/button&gt;
-&lt;/div&gt;
 
-&lt;!-- Empty State - Busca sem resultados --&gt;
-&lt;div class="text-center py-12"&gt;
-  &lt;span class="text-4xl mb-4 block"&gt;🔍&lt;/span&gt;
-  &lt;h3 class="text-lg font-semibold mb-2"&gt;
-    Nenhum resultado para "xyz"
-  &lt;/h3&gt;
-  &lt;p class="text-neutral-400"&gt;
-    Tente buscar com outros termos ou
-    &lt;button class="text-blue-400"&gt;limpar filtros&lt;/button&gt;
-  &lt;/p&gt;
-&lt;/div&gt;</pre>
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          O <strong class="text-blue-400">grid de 12 colunas</strong> e o padrao da industria porque 12 e divisivel por 2, 3, 4 e 6 - permitindo layouts de 2, 3, 4 ou 6 colunas iguais. Bootstrap popularizou esse sistema, e Tailwind oferece <code class="text-blue-400">grid-cols-12</code> com <code class="text-blue-400">col-span-*</code>.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Para dashboards, o grid de 12 colunas permite criar layouts como <strong class="text-white">8 colunas para conteudo + 4 colunas para sidebar</strong>, ou <strong class="text-white">3 cards de 4 colunas cada</strong>. A flexibilidade matematica e o grande diferencial.
+        </p>
+
+        <!-- Visualizacao do Grid 12 colunas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Grid de 12 Colunas</h4>
+          <div class="grid grid-cols-12 gap-1 mb-4">
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">1</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">2</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">3</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">4</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">5</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">6</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">7</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">8</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">9</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">10</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">11</div>
+            <div class="bg-blue-500/30 rounded h-8 flex items-center justify-center text-xs">12</div>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-12 gap-1">
+              <div class="col-span-6 bg-emerald-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-6 (50%)</div>
+              <div class="col-span-6 bg-emerald-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-6 (50%)</div>
+            </div>
+            <div class="grid grid-cols-12 gap-1">
+              <div class="col-span-4 bg-purple-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-4</div>
+              <div class="col-span-4 bg-purple-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-4</div>
+              <div class="col-span-4 bg-purple-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-4</div>
+            </div>
+            <div class="grid grid-cols-12 gap-1">
+              <div class="col-span-8 bg-yellow-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-8 (Content)</div>
+              <div class="col-span-4 bg-yellow-500/30 rounded h-8 flex items-center justify-center text-xs">col-span-4 (Side)</div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Topico 3 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Error States e Handling</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Error states comunicam quando algo deu errado: falha de rede, permissao negada, validacao falhou. Bons error states explicam o problema, a causa provavel e oferecem solucao ou acao de retry.</p>
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">12</div>
+              <div class="text-sm text-neutral-400">Colunas padrao</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">÷ 2,3,4,6</div>
+              <div class="text-sm text-neutral-400">Divisibilidade</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">95%</div>
+              <div class="text-sm text-neutral-400">Frameworks usam</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">1-12</div>
+              <div class="text-sm text-neutral-400">col-span range</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Erros sao inevitaveis. Como o sistema comunica erros define a experiencia. "Erro 500" e frustrante. "Servidor indisponivel. Tentando reconectar..." e tranquilizador. Usuarios perdoam erros bem comunicados.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Error State - Falha de conexao --&gt;
-&lt;div class="bg-red-900/20 border border-red-800 rounded-xl p-6"&gt;
-  &lt;div class="flex items-start"&gt;
-    &lt;span class="text-2xl mr-3"&gt;⚠️&lt;/span&gt;
-    &lt;div&gt;
-      &lt;h3 class="text-red-400 font-semibold mb-1"&gt;
-        Falha ao carregar dados
-      &lt;/h3&gt;
-      &lt;p class="text-neutral-400 text-sm mb-4"&gt;
-        Nao foi possivel conectar ao servidor. Verifique sua
-        conexao e tente novamente.
-      &lt;/p&gt;
-      &lt;button class="px-4 py-2 bg-red-600 hover:bg-red-500
-                     text-white rounded-lg text-sm"&gt;
-        🔄 Tentar novamente
-      &lt;/button&gt;
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">12-column-grid.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Grid de 12 colunas com Tailwind --&gt;
+&lt;div class="grid grid-cols-12 gap-6"&gt;
+
+  &lt;!-- Card grande: 8 de 12 colunas --&gt;
+  &lt;div class="col-span-12 lg:col-span-8"&gt;
+    &lt;div class="bg-dark-800 rounded-xl p-6"&gt;
+      Grafico Principal
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
 
-&lt;!-- Inline error (campos de formulario) --&gt;
-&lt;div class="space-y-1"&gt;
-  &lt;input type="email"
-         class="w-full px-4 py-2 bg-dark-700 border-2 border-red-500
-                rounded-lg focus:outline-none"
-         value="emailinvalido" /&gt;
-  &lt;p class="text-red-400 text-sm flex items-center"&gt;
-    &lt;span class="mr-1"&gt;⚠&lt;/span&gt; Email invalido
-  &lt;/p&gt;
-&lt;/div&gt;</pre>
-          </div>
+  &lt;!-- Cards laterais: 4 de 12 colunas --&gt;
+  &lt;div class="col-span-12 lg:col-span-4 space-y-6"&gt;
+    &lt;div class="bg-dark-800 rounded-xl p-6"&gt;KPI 1&lt;/div&gt;
+    &lt;div class="bg-dark-800 rounded-xl p-6"&gt;KPI 2&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Linha de 3 cards iguais --&gt;
+  &lt;div class="col-span-12 md:col-span-4"&gt;Card 1&lt;/div&gt;
+  &lt;div class="col-span-12 md:col-span-4"&gt;Card 2&lt;/div&gt;
+  &lt;div class="col-span-12 md:col-span-4"&gt;Card 3&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            Prefira <code class="text-emerald-400">col-span-full</code> ao inves de <code class="text-emerald-400">col-span-12</code> para elementos que ocupam toda a largura - e mais semantico. Use <code class="text-emerald-400">col-start-*</code> e <code class="text-emerald-400">col-end-*</code> para posicionamento preciso quando necessario.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Topico 4 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Success Feedback</h2>
+    <!-- Topico 4: Card Grids e Auto-fit -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>🃏</span> Card Grids e Auto-fit
+          </h2>
+          <p class="text-neutral-400 mt-1">Grids responsivos que se adaptam automaticamente</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Success feedback confirma que uma acao foi completada com sucesso: dados salvos, email enviado, item criado. Pode ser toast, inline message, animacao de check ou mudanca de estado visual.</p>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          O padrao <code class="text-blue-400">auto-fit</code> + <code class="text-blue-400">minmax()</code> cria grids que se ajustam automaticamente ao espaco disponivel, sem precisar de media queries. O CSS calcula quantos cards cabem na linha baseado no tamanho minimo definido.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Este padrao e <strong class="text-white">ideal para grids de cards de KPIs</strong>, listas de produtos, ou qualquer colecao de itens de tamanho similar. Combina o melhor dos dois mundos: layout fluido e tamanho minimo garantido.
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">auto-fit vs auto-fill</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">auto-fit:</span>
+                  <span>Expande itens para preencher espaco vazio</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">auto-fill:</span>
+                  <span>Mantem colunas vazias (phantom columns)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">Recomendado:</span>
+                  <span>auto-fit para maioria dos casos</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">minmax() explicado</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">minmax(250px, 1fr):</span>
+                  <span>Minimo 250px, maximo igual (1fr)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">minmax(0, 1fr):</span>
+                  <span>Pode encolher ate 0</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">minmax(200px, 400px):</span>
+                  <span>Entre 200px e 400px</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Sem confirmacao, usuarios duvidam se a acao funcionou e repetem. Com confirmacao, sentem confianca e satisfacao. Feedback positivo e tao importante quanto feedback de erro.</p>
+
+        <!-- Exemplo Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Grid Auto-fit em Acao</h4>
+          <p class="text-sm text-neutral-400 mb-4">Redimensione a janela para ver o grid se ajustar automaticamente:</p>
+          <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+            <div class="bg-blue-500/20 rounded-lg p-4 text-center border border-blue-500/30">
+              <div class="text-2xl mb-1">📊</div>
+              <div class="text-sm">Card 1</div>
+            </div>
+            <div class="bg-blue-500/20 rounded-lg p-4 text-center border border-blue-500/30">
+              <div class="text-2xl mb-1">📈</div>
+              <div class="text-sm">Card 2</div>
+            </div>
+            <div class="bg-blue-500/20 rounded-lg p-4 text-center border border-blue-500/30">
+              <div class="text-2xl mb-1">📉</div>
+              <div class="text-sm">Card 3</div>
+            </div>
+            <div class="bg-blue-500/20 rounded-lg p-4 text-center border border-blue-500/30">
+              <div class="text-2xl mb-1">💹</div>
+              <div class="text-sm">Card 4</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Toast de sucesso --&gt;
-&lt;div class="fixed bottom-4 right-4 bg-emerald-900/90 border
-            border-emerald-700 rounded-lg px-4 py-3 flex items-center
-            shadow-lg animate-slide-up"&gt;
-  &lt;span class="text-emerald-400 mr-3"&gt;✓&lt;/span&gt;
-  &lt;span class="text-neutral-100"&gt;Dados salvos com sucesso!&lt;/span&gt;
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">auto-fit-grid.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- CSS puro --&gt;
+&lt;div style="
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+"&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Botao com estado de sucesso --&gt;
-&lt;button class="px-6 py-2 rounded-lg transition-all duration-300
-               bg-emerald-600 text-white"&gt;
-  &lt;span class="flex items-center"&gt;
-    ✓ Salvo!
-  &lt;/span&gt;
-&lt;/button&gt;
+&lt;!-- Tailwind (usando classes arbitrarias) --&gt;
+&lt;div class="grid gap-6
+            grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"&gt;
+  ...
+&lt;/div&gt;
 
-&lt;!-- Animacao de check --&gt;
-&lt;style&gt;
-@keyframes check-mark {
-  0% { stroke-dashoffset: 50; }
-  100% { stroke-dashoffset: 0; }
-}
-.check-animated path {
-  stroke-dasharray: 50;
-  animation: check-mark 0.3s ease-out forwards;
-}
-&lt;/style&gt;
+&lt;!-- Tailwind alternativa (breakpoints tradicionais) --&gt;
+&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+        </div>
 
-&lt;svg class="check-animated w-6 h-6 text-emerald-400"&gt;
-  &lt;path d="M5 13l4 4L19 7" stroke="currentColor"
-        stroke-width="2" fill="none"/&gt;
-&lt;/svg&gt;</pre>
-          </div>
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            O valor ideal para <code class="text-emerald-400">minmax()</code> em cards de dashboard e entre <strong class="text-white">240px e 320px</strong>. Menor que isso, o conteudo fica comprimido. Maior, e voce tera poucas colunas em telas medias.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Topico 5 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Progress Indicators</h2>
+    <!-- Topico 5: Nested Layouts -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>🪆</span> Nested Layouts
+          </h2>
+          <p class="text-neutral-400 mt-1">Layouts dentro de layouts para interfaces complexas</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Progress indicators mostram o andamento de operacoes longas: upload de arquivo, processamento de dados, wizard multi-etapas. Podem ser determinados (% concluido) ou indeterminados (atividade sem previsao).</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Operacoes longas sem feedback causam ansiedade. "Travou?" "Devo atualizar?" Progress indicators dao previsibilidade e controle, reduzindo abandono em processos demorados.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Barra de progresso determinada --&gt;
-&lt;div class="space-y-2"&gt;
-  &lt;div class="flex justify-between text-sm"&gt;
-    &lt;span class="text-neutral-400"&gt;Enviando arquivo...&lt;/span&gt;
-    &lt;span class="text-blue-400"&gt;67%&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="h-2 bg-dark-700 rounded-full overflow-hidden"&gt;
-    &lt;div class="h-full bg-blue-500 rounded-full transition-all"
-         style="width: 67%"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
 
-&lt;!-- Progress indeterminado (animado) --&gt;
-&lt;div class="h-1 bg-dark-700 rounded-full overflow-hidden"&gt;
-  &lt;div class="h-full w-1/3 bg-blue-500 rounded-full animate-progress"&gt;&lt;/div&gt;
-&lt;/div&gt;
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-blue-400">Layouts aninhados</strong> sao inevitaveis em dashboards complexos. Um card pode conter um grid de metricas, que por sua vez usa flexbox para alinhar icone + valor. A chave e manter a hierarquia clara e nao exagerar na profundidade.
+        </p>
 
-&lt;style&gt;
-@keyframes progress {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(400%); }
-}
-.animate-progress {
-  animation: progress 1.5s ease-in-out infinite;
-}
-&lt;/style&gt;
+        <p class="text-neutral-300 leading-relaxed">
+          Regra: <strong class="text-white">Grid para estrutura, Flex para alinhamento interno</strong>. Um card com header + content + footer usa flex-col. O content pode ser um grid de dados. O header usa flex-row para titulo + acoes.
+        </p>
 
-&lt;!-- Stepper (wizard) --&gt;
-&lt;div class="flex items-center"&gt;
-  &lt;div class="flex items-center"&gt;
-    &lt;div class="w-8 h-8 rounded-full bg-blue-500 text-white
-                flex items-center justify-center"&gt;✓&lt;/div&gt;
-    &lt;span class="ml-2 text-sm"&gt;Dados&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="flex-1 h-0.5 bg-blue-500 mx-4"&gt;&lt;/div&gt;
-  &lt;div class="flex items-center"&gt;
-    &lt;div class="w-8 h-8 rounded-full bg-blue-500 text-white
-                flex items-center justify-center"&gt;2&lt;/div&gt;
-    &lt;span class="ml-2 text-sm"&gt;Pagamento&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="flex-1 h-0.5 bg-dark-600 mx-4"&gt;&lt;/div&gt;
-  &lt;div class="flex items-center opacity-50"&gt;
-    &lt;div class="w-8 h-8 rounded-full bg-dark-600
-                flex items-center justify-center"&gt;3&lt;/div&gt;
-    &lt;span class="ml-2 text-sm"&gt;Confirmacao&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Hierarquia Tipica</h5>
+              <div class="text-sm text-neutral-300 space-y-1 font-mono">
+                <div class="text-blue-400">Page (grid)</div>
+                <div class="ml-4">├── Sidebar (flex-col)</div>
+                <div class="ml-4">└── Content (grid)</div>
+                <div class="ml-8">├── KPI Row (grid)</div>
+                <div class="ml-12">└── Card (flex-col)</div>
+                <div class="ml-16">├── Header (flex-row)</div>
+                <div class="ml-16">└── Body (block)</div>
+                <div class="ml-8">└── Chart Area (block)</div>
+              </div>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Boas Praticas</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Maximo 3-4 niveis de aninhamento</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Componentes reutilizaveis para padroes repetidos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Gaps consistentes (4, 6, 8 em Tailwind)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span>Evitar posicionamento absoluto desnecessario</span>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <!-- Exemplo Visual de Card Aninhado -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Exemplo: Card com Layout Aninhado</h4>
+          <div class="bg-dark-700 rounded-xl border border-dark-500 overflow-hidden">
+            <!-- Header: flex-row -->
+            <div class="flex items-center justify-between p-4 border-b border-dark-500">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">📊</div>
+                <div>
+                  <div class="font-medium">Vendas Mensais</div>
+                  <div class="text-xs text-neutral-400">Ultimos 30 dias</div>
+                </div>
+              </div>
+              <button class="p-2 hover:bg-dark-600 rounded-lg">⋮</button>
+            </div>
+            <!-- Body: grid interno -->
+            <div class="p-4">
+              <div class="grid grid-cols-3 gap-4 mb-4">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-blue-400">R$ 45k</div>
+                  <div class="text-xs text-neutral-400">Total</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-emerald-400">+12%</div>
+                  <div class="text-xs text-neutral-400">Crescimento</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-yellow-400">847</div>
+                  <div class="text-xs text-neutral-400">Pedidos</div>
+                </div>
+              </div>
+              <div class="h-24 bg-dark-600 rounded-lg flex items-center justify-center text-neutral-500">
+                [Area do Grafico]
+              </div>
+            </div>
+            <!-- Footer: flex-row -->
+            <div class="flex items-center justify-between p-4 border-t border-dark-500 text-sm">
+              <span class="text-neutral-400">Atualizado ha 5 min</span>
+              <a href="#" class="text-blue-400 hover:text-blue-300">Ver detalhes →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">NestedCard.jsx</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">function DashboardCard({ title, subtitle, icon, children }) {
+  return (
+    &lt;div className="bg-dark-800 rounded-xl border border-dark-600
+                    flex flex-col"&gt; {/* Flex vertical */}
+
+      {/* Header: Flex horizontal */}
+      &lt;div className="flex items-center justify-between p-4
+                      border-b border-dark-600"&gt;
+        &lt;div className="flex items-center gap-3"&gt;
+          &lt;div className="w-10 h-10 bg-blue-500/20 rounded-lg
+                          flex items-center justify-center"&gt;
+            {icon}
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div className="font-medium"&gt;{title}&lt;/div&gt;
+            &lt;div className="text-xs text-neutral-400"&gt;{subtitle}&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button&gt;⋮&lt;/button&gt;
+      &lt;/div&gt;
+
+      {/* Body: Conteudo flexivel */}
+      &lt;div className="p-4 flex-1"&gt;
+        {children}
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  );
+}</code></pre>
         </div>
       </div>
     </section>
 
-    <!-- Topico 6 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Micro-interacoes e Feedback Sutil</h2>
+    <!-- Topico 6: Spacing Systems -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>📐</span> Spacing Systems
+          </h2>
+          <p class="text-neutral-400 mt-1">Espacamento consistente para interfaces harmoniosas</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Micro-interacoes sao pequenas animacoes e feedbacks que respondem a acoes do usuario: hover effects, ripples, transicoes suaves. Sao quase imperceptiveis mas criam sensacao de interface "viva" e responsiva.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Interfaces sem micro-interacoes parecem "mortas". Com elas, cada clique tem resposta, cada hover tem feedback. A diferenca entre "funciona" e "funciona bem" esta nos detalhes.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Botao com micro-interacoes --&gt;
-&lt;button class="px-6 py-2 bg-blue-600 text-white rounded-lg
-               transition-all duration-200
-               hover:bg-blue-500
-               hover:shadow-lg hover:shadow-blue-500/25
-               active:scale-95
-               focus:ring-2 focus:ring-blue-400 focus:ring-offset-2
-               focus:ring-offset-dark-900"&gt;
-  Salvar
-&lt;/button&gt;
 
-&lt;!-- Card com hover suave --&gt;
-&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600
-            transition-all duration-200
-            hover:border-dark-500
-            hover:shadow-xl hover:shadow-black/20
-            hover:-translate-y-0.5"&gt;
-  Conteudo do card
-&lt;/div&gt;
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-blue-400">Spacing consistente</strong> e o que diferencia interfaces amadoras de profissionais. Um sistema de espacamento usa uma escala fixa (4px, 8px, 16px, 24px, 32px...) aplicada consistentemente em margins, paddings e gaps por toda a aplicacao.
+        </p>
 
-&lt;!-- Icone que gira no hover --&gt;
-&lt;button class="p-2 rounded-lg hover:bg-dark-700 group"&gt;
-  &lt;svg class="w-5 h-5 transition-transform duration-300
-              group-hover:rotate-90"&gt;
-    &lt;!-- settings icon --&gt;
-  &lt;/svg&gt;
-&lt;/button&gt;
+        <p class="text-neutral-300 leading-relaxed">
+          Tailwind usa uma escala baseada em <strong class="text-white">4px (0.25rem)</strong>. Entao <code class="text-blue-400">p-4</code> = 16px, <code class="text-blue-400">gap-6</code> = 24px, <code class="text-blue-400">m-8</code> = 32px. Decorar os valores mais usados (4, 6, 8) acelera muito o desenvolvimento.
+        </p>
 
-&lt;!-- Link com underline animado --&gt;
-&lt;a class="relative text-blue-400 hover:text-blue-300"&gt;
-  Ver mais
-  &lt;span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400
-               transition-all duration-300 group-hover:w-full"&gt;&lt;/span&gt;
-&lt;/a&gt;</pre>
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Escala Tailwind (mais usados)</h5>
+              <div class="space-y-2 text-sm font-mono">
+                <div class="flex items-center gap-3">
+                  <span class="text-blue-400 w-8">1</span>
+                  <div class="h-4 bg-blue-500/30" style="width: 4px"></div>
+                  <span class="text-neutral-400">4px (0.25rem)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-blue-400 w-8">2</span>
+                  <div class="h-4 bg-blue-500/30" style="width: 8px"></div>
+                  <span class="text-neutral-400">8px (0.5rem)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-blue-400 w-8">4</span>
+                  <div class="h-4 bg-blue-500/30" style="width: 16px"></div>
+                  <span class="text-neutral-400">16px (1rem)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-blue-400 w-8">6</span>
+                  <div class="h-4 bg-blue-500/30" style="width: 24px"></div>
+                  <span class="text-neutral-400">24px (1.5rem)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-blue-400 w-8">8</span>
+                  <div class="h-4 bg-blue-500/30" style="width: 32px"></div>
+                  <span class="text-neutral-400">32px (2rem)</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Onde aplicar</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">gap-4/6:</span>
+                  <span>Entre cards em um grid</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">p-4/6:</span>
+                  <span>Padding interno de cards</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">space-y-4:</span>
+                  <span>Entre secoes de conteudo</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">py-12:</span>
+                  <span>Padding vertical de secoes</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">gap-2:</span>
+                  <span>Entre icone e texto</span>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">4px</div>
+              <div class="text-sm text-neutral-400">Base unit</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">×4</div>
+              <div class="text-sm text-neutral-400">Multiplicador comum</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">8pt</div>
+              <div class="text-sm text-neutral-400">Material Design grid</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">4-6-8</div>
+              <div class="text-sm text-neutral-400">Classes mais usadas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-emerald-400 mb-3">✓ Fazer</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Usar valores da escala Tailwind (4, 6, 8...)</li>
+              <li>• Manter gaps iguais em grids similares</li>
+              <li>• Padding interno maior que gaps externos</li>
+              <li>• Espacamento proporcional ao tamanho do texto</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-red-400 mb-3">✗ Evitar</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Valores arbitrarios (17px, 23px)</li>
+              <li>• Espacamento diferente em contextos iguais</li>
+              <li>• Margins e paddings sem padrao</li>
+              <li>• Misturar px e rem sem consistencia</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            Crie <strong class="text-white">design tokens</strong> no seu tailwind.config.js para padronizar: <code class="text-emerald-400">card: 'p-6', section: 'py-12', grid: 'gap-6'</code>. Assim toda equipe usa os mesmos valores, e mudancas globais ficam centralizadas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo -->
+    <section class="mb-12 bg-dark-800 rounded-xl border border-dark-600 p-6">
+      <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+        <span>📋</span> Resumo do Modulo
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Dominar CSS Grid para estruturas 2D de layout</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Usar Flexbox para alinhamento de componentes</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Implementar layout sidebar + header + content</span>
+          </label>
+        </div>
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Aplicar grid de 12 colunas em dashboards</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Usar auto-fit + minmax para grids responsivos</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Manter sistema de espacamento consistente</span>
+          </label>
         </div>
       </div>
     </section>
 
     <!-- Navigation -->
     <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="modulo-2-4.html" class="text-blue-400 hover:text-blue-300">← Filtros e Busca</a>
-      <a href="modulo-2-6.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Formularios →</a>
+      <a href="modulo-2-4.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+        <span>←</span> Filtros e Busca
+      </a>
+      <a href="modulo-2-6.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors flex items-center gap-2">
+        Responsividade <span>→</span>
+      </a>
     </div>
 
   </main>
 
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Estados e Feedback</p>
-      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      <p>Dashboard Mastery - Layouts e Grid Systems</p>
+      <p class="mt-2">
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a>
+      </p>
     </div>
   </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 
 </body>
 </html>

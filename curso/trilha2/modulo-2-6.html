@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 2.6 - Formularios em Dashboards | Dashboard Mastery</title>
+  <title>Modulo 2.6 - Responsividade | Dashboard Mastery</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,7 +23,7 @@
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
+  <!-- Navigation Global -->
   <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
@@ -35,406 +35,1037 @@
           <span class="text-neutral-600">|</span>
           <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
         </div>
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm font-medium">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-white transition-colors">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400">Modulo 2.6</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.6</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📝 Formularios em Dashboards</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Inputs, validacao, inline editing e formularios otimizados para contexto administrativo.</p>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📱 Responsividade</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">Criando dashboards que funcionam perfeitamente em qualquer dispositivo, de smartphones a monitores ultrawide.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-sm text-neutral-400">6 Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-sm text-neutral-400">55 min</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-sm text-neutral-400">Intermediario</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-sm text-neutral-400">Pratico</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Input Fields para Dark Mode</h2>
+    <!-- Topico 1: Mobile-First Design -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>📲</span> Mobile-First Design
+          </h2>
+          <p class="text-neutral-400 mt-1">Comecando pelo menor e expandindo para o maior</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Inputs em dashboards dark mode precisam de contraste adequado sem serem "brancos demais". Background escuro, texto claro, bordas sutis. Estados de focus, error e disabled devem ser claramente distinguiveis.</p>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-blue-400">Mobile-First</strong> e uma filosofia de design onde voce comeca criando para telas pequenas e depois adiciona complexidade para telas maiores. Isso garante que a experiencia mobile nao seja uma adaptacao, mas sim o ponto de partida. O CSS base e para mobile, e media queries adicionam estilos para telas maiores.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Tailwind CSS e <strong class="text-white">mobile-first por padrao</strong>. Classes sem prefixo (<code class="text-blue-400">p-4</code>) aplicam em todas telas. Classes com prefixo (<code class="text-blue-400">md:p-6</code>) aplicam apenas a partir daquele breakpoint. Isso inverte a logica tradicional de "desktop primeiro".
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Mobile-First (Correto)</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">✓</span>
+                  <span>CSS base = mobile</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">✓</span>
+                  <span>Media queries adicionam para telas maiores</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">✓</span>
+                  <span>Prioriza conteudo essencial</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">✓</span>
+                  <span>Performance melhor em mobile</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">✓</span>
+                  <span><code class="text-blue-400">min-width</code> media queries</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Desktop-First (Evitar)</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400">✗</span>
+                  <span>CSS base = desktop</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400">✗</span>
+                  <span>Media queries removem para telas menores</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400">✗</span>
+                  <span>Mobile recebe CSS desnecessario</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400">✗</span>
+                  <span>Experiencia mobile e "adaptacao"</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400">✗</span>
+                  <span><code class="text-red-400">max-width</code> media queries</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Inputs sao o ponto de entrada de dados. Mal projetados, causam erros de digitacao, confusao sobre estado, e frustração. Bem projetados, sao invisíveis - funcionam sem que usuario perceba.</p>
+
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">60%+</div>
+              <div class="text-sm text-neutral-400">Trafego e mobile</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">53%</div>
+              <div class="text-sm text-neutral-400">Abandono se > 3s</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">100%</div>
+              <div class="text-sm text-neutral-400">Tailwind e mobile-first</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">-40%</div>
+              <div class="text-sm text-neutral-400">CSS desnecessario</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Input base para dark mode --&gt;
-&lt;div class="space-y-1"&gt;
-  &lt;label class="block text-sm text-neutral-400"&gt;Email&lt;/label&gt;
-  &lt;input type="email"
-         class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
-                rounded-lg text-neutral-100 placeholder-neutral-500
-                focus:outline-none focus:border-blue-500 focus:ring-1
-                focus:ring-blue-500 transition-colors"
-         placeholder="seu@email.com" /&gt;
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">mobile-first.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Mobile-First com Tailwind --&gt;
+&lt;div class="
+  p-4          // Padding base (mobile)
+  md:p-6       // Mais padding em tablet+
+  lg:p-8       // Ainda mais em desktop+
+
+  grid
+  grid-cols-1  // 1 coluna (mobile)
+  md:grid-cols-2  // 2 colunas (tablet+)
+  lg:grid-cols-3  // 3 colunas (desktop+)
+
+  gap-4        // Gap base
+  lg:gap-6     // Gap maior em desktop
+
+  text-sm      // Texto menor (mobile)
+  md:text-base // Texto normal (tablet+)
+"&gt;
+  ...
 &lt;/div&gt;
 
-&lt;!-- Estados --&gt;
-
-&lt;!-- Disabled --&gt;
-&lt;input disabled class="... opacity-50 cursor-not-allowed" /&gt;
-
-&lt;!-- Error --&gt;
-&lt;input class="... border-red-500 focus:border-red-500
-              focus:ring-red-500" /&gt;
-&lt;p class="text-red-400 text-sm mt-1"&gt;Email invalido&lt;/p&gt;
-
-&lt;!-- Success/Valid --&gt;
-&lt;input class="... border-emerald-500" /&gt;
-
-&lt;!-- Com icone --&gt;
-&lt;div class="relative"&gt;
-  &lt;span class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500"&gt;
-    🔍
-  &lt;/span&gt;
-  &lt;input class="... pl-10" /&gt;
-&lt;/div&gt;</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 2 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">Selects e Dropdowns</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Selects permitem escolher de uma lista de opcoes. Dropdowns nativos tem estilo limitado; custom dropdowns oferecem busca, multi-select e melhor UX. Combobox combina input de texto com dropdown.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Selects sao onipresentes: status, categoria, usuario, data. Custom selects permitem busca em listas longas, multi-selecao, e visual consistente com o dashboard.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Select nativo estilizado --&gt;
-&lt;select class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
-               rounded-lg text-neutral-100 appearance-none
-               focus:outline-none focus:border-blue-500
-               bg-[url('data:image/svg+xml,...')] bg-no-repeat
-               bg-[right_1rem_center]"&gt;
-  &lt;option&gt;Selecione...&lt;/option&gt;
-  &lt;option value="1"&gt;Opcao 1&lt;/option&gt;
-  &lt;option value="2"&gt;Opcao 2&lt;/option&gt;
-&lt;/select&gt;
-
-&lt;!-- Custom Dropdown --&gt;
-&lt;div class="relative"&gt;
-  &lt;button class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
-                 rounded-lg text-left flex justify-between items-center"&gt;
-    &lt;span&gt;Selecione o status&lt;/span&gt;
-    &lt;span&gt;▼&lt;/span&gt;
-  &lt;/button&gt;
-
-  &lt;!-- Dropdown menu (toggle visibility) --&gt;
-  &lt;div class="absolute top-full left-0 right-0 mt-1 bg-dark-800
-              border border-dark-600 rounded-lg shadow-xl z-50"&gt;
-    &lt;!-- Search --&gt;
-    &lt;div class="p-2 border-b border-dark-600"&gt;
-      &lt;input placeholder="Buscar..." class="w-full px-3 py-2
-                                            bg-dark-700 rounded" /&gt;
-    &lt;/div&gt;
-    &lt;!-- Options --&gt;
-    &lt;div class="max-h-48 overflow-y-auto"&gt;
-      &lt;button class="w-full px-4 py-2 text-left hover:bg-dark-700"&gt;
-        Ativo
-      &lt;/button&gt;
-      &lt;button class="w-full px-4 py-2 text-left hover:bg-dark-700
-                     bg-blue-500/10 text-blue-400"&gt;
-        Pendente ✓
-      &lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 3 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Validacao em Tempo Real</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Validacao em tempo real verifica dados enquanto usuario digita ou ao sair do campo (blur). Feedback imediato sobre erros evita submissao de formularios invalidos. Inclui validacao de formato, obrigatoriedade e regras de negocio.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Validacao so no submit e frustrante - usuario preenche tudo e descobre erros no fim. Validacao em tempo real corrige problemas conforme acontecem, acelerando o processo.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Validacao basica
-const validators = {
-  required: (value) => value.trim() !== '',
-  email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-  minLength: (min) => (value) => value.length >= min,
-  cpf: (value) => validateCPF(value),
-};
-
-// Validacao on blur
-function handleBlur(field, value) {
-  const errors = [];
-
-  if (!validators.required(value)) {
-    errors.push('Campo obrigatorio');
-  } else if (field === 'email' && !validators.email(value)) {
-    errors.push('Email invalido');
-  }
-
-  setFieldErrors(field, errors);
+&lt;!-- Equivalente CSS puro --&gt;
+&lt;style&gt;
+.container {
+  padding: 1rem;           /* Base: mobile */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-// Validacao on change (debounced para performance)
-const debouncedValidate = debounce((field, value) => {
-  handleBlur(field, value);
-}, 300);
-
-&lt;!-- Input com feedback de validacao --&gt;
-&lt;div&gt;
-  &lt;input
-    onBlur={(e) => handleBlur('email', e.target.value)}
-    className={`... ${errors.email ? 'border-red-500' : ''}`}
-  /&gt;
-  {errors.email && (
-    &lt;p class="text-red-400 text-sm mt-1 flex items-center"&gt;
-      ⚠️ {errors.email[0]}
-    &lt;/p&gt;
-  )}
-&lt;/div&gt;</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 4 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Inline Editing</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Inline editing permite editar dados diretamente na visualizacao, sem abrir formulario separado. Clicar em um valor transforma-o em input. Muito usado em tabelas e cards para edicoes rapidas.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Abrir modal para mudar um campo e overkill. Inline editing reduz cliques e mantem usuario no contexto. Essencial para produtividade em dashboards de operacao.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Componente de edicao inline
-function InlineEdit({ value, onSave }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(value);
-
-  const handleSave = () => {
-    onSave(editValue);
-    setIsEditing(false);
-  };
-
-  if (!isEditing) {
-    return (
-      &lt;span
-        onClick={() => setIsEditing(true)}
-        className="cursor-pointer hover:bg-dark-700 px-2 py-1
-                   rounded border border-transparent
-                   hover:border-dark-500"&gt;
-        {value}
-        &lt;span className="ml-2 opacity-0 group-hover:opacity-100"&gt;✏️&lt;/span&gt;
-      &lt;/span&gt;
-    );
+@media (min-width: 768px) { /* md: */
+  .container {
+    padding: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  return (
-    &lt;div className="flex items-center space-x-2"&gt;
-      &lt;input
-        autoFocus
-        value={editValue}
-        onChange={(e) => setEditValue(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && handleSave()}
-        className="px-2 py-1 bg-dark-700 border border-blue-500
-                   rounded focus:outline-none"
-      /&gt;
-      &lt;button onClick={handleSave} className="text-emerald-400"&gt;✓&lt;/button&gt;
-      &lt;button onClick={() => setIsEditing(false)}
-              className="text-red-400"&gt;✗&lt;/button&gt;
-    &lt;/div&gt;
-  );
-}</pre>
+@media (min-width: 1024px) { /* lg: */
+  .container {
+    padding: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            Comece sempre testando em <strong class="text-white">320px de largura</strong> (iPhone SE). Se funcionar bem nessa tela, funcionara em qualquer dispositivo. Use o DevTools do Chrome em modo responsivo e va aumentando a largura gradualmente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2: Breakpoints do Tailwind -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>📐</span> Breakpoints do Tailwind
+          </h2>
+          <p class="text-neutral-400 mt-1">Os cinco pontos de quebra padrao e quando usar cada um</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          Tailwind define <strong class="text-blue-400">cinco breakpoints padrao</strong>: sm (640px), md (768px), lg (1024px), xl (1280px) e 2xl (1536px). Cada prefixo ativa estilos "a partir de" aquela largura. Voce pode customizar esses valores no tailwind.config.js se necessario.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Para dashboards, os breakpoints mais usados sao <strong class="text-white">md (tablet) e lg (desktop)</strong>. O breakpoint sm raramente e necessario - se algo funciona em mobile (sem prefixo), geralmente funciona em sm tambem.
+        </p>
+
+        <!-- Tabela de Breakpoints -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-dark-700">
+              <tr>
+                <th class="px-4 py-3 text-left text-blue-400">Prefixo</th>
+                <th class="px-4 py-3 text-left text-blue-400">Min-Width</th>
+                <th class="px-4 py-3 text-left text-blue-400">Dispositivo</th>
+                <th class="px-4 py-3 text-left text-blue-400">Uso em Dashboard</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-600">
+              <tr>
+                <td class="px-4 py-3 font-mono text-neutral-300">(sem)</td>
+                <td class="px-4 py-3 text-neutral-400">0px</td>
+                <td class="px-4 py-3 text-neutral-400">Mobile</td>
+                <td class="px-4 py-3 text-neutral-400">Base - sempre define</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-neutral-300">sm:</td>
+                <td class="px-4 py-3 text-neutral-400">640px</td>
+                <td class="px-4 py-3 text-neutral-400">Mobile landscape</td>
+                <td class="px-4 py-3 text-neutral-400">Raramente usado</td>
+              </tr>
+              <tr class="bg-blue-500/5">
+                <td class="px-4 py-3 font-mono text-blue-400">md:</td>
+                <td class="px-4 py-3 text-white">768px</td>
+                <td class="px-4 py-3 text-white">Tablet</td>
+                <td class="px-4 py-3 text-white">Muito usado - sidebar visivel</td>
+              </tr>
+              <tr class="bg-blue-500/5">
+                <td class="px-4 py-3 font-mono text-blue-400">lg:</td>
+                <td class="px-4 py-3 text-white">1024px</td>
+                <td class="px-4 py-3 text-white">Desktop</td>
+                <td class="px-4 py-3 text-white">Muito usado - layout completo</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-neutral-300">xl:</td>
+                <td class="px-4 py-3 text-neutral-400">1280px</td>
+                <td class="px-4 py-3 text-neutral-400">Desktop grande</td>
+                <td class="px-4 py-3 text-neutral-400">Mais colunas, detalhes extras</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-neutral-300">2xl:</td>
+                <td class="px-4 py-3 text-neutral-400">1536px</td>
+                <td class="px-4 py-3 text-neutral-400">Ultrawide</td>
+                <td class="px-4 py-3 text-neutral-400">Max-width para legibilidade</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">breakpoints-praticos.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Padroes comuns em dashboards --&gt;
+
+&lt;!-- Grid responsivo de cards --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;
+  &lt;div&gt;Card KPI 1&lt;/div&gt;
+  &lt;div&gt;Card KPI 2&lt;/div&gt;
+  &lt;div&gt;Card KPI 3&lt;/div&gt;
+  &lt;div&gt;Card KPI 4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Sidebar que aparece em desktop --&gt;
+&lt;aside class="hidden md:block w-64 fixed left-0 top-0"&gt;
+  Sidebar
+&lt;/aside&gt;
+
+&lt;!-- Botao hamburguer so em mobile --&gt;
+&lt;button class="md:hidden p-2"&gt;
+  ☰
+&lt;/button&gt;
+
+&lt;!-- Texto que muda de tamanho --&gt;
+&lt;h1 class="text-xl md:text-2xl lg:text-3xl"&gt;
+  Titulo Responsivo
+&lt;/h1&gt;
+
+&lt;!-- Elemento que some em mobile --&gt;
+&lt;span class="hidden sm:inline"&gt;
+  Texto so visivel em telas maiores
+&lt;/span&gt;</code></pre>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-emerald-400 mb-3">✓ Fazer</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Usar md: e lg: como breakpoints principais</li>
+              <li>• Sempre definir estilo base (sem prefixo)</li>
+              <li>• Testar em cada breakpoint</li>
+              <li>• Usar hidden/block para mostrar/esconder</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-red-400 mb-3">✗ Evitar</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Pular o estilo base e so usar prefixos</li>
+              <li>• Usar todos 5 breakpoints em tudo</li>
+              <li>• Definir valores arbitrarios sem justificativa</li>
+              <li>• Esquecer de testar entre breakpoints</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 5 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Toggles e Checkboxes</h2>
+    <!-- Topico 3: Tabelas Responsivas -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>📊</span> Tabelas Responsivas
+          </h2>
+          <p class="text-neutral-400 mt-1">Estrategias para exibir dados tabulares em telas pequenas</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Toggles (switches) sao para opcoes on/off com efeito imediato. Checkboxes sao para multipla selecao ou confirmacao antes de acao. Cada um tem proposito especifico; usar errado confunde usuarios.</p>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          Tabelas sao um dos maiores desafios de responsividade. Uma tabela de 10 colunas simplesmente nao cabe em 320px. Existem <strong class="text-blue-400">varias estrategias</strong>: scroll horizontal, esconder colunas menos importantes, transformar em cards, ou usar accordion para detalhes.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          A estrategia mais simples e eficaz e <strong class="text-white">scroll horizontal com container</strong>. Mantem a estrutura da tabela, usuario pode arrastar para ver mais colunas. Para dashboards, essa e geralmente a melhor opcao.
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Estrategias para Tabelas</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">1.</span>
+                  <span><strong>Scroll horizontal:</strong> overflow-x-auto no container</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">2.</span>
+                  <span><strong>Esconder colunas:</strong> hidden md:table-cell</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">3.</span>
+                  <span><strong>Card layout:</strong> Transforma linhas em cards empilhados</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">4.</span>
+                  <span><strong>Accordion:</strong> Linha principal + detalhes expandiveis</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Quando usar cada uma</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Scroll: Muitas colunas, dados uniformes</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Esconder: Colunas com prioridade clara</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Cards: Poucos itens, muitos detalhes</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Accordion: Lista + detalhes sob demanda</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Configuracoes de dashboard usam toggles (dark mode, notificacoes). Filtros e termos de uso usam checkboxes. Saber quando usar cada um e crucial para UX intuitiva.</p>
+
+        <!-- Exemplo Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Exemplo: Tabela com Scroll Horizontal</h4>
+          <p class="text-sm text-neutral-400 mb-4">Arraste para os lados em telas pequenas:</p>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[600px] text-sm">
+              <thead class="bg-dark-700">
+                <tr>
+                  <th class="px-4 py-3 text-left">ID</th>
+                  <th class="px-4 py-3 text-left">Cliente</th>
+                  <th class="px-4 py-3 text-left">Produto</th>
+                  <th class="px-4 py-3 text-left">Status</th>
+                  <th class="px-4 py-3 text-right">Valor</th>
+                  <th class="px-4 py-3 text-left">Data</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-dark-600">
+                <tr>
+                  <td class="px-4 py-3 font-mono text-neutral-400">#1234</td>
+                  <td class="px-4 py-3">Ana Silva</td>
+                  <td class="px-4 py-3">Dashboard Pro</td>
+                  <td class="px-4 py-3"><span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs">Pago</span></td>
+                  <td class="px-4 py-3 text-right">R$ 299</td>
+                  <td class="px-4 py-3 text-neutral-400">15/01/2024</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-neutral-400">#1235</td>
+                  <td class="px-4 py-3">Carlos Souza</td>
+                  <td class="px-4 py-3">Analytics Suite</td>
+                  <td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Pendente</span></td>
+                  <td class="px-4 py-3 text-right">R$ 499</td>
+                  <td class="px-4 py-3 text-neutral-400">14/01/2024</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">responsive-table.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Estrategia 1: Scroll horizontal --&gt;
+&lt;div class="overflow-x-auto"&gt;
+  &lt;table class="w-full min-w-[600px]"&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Estrategia 2: Esconder colunas --&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nome&lt;/th&gt;  &lt;!-- Sempre visivel --&gt;
+      &lt;th class="hidden md:table-cell"&gt;Email&lt;/th&gt;
+      &lt;th class="hidden lg:table-cell"&gt;Telefone&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;  &lt;!-- Sempre visivel --&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ana Silva&lt;/td&gt;
+      &lt;td class="hidden md:table-cell"&gt;ana@email.com&lt;/td&gt;
+      &lt;td class="hidden lg:table-cell"&gt;(11) 99999&lt;/td&gt;
+      &lt;td&gt;Ativo&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- Estrategia 3: Cards em mobile --&gt;
+&lt;div class="md:hidden space-y-4"&gt;
+  &lt;!-- Card por item --&gt;
+  &lt;div class="bg-dark-800 p-4 rounded-lg"&gt;
+    &lt;div class="font-medium"&gt;Ana Silva&lt;/div&gt;
+    &lt;div class="text-sm text-neutral-400"&gt;ana@email.com&lt;/div&gt;
+    &lt;div class="text-sm"&gt;Status: Ativo&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabela so em desktop --&gt;
+&lt;table class="hidden md:table w-full"&gt;
+  ...
+&lt;/table&gt;</code></pre>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            Adicione uma <strong class="text-white">sombra de fade</strong> nas bordas da tabela com scroll para indicar que ha mais conteudo. Use <code class="text-emerald-400">background: linear-gradient(90deg, transparent, black)</code> posicionado com pointer-events: none.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4: Navegacao Responsiva -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">4</div>
         <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Toggle Switch --&gt;
-&lt;label class="relative inline-flex items-center cursor-pointer"&gt;
-  &lt;input type="checkbox" class="sr-only peer" /&gt;
-  &lt;div class="w-11 h-6 bg-dark-600 rounded-full
-              peer-checked:bg-blue-600
-              peer-focus:ring-2 peer-focus:ring-blue-500
-              after:content-[''] after:absolute after:top-0.5 after:left-0.5
-              after:bg-white after:rounded-full after:h-5 after:w-5
-              after:transition-all peer-checked:after:translate-x-5"&gt;
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>☰</span> Navegacao Responsiva
+          </h2>
+          <p class="text-neutral-400 mt-1">Sidebar, hamburguer menu e navegacao mobile</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          Em dashboards, a sidebar normalmente <strong class="text-blue-400">desaparece em mobile</strong> e e substituida por um menu hamburguer. Ao clicar no icone, a sidebar desliza da esquerda como um drawer. O header geralmente permanece visivel com logo e acoes essenciais.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          A transicao entre os modos deve ser suave. Use <strong class="text-white">transforms e transitions</strong> para animar a entrada/saida do drawer. Um overlay escuro atras do drawer ajuda o usuario a entender que pode clicar fora para fechar.
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Componentes do Menu Mobile</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">1.</span>
+                  <span><strong>Hamburguer:</strong> Botao com 3 linhas (☰)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">2.</span>
+                  <span><strong>Drawer:</strong> Sidebar que desliza da esquerda</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">3.</span>
+                  <span><strong>Overlay:</strong> Fundo escuro clicavel</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">4.</span>
+                  <span><strong>Close button:</strong> X dentro do drawer</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Comportamentos</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>ESC fecha o menu</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Clicar no overlay fecha</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Scroll do body bloqueado quando aberto</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  <span>Focus trap dentro do drawer</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">mobile-nav.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Header com hamburguer --&gt;
+&lt;header class="sticky top-0 z-50 bg-dark-900 border-b"&gt;
+  &lt;div class="flex items-center justify-between h-14 px-4"&gt;
+
+    &lt;!-- Hamburguer (so mobile) --&gt;
+    &lt;button
+      class="md:hidden p-2 hover:bg-dark-700 rounded"
+      onclick="toggleMenu()"
+    &gt;
+      ☰
+    &lt;/button&gt;
+
+    &lt;!-- Logo --&gt;
+    &lt;span class="font-bold"&gt;Dashboard&lt;/span&gt;
+
+    &lt;!-- Acoes --&gt;
+    &lt;div&gt;...&lt;/div&gt;
   &lt;/div&gt;
-  &lt;span class="ml-3 text-sm"&gt;Notificacoes por email&lt;/span&gt;
-&lt;/label&gt;
+&lt;/header&gt;
 
-&lt;!-- Checkbox customizado --&gt;
-&lt;label class="flex items-center cursor-pointer group"&gt;
-  &lt;input type="checkbox" class="sr-only peer" /&gt;
-  &lt;div class="w-5 h-5 border-2 border-dark-500 rounded
-              peer-checked:bg-blue-600 peer-checked:border-blue-600
-              flex items-center justify-center
-              group-hover:border-dark-400"&gt;
-    &lt;svg class="w-3 h-3 text-white hidden peer-checked:block"&gt;
-      &lt;path d="M5 13l4 4L19 7" stroke="currentColor"
-            stroke-width="2" fill="none"/&gt;
-    &lt;/svg&gt;
-  &lt;/div&gt;
-  &lt;span class="ml-2 text-sm"&gt;Li e aceito os termos&lt;/span&gt;
-&lt;/label&gt;
+&lt;!-- Overlay --&gt;
+&lt;div
+  id="overlay"
+  class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"
+  onclick="toggleMenu()"
+&gt;&lt;/div&gt;
 
-&lt;!-- QUANDO USAR CADA UM --&gt;
-Toggle: efeito imediato (salva automatico)
-  - Dark mode on/off
-  - Ativar/desativar feature
+&lt;!-- Drawer/Sidebar --&gt;
+&lt;aside
+  id="sidebar"
+  class="fixed top-0 left-0 h-full w-64 bg-dark-800 z-50
+         transform -translate-x-full transition-transform
+         md:translate-x-0 md:static"
+&gt;
+  &lt;!-- Close button (so mobile) --&gt;
+  &lt;button class="md:hidden absolute top-4 right-4" onclick="toggleMenu()"&gt;
+    ✕
+  &lt;/button&gt;
 
-Checkbox: parte de formulario (requer submit)
-  - Aceitar termos
-  - Selecionar multiplos itens</pre>
+  &lt;nav class="p-4 space-y-2"&gt;
+    &lt;a href="#"&gt;Dashboard&lt;/a&gt;
+    &lt;a href="#"&gt;Pedidos&lt;/a&gt;
+    &lt;a href="#"&gt;Clientes&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;script&gt;
+function toggleMenu() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  sidebar.classList.toggle('-translate-x-full');
+  overlay.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden');
+}
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">44px</div>
+              <div class="text-sm text-neutral-400">Min tap target</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">280px</div>
+              <div class="text-sm text-neutral-400">Largura ideal drawer</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">300ms</div>
+              <div class="text-sm text-neutral-400">Duracao transicao</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">50%</div>
+              <div class="text-sm text-neutral-400">Opacidade overlay</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 6 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Form Layout e Organizacao</h2>
+    <!-- Topico 5: UI Touch-Friendly -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>👆</span> UI Touch-Friendly
+          </h2>
+          <p class="text-neutral-400 mt-1">Projetando para dedos, nao apenas cursores</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Organizacao visual de formularios: agrupamento logico de campos, hierarquia, espacamento. Formularios longos podem usar secoes, accordions ou wizard steps. Layout afeta taxa de conclusao.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Formulario mal organizado e abandonado. Campos relacionados devem estar juntos. Campos opcionais devem parecer opcionais. Bom layout guia usuario naturalmente do inicio ao fim.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Formulario com secoes --&gt;
-&lt;form class="space-y-8"&gt;
 
-  &lt;!-- Secao 1: Dados Pessoais --&gt;
-  &lt;section&gt;
-    &lt;h3 class="text-lg font-semibold mb-4 pb-2 border-b
-               border-dark-600"&gt;
-      Dados Pessoais
-    &lt;/h3&gt;
-    &lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;
-      &lt;div&gt;&lt;!-- Nome --&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;!-- Sobrenome --&gt;&lt;/div&gt;
-      &lt;div class="md:col-span-2"&gt;&lt;!-- Email (largura total) --&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          Interfaces touch precisam de <strong class="text-blue-400">alvos de toque maiores</strong> (minimo 44x44px segundo Apple, 48x48dp segundo Google). Dedos sao menos precisos que cursores. Espacamento entre elementos clicaveis deve evitar toques acidentais.
+        </p>
 
-  &lt;!-- Secao 2: Endereco --&gt;
-  &lt;section&gt;
-    &lt;h3 class="text-lg font-semibold mb-4 pb-2 border-b
-               border-dark-600"&gt;
-      Endereco
-    &lt;/h3&gt;
-    &lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;
-      &lt;div class="md:col-span-2"&gt;&lt;!-- Rua --&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;!-- Numero --&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;!-- Cidade --&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;!-- Estado --&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;!-- CEP --&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
+        <p class="text-neutral-300 leading-relaxed">
+          Alem do tamanho, considere <strong class="text-white">gestos touch</strong>: swipe para excluir, pull-to-refresh, pinch-to-zoom. Em dashboards mobile, swipe lateral pode navegar entre abas ou cards. Feedback visual (ripple, highlight) confirma o toque.
+        </p>
 
-  &lt;!-- Acoes --&gt;
-  &lt;div class="flex justify-end space-x-3 pt-4 border-t border-dark-600"&gt;
-    &lt;button type="button" class="px-6 py-2 text-neutral-400"&gt;
-      Cancelar
-    &lt;/button&gt;
-    &lt;button type="submit" class="px-6 py-2 bg-blue-600 rounded-lg"&gt;
-      Salvar
-    &lt;/button&gt;
-  &lt;/div&gt;
-
-&lt;/form&gt;</pre>
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Tamanhos Minimos</h5>
+              <div class="space-y-3">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 bg-blue-500/30 rounded flex items-center justify-center text-xs">44px</div>
+                  <span class="text-sm text-neutral-300">Apple HIG - minimo</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 bg-emerald-500/30 rounded flex items-center justify-center text-xs">48dp</div>
+                  <span class="text-sm text-neutral-300">Material Design - recomendado</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="w-8 h-8 bg-red-500/30 rounded flex items-center justify-center text-xs">32px</div>
+                  <span class="text-sm text-red-400">Muito pequeno!</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Gestos Comuns</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">←→</span>
+                  <span>Swipe: Excluir, arquivar, navegar</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">↓</span>
+                  <span>Pull-down: Atualizar dados</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">⟷</span>
+                  <span>Pinch: Zoom em graficos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">⊕</span>
+                  <span>Long press: Menu contextual</span>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600">
+            <span class="text-sm text-neutral-400">touch-friendly.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Botao touch-friendly --&gt;
+&lt;button class="
+  min-h-[44px]     // Altura minima Apple
+  min-w-[44px]     // Largura minima
+  px-6 py-3        // Padding generoso
+  text-base        // Texto legivel
+
+  // Feedback visual
+  active:scale-95  // Leve encolhimento ao tocar
+  active:bg-blue-700
+"&gt;
+  Salvar
+&lt;/button&gt;
+
+&lt;!-- Espacamento entre botoes --&gt;
+&lt;div class="flex gap-3"&gt;  &lt;!-- gap-3 = 12px --&gt;
+  &lt;button&gt;Cancelar&lt;/button&gt;
+  &lt;button&gt;Confirmar&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Lista com itens tocaveis --&gt;
+&lt;ul class="divide-y divide-dark-600"&gt;
+  &lt;li class="
+    py-4 px-4       // Padding generoso
+    min-h-[56px]    // Altura minima
+    flex items-center
+    active:bg-dark-700  // Feedback
+  "&gt;
+    Item da lista
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- CSS para desabilitar zoom no double-tap --&gt;
+&lt;style&gt;
+* {
+  touch-action: manipulation;
+}
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-emerald-400 mb-3">✓ Fazer</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Botoes de pelo menos 44x44px</li>
+              <li>• Espaco entre elementos clicaveis</li>
+              <li>• Feedback visual ao tocar (active states)</li>
+              <li>• Acoes destrutivas com confirmacao</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+            <h5 class="font-semibold text-red-400 mb-3">✗ Evitar</h5>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Links muito pequenos ou proximos</li>
+              <li>• Hover-only interactions em mobile</li>
+              <li>• Gestos complexos sem alternativa</li>
+              <li>• Formularios com teclado cobrindo inputs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6: Testando Responsividade -->
+    <section class="mb-16">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-lg flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span>🧪</span> Testando Responsividade
+          </h2>
+          <p class="text-neutral-400 mt-1">Ferramentas e tecnicas para garantir que funciona em todos dispositivos</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <p class="text-neutral-300 leading-relaxed">
+          <strong class="text-blue-400">DevTools do navegador</strong> e sua principal ferramenta. Chrome, Firefox e Safari tem modos de emulacao responsiva. Mas emuladores nao substituem teste em dispositivos reais - touch, performance e renderizacao podem variar.
+        </p>
+
+        <p class="text-neutral-300 leading-relaxed">
+          Estabeleca um <strong class="text-white">conjunto de dispositivos de teste</strong>: um iPhone (Safari iOS), um Android mid-range (Chrome), e um tablet. Teste em conexoes lentas (3G) para verificar performance. BrowserStack e LambdaTest oferecem dispositivos virtuais na nuvem.
+        </p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Detalhamento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 class="font-medium text-white mb-3">Ferramentas de Teste</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span><strong>Chrome DevTools:</strong> Cmd+Shift+M para modo responsivo</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span><strong>Responsively:</strong> App que mostra multiplos devices</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span><strong>BrowserStack:</strong> Dispositivos reais na nuvem</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">•</span>
+                  <span><strong>Lighthouse:</strong> Audit de mobile-friendliness</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium text-white mb-3">Larguras para Testar</h5>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">320px:</span>
+                  <span>iPhone SE - menor comum</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">375px:</span>
+                  <span>iPhone 12/13/14</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">768px:</span>
+                  <span>iPad portrait</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">1024px:</span>
+                  <span>iPad landscape / laptops</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400">1440px:</span>
+                  <span>Desktop padrao</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-semibold text-blue-400 mb-4">Box de Dados</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold text-white">320px</div>
+              <div class="text-sm text-neutral-400">Largura minima</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">5</div>
+              <div class="text-sm text-neutral-400">Breakpoints padrao</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">3G</div>
+              <div class="text-sm text-neutral-400">Testar conexao lenta</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">2-3</div>
+              <div class="text-sm text-neutral-400">Devices reais minimos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist de Teste -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-white mb-4">Checklist de Teste Responsivo</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Funciona em 320px de largura</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Sem scroll horizontal indesejado</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Texto legivel sem zoom</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Botoes com tamanho adequado para touch</span>
+              </label>
+            </div>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Menu mobile funciona corretamente</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Tabelas tem scroll ou adaptacao</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Imagens responsivas (max-width: 100%)</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-neutral-300">
+                <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                <span>Performance OK em 3G</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6">
+          <h4 class="font-semibold text-emerald-400 mb-3">💡 Dica Pratica</h4>
+          <p class="text-neutral-300 text-sm">
+            No Chrome DevTools, ative <strong class="text-white">"Show media queries"</strong> na barra de ferramentas responsiva. Isso mostra barras coloridas indicando onde cada breakpoint comeca, facilitando identificar problemas de transicao.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo -->
+    <section class="mb-12 bg-dark-800 rounded-xl border border-dark-600 p-6">
+      <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+        <span>📋</span> Resumo do Modulo
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Aplicar filosofia mobile-first em todo CSS</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Dominar breakpoints md: e lg: do Tailwind</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Implementar tabelas responsivas com scroll</span>
+          </label>
+        </div>
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Criar menu mobile com drawer e overlay</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Garantir alvos de toque de 44px+</span>
+          </label>
+          <label class="flex items-start gap-3 text-neutral-300">
+            <input type="checkbox" class="mt-1 rounded bg-dark-700 border-dark-500 text-blue-500">
+            <span>Testar em multiplos dispositivos e conexoes</span>
+          </label>
         </div>
       </div>
     </section>
 
     <!-- Navigation -->
     <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="modulo-2-5.html" class="text-blue-400 hover:text-blue-300">← Estados e Feedback</a>
-      <a href="modulo-2-7.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Notificacoes e Alertas →</a>
+      <a href="modulo-2-5.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+        <span>←</span> Layouts e Grid Systems
+      </a>
+      <a href="modulo-2-7.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors flex items-center gap-2">
+        Animacoes e Transicoes <span>→</span>
+      </a>
     </div>
 
   </main>
 
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Formularios em Dashboards</p>
-      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      <p>Dashboard Mastery - Responsividade</p>
+      <p class="mt-2">
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a>
+      </p>
     </div>
   </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 
 </body>
 </html>

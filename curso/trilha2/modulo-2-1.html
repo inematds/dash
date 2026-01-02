@@ -26,7 +26,7 @@
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
+  <!-- Navigation Global -->
   <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
@@ -38,43 +38,120 @@
           <span class="text-neutral-600">|</span>
           <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
         </div>
-        <div class="flex items-center space-x-2">
-          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm hidden sm:inline">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm hidden sm:inline">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Header -->
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400">Modulo 2.1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header com Stats -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="max-w-4xl mx-auto px-4">
       <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.1</span>
       <h1 class="text-3xl sm:text-4xl font-bold mb-4">📦 Componentes de Dados</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Cards, KPIs, metricas e componentes visuais para exibir dados de forma clara e impactante.</p>
+      <p class="text-lg text-neutral-400 max-w-2xl mb-8">Cards, KPIs, metricas e componentes visuais para exibir dados de forma clara e impactante em dashboards profissionais.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-500">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xl font-bold text-blue-400">45min</div>
+          <div class="text-xs text-neutral-500">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-xl font-bold text-blue-400">Basico</div>
+          <div class="text-xs text-neutral-500">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 1 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Anatomia de um Card de Dados</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🎴 Anatomia de um Card de Dados</h2>
+          <p class="text-neutral-400 text-sm">Estrutura e elementos fundamentais</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Um Card de Dados e a unidade fundamental de informacao em dashboards. E um container visual que agrupa um valor principal, rotulo descritivo, indicador de tendencia e contexto adicional. Diferente de cards decorativos, cards de dados sao otimizados para leitura rapida e tomada de decisao.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Um <strong class="text-blue-400">Card de Dados</strong> e a unidade fundamental de informacao em dashboards. E um container visual que agrupa um valor principal, rotulo descritivo, indicador de tendencia e contexto adicional. Diferente de cards decorativos, cards de dados sao otimizados para leitura rapida e tomada de decisao instantanea.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Cards bem projetados permitem que usuarios compreendam metricas em <strong class="text-white">menos de 3 segundos</strong>. Sao o primeiro elemento que executivos olham ao abrir um dashboard. Um card mal projetado causa confusao e desconfianca nos dados apresentados.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Cards bem projetados permitem que usuarios compreendam metricas em menos de 3 segundos. Sao o primeiro elemento que executivos olham ao abrir um dashboard. Um card mal projetado causa confusao e desconfianca nos dados.</p>
+
+        <!-- Box de Detalhamento -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Elementos de um Card de Dados
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">1. Rotulo + Icone</div>
+              <p class="text-neutral-400 text-sm">Identifica a metrica. Deve ser curto e claro (ex: "Receita Total").</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">2. Valor Principal</div>
+              <p class="text-neutral-400 text-sm">O numero mais importante. Maior fonte, maximo destaque visual.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">3. Indicador de Tendencia</div>
+              <p class="text-neutral-400 text-sm">Mostra variacao (ex: ▲ 12.5%). Usa cores semanticas.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">4. Contexto Adicional</div>
+              <p class="text-neutral-400 text-sm">Informacao complementar (meta, periodo, comparacao).</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+
+        <!-- Diagrama Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Anatomia Visual
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre class="text-neutral-300">
 ┌─────────────────────────────────────┐
 │  💰 Receita Total                   │  ← Rotulo + Icone
@@ -85,23 +162,31 @@
 │  Meta: R$ 1.500.000                │  ← Contexto adicional
 └─────────────────────────────────────┘
 
-Hierarquia Visual:
-1. Valor Principal - maior, mais contraste
-2. Rotulo - menor, neutro
-3. Tendencia - cor semantica
-4. Contexto - discreto</pre>
+Hierarquia Visual (do mais ao menos importante):
+1. Valor Principal → maior fonte, mais contraste
+2. Rotulo → menor, cor neutra
+3. Tendencia → cor semantica (verde/vermelho)
+4. Contexto → discreto, complementar</pre>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+
+        <!-- Codigo de Exemplo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Card de Dados Basico
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+  &lt;!-- Rotulo + Icone --&gt;
   &lt;div class="flex items-center justify-between mb-2"&gt;
     &lt;span class="text-neutral-400 text-sm"&gt;Receita Total&lt;/span&gt;
     &lt;span class="text-2xl"&gt;💰&lt;/span&gt;
   &lt;/div&gt;
+
+  &lt;!-- Valor Principal --&gt;
   &lt;div class="text-3xl font-bold mb-2"&gt;R$ 1.234.567&lt;/div&gt;
+
+  &lt;!-- Tendencia --&gt;
   &lt;div class="flex items-center text-sm"&gt;
     &lt;span class="text-emerald-400"&gt;▲ 12.5%&lt;/span&gt;
     &lt;span class="text-neutral-500 ml-2"&gt;vs mes anterior&lt;/span&gt;
@@ -109,58 +194,105 @@ Hierarquia Visual:
 &lt;/div&gt;</pre>
           </div>
         </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Regra dos 3 segundos:</strong> Se um usuario nao conseguir entender a metrica em 3 segundos, seu card precisa ser simplificado. Teste com pessoas de fora do projeto - se precisarem perguntar o que significa, redesenhe.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Topico 2 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 2 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">KPIs - Key Performance Indicators</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🎯 KPIs - Key Performance Indicators</h2>
+          <p class="text-neutral-400 text-sm">Metricas que realmente importam</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">KPIs sao metricas criticas que medem o sucesso de um objetivo. Diferente de metricas comuns, KPIs estao sempre ligados a metas especificas e sao usados para tomada de decisao estrategica. Em dashboards, KPIs ocupam posicao de destaque e tem tratamento visual diferenciado.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">KPIs</strong> (Key Performance Indicators) sao metricas criticas que medem o sucesso de um objetivo especifico. Diferente de metricas comuns, KPIs estao sempre ligados a metas e sao usados para tomada de decisao estrategica.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Em dashboards, KPIs ocupam posicao de destaque e tem tratamento visual diferenciado. Saber distinguir KPIs de metricas secundarias e crucial - <strong class="text-white">KPIs mal escolhidos levam a decisoes erradas</strong>.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Saber distinguir KPIs de metricas secundarias e crucial. KPIs mal escolhidos levam a decisoes erradas. A visualizacao correta de KPIs permite identificar problemas antes que se tornem criticos.</p>
+
+        <!-- Box de Dados - Tipos de KPIs -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📊</span> Tipos de KPIs em Dashboards
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-white mb-2">1. KPIs de Resultado (Lagging)</div>
+              <p class="text-neutral-400 text-sm mb-2">Mostram o que JA aconteceu. Exemplos: Receita, Lucro, Churn Rate.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Receita</span>
+                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Lucro</span>
+                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Churn</span>
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-emerald-500">
+              <div class="font-semibold text-white mb-2">2. KPIs Direcionadores (Leading)</div>
+              <p class="text-neutral-400 text-sm mb-2">Preveem resultados futuros. Exemplos: Leads gerados, Conversoes, NPS.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded">Leads</span>
+                <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded">Conversoes</span>
+                <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded">NPS</span>
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-white mb-2">3. KPIs Operacionais</div>
+              <p class="text-neutral-400 text-sm mb-2">Medem saude do sistema. Exemplos: Tempo de resposta, Uptime, SLA.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded">Uptime</span>
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded">Latencia</span>
+                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded">SLA</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+
+        <!-- Layout Recomendado -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📐</span> Layout Recomendado de KPIs
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre class="text-neutral-300">
-Tipos de KPIs em Dashboards:
+Regra: Maximo de 4-6 KPIs visiveis na tela principal
 
-1. RESULTADO (Lagging)
-   - Receita, Lucro, Churn
-   - Mostram o que JA aconteceu
-   - Cor: neutro ou baseado em meta
-
-2. DIRECIONADORES (Leading)
-   - Leads, Conversoes, NPS
-   - Preveem resultados futuros
-   - Cor: destaque para atencao
-
-3. OPERACIONAIS
-   - Tempo de resposta, Uptime
-   - Saude do sistema
-   - Cor: verde/amarelo/vermelho
-
-Layout Recomendado:
+Layout Desktop (4 colunas):
 ┌─────────┬─────────┬─────────┬─────────┐
 │  KPI 1  │  KPI 2  │  KPI 3  │  KPI 4  │
 │ RECEITA │ CLIENTES│  CHURN  │   NPS   │
+│  R$1.2M │  4.523  │  2.3%   │   72    │
+│  ▲12.5% │  ▲8.3%  │  ▼0.5%  │  ▲5pts  │
 └─────────┴─────────┴─────────┴─────────┘
-     ↑ Maximo 4-6 KPIs visiveis</pre>
+
+Prioridade (esquerda → direita):
+Mais importante → Menos importante</pre>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- KPI com Progress Ring --&gt;
+
+        <!-- Codigo KPI com Progress Ring -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: KPI com Progress Ring
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- KPI com indicador circular de progresso --&gt;
 &lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
   &lt;div class="flex items-center justify-between"&gt;
     &lt;div&gt;
@@ -170,159 +302,302 @@ Layout Recomendado:
     &lt;/div&gt;
     &lt;div class="relative w-16 h-16"&gt;
       &lt;svg class="w-16 h-16 -rotate-90"&gt;
-        &lt;circle cx="32" cy="32" r="28" stroke="#374151"
-                stroke-width="4" fill="none"/&gt;
-        &lt;circle cx="32" cy="32" r="28" stroke="#3b82f6"
-                stroke-width="4" fill="none"
-                stroke-dasharray="175.9"
-                stroke-dashoffset="38.7"/&gt;
+        &lt;!-- Background circle --&gt;
+        &lt;circle cx="32" cy="32" r="28"
+                stroke="#374151" stroke-width="4" fill="none"/&gt;
+        &lt;!-- Progress circle --&gt;
+        &lt;circle cx="32" cy="32" r="28"
+                stroke="#3b82f6" stroke-width="4" fill="none"
+                stroke-dasharray="175.9" stroke-dashoffset="38.7"/&gt;
       &lt;/svg&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
           </div>
         </div>
+
+        <!-- Comparacao Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Limitar a 4-6 KPIs principais</li>
+                <li>• Conectar KPIs a metas claras</li>
+                <li>• Usar cores semanticas consistentes</li>
+                <li>• Atualizar em tempo real ou quase</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Exibir 10+ KPIs na mesma tela</li>
+                <li>• KPIs sem meta definida</li>
+                <li>• Cores aleatorias ou decorativas</li>
+                <li>• Dados desatualizados sem aviso</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Topico 3 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 3 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Formatacao de Numeros e Valores</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔢 Formatacao de Numeros e Valores</h2>
+          <p class="text-neutral-400 text-sm">Legibilidade e contexto numerico</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Formatacao de numeros e a arte de exibir valores de forma legivel e apropriada ao contexto. Inclui abreviacao de grandes numeros (1.2M ao inves de 1.234.567), formatacao de moeda, percentuais, datas e numeros negativos. E crucial para a usabilidade do dashboard.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Formatacao de numeros</strong> e a arte de exibir valores de forma legivel e apropriada ao contexto. Inclui abreviacao de grandes numeros (1.2M ao inves de 1.234.567), formatacao de moeda, percentuais, datas e numeros negativos.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Numeros mal formatados causam confusao e erros de interpretacao. <strong class="text-white">"1234567" e muito mais dificil de ler que "R$ 1.23M"</strong>. A formatacao correta reduz a carga cognitiva e acelera a tomada de decisao.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Numeros mal formatados causam confusao e erros de interpretacao. "1234567" e muito mais dificil de ler que "R$ 1.23M". A formatacao correta reduz a carga cognitiva e acelera a tomada de decisao.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-Regras de Formatacao:
 
-MOEDA
-  ✓ R$ 1.234,56    (valores pequenos)
-  ✓ R$ 1.2M        (milhoes)
-  ✓ R$ 3.4B        (bilhoes)
-  ✗ R$ 1234567.89  (nunca!)
-
-PERCENTUAIS
-  ✓ 12.5%          (uma casa decimal)
-  ✓ 0.05%          (valores pequenos)
-  ✗ 12.456789%     (precisao excessiva)
-
-GRANDES NUMEROS
-  1.000      → 1K
-  1.000.000  → 1M
-  1.000.000.000 → 1B
-
-DATAS
-  ✓ 15 Jan 2024    (legivel)
-  ✓ Ontem, 14:30   (relativo)
-  ✗ 2024-01-15T14:30:00Z (tecnico)</pre>
+        <!-- Tabela de Regras -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📏</span> Regras de Formatacao
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">💵 Moeda</div>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="text-emerald-400">✓ R$ 1.234,56</div>
+                <div class="text-neutral-500">valores pequenos</div>
+                <div class="text-emerald-400">✓ R$ 1.2M</div>
+                <div class="text-neutral-500">milhoes</div>
+                <div class="text-emerald-400">✓ R$ 3.4B</div>
+                <div class="text-neutral-500">bilhoes</div>
+                <div class="text-red-400">✗ R$ 1234567.89</div>
+                <div class="text-neutral-500">nunca assim!</div>
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">📊 Percentuais</div>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="text-emerald-400">✓ 12.5%</div>
+                <div class="text-neutral-500">uma casa decimal</div>
+                <div class="text-emerald-400">✓ 0.05%</div>
+                <div class="text-neutral-500">valores pequenos</div>
+                <div class="text-red-400">✗ 12.456789%</div>
+                <div class="text-neutral-500">precisao excessiva</div>
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">📅 Datas</div>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="text-emerald-400">✓ 15 Jan 2024</div>
+                <div class="text-neutral-500">legivel</div>
+                <div class="text-emerald-400">✓ Ontem, 14:30</div>
+                <div class="text-neutral-500">relativo</div>
+                <div class="text-red-400">✗ 2024-01-15T14:30:00Z</div>
+                <div class="text-neutral-500">muito tecnico</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Funcao de formatacao
+
+        <!-- Abreviacoes -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔤</span> Padroes de Abreviacao
+          </h3>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-neutral-400 text-sm mb-1">1.000</div>
+              <div class="text-2xl font-bold text-blue-400">1K</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-neutral-400 text-sm mb-1">1.000.000</div>
+              <div class="text-2xl font-bold text-blue-400">1M</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-neutral-400 text-sm mb-1">1.000.000.000</div>
+              <div class="text-2xl font-bold text-blue-400">1B</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo de Formatacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Funcao de Formatacao
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Funcao universal de formatacao
 function formatNumber(value, type = 'number') {
+  // Moeda com abreviacao inteligente
   if (type === 'currency') {
     if (value >= 1e9) return `R$ ${(value/1e9).toFixed(1)}B`;
     if (value >= 1e6) return `R$ ${(value/1e6).toFixed(1)}M`;
     if (value >= 1e3) return `R$ ${(value/1e3).toFixed(1)}K`;
     return new Intl.NumberFormat('pt-BR', {
-      style: 'currency', currency: 'BRL'
+      style: 'currency',
+      currency: 'BRL'
     }).format(value);
   }
 
+  // Percentuais com 1 casa decimal
   if (type === 'percent') {
     return `${value.toFixed(1)}%`;
   }
 
+  // Numeros com separador de milhar
   return new Intl.NumberFormat('pt-BR').format(value);
 }
 
-// Uso
-formatNumber(1234567, 'currency') // "R$ 1.2M"
-formatNumber(0.125, 'percent')     // "12.5%"</pre>
+// Exemplos de uso
+formatNumber(1234567, 'currency')  // "R$ 1.2M"
+formatNumber(12.5678, 'percent')   // "12.6%"
+formatNumber(9876543)              // "9.876.543"</pre>
           </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Consistencia e chave:</strong> Se voce usa "1.2M" em um card, use o mesmo formato em todos. Misturar "1.200.000" e "1.2M" na mesma tela confunde o usuario e dificulta comparacoes rapidas.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Topico 4 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 4 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Indicadores de Tendencia</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">📈 Indicadores de Tendencia</h2>
+          <p class="text-neutral-400 text-sm">Contexto temporal e direcao</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Indicadores de tendencia mostram a direcao e magnitude da mudanca de uma metrica ao longo do tempo. Podem ser setas, percentuais de variacao, sparklines ou comparacoes com periodos anteriores. Sao essenciais para contexto temporal.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Indicadores de tendencia</strong> mostram a direcao e magnitude da mudanca de uma metrica ao longo do tempo. Podem ser setas, percentuais de variacao, sparklines ou comparacoes com periodos anteriores.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Um numero sozinho nao tem significado. <strong class="text-white">"R$ 100.000" e bom ou ruim?</strong> Depende se subiu 50% ou caiu 30%. Tendencias transformam dados estaticos em insights acionaveis.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Um numero sozinho nao tem significado. "R$ 100.000" e bom ou ruim? Depende se subiu 50% ou caiu 30%. Tendencias transformam dados estaticos em insights acionaveis.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-Tipos de Indicadores:
 
-1. SETA + PERCENTUAL
-   ▲ 12.5%  (verde = positivo)
-   ▼ 8.3%   (vermelho = negativo)
-   → 0.0%   (neutro = estavel)
-
-2. COMPARATIVO
-   vs ontem: +R$ 5.000
-   vs mes passado: -3.2%
-   vs meta: 78% atingido
-
-3. SPARKLINE (mini grafico)
-   ▁▂▃▄▅▆▇█▇▆  (tendencia visual)
-
-4. CORES SEMANTICAS
-   Verde  = positivo/meta atingida
-   Amarelo = atencao/proximo do limite
-   Vermelho = negativo/abaixo da meta
-
-CUIDADO: Nem sempre "subiu" = bom
-- Churn subiu → RUIM (vermelho)
-- Custo subiu → RUIM (vermelho)
-- Reclamacoes subiram → RUIM</pre>
+        <!-- Tipos de Indicadores -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Tipos de Indicadores
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-4">
+              <div>
+                <div class="font-semibold text-white">Seta + Percentual</div>
+                <div class="text-neutral-400 text-sm">O mais comum e direto</div>
+              </div>
+              <div class="flex space-x-4">
+                <span class="text-emerald-400">▲ 12.5%</span>
+                <span class="text-red-400">▼ 8.3%</span>
+                <span class="text-neutral-400">→ 0.0%</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-4">
+              <div>
+                <div class="font-semibold text-white">Comparativo Textual</div>
+                <div class="text-neutral-400 text-sm">Mais contexto</div>
+              </div>
+              <div class="text-neutral-300 text-sm">vs ontem: +R$ 5.000</div>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-4">
+              <div>
+                <div class="font-semibold text-white">Sparkline</div>
+                <div class="text-neutral-400 text-sm">Tendencia visual</div>
+              </div>
+              <div class="text-blue-400 font-mono">▁▂▃▄▅▆▇█▇▆</div>
+            </div>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Indicador de Tendencia --&gt;
+
+        <!-- Cores Semanticas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🎨</span> Cores Semanticas
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🟢</div>
+              <div class="text-emerald-400 font-semibold">Verde</div>
+              <div class="text-neutral-400 text-sm">Positivo / Meta atingida</div>
+            </div>
+            <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🟡</div>
+              <div class="text-yellow-400 font-semibold">Amarelo</div>
+              <div class="text-neutral-400 text-sm">Atencao / Proximo do limite</div>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🔴</div>
+              <div class="text-red-400 font-semibold">Vermelho</div>
+              <div class="text-neutral-400 text-sm">Negativo / Abaixo da meta</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerta Importante -->
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-3 flex items-center">
+            <span class="mr-2">⚠️</span> Cuidado: Nem sempre "subiu" = bom!
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <div class="bg-dark-800/50 rounded-lg p-3">
+              <div class="text-red-400 font-semibold">Churn subiu → RUIM</div>
+              <div class="text-neutral-400">Mais clientes saindo</div>
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-3">
+              <div class="text-red-400 font-semibold">Custo subiu → RUIM</div>
+              <div class="text-neutral-400">Gastando mais</div>
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-3">
+              <div class="text-red-400 font-semibold">Bugs subiram → RUIM</div>
+              <div class="text-neutral-400">Qualidade caindo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Indicador de Tendencia
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- Componente de Tendencia --&gt;
 &lt;div class="flex items-center space-x-2"&gt;
-  &lt;!-- Valor positivo --&gt;
+  &lt;!-- Positivo (verde) --&gt;
   &lt;span class="flex items-center text-emerald-400"&gt;
     &lt;svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"&gt;
-      &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4" /&gt;
+      &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4"/&gt;
     &lt;/svg&gt;
     12.5%
   &lt;/span&gt;
   &lt;span class="text-neutral-500 text-sm"&gt;vs mes anterior&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;!-- Valor negativo (para metricas onde queda e ruim) --&gt;
+&lt;!-- Negativo (vermelho) --&gt;
 &lt;div class="flex items-center text-red-400"&gt;
   &lt;svg class="w-4 h-4 mr-1 rotate-180" fill="currentColor" viewBox="0 0 20 20"&gt;
-    &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4" /&gt;
+    &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4"/&gt;
   &lt;/svg&gt;
   8.3%
 &lt;/div&gt;</pre>
@@ -331,42 +606,48 @@ CUIDADO: Nem sempre "subiu" = bom
       </div>
     </section>
 
-    <!-- Topico 5 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 5 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Stat Cards e Metric Grids</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">📱 Stat Cards e Metric Grids</h2>
+          <p class="text-neutral-400 text-sm">Layouts padronizados e responsivos</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Stat Cards sao componentes padronizados para exibir metricas. Metric Grids sao layouts que organizam multiplos cards de forma consistente. Juntos, formam a "area de resumo executivo" do dashboard, geralmente no topo da pagina.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Padronizacao e crucial. Cards com tamanhos e estilos diferentes confundem o usuario. Um grid bem organizado permite comparacao rapida entre metricas e cria hierarquia visual clara.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-Grid de Metricas - Layout Padrao:
 
-Desktop (4 colunas):
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Stat Cards</strong> sao componentes padronizados para exibir metricas. <strong class="text-blue-400">Metric Grids</strong> sao layouts que organizam multiplos cards de forma consistente.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Juntos, formam a <strong class="text-white">"area de resumo executivo"</strong> do dashboard, geralmente no topo da pagina. Padronizacao e crucial - cards com tamanhos e estilos diferentes confundem o usuario.
+          </p>
+        </div>
+
+        <!-- Layouts Responsivos -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📐</span> Layouts Responsivos
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-neutral-300">
+Desktop (4 colunas) - lg:grid-cols-4
 ┌─────────┬─────────┬─────────┬─────────┐
 │ Receita │ Clientes│ Pedidos │  Ticket │
 │  R$1.2M │   4.523 │  1.234  │  R$ 890 │
-│  ▲12.5% │  ▲8.3%  │  ▼2.1%  │  ▲5.7%  │
 └─────────┴─────────┴─────────┴─────────┘
 
-Tablet (2 colunas):
+Tablet (2 colunas) - sm:grid-cols-2
 ┌─────────┬─────────┐
 │ Receita │ Clientes│
 ├─────────┼─────────┤
 │ Pedidos │  Ticket │
 └─────────┴─────────┘
 
-Mobile (1 coluna):
+Mobile (1 coluna) - grid-cols-1
 ┌─────────┐
 │ Receita │
 ├─────────┤
@@ -375,20 +656,61 @@ Mobile (1 coluna):
 │ Pedidos │
 ├─────────┤
 │  Ticket │
-└─────────┘
-
-Tailwind Grid:
-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4</pre>
+└─────────┘</pre>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Metric Grid Responsivo --&gt;
+
+        <!-- Exemplo Visual Real -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">👁️</span> Exemplo Visual (ao vivo)
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-400 text-sm">Receita</span>
+                <span class="text-xl">💰</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">R$ 1.2M</div>
+              <div class="text-emerald-400 text-sm">▲ 12.5%</div>
+            </div>
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-400 text-sm">Clientes</span>
+                <span class="text-xl">👥</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">4.523</div>
+              <div class="text-emerald-400 text-sm">▲ 8.3%</div>
+            </div>
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-400 text-sm">Pedidos</span>
+                <span class="text-xl">📦</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">1.234</div>
+              <div class="text-red-400 text-sm">▼ 2.1%</div>
+            </div>
+            <div class="bg-dark-700 rounded-xl p-4 border border-dark-600">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-400 text-sm">Ticket Medio</span>
+                <span class="text-xl">🎫</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">R$ 890</div>
+              <div class="text-emerald-400 text-sm">▲ 5.7%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Metric Grid Responsivo
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- Grid responsivo: 1 col mobile, 2 tablet, 4 desktop --&gt;
 &lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"&gt;
 
-  &lt;!-- Card 1 --&gt;
+  &lt;!-- Card padrao --&gt;
   &lt;div class="bg-dark-800 rounded-xl p-5 border border-dark-600"&gt;
     &lt;div class="flex items-center justify-between mb-3"&gt;
       &lt;span class="text-neutral-400 text-sm"&gt;Receita&lt;/span&gt;
@@ -399,67 +721,107 @@ grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4</pre>
     &lt;p class="text-emerald-400 text-sm"&gt;▲ 12.5%&lt;/p&gt;
   &lt;/div&gt;
 
-  &lt;!-- Card 2, 3, 4... mesmo padrao --&gt;
+  &lt;!-- Repetir para outros cards... --&gt;
 
 &lt;/div&gt;</pre>
           </div>
         </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Ordem importa:</strong> Coloque os KPIs mais importantes a esquerda (ou no topo no mobile). Usuarios leem da esquerda para direita - o primeiro card recebe mais atencao.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Topico 6 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 6 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Componentes de Comparacao</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚖️ Componentes de Comparacao</h2>
+          <p class="text-neutral-400 text-sm">Barras de progresso, gauges e bullet charts</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Componentes de Comparacao permitem visualizar dados lado a lado: atual vs meta, este mes vs mes anterior, produto A vs produto B. Incluem barras de progresso, gauges, bullet charts e tabelas comparativas.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Componentes de Comparacao</strong> permitem visualizar dados lado a lado: atual vs meta, este mes vs mes anterior, produto A vs produto B.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Comparacao e fundamental para decisoes. Sem contexto comparativo, numeros sao apenas numeros. <strong class="text-white">"Vendemos R$ 100k" so faz sentido comparando com a meta ou periodo anterior.</strong>
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Comparacao e fundamental para decisoes. Sem contexto comparativo, numeros sao apenas numeros. "Vendemos R$ 100k" so faz sentido comparando com a meta ou periodo anterior.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-Tipos de Componentes Comparativos:
 
-1. BARRA DE PROGRESSO
-   Meta: R$ 1M
-   ████████░░░░░░░░ 78%
-   Atual: R$ 780k
+        <!-- Tipos de Componentes -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🧩</span> Tipos de Componentes Comparativos
+          </h3>
+          <div class="space-y-6">
+            <!-- Barra de Progresso -->
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">1. Barra de Progresso</div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-neutral-400">Meta: R$ 1M</span>
+                <span class="text-neutral-300">78%</span>
+              </div>
+              <div class="h-3 bg-dark-600 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full" style="width: 78%"></div>
+              </div>
+              <div class="text-neutral-500 text-xs mt-1">Atual: R$ 780k</div>
+            </div>
 
-2. BULLET CHART (mais informacao)
-   ┌──────────────────────────────┐
-   │░░░░░░░░░░░░░░░░│█████│     │
-   │     ruim      │ ok  │ bom │ ← Ranges
-   │               ▼             │ ← Marcador
-   └──────────────────────────────┘
+            <!-- Comparacao Lado a Lado -->
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">2. Comparacao Lado a Lado</div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-dark-800 rounded-lg p-3 text-center">
+                  <div class="text-neutral-400 text-sm mb-1">Este Mes</div>
+                  <div class="text-2xl font-bold text-blue-400">R$ 120k</div>
+                  <div class="text-emerald-400 text-sm">▲ 20%</div>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3 text-center">
+                  <div class="text-neutral-400 text-sm mb-1">Mes Passado</div>
+                  <div class="text-2xl font-bold text-neutral-400">R$ 100k</div>
+                  <div class="text-neutral-500 text-sm">base</div>
+                </div>
+              </div>
+            </div>
 
-3. GAUGE (velocimetro)
-       ╭─────────╮
-      ╱    75%    ╲
-     ▕      ▲      ▏
-      ╲           ╱
-       ╰─────────╯
-
-4. COMPARACAO LADO A LADO
-   ┌─────────────┬─────────────┐
-   │  Este Mes   │  Mes Passado│
-   │   R$ 120k   │    R$ 100k  │
-   │   ▲ 20%     │             │
-   └─────────────┴─────────────┘</pre>
+            <!-- Bullet Chart -->
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">3. Bullet Chart</div>
+              <div class="relative h-8 bg-dark-600 rounded overflow-hidden">
+                <div class="absolute inset-y-0 left-0 w-1/3 bg-red-500/30"></div>
+                <div class="absolute inset-y-0 left-1/3 w-1/3 bg-yellow-500/30"></div>
+                <div class="absolute inset-y-0 right-0 w-1/3 bg-emerald-500/30"></div>
+                <div class="absolute inset-y-1 left-0 bg-blue-500 rounded" style="width: 65%"></div>
+                <div class="absolute inset-y-0 w-1 bg-white" style="left: 80%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-neutral-500 mt-1">
+                <span>Ruim</span>
+                <span>OK</span>
+                <span>Bom | Meta</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Barra de Progresso com Meta --&gt;
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Barra de Progresso com Meta
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- Barra de Progresso com Meta --&gt;
 &lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
   &lt;div class="flex justify-between text-sm mb-2"&gt;
     &lt;span class="text-neutral-400"&gt;Progresso da Meta&lt;/span&gt;
@@ -481,24 +843,122 @@ Tipos de Componentes Comparativos:
 &lt;/div&gt;</pre>
           </div>
         </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Mostrar claramente o que esta sendo comparado</li>
+                <li>• Usar a mesma escala para comparacoes</li>
+                <li>• Indicar unidades e periodo</li>
+                <li>• Highlight na diferenca, nao nos valores</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Escalas diferentes na mesma comparacao</li>
+                <li>• Comparar metricas incompativeis</li>
+                <li>• Omitir periodo ou contexto</li>
+                <li>• Cores que nao indicam significado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Navigation -->
-    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="index.html" class="text-blue-400 hover:text-blue-300">← Voltar para Trilha 2</a>
-      <a href="modulo-2-2.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Proximo: Graficos e Visualizacoes →</a>
-    </div>
+    <!-- ==================== RESUMO ==================== -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Cards de Dados</strong>
+              <span class="text-neutral-400"> - Estrutura com rotulo, valor, tendencia e contexto</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">KPIs</strong>
+              <span class="text-neutral-400"> - Metricas criticas ligadas a metas especificas</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Formatacao de Numeros</strong>
+              <span class="text-neutral-400"> - Abreviacoes, moeda, percentuais legiveis</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Indicadores de Tendencia</strong>
+              <span class="text-neutral-400"> - Setas, cores semanticas, sparklines</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Metric Grids</strong>
+              <span class="text-neutral-400"> - Layouts responsivos padronizados</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Componentes de Comparacao</strong>
+              <span class="text-neutral-400"> - Barras de progresso, bullet charts, comparativos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Voltar para Trilha 2
+          </a>
+          <a href="modulo-2-2.html" class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo: Graficos e Visualizacoes →
+          </a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
   <!-- Footer -->
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Componentes de Dados</p>
+      <p>Dashboard Mastery - Modulo 2.1: Componentes de Dados</p>
       <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
     </div>
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check saved preference
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
 
 </body>
 </html>

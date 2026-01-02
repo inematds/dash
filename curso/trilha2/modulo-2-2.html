@@ -19,11 +19,14 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
+  <!-- Navigation Global -->
   <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
@@ -35,194 +38,545 @@
           <span class="text-neutral-600">|</span>
           <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
         </div>
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm hidden sm:inline">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm hidden sm:inline">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- Header -->
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400">Modulo 2.2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header com Stats -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="max-w-4xl mx-auto px-4">
       <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.2</span>
       <h1 class="text-3xl sm:text-4xl font-bold mb-4">📈 Graficos e Visualizacoes</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Tipos de graficos, bibliotecas como Chart.js e quando usar cada visualizacao.</p>
+      <p class="text-lg text-neutral-400 max-w-2xl mb-8">Tipos de graficos, bibliotecas como Chart.js e ApexCharts, e quando usar cada visualizacao para comunicar dados efetivamente.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-500">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xl font-bold text-blue-400">60min</div>
+          <div class="text-xs text-neutral-500">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-xl font-bold text-blue-400">Intermediario</div>
+          <div class="text-xs text-neutral-500">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 1 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Quando Usar Cada Tipo de Grafico</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">🎯 Quando Usar Cada Tipo de Grafico</h2>
+          <p class="text-neutral-400 text-sm">Escolha certa para cada dado</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Cada tipo de grafico serve para um proposito especifico. Graficos de linha mostram tendencias, barras comparam categorias, pizza mostra proporcoes. Escolher errado distorce a mensagem dos dados.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">O grafico errado pode levar a interpretacoes equivocadas. Um grafico de pizza com 15 fatias e ilegivel. Um grafico de linha para dados categoricos nao faz sentido. A escolha correta comunica instantaneamente.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-GUIA DE SELECAO DE GRAFICOS:
 
-┌─────────────────────────────────────────────────┐
-│ OBJETIVO              │ TIPO RECOMENDADO        │
-├───────────────────────┼─────────────────────────┤
-│ Tendencia no tempo    │ Linha, Area             │
-│ Comparar categorias   │ Barra horizontal/vert   │
-│ Parte do todo         │ Pizza, Donut (max 5)    │
-│ Distribuicao          │ Histograma, Box plot    │
-│ Correlacao            │ Scatter plot            │
-│ Progresso             │ Gauge, Barra progresso  │
-│ Hierarquia            │ Treemap                 │
-│ Geografico            │ Mapa, Choropleth        │
-└───────────────────────┴─────────────────────────┘
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Cada tipo de grafico serve para um <strong class="text-blue-400">proposito especifico</strong>. Graficos de linha mostram tendencias, barras comparam categorias, pizza mostra proporcoes. Escolher o tipo errado pode distorcer completamente a mensagem dos dados.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            O grafico errado pode levar a interpretacoes equivocadas. <strong class="text-white">Um grafico de pizza com 15 fatias e ilegivel</strong>. Um grafico de linha para dados categoricos nao faz sentido. A escolha correta comunica instantaneamente.
+          </p>
+        </div>
 
-REGRAS DE OURO:
-✗ Pizza com mais de 5 fatias
-✗ 3D em qualquer grafico (distorce)
-✗ Eixo Y nao comecando em zero (barras)
-✓ Linha pode ter eixo Y truncado
-✓ Menos e mais - remova elementos desnecessarios</pre>
+        <!-- Guia de Selecao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Guia de Selecao de Graficos
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">📈</span>
+                <div>
+                  <div class="font-semibold text-white">Tendencia no tempo</div>
+                  <div class="text-neutral-400 text-sm">Evolucao de valores</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Linha, Area</span>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">📊</span>
+                <div>
+                  <div class="font-semibold text-white">Comparar categorias</div>
+                  <div class="text-neutral-400 text-sm">Qual e maior/menor</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Barra</span>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">🥧</span>
+                <div>
+                  <div class="font-semibold text-white">Parte do todo</div>
+                  <div class="text-neutral-400 text-sm">Proporcoes (max 5 categorias)</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Pizza, Donut</span>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">🎯</span>
+                <div>
+                  <div class="font-semibold text-white">Progresso vs Meta</div>
+                  <div class="text-neutral-400 text-sm">Quanto falta atingir</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Gauge, Progress</span>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">🔵</span>
+                <div>
+                  <div class="font-semibold text-white">Correlacao</div>
+                  <div class="text-neutral-400 text-sm">Relacao entre variaveis</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Scatter Plot</span>
+            </div>
+            <div class="flex items-center justify-between bg-dark-700/50 rounded-lg p-3">
+              <div class="flex items-center space-x-3">
+                <span class="text-xl">🗺️</span>
+                <div>
+                  <div class="font-semibold text-white">Dados geograficos</div>
+                  <div class="text-neutral-400 text-sm">Por regiao/pais</div>
+                </div>
+              </div>
+              <span class="text-blue-400 font-mono text-sm">Mapa, Choropleth</span>
+            </div>
           </div>
+        </div>
+
+        <!-- Regras de Ouro -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">⚠️ Regras de Ouro</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Nunca Faca</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Pizza com mais de 5 fatias</li>
+                <li>• 3D em qualquer grafico (distorce)</li>
+                <li>• Eixo Y nao comecando em zero (barras)</li>
+                <li>• Cores aleatorias sem significado</li>
+              </ul>
+            </div>
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Sempre Faca</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Linha pode ter eixo Y truncado</li>
+                <li>• Menos e mais - remova elementos desnecessarios</li>
+                <li>• Titulo claro explicando o grafico</li>
+                <li>• Cores consistentes = significados consistentes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dica Pratica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Teste do relance:</strong> Se alguem nao conseguir entender a mensagem principal do seu grafico em 5 segundos olhando rapidamente, ele precisa ser simplificado ou o tipo esta errado.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Topico 2 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 2 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">Chart.js - Setup e Configuracao</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">📦 Chart.js - Setup e Configuracao</h2>
+          <p class="text-neutral-400 text-sm">A biblioteca mais popular para graficos web</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Chart.js e a biblioteca de graficos mais popular para web. Leve (~60KB), responsiva, animada e com 8 tipos de graficos nativos. Perfeita para dashboards por ser simples de configurar e altamente customizavel.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Chart.js</strong> e a biblioteca de graficos mais popular para web. Leve (~60KB), responsiva, animada e com 8 tipos de graficos nativos. Perfeita para dashboards por ser simples de configurar e altamente customizavel.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            E o <strong class="text-white">padrao da industria</strong> para graficos em dashboards. Documentacao excelente, comunidade ativa e compativel com qualquer framework (React, Vue, Angular, vanilla JS).
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">E o padrao da industria para graficos em dashboards. Documentacao excelente, comunidade ativa e compativel com qualquer framework. Alternativas como ApexCharts ou Recharts seguem padroes similares.</p>
+
+        <!-- Comparacao de Bibliotecas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">⚖️</span> Comparacao de Bibliotecas
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-2 text-neutral-400">Biblioteca</th>
+                  <th class="text-left py-3 px-2 text-neutral-400">Tamanho</th>
+                  <th class="text-left py-3 px-2 text-neutral-400">Melhor Para</th>
+                  <th class="text-left py-3 px-2 text-neutral-400">Curva</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-2 font-semibold text-blue-400">Chart.js</td>
+                  <td class="py-3 px-2">~60KB</td>
+                  <td class="py-3 px-2">Dashboards gerais</td>
+                  <td class="py-3 px-2 text-emerald-400">Facil</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-2 font-semibold">ApexCharts</td>
+                  <td class="py-3 px-2">~450KB</td>
+                  <td class="py-3 px-2">Graficos interativos</td>
+                  <td class="py-3 px-2 text-yellow-400">Media</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-2 font-semibold">D3.js</td>
+                  <td class="py-3 px-2">~240KB</td>
+                  <td class="py-3 px-2">Visualizacoes custom</td>
+                  <td class="py-3 px-2 text-red-400">Dificil</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-semibold">Recharts</td>
+                  <td class="py-3 px-2">~150KB</td>
+                  <td class="py-3 px-2">React apps</td>
+                  <td class="py-3 px-2 text-emerald-400">Facil</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- 1. Incluir Chart.js --&gt;
+
+        <!-- Codigo Setup -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Setup Basico Chart.js
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- 1. Incluir Chart.js via CDN --&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
 
 &lt;!-- 2. Canvas para o grafico --&gt;
-&lt;canvas id="myChart" class="w-full h-64"&gt;&lt;/canvas&gt;
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+  &lt;canvas id="myChart" class="w-full" style="height: 300px"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
 
-&lt;!-- 3. Configuracao --&gt;
+&lt;!-- 3. Configuracao do Grafico --&gt;
 &lt;script&gt;
 const ctx = document.getElementById('myChart');
 
 new Chart(ctx, {
-  type: 'line', // bar, pie, doughnut, radar...
+  type: 'line',  // bar, pie, doughnut, radar, polarArea...
   data: {
     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
     datasets: [{
       label: 'Vendas 2024',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [12000, 19000, 15000, 22000, 18000, 25000],
       borderColor: '#3b82f6',
       backgroundColor: 'rgba(59, 130, 246, 0.1)',
-      tension: 0.4, // curva suave
-      fill: true
+      tension: 0.4,    // curva suave
+      fill: true,       // preencher area
+      pointRadius: 4,
+      pointHoverRadius: 6
     }]
   },
   options: {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: false }
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1f2937',
+        titleColor: '#f3f4f6',
+        bodyColor: '#9ca3af',
+        borderColor: '#374151',
+        borderWidth: 1
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: { color: '#374151' }
+      },
+      x: {
+        grid: { display: false }
+      }
     }
   }
 });
 &lt;/script&gt;</pre>
           </div>
         </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Mantenha consistencia:</strong> Configure os defaults do Chart.js uma vez no inicio do projeto. Assim todos os graficos terao o mesmo estilo automaticamente, sem precisar repetir configuracoes.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Topico 3 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 3 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Graficos de Linha e Area</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">📉 Graficos de Linha e Area</h2>
+          <p class="text-neutral-400 text-sm">Tendencias ao longo do tempo</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Graficos de linha mostram tendencias ao longo do tempo. Graficos de area sao linhas com preenchimento, uteis para mostrar volume ou acumulado. Ambos sao essenciais para dashboards de monitoramento.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">90% dos dashboards precisam mostrar "como algo mudou ao longo do tempo". Vendas mensais, usuarios ativos, temperatura - tudo e tendencia. Dominar graficos de linha e fundamental.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-Anatomia do Grafico de Linha:
 
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Graficos de linha</strong> mostram tendencias ao longo do tempo. <strong class="text-blue-400">Graficos de area</strong> sao linhas com preenchimento, uteis para mostrar volume ou valores acumulados.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            <strong class="text-white">90% dos dashboards</strong> precisam mostrar "como algo mudou ao longo do tempo". Vendas mensais, usuarios ativos, temperatura - tudo e tendencia. Dominar graficos de linha e fundamental.
+          </p>
+        </div>
+
+        <!-- Anatomia Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Anatomia do Grafico de Linha
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-neutral-300">
         Titulo do Grafico
     │
-100 ┤                    ●────  Tooltip
+100 ┤                    ●────  Tooltip (hover)
  80 ┤         ╱╲        ╱
- 60 ┤    ╱╲  ╱  ╲      ╱
+ 60 ┤    ╱╲  ╱  ╲      ╱       ← Linha principal
  40 ┤   ╱  ╲╱    ╲    ╱
- 20 ┤  ╱          ╲──╱
-  0 ┼──┬──┬──┬──┬──┬──┬
-     J  F  M  A  M  J  J
+ 20 ┤  ╱          ╲──╱         ← Area preenchida
+  0 ┼──┬──┬──┬──┬──┬──┬──
+     J  F  M  A  M  J  J        ← Eixo X (tempo)
+         ↑
+     Eixo Y (valores)
 
 Elementos:
-• Linha: dados principais
+• Linha: dados principais (destaque)
 • Pontos: valores individuais (opcional)
 • Grid: linhas de referencia (discretas)
-• Eixo Y: escala (pode truncar)
-• Eixo X: tempo/categorias
-• Legenda: se multiplas series
-• Area: preenchimento (volume)
+• Eixo Y: escala (PODE truncar em linhas)
+• Eixo X: tempo ou categorias ordenadas
+• Area: preenchimento para volume
+• Legenda: necessaria se multiplas series</pre>
+          </div>
+        </div>
 
-MULTIPLAS LINHAS:
-- Maximo 4-5 linhas por grafico
-- Cores distintas e acessiveis
-- Linha principal mais grossa</pre>
+        <!-- Variacoes -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🎨</span> Variacoes de Graficos de Linha
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Linha Simples</div>
+              <p class="text-neutral-400 text-sm mb-2">Uma serie de dados, foco na tendencia.</p>
+              <div class="text-xs text-neutral-500 font-mono">tension: 0.4, fill: false</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Area Preenchida</div>
+              <p class="text-neutral-400 text-sm mb-2">Enfatiza volume/magnitude dos valores.</p>
+              <div class="text-xs text-neutral-500 font-mono">tension: 0.4, fill: true</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Multiplas Linhas</div>
+              <p class="text-neutral-400 text-sm mb-2">Comparar series. Max 4-5 linhas.</p>
+              <div class="text-xs text-neutral-500 font-mono">datasets: [{...}, {...}]</div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Area Empilhada</div>
+              <p class="text-neutral-400 text-sm mb-2">Mostra composicao do total ao longo do tempo.</p>
+              <div class="text-xs text-neutral-500 font-mono">stacked: true</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Linha com Multiplas Series
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+    datasets: [
+      {
+        label: 'Vendas 2024',
+        data: [12, 19, 15, 22, 18, 25],
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        tension: 0.4,
+        fill: true,
+        borderWidth: 3  // linha principal mais grossa
+      },
+      {
+        label: 'Vendas 2023',
+        data: [10, 15, 12, 18, 14, 20],
+        borderColor: '#6b7280',
+        borderDash: [5, 5],  // linha tracejada
+        tension: 0.4,
+        fill: false,
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: { color: '#9ca3af' }
+      }
+    }
+  }
+});</pre>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Maximo 4-5 linhas por grafico</li>
+                <li>• Linha principal mais grossa</li>
+                <li>• Cores distintas e acessiveis</li>
+                <li>• Truncar eixo Y para destacar variacoes</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• 10+ linhas sobrepostas</li>
+                <li>• Cores muito similares</li>
+                <li>• Pontos muito grandes</li>
+                <li>• Linha para dados nao-temporais</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 4 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 4 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Graficos de Barra e Histogramas</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">📊 Graficos de Barra e Histogramas</h2>
+          <p class="text-neutral-400 text-sm">Comparacao entre categorias</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Graficos de barra comparam valores entre categorias. Barras verticais para poucas categorias, horizontais para muitas ou labels longos. Histogramas mostram distribuicao de frequencia.</p>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Graficos de barra</strong> comparam valores entre categorias. Barras verticais para poucas categorias, horizontais para muitas ou labels longos. <strong class="text-blue-400">Histogramas</strong> mostram distribuicao de frequencia.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Comparacao e essencial em dashboards. <strong class="text-white">"Qual produto vende mais?"</strong>, <strong class="text-white">"Qual regiao performa melhor?"</strong>. Barras respondem essas perguntas instantaneamente.
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Comparacao e essencial em dashboards. "Qual produto vende mais?", "Qual regiao performa melhor?". Barras respondem essas perguntas instantaneamente.</p>
+
+        <!-- Vertical vs Horizontal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📐</span> Vertical vs Horizontal
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">Barras Verticais</div>
+              <div class="bg-dark-800 rounded p-3 font-mono text-xs text-neutral-400 mb-3">
+                <pre>
+ 100 ┤ ██
+  75 ┤ ██ ██
+  50 ┤ ██ ██ ██
+  25 ┤ ██ ██ ██ ██
+   0 ┼──┴──┴──┴──┴──
+      A  B  C  D</pre>
+              </div>
+              <p class="text-neutral-400 text-sm">Melhor para: poucas categorias (4-8), labels curtos, foco na altura.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="font-semibold text-white mb-3">Barras Horizontais</div>
+              <div class="bg-dark-800 rounded p-3 font-mono text-xs text-neutral-400 mb-3">
+                <pre>
+Produto Alpha │████████████│
+ Produto Beta │█████████│
+Produto Gamma │███████│
+Produto Delta │█████│</pre>
+              </div>
+              <p class="text-neutral-400 text-sm">Melhor para: muitas categorias, labels longos, ranking/ordenacao.</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Grafico de Barras - Chart.js
-new Chart(ctx, {
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Grafico de Barras Horizontal
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ['Produto A', 'Produto B', 'Produto C', 'Produto D'],
@@ -230,137 +584,416 @@ new Chart(ctx, {
       label: 'Vendas',
       data: [120, 190, 80, 140],
       backgroundColor: [
-        'rgba(59, 130, 246, 0.8)',  // azul
-        'rgba(16, 185, 129, 0.8)', // verde
-        'rgba(245, 158, 11, 0.8)', // amarelo
-        'rgba(139, 92, 246, 0.8)'  // roxo
+        'rgba(59, 130, 246, 0.8)',   // azul
+        'rgba(16, 185, 129, 0.8)',   // verde
+        'rgba(245, 158, 11, 0.8)',   // amarelo
+        'rgba(139, 92, 246, 0.8)'    // roxo
       ],
-      borderRadius: 8
+      borderRadius: 8,
+      borderSkipped: false
     }]
   },
   options: {
-    indexAxis: 'y', // barras horizontais
+    indexAxis: 'y',  // horizontal (remover para vertical)
     plugins: {
       legend: { display: false }
     },
     scales: {
-      x: { beginAtZero: true } // SEMPRE comece em zero!
+      x: {
+        beginAtZero: true,  // SEMPRE comece em zero!
+        grid: { color: '#374151' }
+      },
+      y: {
+        grid: { display: false }
+      }
     }
   }
 });</pre>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Topico 5 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Graficos de Pizza e Donut</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Graficos de pizza e donut mostram proporcoes de um todo. Donut e preferido por permitir colocar informacao no centro. Limitados a poucas categorias (max 5) para serem efetivos.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Proporcoes sao frequentes: market share, distribuicao de vendas por categoria, alocacao de orcamento. Mas pizza e frequentemente mal usado - saber quando NAO usar e tao importante quanto saber usar.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-QUANDO USAR PIZZA/DONUT:
-✓ Partes de um todo = 100%
-✓ 2-5 categorias apenas
-✓ Uma fatia e claramente dominante
-✓ Comparacao exata nao e necessaria
-
-QUANDO NAO USAR:
-✗ Mais de 5 categorias
-✗ Fatias de tamanho similar
-✗ Comparacao precisa necessaria
-✗ Dados temporais
-
-DONUT VS PIZZA:
-┌─────────────┐  ┌─────────────┐
-│ ╭─────────╮ │  │ ╭─────────╮ │
-│ │  45%    │ │  │ │         │ │
-│ │ Vendas  │ │  │ │         │ │
-│ ╰─────────╯ │  │ ╰─────────╯ │
-│   DONUT     │  │    PIZZA    │
-└─────────────┘  └─────────────┘
-   ↑ Centro util    ↑ Centro desperdicado</pre>
+        <!-- Alerta Importante -->
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-3 flex items-center">
+            <span class="mr-2">⚠️</span> Regra Critica: Comece em Zero!
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/50 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-2">❌ Eixo truncado (enganoso)</div>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-neutral-400">
+                <pre>98 ┤██
+97 ┤█
+96 ┤█
+   A  B</pre>
+              </div>
+              <p class="text-neutral-500 text-xs mt-2">Parece que A e 100% maior que B</p>
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-2">✅ Eixo comecando em 0</div>
+              <div class="bg-dark-800 rounded p-2 font-mono text-xs text-neutral-400">
+                <pre>100┤██████████
+ 50┤█████
+  0┤
+   A  B</pre>
+              </div>
+              <p class="text-neutral-500 text-xs mt-2">Mostra diferenca real de ~2%</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 6 -->
-    <section class="mb-12">
+    <!-- ==================== TOPICO 5 ==================== -->
+    <section class="mb-16">
       <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Estilizacao e Temas para Graficos</h2>
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">🥧 Graficos de Pizza e Donut</h2>
+          <p class="text-neutral-400 text-sm">Proporcoes de um todo</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Estilizar graficos significa adapta-los ao design system do dashboard: cores, fontes, bordas, sombras. Inclui configurar temas claros e escuros, tooltips customizados e animacoes.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Graficos com estilo padrao quebram a harmonia visual. Um grafico branco num dashboard dark mode e jarring. Consistencia visual aumenta a confianca e profissionalismo.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-// Tema Dark Mode para Chart.js
-Chart.defaults.color = '#9ca3af';           // texto
-Chart.defaults.borderColor = '#374151';     // linhas grid
-Chart.defaults.backgroundColor = '#1f2937'; // fundo
 
-// Configuracao Global
-Chart.defaults.font.family = 'Inter';
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Graficos de pizza e donut</strong> mostram proporcoes de um todo. Donut e preferido por permitir colocar informacao no centro. Limitados a <strong class="text-white">maximo 5 categorias</strong> para serem efetivos.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Proporcoes sao frequentes: market share, distribuicao de vendas, alocacao de orcamento. Mas pizza e <strong class="text-red-400">frequentemente mal usado</strong> - saber quando NAO usar e tao importante quanto saber usar.
+          </p>
+        </div>
+
+        <!-- Quando Usar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🎯</span> Quando Usar (e Quando NAO Usar)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Use Quando</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Partes de um todo = 100%</li>
+                <li>• 2-5 categorias apenas</li>
+                <li>• Uma fatia e claramente dominante</li>
+                <li>• Comparacao exata nao e necessaria</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ NAO Use Quando</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Mais de 5 categorias</li>
+                <li>• Fatias de tamanho muito similar</li>
+                <li>• Comparacao precisa necessaria</li>
+                <li>• Dados temporais (use linha)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Donut vs Pizza -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">⚖️</span> Donut vs Pizza
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-5xl mb-3">🍩</div>
+              <div class="font-semibold text-white mb-2">Donut (Recomendado)</div>
+              <p class="text-neutral-400 text-sm">Centro util para KPI principal ou total. Mais moderno visualmente.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-5xl mb-3">🥧</div>
+              <div class="font-semibold text-white mb-2">Pizza</div>
+              <p class="text-neutral-400 text-sm">Centro desperdicado. Use apenas se realmente precisar mostrar "fatias".</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Donut com Centro Customizado
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Desktop', 'Mobile', 'Tablet'],
+    datasets: [{
+      data: [55, 35, 10],
+      backgroundColor: [
+        '#3b82f6',  // azul
+        '#10b981',  // verde
+        '#f59e0b'   // amarelo
+      ],
+      borderWidth: 0,
+      cutout: '70%'  // tamanho do buraco central
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#9ca3af', padding: 20 }
+      }
+    }
+  }
+});
+
+// Para adicionar texto no centro, use plugin ou HTML overlay</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Alternativa mais eficiente:</strong> Considere usar barras horizontais ordenadas em vez de pizza. Barras sao mais precisas para comparacao e funcionam com qualquer numero de categorias.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 6 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">🎨 Estilizacao e Temas para Graficos</h2>
+          <p class="text-neutral-400 text-sm">Consistencia visual em dark mode</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Estilizar graficos</strong> significa adapta-los ao design system do dashboard: cores, fontes, bordas, sombras. Inclui configurar temas claros e escuros, tooltips customizados e animacoes.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Graficos com estilo padrao <strong class="text-white">quebram a harmonia visual</strong>. Um grafico branco num dashboard dark mode e jarring. Consistencia visual aumenta a confianca e profissionalismo.
+          </p>
+        </div>
+
+        <!-- Paleta de Cores -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🎨</span> Paleta de Cores para Dashboards
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-blue-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#3b82f6</div>
+                <div class="text-neutral-500 text-xs">Primary</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#10b981</div>
+                <div class="text-neutral-500 text-xs">Success</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-yellow-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#f59e0b</div>
+                <div class="text-neutral-500 text-xs">Warning</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-red-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#ef4444</div>
+                <div class="text-neutral-500 text-xs">Danger</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-purple-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#8b5cf6</div>
+                <div class="text-neutral-500 text-xs">Info</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700/50 rounded-lg p-3">
+              <div class="w-8 h-8 rounded-lg bg-neutral-500"></div>
+              <div>
+                <div class="text-white font-mono text-sm">#6b7280</div>
+                <div class="text-neutral-500 text-xs">Neutral</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo Theme -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Tema Dark Mode Global
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Configurar ANTES de criar qualquer grafico
+// Isso define o tema para TODOS os graficos
+
+// Cores de texto e linhas
+Chart.defaults.color = '#9ca3af';           // texto neutro
+Chart.defaults.borderColor = '#374151';     // linhas de grid
+
+// Tipografia
+Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.font.size = 12;
-Chart.defaults.plugins.tooltip.backgroundColor = '#111827';
+
+// Tooltips customizados
+Chart.defaults.plugins.tooltip.backgroundColor = '#1f2937';
 Chart.defaults.plugins.tooltip.titleColor = '#f3f4f6';
 Chart.defaults.plugins.tooltip.bodyColor = '#9ca3af';
 Chart.defaults.plugins.tooltip.borderColor = '#374151';
 Chart.defaults.plugins.tooltip.borderWidth = 1;
 Chart.defaults.plugins.tooltip.padding = 12;
 Chart.defaults.plugins.tooltip.cornerRadius = 8;
+Chart.defaults.plugins.tooltip.displayColors = true;
 
-// Paleta de Cores para Dashboards
+// Animacoes (opcional - desativar para performance)
+Chart.defaults.animation.duration = 750;
+Chart.defaults.animation.easing = 'easeOutQuart';
+
+// Paleta padrao de cores
 const chartColors = {
-  primary: '#3b82f6',   // azul
-  success: '#10b981',   // verde
-  warning: '#f59e0b',   // amarelo
-  danger: '#ef4444',    // vermelho
-  info: '#8b5cf6',      // roxo
-  neutral: '#6b7280'    // cinza
+  primary: '#3b82f6',
+  success: '#10b981',
+  warning: '#f59e0b',
+  danger: '#ef4444',
+  info: '#8b5cf6',
+  neutral: '#6b7280'
 };</pre>
           </div>
+        </div>
+
+        <!-- Tooltip Customizado -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💬</span> Exemplo: Tooltip Dark Mode
+          </h3>
+          <div class="flex justify-center">
+            <div class="bg-dark-900 border border-dark-600 rounded-lg p-4 inline-block">
+              <div class="text-white font-semibold text-sm mb-1">Marco 2024</div>
+              <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                <span class="text-neutral-400 text-sm">Vendas:</span>
+                <span class="text-white font-semibold text-sm">R$ 45.230</span>
+              </div>
+              <div class="flex items-center space-x-2 mt-1">
+                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                <span class="text-neutral-400 text-sm">Meta:</span>
+                <span class="text-white font-semibold text-sm">R$ 50.000</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-neutral-500 text-sm text-center mt-3">Tooltip com fundo escuro, bordas sutis e cores consistentes</p>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Crie um arquivo de configuracao:</strong> Coloque todos os defaults do Chart.js em um arquivo separado (ex: chart-theme.js) e importe antes de criar qualquer grafico. Isso garante consistencia automatica em todo o dashboard.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Navigation -->
-    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="modulo-2-1.html" class="text-blue-400 hover:text-blue-300">← Componentes de Dados</a>
-      <a href="modulo-2-3.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Tabelas Avancadas →</a>
-    </div>
+    <!-- ==================== RESUMO ==================== -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Selecao de Graficos</strong>
+              <span class="text-neutral-400"> - Linha para tendencias, barra para comparacao, pizza para proporcoes</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Chart.js Setup</strong>
+              <span class="text-neutral-400"> - Biblioteca leve, responsiva e customizavel</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Graficos de Linha</strong>
+              <span class="text-neutral-400"> - Tendencias, multiplas series, area preenchida</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Graficos de Barra</strong>
+              <span class="text-neutral-400"> - Vertical vs horizontal, sempre comece em zero</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Pizza e Donut</strong>
+              <span class="text-neutral-400"> - Maximo 5 categorias, donut preferido</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Estilizacao</strong>
+              <span class="text-neutral-400"> - Temas dark mode, paleta consistente, tooltips customizados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-2-1.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Componentes de Dados
+          </a>
+          <a href="modulo-2-3.html" class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo: Tabelas e DataGrids →
+          </a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
+  <!-- Footer -->
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Graficos e Visualizacoes</p>
+      <p>Dashboard Mastery - Modulo 2.2: Graficos e Visualizacoes</p>
       <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
     </div>
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
 
 </body>
 </html>

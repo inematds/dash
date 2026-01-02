@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 2.7 - Notificacoes e Alertas | Dashboard Mastery</title>
+  <title>Módulo 2.7 - Animações e Transições | Dashboard Mastery</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,438 +19,1314 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .light body { background: #f8fafc; color: #1e293b; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    @keyframes bounce { 0%, 100% { transform: translateY(-5%); } 50% { transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+    .animate-bounce { animation: bounce 1s infinite; }
+    .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+    .animate-slideUp { animation: slideUp 0.5s ease-out forwards; }
+    .animate-scaleIn { animation: scaleIn 0.3s ease-out forwards; }
+  </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 dark:bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-14">
         <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
             <span class="text-2xl">📊</span>
             <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
           </a>
           <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors">INEMA.CLUB</a>
         </div>
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        <div class="flex items-center space-x-4">
+          <a href="../trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">Trilha 1</a>
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">Trilha 2</a>
+          <a href="../trilha3/index.html" class="text-purple-400 hover:text-purple-300 text-sm transition-colors">Trilha 3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center text-sm text-neutral-400">
+        <a href="../../index.html" class="hover:text-blue-400 transition-colors">Início</a>
+        <span class="mx-2">→</span>
+        <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+        <span class="mx-2">→</span>
+        <span class="text-neutral-200">Módulo 2.7</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.7</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔔 Notificacoes e Alertas</h1>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Toasts, banners, modais de confirmacao e sistemas de notificacao para dashboards.</p>
+      <div class="inline-flex items-center px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
+        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
+        MÓDULO 2.7
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">✨ Animações e Transições</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">Micro-interações, feedback visual e animações que tornam dashboards mais fluidos e intuitivos.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-500">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">45min</div>
+          <div class="text-xs text-neutral-500">Duração</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-xs text-neutral-500">Nível</div>
+        </div>
+        <div class="bg-dark-800/80 rounded-xl p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Prático</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Topico 1 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
-        <h2 class="text-2xl font-bold">Toast Notifications</h2>
+    <!-- TOPICO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">1</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🔄</span>
+            <h2 class="text-2xl font-bold">CSS Transitions</h2>
+          </div>
+          <p class="text-neutral-400">Transições suaves entre estados de elementos</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Toasts sao notificacoes temporarias que aparecem brevemente (3-5s) e desaparecem automaticamente. Nao bloqueiam a interface. Usados para feedback de acoes: "Salvo com sucesso", "Email enviado", "Erro ao conectar".</p>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-white">CSS Transitions</strong> são a base de qualquer interface fluida. Elas permitem que propriedades CSS mudem gradualmente ao longo do tempo, em vez de instantaneamente. Quando um usuário passa o mouse sobre um botão e ele muda de cor suavemente, isso é uma transition. Quando um card ganha sombra ao ser hover, é transition.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            A sintaxe básica envolve 4 propriedades: <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">transition-property</code> (qual propriedade animar), <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">transition-duration</code> (quanto tempo), <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">transition-timing-function</code> (curva de aceleração) e <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">transition-delay</code> (tempo de espera).
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Para dashboards, transitions são essenciais em hovers de botões, mudanças de estado em cards, expansão de painéis e feedback visual de interações. A regra de ouro: durações entre 150ms e 300ms são percebidas como "rápidas mas suaves".
+          </p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Sao a forma mais leve de feedback. Usuario recebe confirmacao sem interromper workflow. Padrão em apps modernos (Slack, Gmail, Notion). Essencial para UX fluida.</p>
+
+        <!-- Box Detalhamento -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Propriedades de Transition</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">transition-property</div>
+              <div class="text-sm text-neutral-400 mb-2">O que animar</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>all</code> - todas as propriedades</div>
+                <div>• <code>opacity</code> - transparência</div>
+                <div>• <code>transform</code> - escala, rotação, posição</div>
+                <div>• <code>background-color</code> - cor de fundo</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">transition-duration</div>
+              <div class="text-sm text-neutral-400 mb-2">Duração da animação</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>150ms</code> - rápida (micro-interações)</div>
+                <div>• <code>200ms</code> - padrão recomendado</div>
+                <div>• <code>300ms</code> - suave (painéis)</div>
+                <div>• <code>500ms+</code> - lenta (modais)</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">transition-timing-function</div>
+              <div class="text-sm text-neutral-400 mb-2">Curva de aceleração</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>ease</code> - início/fim lentos (padrão)</div>
+                <div>• <code>ease-in</code> - início lento</div>
+                <div>• <code>ease-out</code> - fim lento (recomendado)</div>
+                <div>• <code>linear</code> - velocidade constante</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Shorthand</div>
+              <div class="text-sm text-neutral-400 mb-2">Forma abreviada</div>
+              <div class="bg-dark-700 rounded p-2 font-mono text-xs text-green-400">
+                transition: all 200ms ease-out;
+              </div>
+              <div class="text-xs text-neutral-500 mt-2">property duration timing delay</div>
+            </div>
+          </div>
         </div>
+
+        <!-- Exemplo Interativo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Demonstração de Transitions</h3>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="group">
+              <div class="bg-dark-700 rounded-lg p-4 text-center transition-all duration-150 group-hover:bg-blue-600 group-hover:scale-105">
+                <div class="text-sm font-medium">150ms</div>
+                <div class="text-xs text-neutral-400 group-hover:text-blue-200">Rápida</div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="bg-dark-700 rounded-lg p-4 text-center transition-all duration-300 group-hover:bg-blue-600 group-hover:scale-105">
+                <div class="text-sm font-medium">300ms</div>
+                <div class="text-xs text-neutral-400 group-hover:text-blue-200">Suave</div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="bg-dark-700 rounded-lg p-4 text-center transition-all duration-500 group-hover:bg-blue-600 group-hover:scale-105">
+                <div class="text-sm font-medium">500ms</div>
+                <div class="text-xs text-neutral-400 group-hover:text-blue-200">Lenta</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-neutral-500 mt-4 text-center">Passe o mouse sobre os boxes para ver a diferença de velocidade</p>
+        </div>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">CSS Transitions</span>
+            <span class="text-xs text-neutral-500">styles.css</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">/* Transition básica */
+.button {
+  background-color: #3b82f6;
+  transition: all 200ms ease-out;
+}
+
+.button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Card com múltiplas transitions */
+.card {
+  background: #1f2937;
+  border: 1px solid #374151;
+  transition:
+    transform 200ms ease-out,
+    box-shadow 300ms ease-out,
+    border-color 200ms ease-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border-color: #3b82f6;
+}
+
+/* Transform origin para efeitos específicos */
+.card-expand {
+  transform-origin: top center;
+  transition: transform 300ms ease-out;
+}
+
+.card-expand:hover {
+  transform: scaleY(1.05);
+}</code></pre>
+        </div>
+
+        <!-- Dica Prática -->
+        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 text-xl">💡</span>
+            <div>
+              <h4 class="font-semibold text-yellow-400 mb-1">Dica de Performance</h4>
+              <p class="text-sm text-yellow-200/80">Prefira animar apenas <code class="bg-yellow-900/50 px-1 rounded">transform</code> e <code class="bg-yellow-900/50 px-1 rounded">opacity</code>. Essas propriedades são otimizadas pelo navegador (GPU accelerated) e não causam reflow. Evite animar <code class="bg-yellow-900/50 px-1 rounded">width</code>, <code class="bg-yellow-900/50 px-1 rounded">height</code>, <code class="bg-yellow-900/50 px-1 rounded">top</code>, <code class="bg-yellow-900/50 px-1 rounded">left</code> - são custosas para o navegador.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">2</div>
         <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Container de Toasts (posicao fixa) --&gt;
-&lt;div class="fixed bottom-4 right-4 z-50 space-y-2"&gt;
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🎬</span>
+            <h2 class="text-2xl font-bold">CSS Animations e @keyframes</h2>
+          </div>
+          <p class="text-neutral-400">Animações complexas com controle total sobre cada etapa</p>
+        </div>
+      </div>
 
-  &lt;!-- Toast de Sucesso --&gt;
-  &lt;div class="flex items-center p-4 bg-dark-800 border border-dark-600
-              rounded-lg shadow-xl animate-slide-up"&gt;
-    &lt;span class="w-8 h-8 rounded-full bg-emerald-500/20
-                flex items-center justify-center mr-3"&gt;
-      &lt;span class="text-emerald-400"&gt;✓&lt;/span&gt;
-    &lt;/span&gt;
-    &lt;div class="flex-1"&gt;
-      &lt;p class="font-medium"&gt;Dados salvos!&lt;/p&gt;
-      &lt;p class="text-sm text-neutral-400"&gt;Suas alteracoes foram salvas.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;button class="text-neutral-500 hover:text-white ml-4"&gt;×&lt;/button&gt;
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Enquanto transitions são para mudanças simples entre dois estados, <strong class="text-white">CSS Animations</strong> permitem criar sequências complexas com múltiplos passos. Usando <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">@keyframes</code>, você define cada etapa da animação com precisão.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Animations são perfeitas para loading spinners, pulsações de alerta, animações de entrada em página, e qualquer efeito que precise rodar continuamente ou ter mais de dois estados. Diferente de transitions, podem iniciar automaticamente sem necessidade de hover ou outro trigger.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            A sintaxe usa <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animation-name</code>, <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animation-duration</code>, <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animation-iteration-count</code> (quantas vezes repetir), <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animation-direction</code> e <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animation-fill-mode</code>.
+          </p>
+        </div>
+
+        <!-- Box de Animações -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Propriedades de Animation</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">animation-iteration-count</div>
+              <div class="text-sm text-neutral-400 mb-2">Quantas vezes repetir</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>1</code> - uma vez</div>
+                <div>• <code>3</code> - três vezes</div>
+                <div>• <code>infinite</code> - loop eterno</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">animation-direction</div>
+              <div class="text-sm text-neutral-400 mb-2">Direção da animação</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>normal</code> - 0% → 100%</div>
+                <div>• <code>reverse</code> - 100% → 0%</div>
+                <div>• <code>alternate</code> - vai e volta</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">animation-fill-mode</div>
+              <div class="text-sm text-neutral-400 mb-2">Estado final/inicial</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>none</code> - volta ao original</div>
+                <div>• <code>forwards</code> - mantém estado final</div>
+                <div>• <code>backwards</code> - aplica estado inicial</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">animation-play-state</div>
+              <div class="text-sm text-neutral-400 mb-2">Controle de play/pause</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>running</code> - animação ativa</div>
+                <div>• <code>paused</code> - animação pausada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demonstração Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Animações em Ação</h3>
+          <div class="grid sm:grid-cols-4 gap-6 items-center justify-items-center">
+            <div class="text-center">
+              <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+              <div class="text-xs text-neutral-400">Spin</div>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 rounded-lg animate-pulse mx-auto mb-2"></div>
+              <div class="text-xs text-neutral-400">Pulse</div>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 rounded-lg animate-bounce mx-auto mb-2"></div>
+              <div class="text-xs text-neutral-400">Bounce</div>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 rounded-lg animate-ping mx-auto mb-2" style="animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+              <div class="text-xs text-neutral-400">Ping</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">@keyframes Animations</span>
+            <span class="text-xs text-neutral-500">animations.css</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">/* Spinner de loading */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #374151;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Pulse para chamar atenção */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.notification-badge {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Fade in de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-enter {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger effect (delay por item) */
+.card-enter:nth-child(1) { animation-delay: 0ms; }
+.card-enter:nth-child(2) { animation-delay: 100ms; }
+.card-enter:nth-child(3) { animation-delay: 200ms; }
+.card-enter:nth-child(4) { animation-delay: 300ms; }</code></pre>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-emerald-400 mb-3 flex items-center gap-2">
+              <span>✓</span> Fazer
+            </h4>
+            <ul class="text-sm text-emerald-200/80 space-y-2">
+              <li>• Usar animation-fill-mode: forwards para manter estado final</li>
+              <li>• Aplicar delays escalonados para listas (stagger effect)</li>
+              <li>• Usar will-change para otimizar animações pesadas</li>
+              <li>• Preferir ease-out para animações de entrada</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-red-400 mb-3 flex items-center gap-2">
+              <span>✗</span> Evitar
+            </h4>
+            <ul class="text-sm text-red-200/80 space-y-2">
+              <li>• Animações infinitas em elementos não visíveis</li>
+              <li>• Durações muito longas (>1s) para micro-interações</li>
+              <li>• Animar propriedades que causam reflow</li>
+              <li>• Muitas animações simultâneas (distrai usuário)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">3</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🎨</span>
+            <h2 class="text-2xl font-bold">Tailwind Transition Utilities</h2>
+          </div>
+          <p class="text-neutral-400">Classes utilitárias para animações sem escrever CSS</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Tailwind CSS fornece um sistema completo de classes utilitárias para transitions e animations. Isso permite criar interações fluidas diretamente no HTML, sem necessidade de arquivos CSS separados. As classes seguem a convenção do framework e são altamente composíveis.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            As principais categorias são: <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">transition-*</code> para definir quais propriedades animar, <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">duration-*</code> para tempo, <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">ease-*</code> para timing function, e <code class="bg-dark-700 px-2 py-1 rounded text-blue-400">animate-*</code> para animações pré-definidas.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            A vantagem do Tailwind é a consistência: todos os desenvolvedores usam os mesmos valores de duração e easing, criando uma experiência uniforme. Além disso, o tree-shaking remove classes não usadas, mantendo o bundle pequeno.
+          </p>
+        </div>
+
+        <!-- Classes Reference -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Classes de Transition do Tailwind</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">transition-*</div>
+              <div class="text-sm text-neutral-400 mb-2">Propriedades a animar</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>transition-none</code> - desativa</div>
+                <div>• <code>transition-all</code> - todas</div>
+                <div>• <code>transition-colors</code> - cores</div>
+                <div>• <code>transition-opacity</code> - opacidade</div>
+                <div>• <code>transition-shadow</code> - sombras</div>
+                <div>• <code>transition-transform</code> - transforms</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">duration-*</div>
+              <div class="text-sm text-neutral-400 mb-2">Duração em ms</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>duration-75</code> - 75ms</div>
+                <div>• <code>duration-100</code> - 100ms</div>
+                <div>• <code>duration-150</code> - 150ms</div>
+                <div>• <code>duration-200</code> - 200ms (padrão)</div>
+                <div>• <code>duration-300</code> - 300ms</div>
+                <div>• <code>duration-500</code> - 500ms</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">ease-*</div>
+              <div class="text-sm text-neutral-400 mb-2">Timing function</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>ease-linear</code> - linear</div>
+                <div>• <code>ease-in</code> - acelera</div>
+                <div>• <code>ease-out</code> - desacelera</div>
+                <div>• <code>ease-in-out</code> - ambos</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">animate-*</div>
+              <div class="text-sm text-neutral-400 mb-2">Animações prontas</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• <code>animate-none</code> - sem animação</div>
+                <div>• <code>animate-spin</code> - rotação infinita</div>
+                <div>• <code>animate-ping</code> - ping/radar</div>
+                <div>• <code>animate-pulse</code> - pulsação</div>
+                <div>• <code>animate-bounce</code> - pulo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Tailwind Transitions</span>
+            <span class="text-xs text-neutral-500">component.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Botão com hover suave --&gt;
+&lt;button class="bg-blue-600 hover:bg-blue-500
+               transition-colors duration-200 ease-out
+               px-4 py-2 rounded-lg"&gt;
+  Salvar
+&lt;/button&gt;
+
+&lt;!-- Card com elevação no hover --&gt;
+&lt;div class="bg-dark-800 rounded-xl border border-dark-600
+            hover:border-blue-500 hover:shadow-lg hover:-translate-y-1
+            transition-all duration-300 ease-out"&gt;
+  Conteúdo do card
+&lt;/div&gt;
+
+&lt;!-- Spinner de loading --&gt;
+&lt;div class="w-8 h-8 border-4 border-dark-600 border-t-blue-500
+            rounded-full animate-spin"&gt;
+&lt;/div&gt;
+
+&lt;!-- Badge pulsante para notificação --&gt;
+&lt;span class="absolute -top-1 -right-1 w-3 h-3
+             bg-red-500 rounded-full animate-pulse"&gt;
+&lt;/span&gt;
+
+&lt;!-- Menu dropdown com fade --&gt;
+&lt;div class="opacity-0 invisible group-hover:opacity-100
+            group-hover:visible transition-all duration-200"&gt;
+  Menu items
+&lt;/div&gt;
+
+&lt;!-- Scale no hover --&gt;
+&lt;button class="transform hover:scale-105
+               transition-transform duration-150"&gt;
+  Zoom Button
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <!-- Dica Prática -->
+        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 text-xl">💡</span>
+            <div>
+              <h4 class="font-semibold text-yellow-400 mb-1">Combinação Ideal</h4>
+              <p class="text-sm text-yellow-200/80">Para a maioria dos casos em dashboards, use esta combinação: <code class="bg-yellow-900/50 px-1 rounded">transition-all duration-200 ease-out</code>. É rápida o suficiente para não parecer lenta, mas suave o suficiente para ser perceptível. Para hovers simples de cor, <code class="bg-yellow-900/50 px-1 rounded">transition-colors duration-150</code> é mais performática.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">4</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">👆</span>
+            <h2 class="text-2xl font-bold">Micro-interações</h2>
+          </div>
+          <p class="text-neutral-400">Feedback visual que torna interfaces vivas e responsivas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-white">Micro-interações</strong> são pequenas animações que respondem às ações do usuário, fornecendo feedback imediato. Quando um botão "afunda" ao ser clicado, quando um checkbox anima ao ser marcado, quando um input ganha um brilho ao receber foco - todas são micro-interações.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Em dashboards, micro-interações são cruciais para comunicar que o sistema está respondendo. Sem elas, a interface parece "morta" ou quebrada. O usuário precisa de confirmação visual instantânea de que sua ação foi reconhecida, mesmo que o resultado demore a processar.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Os tipos mais importantes são: hover states (indica que elemento é clicável), active states (feedback de clique), focus states (acessibilidade), loading states (processando), e success/error states (resultado da ação).
+          </p>
+        </div>
+
+        <!-- Tipos de Micro-interações -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Tipos de Micro-interações</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Hover State</div>
+              <div class="text-sm text-neutral-400 mb-2">Feedback de "clicável"</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Mudança de cor (lighten/darken)</div>
+                <div>• Elevação (shadow + translateY)</div>
+                <div>• Underline em links</div>
+                <div>• Reveal de ícone ou texto</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Active State</div>
+              <div class="text-sm text-neutral-400 mb-2">Feedback de clique</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Scale down (95-98%)</div>
+                <div>• Afundar (translateY positivo)</div>
+                <div>• Escurecer levemente</div>
+                <div>• Ring pulsante</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Focus State</div>
+              <div class="text-sm text-neutral-400 mb-2">Indicador de foco (a11y)</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Ring outline colorido</div>
+                <div>• Border highlight</div>
+                <div>• Glow/shadow suave</div>
+                <div>• Importante para navegação por teclado</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Toggle/Switch</div>
+              <div class="text-sm text-neutral-400 mb-2">Mudança de estado</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Slide horizontal (switch)</div>
+                <div>• Checkmark aparecer</div>
+                <div>• Mudança de cor</div>
+                <div>• Rotação de ícone</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demonstração Interativa -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Exemplos de Micro-interações</h3>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <!-- Botão com feedback completo -->
+            <div>
+              <p class="text-xs text-neutral-500 mb-2">Botão com hover + active</p>
+              <button class="w-full bg-blue-600 hover:bg-blue-500 active:scale-95
+                             text-white px-4 py-3 rounded-lg font-medium
+                             transition-all duration-150 ease-out
+                             focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-dark-800">
+                Clique aqui
+              </button>
+            </div>
+            <!-- Input com focus -->
+            <div>
+              <p class="text-xs text-neutral-500 mb-2">Input com focus ring</p>
+              <input type="text" placeholder="Digite algo..."
+                     class="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-3
+                            focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
+                            transition-all duration-200 outline-none">
+            </div>
+            <!-- Card hover -->
+            <div>
+              <p class="text-xs text-neutral-500 mb-2">Card com elevação</p>
+              <div class="bg-dark-700 p-4 rounded-lg border border-dark-600
+                          hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10
+                          hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+                <div class="font-medium">Card Item</div>
+                <div class="text-sm text-neutral-400">Passe o mouse</div>
+              </div>
+            </div>
+            <!-- Toggle switch -->
+            <div>
+              <p class="text-xs text-neutral-500 mb-2">Toggle switch</p>
+              <label class="flex items-center cursor-pointer">
+                <div class="relative">
+                  <input type="checkbox" class="sr-only peer">
+                  <div class="w-12 h-7 bg-dark-600 rounded-full peer
+                              peer-checked:bg-blue-600 transition-colors duration-200"></div>
+                  <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full
+                              peer-checked:translate-x-5 transition-transform duration-200"></div>
+                </div>
+                <span class="ml-3 text-sm">Ativar opção</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Micro-interações em Tailwind</span>
+            <span class="text-xs text-neutral-500">buttons.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Botão com feedback completo --&gt;
+&lt;button class="
+  bg-blue-600 text-white px-4 py-2 rounded-lg font-medium
+
+  /* Hover - clarear e elevar */
+  hover:bg-blue-500 hover:-translate-y-0.5 hover:shadow-lg
+
+  /* Active - afundar */
+  active:translate-y-0 active:scale-[0.98]
+
+  /* Focus - ring para acessibilidade */
+  focus:outline-none focus:ring-2 focus:ring-blue-400
+  focus:ring-offset-2 focus:ring-offset-dark-800
+
+  /* Transition */
+  transition-all duration-150 ease-out
+"&gt;
+  Salvar alterações
+&lt;/button&gt;
+
+&lt;!-- Like button com animação de coração --&gt;
+&lt;button class="group p-2 rounded-full hover:bg-red-500/10
+               transition-colors duration-200"&gt;
+  &lt;svg class="w-6 h-6 text-neutral-400
+              group-hover:text-red-500 group-hover:scale-110
+              group-active:scale-95
+              transition-all duration-200"&gt;
+    &lt;!-- heart icon --&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Expandir/Colapsar com rotação de ícone --&gt;
+&lt;button class="flex items-center gap-2 group"&gt;
+  &lt;span&gt;Ver detalhes&lt;/span&gt;
+  &lt;svg class="w-4 h-4 transform group-hover:rotate-180
+              transition-transform duration-200"&gt;
+    &lt;!-- chevron icon --&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-dark-700/50 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Tempos Recomendados</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-2xl font-bold text-blue-400">50-100ms</div>
+              <div class="text-xs text-neutral-500">Hover color</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-blue-400">100-150ms</div>
+              <div class="text-xs text-neutral-500">Button press</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-blue-400">200-300ms</div>
+              <div class="text-xs text-neutral-500">Card elevation</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-blue-400">300-500ms</div>
+              <div class="text-xs text-neutral-500">Panel expand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">5</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">⏳</span>
+            <h2 class="text-2xl font-bold">Loading Animations</h2>
+          </div>
+          <p class="text-neutral-400">Spinners, skeletons e indicadores de progresso</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-white">Loading animations</strong> comunicam ao usuário que algo está acontecendo. São essenciais em dashboards que fazem requisições a APIs, processam dados ou aguardam respostas do servidor. Sem elas, o usuário pensa que a interface travou.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Existem três padrões principais: <strong>Spinners</strong> para carregamentos curtos e indeterminados (não sabemos quanto vai demorar), <strong>Skeleton screens</strong> para carregamento de conteúdo estruturado (mostra a "forma" do que virá), e <strong>Progress bars</strong> para carregamentos determinados (sabemos o progresso exato).
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            A escolha depende do contexto: spinners são genéricos, skeletons melhoram a percepção de velocidade (usuário "vê" o layout antes do conteúdo), e progress bars são para uploads, downloads ou processos em etapas.
+          </p>
+        </div>
+
+        <!-- Tipos de Loading -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Tipos de Loading Indicators</h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Spinner</div>
+              <div class="text-sm text-neutral-400 mb-3">Indeterminado, genérico</div>
+              <div class="flex justify-center">
+                <div class="w-8 h-8 border-3 border-dark-600 border-t-blue-500 rounded-full animate-spin"></div>
+              </div>
+              <div class="text-xs text-neutral-500 mt-3 text-center">Uso: botões, modais, fetching</div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Skeleton</div>
+              <div class="text-sm text-neutral-400 mb-3">Placeholder animado</div>
+              <div class="space-y-2">
+                <div class="h-4 bg-dark-600 rounded animate-pulse"></div>
+                <div class="h-4 bg-dark-600 rounded animate-pulse w-3/4"></div>
+                <div class="h-4 bg-dark-600 rounded animate-pulse w-1/2"></div>
+              </div>
+              <div class="text-xs text-neutral-500 mt-3 text-center">Uso: listas, cards, texto</div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Progress Bar</div>
+              <div class="text-sm text-neutral-400 mb-3">Determinado, percentual</div>
+              <div class="space-y-2">
+                <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-blue-500 rounded-full w-2/3 transition-all duration-500"></div>
+                </div>
+                <div class="text-xs text-center text-neutral-400">67%</div>
+              </div>
+              <div class="text-xs text-neutral-500 mt-2 text-center">Uso: uploads, processos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton Screen Demo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Skeleton Screen - Card de Usuário</h3>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <!-- Skeleton -->
+            <div class="bg-dark-700 rounded-xl p-4">
+              <p class="text-xs text-neutral-500 mb-3">Loading...</p>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-dark-600 rounded-full animate-pulse"></div>
+                <div class="flex-1 space-y-2">
+                  <div class="h-4 bg-dark-600 rounded animate-pulse w-3/4"></div>
+                  <div class="h-3 bg-dark-600 rounded animate-pulse w-1/2"></div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="h-3 bg-dark-600 rounded animate-pulse"></div>
+                <div class="h-3 bg-dark-600 rounded animate-pulse w-5/6"></div>
+              </div>
+            </div>
+            <!-- Loaded -->
+            <div class="bg-dark-700 rounded-xl p-4">
+              <p class="text-xs text-neutral-500 mb-3">Loaded</p>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">JD</div>
+                <div>
+                  <div class="font-medium">John Doe</div>
+                  <div class="text-sm text-neutral-400">john@example.com</div>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-300">Desenvolvedor full-stack com 5 anos de experiência em React e Node.js.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Loading Components</span>
+            <span class="text-xs text-neutral-500">loading.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Spinner simples --&gt;
+&lt;div class="w-8 h-8 border-4 border-dark-600 border-t-blue-500
+            rounded-full animate-spin"&gt;&lt;/div&gt;
+
+&lt;!-- Spinner em botão --&gt;
+&lt;button disabled class="bg-blue-600 px-4 py-2 rounded-lg
+                        flex items-center gap-2 opacity-80"&gt;
+  &lt;svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24"&gt;
+    &lt;circle cx="12" cy="12" r="10" stroke="currentColor"
+            stroke-width="4" fill="none" opacity="0.25"/&gt;
+    &lt;path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"/&gt;
+  &lt;/svg&gt;
+  Salvando...
+&lt;/button&gt;
+
+&lt;!-- Skeleton de texto --&gt;
+&lt;div class="space-y-2"&gt;
+  &lt;div class="h-4 bg-dark-600 rounded animate-pulse"&gt;&lt;/div&gt;
+  &lt;div class="h-4 bg-dark-600 rounded animate-pulse w-3/4"&gt;&lt;/div&gt;
+  &lt;div class="h-4 bg-dark-600 rounded animate-pulse w-5/6"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Skeleton de avatar + texto --&gt;
+&lt;div class="flex items-center gap-3"&gt;
+  &lt;div class="w-10 h-10 bg-dark-600 rounded-full animate-pulse"&gt;&lt;/div&gt;
+  &lt;div class="space-y-2 flex-1"&gt;
+    &lt;div class="h-4 bg-dark-600 rounded animate-pulse w-1/2"&gt;&lt;/div&gt;
+    &lt;div class="h-3 bg-dark-600 rounded animate-pulse w-1/3"&gt;&lt;/div&gt;
   &lt;/div&gt;
+&lt;/div&gt;
 
-  &lt;!-- Toast de Erro --&gt;
-  &lt;div class="flex items-center p-4 bg-dark-800 border border-red-800
-              rounded-lg shadow-xl"&gt;
-    &lt;span class="w-8 h-8 rounded-full bg-red-500/20
-                flex items-center justify-center mr-3"&gt;
-      &lt;span class="text-red-400"&gt;!&lt;/span&gt;
-    &lt;/span&gt;
-    &lt;div&gt;
-      &lt;p class="font-medium text-red-400"&gt;Erro ao salvar&lt;/p&gt;
-      &lt;p class="text-sm text-neutral-400"&gt;Tente novamente.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+&lt;!-- Progress bar --&gt;
+&lt;div class="w-full bg-dark-600 rounded-full h-2 overflow-hidden"&gt;
+  &lt;div class="bg-blue-500 h-full rounded-full transition-all duration-300"
+       style="width: 67%"&gt;&lt;/div&gt;
+&lt;/div&gt;
 
+&lt;!-- Indeterminate progress (animação infinita) --&gt;
+&lt;div class="w-full bg-dark-600 rounded-full h-1 overflow-hidden"&gt;
+  &lt;div class="bg-blue-500 h-full w-1/3 animate-[shimmer_1s_infinite]"&gt;&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-@keyframes slide-up {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
 }
-.animate-slide-up { animation: slide-up 0.3s ease-out; }
-&lt;/style&gt;</pre>
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 border border-emerald-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-emerald-400 mb-3 flex items-center gap-2">
+              <span>✓</span> Fazer
+            </h4>
+            <ul class="text-sm text-emerald-200/80 space-y-2">
+              <li>• Usar skeleton que reflete layout real do conteúdo</li>
+              <li>• Mostrar loading imediatamente (< 100ms)</li>
+              <li>• Desabilitar botões durante loading</li>
+              <li>• Usar spinner DENTRO do botão que disparou a ação</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+            <h4 class="font-semibold text-red-400 mb-3 flex items-center gap-2">
+              <span>✗</span> Evitar
+            </h4>
+            <ul class="text-sm text-red-200/80 space-y-2">
+              <li>• Loading overlay cobrindo toda a tela</li>
+              <li>• Não mostrar nada durante carregamento</li>
+              <li>• Skeleton genérico que não representa o conteúdo</li>
+              <li>• Spinners em toda parte (um por vez é suficiente)</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 2 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
-        <h2 class="text-2xl font-bold">Alert Banners</h2>
+    <!-- TOPICO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start gap-6 mb-8">
+        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg">6</div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🚀</span>
+            <h2 class="text-2xl font-bold">Animações de Entrada e Saída</h2>
+          </div>
+          <p class="text-neutral-400">Fade, slide, scale e transições de página</p>
+        </div>
       </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Banners sao alertas persistentes que ocupam largura total, geralmente no topo da pagina. Usados para informacoes importantes que afetam toda a sessao: manutencao programada, trial expirando, permissao necessaria.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Diferente de toasts, banners exigem atencao. Sao para comunicacoes que usuario NAO pode ignorar. Uso excessivo causa "banner blindness", entao devem ser reservados para mensagens criticas.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Banner de Aviso (amarelo) --&gt;
-&lt;div class="bg-yellow-900/50 border-b border-yellow-700 px-4 py-3"&gt;
-  &lt;div class="max-w-6xl mx-auto flex items-center justify-between"&gt;
-    &lt;div class="flex items-center"&gt;
-      &lt;span class="mr-3"&gt;⚠️&lt;/span&gt;
-      &lt;p class="text-yellow-200"&gt;
-        Seu periodo de teste expira em &lt;strong&gt;3 dias&lt;/strong&gt;.
-        &lt;a href="#" class="underline ml-1"&gt;Fazer upgrade&lt;/a&gt;
-      &lt;/p&gt;
-    &lt;/div&gt;
-    &lt;button class="text-yellow-200 hover:text-white"&gt;×&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
 
-&lt;!-- Banner de Erro Critico (vermelho) --&gt;
-&lt;div class="bg-red-900/50 border-b border-red-700 px-4 py-3"&gt;
-  &lt;div class="max-w-6xl mx-auto flex items-center"&gt;
-    &lt;span class="mr-3"&gt;🚨&lt;/span&gt;
-    &lt;p class="text-red-200"&gt;
-      &lt;strong&gt;Problema de conexao:&lt;/strong&gt;
-      Dados podem estar desatualizados.
-      &lt;button class="underline ml-2"&gt;Tentar reconectar&lt;/button&gt;
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-white">Animações de entrada e saída</strong> controlam como elementos aparecem e desaparecem da interface. São fundamentais para modais, dropdowns, toasts, notificações e transições de página. Um elemento que simplesmente "aparece" é abrupto; um que faz fade-in parece natural.
+          </p>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Os três padrões mais usados são: <strong>Fade</strong> (mudança de opacidade), <strong>Slide</strong> (movimento de posição) e <strong>Scale</strong> (mudança de tamanho). Frequentemente são combinados: fade+slide para notificações, fade+scale para modais.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            A regra importante é: <strong>entradas devem ser mais rápidas que saídas</strong>. O usuário quer ver o novo conteúdo rapidamente, mas a saída pode ser mais lenta para não parecer que algo "sumiu". Timing típico: entrada 200-300ms, saída 150-200ms.
+          </p>
+        </div>
 
-&lt;!-- Banner Informativo (azul) --&gt;
-&lt;div class="bg-blue-900/50 border-b border-blue-700 px-4 py-3"&gt;
-  &lt;div class="max-w-6xl mx-auto flex items-center"&gt;
-    &lt;span class="mr-3"&gt;ℹ️&lt;/span&gt;
-    &lt;p class="text-blue-200"&gt;
-      Nova funcionalidade disponivel!
-      &lt;a href="#" class="underline ml-1"&gt;Saiba mais&lt;/a&gt;
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+        <!-- Tipos de Animações -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-dark-800 rounded-xl border border-blue-800/50 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">Padrões de Animação</h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Fade</div>
+              <div class="text-sm text-neutral-400 mb-2">Opacidade 0 → 1</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Mais sutil e universal</div>
+                <div>• Bom para overlays, tooltips</div>
+                <div>• Funciona em qualquer direção</div>
+                <div>• opacity: 0 → opacity: 1</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Slide</div>
+              <div class="text-sm text-neutral-400 mb-2">Movimento de posição</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Indica origem do elemento</div>
+                <div>• Slide-up para toasts/modais</div>
+                <div>• Slide-right para sidebars</div>
+                <div>• translateY/translateX</div>
+              </div>
+            </div>
+            <div class="bg-dark-800/80 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">Scale</div>
+              <div class="text-sm text-neutral-400 mb-2">Mudança de tamanho</div>
+              <div class="text-xs text-neutral-500 space-y-1">
+                <div>• Efeito de "pop" ou "zoom"</div>
+                <div>• scale: 0.9 → scale: 1</div>
+                <div>• Bom para modais e cards</div>
+                <div>• Combinado com fade</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Topico 3 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
-        <h2 class="text-2xl font-bold">Modais de Confirmacao</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Modais de confirmacao pedem confirmacao antes de acoes irreversiveis ou importantes: deletar registro, sair sem salvar, enviar para producao. Bloqueiam interface ate usuario decidir.</p>
+        <!-- Demonstração -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Demonstração de Animações</h3>
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="bg-dark-700 rounded-lg p-4 animate-fadeIn">
+                <div class="text-3xl mb-2">👻</div>
+                <div class="text-sm text-neutral-400">Fade In</div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="bg-dark-700 rounded-lg p-4 animate-slideUp">
+                <div class="text-3xl mb-2">⬆️</div>
+                <div class="text-sm text-neutral-400">Slide Up</div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="bg-dark-700 rounded-lg p-4 animate-scaleIn">
+                <div class="text-3xl mb-2">💫</div>
+                <div class="text-sm text-neutral-400">Scale In</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-neutral-500 text-center mt-4">Recarregue a página para ver as animações novamente</p>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Protegem contra erros acidentais. "Deletar" com um clique e perigoso. Confirmacao adiciona friccao intencional para acoes destrutivas. Uso excessivo causa frustração - usar com parcimonia.</p>
+
+        <!-- Code Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Animações de Entrada/Saída</span>
+            <span class="text-xs text-neutral-500">animations.css</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">/* FADE IN */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* SLIDE UP (para toasts, modais) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* SCALE IN (para modais, cards) */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scaleIn {
+  animation: scaleIn 0.2s ease-out forwards;
+}
+
+/* SLIDE FROM RIGHT (para sidebars) */
+@keyframes slideRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* COMBINAÇÃO: Fade + Scale para modal */
+.modal-enter {
+  animation: fadeIn 0.2s ease-out, scaleIn 0.2s ease-out;
+}
+
+/* SAÍDA: geralmente mais rápida */
+.modal-leave {
+  animation: fadeIn 0.15s ease-in reverse forwards,
+             scaleIn 0.15s ease-in reverse forwards;
+}</code></pre>
         </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Modal de confirmacao de exclusao --&gt;
-&lt;div class="fixed inset-0 z-50 flex items-center justify-center"&gt;
-  &lt;!-- Backdrop --&gt;
-  &lt;div class="absolute inset-0 bg-black/60"&gt;&lt;/div&gt;
 
-  &lt;!-- Modal --&gt;
-  &lt;div class="relative bg-dark-800 rounded-xl border border-dark-600
-              p-6 max-w-md w-full mx-4 shadow-2xl"&gt;
+        <!-- Modal Example -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="bg-dark-700 px-4 py-2 border-b border-dark-600 flex items-center justify-between">
+            <span class="text-sm font-medium">Modal com Animação Completa</span>
+            <span class="text-xs text-neutral-500">modal.html</span>
+          </div>
+          <pre class="p-4 text-sm overflow-x-auto"><code class="text-green-400">&lt;!-- Modal container --&gt;
+&lt;div id="modal" class="fixed inset-0 z-50 hidden"&gt;
 
-    &lt;!-- Icone de alerta --&gt;
-    &lt;div class="w-12 h-12 rounded-full bg-red-500/20 mx-auto mb-4
-                flex items-center justify-center"&gt;
-      &lt;span class="text-2xl"&gt;🗑️&lt;/span&gt;
-    &lt;/div&gt;
+  &lt;!-- Backdrop com fade --&gt;
+  &lt;div class="absolute inset-0 bg-black/60
+              opacity-0 transition-opacity duration-200"
+       id="backdrop"&gt;&lt;/div&gt;
 
-    &lt;!-- Conteudo --&gt;
-    &lt;h3 class="text-xl font-bold text-center mb-2"&gt;
-      Excluir registro?
-    &lt;/h3&gt;
-    &lt;p class="text-neutral-400 text-center mb-6"&gt;
-      Esta acao nao pode ser desfeita. O registro
-      &lt;strong class="text-neutral-200"&gt;"Cliente XYZ"&lt;/strong&gt;
-      sera permanentemente removido.
-    &lt;/p&gt;
-
-    &lt;!-- Acoes --&gt;
-    &lt;div class="flex space-x-3"&gt;
-      &lt;button class="flex-1 px-4 py-2.5 bg-dark-700 rounded-lg
-                     hover:bg-dark-600"&gt;
-        Cancelar
+  &lt;!-- Modal content com scale + fade --&gt;
+  &lt;div class="absolute inset-0 flex items-center justify-center p-4"&gt;
+    &lt;div class="bg-dark-800 rounded-xl max-w-md w-full p-6
+                opacity-0 scale-95
+                transition-all duration-200"
+         id="modal-content"&gt;
+      &lt;h3 class="text-xl font-bold mb-4"&gt;Título do Modal&lt;/h3&gt;
+      &lt;p class="text-neutral-400 mb-6"&gt;Conteúdo do modal aqui.&lt;/p&gt;
+      &lt;button onclick="closeModal()"
+              class="bg-blue-600 px-4 py-2 rounded-lg"&gt;
+        Fechar
       &lt;/button&gt;
-      &lt;button class="flex-1 px-4 py-2.5 bg-red-600 text-white
-                     rounded-lg hover:bg-red-500"&gt;
-        Sim, excluir
-      &lt;/button&gt;
     &lt;/div&gt;
-
   &lt;/div&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+
+&lt;script&gt;
+function openModal() {
+  const modal = document.getElementById('modal');
+  const backdrop = document.getElementById('backdrop');
+  const content = document.getElementById('modal-content');
+
+  modal.classList.remove('hidden');
+
+  // Trigger animations (next frame)
+  requestAnimationFrame(() =&gt; {
+    backdrop.classList.add('opacity-100');
+    content.classList.remove('opacity-0', 'scale-95');
+    content.classList.add('opacity-100', 'scale-100');
+  });
+}
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const backdrop = document.getElementById('backdrop');
+  const content = document.getElementById('modal-content');
+
+  // Animate out
+  backdrop.classList.remove('opacity-100');
+  content.classList.remove('opacity-100', 'scale-100');
+  content.classList.add('opacity-0', 'scale-95');
+
+  // Hide after animation
+  setTimeout(() =&gt; modal.classList.add('hidden'), 200);
+}
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <!-- Dica Prática -->
+        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 text-xl">💡</span>
+            <div>
+              <h4 class="font-semibold text-yellow-400 mb-1">Stagger Effect para Listas</h4>
+              <p class="text-sm text-yellow-200/80">Quando múltiplos elementos entram juntos (cards de dashboard, itens de lista), use delays escalonados. Cada item tem 50-100ms a mais de delay que o anterior. Isso cria um efeito de "cascata" que é mais agradável que todos aparecerem juntos. Em Tailwind: <code class="bg-yellow-900/50 px-1 rounded">delay-[100ms]</code>, <code class="bg-yellow-900/50 px-1 rounded">delay-[200ms]</code>, etc.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box de Dados -->
+        <div class="bg-dark-700/50 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Resumo de Timings</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-left text-neutral-400 border-b border-dark-600">
+                  <th class="pb-3">Tipo</th>
+                  <th class="pb-3">Entrada</th>
+                  <th class="pb-3">Saída</th>
+                  <th class="pb-3">Easing</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-600">
+                  <td class="py-3">Modal</td>
+                  <td class="py-3 text-blue-400">200-300ms</td>
+                  <td class="py-3 text-blue-400">150-200ms</td>
+                  <td class="py-3">ease-out</td>
+                </tr>
+                <tr class="border-b border-dark-600">
+                  <td class="py-3">Toast</td>
+                  <td class="py-3 text-blue-400">300ms</td>
+                  <td class="py-3 text-blue-400">200ms</td>
+                  <td class="py-3">ease-out</td>
+                </tr>
+                <tr class="border-b border-dark-600">
+                  <td class="py-3">Dropdown</td>
+                  <td class="py-3 text-blue-400">150ms</td>
+                  <td class="py-3 text-blue-400">100ms</td>
+                  <td class="py-3">ease-out</td>
+                </tr>
+                <tr>
+                  <td class="py-3">Sidebar</td>
+                  <td class="py-3 text-blue-400">300ms</td>
+                  <td class="py-3 text-blue-400">250ms</td>
+                  <td class="py-3">ease-in-out</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Topico 4 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
-        <h2 class="text-2xl font-bold">Notification Center</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+    <!-- RESUMO -->
+    <section class="mb-12 bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-2xl border border-blue-800/50 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">📋</span>
+        Resumo do Módulo
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
         <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Central de notificacoes que lista historico de eventos: novos usuarios, pedidos, erros do sistema, tarefas atribuidas. Geralmente acessado por icone de sino com badge contador de nao-lidas.</p>
+          <h3 class="font-semibold text-blue-400 mb-3">O que você aprendeu:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>CSS Transitions para mudanças suaves entre estados</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>@keyframes para animações complexas e contínuas</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>Classes utilitárias do Tailwind para transitions</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>Micro-interações para feedback visual imediato</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>Loading indicators: spinners, skeletons, progress</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 mt-1">✓</span>
+              <span>Animações de entrada e saída para modais e overlays</span>
+            </li>
+          </ul>
         </div>
+
         <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Toasts desaparecem. Notification Center preserva historico. Usuario pode revisar o que perdeu, marcar como lido, agir sobre notificacoes. Padrao em dashboards colaborativos e de monitoramento.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Botao com badge --&gt;
-&lt;button class="relative p-2 hover:bg-dark-700 rounded-lg"&gt;
-  🔔
-  &lt;span class="absolute top-0 right-0 w-5 h-5 bg-red-500 text-white
-               text-xs rounded-full flex items-center justify-center"&gt;
-    3
-  &lt;/span&gt;
-&lt;/button&gt;
-
-&lt;!-- Dropdown de notificacoes --&gt;
-&lt;div class="absolute right-0 mt-2 w-80 bg-dark-800 border border-dark-600
-            rounded-xl shadow-xl overflow-hidden"&gt;
-
-  &lt;!-- Header --&gt;
-  &lt;div class="px-4 py-3 border-b border-dark-600 flex justify-between"&gt;
-    &lt;span class="font-semibold"&gt;Notificacoes&lt;/span&gt;
-    &lt;button class="text-blue-400 text-sm"&gt;Marcar todas como lidas&lt;/button&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Lista --&gt;
-  &lt;div class="max-h-96 overflow-y-auto"&gt;
-
-    &lt;!-- Notificacao nao lida --&gt;
-    &lt;div class="px-4 py-3 hover:bg-dark-700 border-l-2 border-blue-500
-                bg-blue-500/5"&gt;
-      &lt;div class="flex items-start"&gt;
-        &lt;span class="mr-3"&gt;📦&lt;/span&gt;
-        &lt;div&gt;
-          &lt;p class="text-sm"&gt;&lt;strong&gt;Novo pedido&lt;/strong&gt; #12345&lt;/p&gt;
-          &lt;p class="text-xs text-neutral-500"&gt;5 minutos atras&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;!-- Notificacao lida --&gt;
-    &lt;div class="px-4 py-3 hover:bg-dark-700 opacity-60"&gt;
-      &lt;div class="flex items-start"&gt;
-        &lt;span class="mr-3"&gt;👤&lt;/span&gt;
-        &lt;div&gt;
-          &lt;p class="text-sm"&gt;Novo usuario registrado&lt;/p&gt;
-          &lt;p class="text-xs text-neutral-500"&gt;1 hora atras&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-
-  &lt;!-- Footer --&gt;
-  &lt;div class="px-4 py-2 border-t border-dark-600 text-center"&gt;
-    &lt;a href="#" class="text-blue-400 text-sm"&gt;Ver todas&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-          </div>
+          <h3 class="font-semibold text-blue-400 mb-3">Regras de ouro:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">⚡</span>
+              <span>Durações: 150-300ms para a maioria das interações</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">⚡</span>
+              <span>Performance: prefira transform e opacity</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">⚡</span>
+              <span>Entrada > Saída: entradas mais lentas, saídas mais rápidas</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">⚡</span>
+              <span>Easing: ease-out para entradas, ease-in para saídas</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-1">⚡</span>
+              <span>Menos é mais: animações demais distraem o usuário</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <!-- Topico 5 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
-        <h2 class="text-2xl font-bold">Inline Alerts e Callouts</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Inline alerts sao mensagens contextuais que aparecem dentro do conteudo, nao em overlay. Callouts destacam informacoes importantes em formularios, secoes ou cards. Permanentes ate contexto mudar.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Toasts e modais tiram usuario do contexto. Inline alerts mantem foco onde esta. Perfeitos para dicas, avisos de validacao, instrucoes contextuais.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre class="text-green-400">
-&lt;!-- Callout informativo --&gt;
-&lt;div class="bg-blue-900/30 border border-blue-800 rounded-lg p-4
-            flex items-start"&gt;
-  &lt;span class="text-blue-400 mr-3"&gt;ℹ️&lt;/span&gt;
-  &lt;div&gt;
-    &lt;p class="text-blue-300 font-medium"&gt;Dica&lt;/p&gt;
-    &lt;p class="text-sm text-blue-200/80"&gt;
-      Voce pode arrastar e soltar arquivos para fazer upload.
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Alert de aviso --&gt;
-&lt;div class="bg-yellow-900/30 border border-yellow-800 rounded-lg p-4"&gt;
-  &lt;div class="flex items-center"&gt;
-    &lt;span class="text-yellow-400 mr-2"&gt;⚠️&lt;/span&gt;
-    &lt;p class="text-yellow-200"&gt;
-      Alteracoes nao salvas serao perdidas.
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Alert de erro inline (em formulario) --&gt;
-&lt;div class="bg-red-900/30 border border-red-800 rounded-lg p-4 mt-4"&gt;
-  &lt;p class="text-red-400 font-medium mb-2"&gt;
-    Corrija os seguintes erros:
-  &lt;/p&gt;
-  &lt;ul class="text-sm text-red-200/80 list-disc list-inside space-y-1"&gt;
-    &lt;li&gt;Email e obrigatorio&lt;/li&gt;
-    &lt;li&gt;Senha deve ter pelo menos 8 caracteres&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;!-- Alert de sucesso com acao --&gt;
-&lt;div class="bg-emerald-900/30 border border-emerald-800 rounded-lg p-4
-            flex items-center justify-between"&gt;
-  &lt;div class="flex items-center"&gt;
-    &lt;span class="text-emerald-400 mr-2"&gt;✓&lt;/span&gt;
-    &lt;p class="text-emerald-200"&gt;Backup criado com sucesso!&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;a href="#" class="text-emerald-400 text-sm hover:underline"&gt;
-    Baixar arquivo
-  &lt;/a&gt;
-&lt;/div&gt;</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topico 6 -->
-    <section class="mb-12">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
-        <h2 class="text-2xl font-bold">Hierarquia de Notificacoes</h2>
-      </div>
-      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
-          <p class="text-neutral-300">Sistema de prioridade para decidir qual tipo de notificacao usar em cada situacao. Evita "notification fatigue" e garante que mensagens criticas recebam atencao proporcional.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
-          <p class="text-neutral-300">Se tudo e "alerta urgente", nada e urgente. Hierarquia bem definida faz usuarios confiarem no sistema: toasts sao leves, modais sao serios. Misturar niveis causa confusao.</p>
-        </div>
-        <div>
-          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
-          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
-            <pre class="text-neutral-300">
-HIERARQUIA DE NOTIFICACOES:
-
-┌──────────────────────────────────────────────────┐
-│ NIVEL 1: INLINE ALERTS                           │
-│ • Menos intrusivo                                │
-│ • Contextual, no local relevante                 │
-│ • Uso: dicas, validacao, info contextual         │
-│ Exemplo: "Campo obrigatorio" abaixo do input     │
-├──────────────────────────────────────────────────┤
-│ NIVEL 2: TOASTS                                  │
-│ • Temporario (3-5s)                              │
-│ • Nao bloqueia interface                         │
-│ • Uso: confirmacao de acao, feedback rapido      │
-│ Exemplo: "Salvo com sucesso"                     │
-├──────────────────────────────────────────────────┤
-│ NIVEL 3: BANNERS                                 │
-│ • Persistente ate ser dispensado                 │
-│ • Visivel globalmente                            │
-│ • Uso: avisos de sistema, alertas importantes    │
-│ Exemplo: "Manutencao programada em 2h"           │
-├──────────────────────────────────────────────────┤
-│ NIVEL 4: MODAIS                                  │
-│ • Mais intrusivo                                 │
-│ • Bloqueia interface                             │
-│ • Uso: confirmacao destrutiva, decisao critica   │
-│ Exemplo: "Tem certeza que deseja excluir?"       │
-└──────────────────────────────────────────────────┘
-
-REGRA GERAL:
-Use o nivel MINIMO necessario para a mensagem.
-Se toast resolve, nao use modal.</pre>
-          </div>
-        </div>
+      <div class="bg-dark-800/50 rounded-xl p-4 text-center">
+        <p class="text-neutral-400">
+          Animações bem aplicadas fazem a diferença entre uma interface "funcional" e uma interface "profissional". Use com intenção!
+        </p>
       </div>
     </section>
 
     <!-- Navigation -->
-    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
-      <a href="modulo-2-6.html" class="text-blue-400 hover:text-blue-300">← Formularios</a>
-      <a href="modulo-2-8.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Integracao de Componentes →</a>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-dark-600">
+      <a href="modulo-2-6.html" class="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+        <span class="mr-2">←</span>
+        <span>Responsividade</span>
+      </a>
+      <a href="modulo-2-8.html" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+        <span>Próximo: Projeto Final</span>
+        <span class="ml-2">→</span>
+      </a>
     </div>
 
   </main>
 
   <footer class="border-t border-dark-600 py-8 mt-12">
     <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Dashboard Mastery - Notificacoes e Alertas</p>
-      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+      <p>Dashboard Mastery - Animações e Transições</p>
+      <p class="mt-2">
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">INEMA.CLUB</a>
+      </p>
     </div>
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check saved preference
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
 
 </body>
 </html>
