@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.5 - Estados e Feedback | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.5</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Estados e Feedback</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Loading states, empty states, error handling e feedback visual para usuarios.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Loading States - Skeletons e Spinners</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Loading states indicam que dados estao sendo carregados. Skeletons sao placeholders que imitam a estrutura do conteudo. Spinners sao indicadores genericos de atividade. Skeletons sao preferidos por reduzirem perceived loading time.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Interface sem feedback de loading parece quebrada ou lenta. Usuarios abandonam apos 3 segundos sem resposta. Skeletons bem feitos fazem a interface parecer mais rapida, mesmo quando nao e.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Skeleton Card --&gt;
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600 animate-pulse"&gt;
+  &lt;!-- Header skeleton --&gt;
+  &lt;div class="flex items-center justify-between mb-4"&gt;
+    &lt;div class="h-4 bg-dark-600 rounded w-24"&gt;&lt;/div&gt;
+    &lt;div class="h-8 w-8 bg-dark-600 rounded-lg"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Value skeleton --&gt;
+  &lt;div class="h-8 bg-dark-600 rounded w-32 mb-2"&gt;&lt;/div&gt;
+
+  &lt;!-- Trend skeleton --&gt;
+  &lt;div class="h-4 bg-dark-600 rounded w-20"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Spinner simples --&gt;
+&lt;div class="flex items-center justify-center p-8"&gt;
+  &lt;div class="w-8 h-8 border-4 border-blue-500 border-t-transparent
+              rounded-full animate-spin"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Skeleton com shimmer effect (CSS) --&gt;
+&lt;style&gt;
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+    #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+&lt;/style&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Empty States</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Empty States aparecem quando nao ha dados para exibir: lista vazia, busca sem resultados, usuario novo sem atividade. Bem projetados, guiam o usuario para a proxima acao ao inves de mostrar tela vazia.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Empty states sao oportunidades de onboarding disfarçadas. "Voce ainda nao tem pedidos. Criar primeiro pedido?" converte melhor que tabela vazia. Transformam momento vazio em acao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Empty State - Sem dados --&gt;
+&lt;div class="flex flex-col items-center justify-center py-16 text-center"&gt;
+  &lt;div class="w-16 h-16 bg-dark-700 rounded-full flex items-center
+              justify-center mb-4"&gt;
+    &lt;span class="text-3xl"&gt;📭&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="text-lg font-semibold mb-2"&gt;Nenhum pedido encontrado&lt;/h3&gt;
+  &lt;p class="text-neutral-400 max-w-sm mb-6"&gt;
+    Voce ainda nao tem pedidos. Comece criando seu primeiro pedido agora.
+  &lt;/p&gt;
+  &lt;button class="px-6 py-2 bg-blue-600 hover:bg-blue-500
+                 text-white rounded-lg"&gt;
+    + Criar Pedido
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Empty State - Busca sem resultados --&gt;
+&lt;div class="text-center py-12"&gt;
+  &lt;span class="text-4xl mb-4 block"&gt;🔍&lt;/span&gt;
+  &lt;h3 class="text-lg font-semibold mb-2"&gt;
+    Nenhum resultado para "xyz"
+  &lt;/h3&gt;
+  &lt;p class="text-neutral-400"&gt;
+    Tente buscar com outros termos ou
+    &lt;button class="text-blue-400"&gt;limpar filtros&lt;/button&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Error States e Handling</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Error states comunicam quando algo deu errado: falha de rede, permissao negada, validacao falhou. Bons error states explicam o problema, a causa provavel e oferecem solucao ou acao de retry.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Erros sao inevitaveis. Como o sistema comunica erros define a experiencia. "Erro 500" e frustrante. "Servidor indisponivel. Tentando reconectar..." e tranquilizador. Usuarios perdoam erros bem comunicados.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Error State - Falha de conexao --&gt;
+&lt;div class="bg-red-900/20 border border-red-800 rounded-xl p-6"&gt;
+  &lt;div class="flex items-start"&gt;
+    &lt;span class="text-2xl mr-3"&gt;⚠️&lt;/span&gt;
+    &lt;div&gt;
+      &lt;h3 class="text-red-400 font-semibold mb-1"&gt;
+        Falha ao carregar dados
+      &lt;/h3&gt;
+      &lt;p class="text-neutral-400 text-sm mb-4"&gt;
+        Nao foi possivel conectar ao servidor. Verifique sua
+        conexao e tente novamente.
+      &lt;/p&gt;
+      &lt;button class="px-4 py-2 bg-red-600 hover:bg-red-500
+                     text-white rounded-lg text-sm"&gt;
+        🔄 Tentar novamente
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Inline error (campos de formulario) --&gt;
+&lt;div class="space-y-1"&gt;
+  &lt;input type="email"
+         class="w-full px-4 py-2 bg-dark-700 border-2 border-red-500
+                rounded-lg focus:outline-none"
+         value="emailinvalido" /&gt;
+  &lt;p class="text-red-400 text-sm flex items-center"&gt;
+    &lt;span class="mr-1"&gt;⚠&lt;/span&gt; Email invalido
+  &lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Success Feedback</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Success feedback confirma que uma acao foi completada com sucesso: dados salvos, email enviado, item criado. Pode ser toast, inline message, animacao de check ou mudanca de estado visual.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Sem confirmacao, usuarios duvidam se a acao funcionou e repetem. Com confirmacao, sentem confianca e satisfacao. Feedback positivo e tao importante quanto feedback de erro.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Toast de sucesso --&gt;
+&lt;div class="fixed bottom-4 right-4 bg-emerald-900/90 border
+            border-emerald-700 rounded-lg px-4 py-3 flex items-center
+            shadow-lg animate-slide-up"&gt;
+  &lt;span class="text-emerald-400 mr-3"&gt;✓&lt;/span&gt;
+  &lt;span class="text-neutral-100"&gt;Dados salvos com sucesso!&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Botao com estado de sucesso --&gt;
+&lt;button class="px-6 py-2 rounded-lg transition-all duration-300
+               bg-emerald-600 text-white"&gt;
+  &lt;span class="flex items-center"&gt;
+    ✓ Salvo!
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Animacao de check --&gt;
+&lt;style&gt;
+@keyframes check-mark {
+  0% { stroke-dashoffset: 50; }
+  100% { stroke-dashoffset: 0; }
+}
+.check-animated path {
+  stroke-dasharray: 50;
+  animation: check-mark 0.3s ease-out forwards;
+}
+&lt;/style&gt;
+
+&lt;svg class="check-animated w-6 h-6 text-emerald-400"&gt;
+  &lt;path d="M5 13l4 4L19 7" stroke="currentColor"
+        stroke-width="2" fill="none"/&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Progress Indicators</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Progress indicators mostram o andamento de operacoes longas: upload de arquivo, processamento de dados, wizard multi-etapas. Podem ser determinados (% concluido) ou indeterminados (atividade sem previsao).</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Operacoes longas sem feedback causam ansiedade. "Travou?" "Devo atualizar?" Progress indicators dao previsibilidade e controle, reduzindo abandono em processos demorados.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Barra de progresso determinada --&gt;
+&lt;div class="space-y-2"&gt;
+  &lt;div class="flex justify-between text-sm"&gt;
+    &lt;span class="text-neutral-400"&gt;Enviando arquivo...&lt;/span&gt;
+    &lt;span class="text-blue-400"&gt;67%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="h-2 bg-dark-700 rounded-full overflow-hidden"&gt;
+    &lt;div class="h-full bg-blue-500 rounded-full transition-all"
+         style="width: 67%"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Progress indeterminado (animado) --&gt;
+&lt;div class="h-1 bg-dark-700 rounded-full overflow-hidden"&gt;
+  &lt;div class="h-full w-1/3 bg-blue-500 rounded-full animate-progress"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+@keyframes progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+.animate-progress {
+  animation: progress 1.5s ease-in-out infinite;
+}
+&lt;/style&gt;
+
+&lt;!-- Stepper (wizard) --&gt;
+&lt;div class="flex items-center"&gt;
+  &lt;div class="flex items-center"&gt;
+    &lt;div class="w-8 h-8 rounded-full bg-blue-500 text-white
+                flex items-center justify-center"&gt;✓&lt;/div&gt;
+    &lt;span class="ml-2 text-sm"&gt;Dados&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="flex-1 h-0.5 bg-blue-500 mx-4"&gt;&lt;/div&gt;
+  &lt;div class="flex items-center"&gt;
+    &lt;div class="w-8 h-8 rounded-full bg-blue-500 text-white
+                flex items-center justify-center"&gt;2&lt;/div&gt;
+    &lt;span class="ml-2 text-sm"&gt;Pagamento&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="flex-1 h-0.5 bg-dark-600 mx-4"&gt;&lt;/div&gt;
+  &lt;div class="flex items-center opacity-50"&gt;
+    &lt;div class="w-8 h-8 rounded-full bg-dark-600
+                flex items-center justify-center"&gt;3&lt;/div&gt;
+    &lt;span class="ml-2 text-sm"&gt;Confirmacao&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Micro-interacoes e Feedback Sutil</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Micro-interacoes sao pequenas animacoes e feedbacks que respondem a acoes do usuario: hover effects, ripples, transicoes suaves. Sao quase imperceptiveis mas criam sensacao de interface "viva" e responsiva.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Interfaces sem micro-interacoes parecem "mortas". Com elas, cada clique tem resposta, cada hover tem feedback. A diferenca entre "funciona" e "funciona bem" esta nos detalhes.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Botao com micro-interacoes --&gt;
+&lt;button class="px-6 py-2 bg-blue-600 text-white rounded-lg
+               transition-all duration-200
+               hover:bg-blue-500
+               hover:shadow-lg hover:shadow-blue-500/25
+               active:scale-95
+               focus:ring-2 focus:ring-blue-400 focus:ring-offset-2
+               focus:ring-offset-dark-900"&gt;
+  Salvar
+&lt;/button&gt;
+
+&lt;!-- Card com hover suave --&gt;
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600
+            transition-all duration-200
+            hover:border-dark-500
+            hover:shadow-xl hover:shadow-black/20
+            hover:-translate-y-0.5"&gt;
+  Conteudo do card
+&lt;/div&gt;
+
+&lt;!-- Icone que gira no hover --&gt;
+&lt;button class="p-2 rounded-lg hover:bg-dark-700 group"&gt;
+  &lt;svg class="w-5 h-5 transition-transform duration-300
+              group-hover:rotate-90"&gt;
+    &lt;!-- settings icon --&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Link com underline animado --&gt;
+&lt;a class="relative text-blue-400 hover:text-blue-300"&gt;
+  Ver mais
+  &lt;span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400
+               transition-all duration-300 group-hover:w-full"&gt;&lt;/span&gt;
+&lt;/a&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-4.html" class="text-blue-400 hover:text-blue-300">← Filtros e Busca</a>
+      <a href="modulo-2-6.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Formularios →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Estados e Feedback</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

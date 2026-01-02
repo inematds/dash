@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.2 - Graficos e Visualizacoes | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.2</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📈 Graficos e Visualizacoes</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Tipos de graficos, bibliotecas como Chart.js e quando usar cada visualizacao.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Quando Usar Cada Tipo de Grafico</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Cada tipo de grafico serve para um proposito especifico. Graficos de linha mostram tendencias, barras comparam categorias, pizza mostra proporcoes. Escolher errado distorce a mensagem dos dados.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">O grafico errado pode levar a interpretacoes equivocadas. Um grafico de pizza com 15 fatias e ilegivel. Um grafico de linha para dados categoricos nao faz sentido. A escolha correta comunica instantaneamente.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+GUIA DE SELECAO DE GRAFICOS:
+
+┌─────────────────────────────────────────────────┐
+│ OBJETIVO              │ TIPO RECOMENDADO        │
+├───────────────────────┼─────────────────────────┤
+│ Tendencia no tempo    │ Linha, Area             │
+│ Comparar categorias   │ Barra horizontal/vert   │
+│ Parte do todo         │ Pizza, Donut (max 5)    │
+│ Distribuicao          │ Histograma, Box plot    │
+│ Correlacao            │ Scatter plot            │
+│ Progresso             │ Gauge, Barra progresso  │
+│ Hierarquia            │ Treemap                 │
+│ Geografico            │ Mapa, Choropleth        │
+└───────────────────────┴─────────────────────────┘
+
+REGRAS DE OURO:
+✗ Pizza com mais de 5 fatias
+✗ 3D em qualquer grafico (distorce)
+✗ Eixo Y nao comecando em zero (barras)
+✓ Linha pode ter eixo Y truncado
+✓ Menos e mais - remova elementos desnecessarios</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Chart.js - Setup e Configuracao</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Chart.js e a biblioteca de graficos mais popular para web. Leve (~60KB), responsiva, animada e com 8 tipos de graficos nativos. Perfeita para dashboards por ser simples de configurar e altamente customizavel.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">E o padrao da industria para graficos em dashboards. Documentacao excelente, comunidade ativa e compativel com qualquer framework. Alternativas como ApexCharts ou Recharts seguem padroes similares.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- 1. Incluir Chart.js --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+
+&lt;!-- 2. Canvas para o grafico --&gt;
+&lt;canvas id="myChart" class="w-full h-64"&gt;&lt;/canvas&gt;
+
+&lt;!-- 3. Configuracao --&gt;
+&lt;script&gt;
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'line', // bar, pie, doughnut, radar...
+  data: {
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+    datasets: [{
+      label: 'Vendas 2024',
+      data: [12, 19, 3, 5, 2, 3],
+      borderColor: '#3b82f6',
+      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      tension: 0.4, // curva suave
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+&lt;/script&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Graficos de Linha e Area</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Graficos de linha mostram tendencias ao longo do tempo. Graficos de area sao linhas com preenchimento, uteis para mostrar volume ou acumulado. Ambos sao essenciais para dashboards de monitoramento.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">90% dos dashboards precisam mostrar "como algo mudou ao longo do tempo". Vendas mensais, usuarios ativos, temperatura - tudo e tendencia. Dominar graficos de linha e fundamental.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Anatomia do Grafico de Linha:
+
+        Titulo do Grafico
+    │
+100 ┤                    ●────  Tooltip
+ 80 ┤         ╱╲        ╱
+ 60 ┤    ╱╲  ╱  ╲      ╱
+ 40 ┤   ╱  ╲╱    ╲    ╱
+ 20 ┤  ╱          ╲──╱
+  0 ┼──┬──┬──┬──┬──┬──┬
+     J  F  M  A  M  J  J
+
+Elementos:
+• Linha: dados principais
+• Pontos: valores individuais (opcional)
+• Grid: linhas de referencia (discretas)
+• Eixo Y: escala (pode truncar)
+• Eixo X: tempo/categorias
+• Legenda: se multiplas series
+• Area: preenchimento (volume)
+
+MULTIPLAS LINHAS:
+- Maximo 4-5 linhas por grafico
+- Cores distintas e acessiveis
+- Linha principal mais grossa</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Graficos de Barra e Histogramas</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Graficos de barra comparam valores entre categorias. Barras verticais para poucas categorias, horizontais para muitas ou labels longos. Histogramas mostram distribuicao de frequencia.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Comparacao e essencial em dashboards. "Qual produto vende mais?", "Qual regiao performa melhor?". Barras respondem essas perguntas instantaneamente.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Grafico de Barras - Chart.js
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Produto A', 'Produto B', 'Produto C', 'Produto D'],
+    datasets: [{
+      label: 'Vendas',
+      data: [120, 190, 80, 140],
+      backgroundColor: [
+        'rgba(59, 130, 246, 0.8)',  // azul
+        'rgba(16, 185, 129, 0.8)', // verde
+        'rgba(245, 158, 11, 0.8)', // amarelo
+        'rgba(139, 92, 246, 0.8)'  // roxo
+      ],
+      borderRadius: 8
+    }]
+  },
+  options: {
+    indexAxis: 'y', // barras horizontais
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      x: { beginAtZero: true } // SEMPRE comece em zero!
+    }
+  }
+});</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Graficos de Pizza e Donut</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Graficos de pizza e donut mostram proporcoes de um todo. Donut e preferido por permitir colocar informacao no centro. Limitados a poucas categorias (max 5) para serem efetivos.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Proporcoes sao frequentes: market share, distribuicao de vendas por categoria, alocacao de orcamento. Mas pizza e frequentemente mal usado - saber quando NAO usar e tao importante quanto saber usar.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+QUANDO USAR PIZZA/DONUT:
+✓ Partes de um todo = 100%
+✓ 2-5 categorias apenas
+✓ Uma fatia e claramente dominante
+✓ Comparacao exata nao e necessaria
+
+QUANDO NAO USAR:
+✗ Mais de 5 categorias
+✗ Fatias de tamanho similar
+✗ Comparacao precisa necessaria
+✗ Dados temporais
+
+DONUT VS PIZZA:
+┌─────────────┐  ┌─────────────┐
+│ ╭─────────╮ │  │ ╭─────────╮ │
+│ │  45%    │ │  │ │         │ │
+│ │ Vendas  │ │  │ │         │ │
+│ ╰─────────╯ │  │ ╰─────────╯ │
+│   DONUT     │  │    PIZZA    │
+└─────────────┘  └─────────────┘
+   ↑ Centro util    ↑ Centro desperdicado</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Estilizacao e Temas para Graficos</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Estilizar graficos significa adapta-los ao design system do dashboard: cores, fontes, bordas, sombras. Inclui configurar temas claros e escuros, tooltips customizados e animacoes.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Graficos com estilo padrao quebram a harmonia visual. Um grafico branco num dashboard dark mode e jarring. Consistencia visual aumenta a confianca e profissionalismo.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Tema Dark Mode para Chart.js
+Chart.defaults.color = '#9ca3af';           // texto
+Chart.defaults.borderColor = '#374151';     // linhas grid
+Chart.defaults.backgroundColor = '#1f2937'; // fundo
+
+// Configuracao Global
+Chart.defaults.font.family = 'Inter';
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.tooltip.backgroundColor = '#111827';
+Chart.defaults.plugins.tooltip.titleColor = '#f3f4f6';
+Chart.defaults.plugins.tooltip.bodyColor = '#9ca3af';
+Chart.defaults.plugins.tooltip.borderColor = '#374151';
+Chart.defaults.plugins.tooltip.borderWidth = 1;
+Chart.defaults.plugins.tooltip.padding = 12;
+Chart.defaults.plugins.tooltip.cornerRadius = 8;
+
+// Paleta de Cores para Dashboards
+const chartColors = {
+  primary: '#3b82f6',   // azul
+  success: '#10b981',   // verde
+  warning: '#f59e0b',   // amarelo
+  danger: '#ef4444',    // vermelho
+  info: '#8b5cf6',      // roxo
+  neutral: '#6b7280'    // cinza
+};</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-1.html" class="text-blue-400 hover:text-blue-300">← Componentes de Dados</a>
+      <a href="modulo-2-3.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Tabelas Avancadas →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Graficos e Visualizacoes</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

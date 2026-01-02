@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.7 - Notificacoes e Alertas | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.7</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔔 Notificacoes e Alertas</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Toasts, banners, modais de confirmacao e sistemas de notificacao para dashboards.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Toast Notifications</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Toasts sao notificacoes temporarias que aparecem brevemente (3-5s) e desaparecem automaticamente. Nao bloqueiam a interface. Usados para feedback de acoes: "Salvo com sucesso", "Email enviado", "Erro ao conectar".</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Sao a forma mais leve de feedback. Usuario recebe confirmacao sem interromper workflow. Padrão em apps modernos (Slack, Gmail, Notion). Essencial para UX fluida.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Container de Toasts (posicao fixa) --&gt;
+&lt;div class="fixed bottom-4 right-4 z-50 space-y-2"&gt;
+
+  &lt;!-- Toast de Sucesso --&gt;
+  &lt;div class="flex items-center p-4 bg-dark-800 border border-dark-600
+              rounded-lg shadow-xl animate-slide-up"&gt;
+    &lt;span class="w-8 h-8 rounded-full bg-emerald-500/20
+                flex items-center justify-center mr-3"&gt;
+      &lt;span class="text-emerald-400"&gt;✓&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class="flex-1"&gt;
+      &lt;p class="font-medium"&gt;Dados salvos!&lt;/p&gt;
+      &lt;p class="text-sm text-neutral-400"&gt;Suas alteracoes foram salvas.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class="text-neutral-500 hover:text-white ml-4"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Toast de Erro --&gt;
+  &lt;div class="flex items-center p-4 bg-dark-800 border border-red-800
+              rounded-lg shadow-xl"&gt;
+    &lt;span class="w-8 h-8 rounded-full bg-red-500/20
+                flex items-center justify-center mr-3"&gt;
+      &lt;span class="text-red-400"&gt;!&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div&gt;
+      &lt;p class="font-medium text-red-400"&gt;Erro ao salvar&lt;/p&gt;
+      &lt;p class="text-sm text-neutral-400"&gt;Tente novamente.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;style&gt;
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.3s ease-out; }
+&lt;/style&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Alert Banners</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Banners sao alertas persistentes que ocupam largura total, geralmente no topo da pagina. Usados para informacoes importantes que afetam toda a sessao: manutencao programada, trial expirando, permissao necessaria.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Diferente de toasts, banners exigem atencao. Sao para comunicacoes que usuario NAO pode ignorar. Uso excessivo causa "banner blindness", entao devem ser reservados para mensagens criticas.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Banner de Aviso (amarelo) --&gt;
+&lt;div class="bg-yellow-900/50 border-b border-yellow-700 px-4 py-3"&gt;
+  &lt;div class="max-w-6xl mx-auto flex items-center justify-between"&gt;
+    &lt;div class="flex items-center"&gt;
+      &lt;span class="mr-3"&gt;⚠️&lt;/span&gt;
+      &lt;p class="text-yellow-200"&gt;
+        Seu periodo de teste expira em &lt;strong&gt;3 dias&lt;/strong&gt;.
+        &lt;a href="#" class="underline ml-1"&gt;Fazer upgrade&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class="text-yellow-200 hover:text-white"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Banner de Erro Critico (vermelho) --&gt;
+&lt;div class="bg-red-900/50 border-b border-red-700 px-4 py-3"&gt;
+  &lt;div class="max-w-6xl mx-auto flex items-center"&gt;
+    &lt;span class="mr-3"&gt;🚨&lt;/span&gt;
+    &lt;p class="text-red-200"&gt;
+      &lt;strong&gt;Problema de conexao:&lt;/strong&gt;
+      Dados podem estar desatualizados.
+      &lt;button class="underline ml-2"&gt;Tentar reconectar&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Banner Informativo (azul) --&gt;
+&lt;div class="bg-blue-900/50 border-b border-blue-700 px-4 py-3"&gt;
+  &lt;div class="max-w-6xl mx-auto flex items-center"&gt;
+    &lt;span class="mr-3"&gt;ℹ️&lt;/span&gt;
+    &lt;p class="text-blue-200"&gt;
+      Nova funcionalidade disponivel!
+      &lt;a href="#" class="underline ml-1"&gt;Saiba mais&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Modais de Confirmacao</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Modais de confirmacao pedem confirmacao antes de acoes irreversiveis ou importantes: deletar registro, sair sem salvar, enviar para producao. Bloqueiam interface ate usuario decidir.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Protegem contra erros acidentais. "Deletar" com um clique e perigoso. Confirmacao adiciona friccao intencional para acoes destrutivas. Uso excessivo causa frustração - usar com parcimonia.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Modal de confirmacao de exclusao --&gt;
+&lt;div class="fixed inset-0 z-50 flex items-center justify-center"&gt;
+  &lt;!-- Backdrop --&gt;
+  &lt;div class="absolute inset-0 bg-black/60"&gt;&lt;/div&gt;
+
+  &lt;!-- Modal --&gt;
+  &lt;div class="relative bg-dark-800 rounded-xl border border-dark-600
+              p-6 max-w-md w-full mx-4 shadow-2xl"&gt;
+
+    &lt;!-- Icone de alerta --&gt;
+    &lt;div class="w-12 h-12 rounded-full bg-red-500/20 mx-auto mb-4
+                flex items-center justify-center"&gt;
+      &lt;span class="text-2xl"&gt;🗑️&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Conteudo --&gt;
+    &lt;h3 class="text-xl font-bold text-center mb-2"&gt;
+      Excluir registro?
+    &lt;/h3&gt;
+    &lt;p class="text-neutral-400 text-center mb-6"&gt;
+      Esta acao nao pode ser desfeita. O registro
+      &lt;strong class="text-neutral-200"&gt;"Cliente XYZ"&lt;/strong&gt;
+      sera permanentemente removido.
+    &lt;/p&gt;
+
+    &lt;!-- Acoes --&gt;
+    &lt;div class="flex space-x-3"&gt;
+      &lt;button class="flex-1 px-4 py-2.5 bg-dark-700 rounded-lg
+                     hover:bg-dark-600"&gt;
+        Cancelar
+      &lt;/button&gt;
+      &lt;button class="flex-1 px-4 py-2.5 bg-red-600 text-white
+                     rounded-lg hover:bg-red-500"&gt;
+        Sim, excluir
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Notification Center</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Central de notificacoes que lista historico de eventos: novos usuarios, pedidos, erros do sistema, tarefas atribuidas. Geralmente acessado por icone de sino com badge contador de nao-lidas.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Toasts desaparecem. Notification Center preserva historico. Usuario pode revisar o que perdeu, marcar como lido, agir sobre notificacoes. Padrao em dashboards colaborativos e de monitoramento.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Botao com badge --&gt;
+&lt;button class="relative p-2 hover:bg-dark-700 rounded-lg"&gt;
+  🔔
+  &lt;span class="absolute top-0 right-0 w-5 h-5 bg-red-500 text-white
+               text-xs rounded-full flex items-center justify-center"&gt;
+    3
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Dropdown de notificacoes --&gt;
+&lt;div class="absolute right-0 mt-2 w-80 bg-dark-800 border border-dark-600
+            rounded-xl shadow-xl overflow-hidden"&gt;
+
+  &lt;!-- Header --&gt;
+  &lt;div class="px-4 py-3 border-b border-dark-600 flex justify-between"&gt;
+    &lt;span class="font-semibold"&gt;Notificacoes&lt;/span&gt;
+    &lt;button class="text-blue-400 text-sm"&gt;Marcar todas como lidas&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Lista --&gt;
+  &lt;div class="max-h-96 overflow-y-auto"&gt;
+
+    &lt;!-- Notificacao nao lida --&gt;
+    &lt;div class="px-4 py-3 hover:bg-dark-700 border-l-2 border-blue-500
+                bg-blue-500/5"&gt;
+      &lt;div class="flex items-start"&gt;
+        &lt;span class="mr-3"&gt;📦&lt;/span&gt;
+        &lt;div&gt;
+          &lt;p class="text-sm"&gt;&lt;strong&gt;Novo pedido&lt;/strong&gt; #12345&lt;/p&gt;
+          &lt;p class="text-xs text-neutral-500"&gt;5 minutos atras&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Notificacao lida --&gt;
+    &lt;div class="px-4 py-3 hover:bg-dark-700 opacity-60"&gt;
+      &lt;div class="flex items-start"&gt;
+        &lt;span class="mr-3"&gt;👤&lt;/span&gt;
+        &lt;div&gt;
+          &lt;p class="text-sm"&gt;Novo usuario registrado&lt;/p&gt;
+          &lt;p class="text-xs text-neutral-500"&gt;1 hora atras&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;div class="px-4 py-2 border-t border-dark-600 text-center"&gt;
+    &lt;a href="#" class="text-blue-400 text-sm"&gt;Ver todas&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Inline Alerts e Callouts</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Inline alerts sao mensagens contextuais que aparecem dentro do conteudo, nao em overlay. Callouts destacam informacoes importantes em formularios, secoes ou cards. Permanentes ate contexto mudar.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Toasts e modais tiram usuario do contexto. Inline alerts mantem foco onde esta. Perfeitos para dicas, avisos de validacao, instrucoes contextuais.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Callout informativo --&gt;
+&lt;div class="bg-blue-900/30 border border-blue-800 rounded-lg p-4
+            flex items-start"&gt;
+  &lt;span class="text-blue-400 mr-3"&gt;ℹ️&lt;/span&gt;
+  &lt;div&gt;
+    &lt;p class="text-blue-300 font-medium"&gt;Dica&lt;/p&gt;
+    &lt;p class="text-sm text-blue-200/80"&gt;
+      Voce pode arrastar e soltar arquivos para fazer upload.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Alert de aviso --&gt;
+&lt;div class="bg-yellow-900/30 border border-yellow-800 rounded-lg p-4"&gt;
+  &lt;div class="flex items-center"&gt;
+    &lt;span class="text-yellow-400 mr-2"&gt;⚠️&lt;/span&gt;
+    &lt;p class="text-yellow-200"&gt;
+      Alteracoes nao salvas serao perdidas.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Alert de erro inline (em formulario) --&gt;
+&lt;div class="bg-red-900/30 border border-red-800 rounded-lg p-4 mt-4"&gt;
+  &lt;p class="text-red-400 font-medium mb-2"&gt;
+    Corrija os seguintes erros:
+  &lt;/p&gt;
+  &lt;ul class="text-sm text-red-200/80 list-disc list-inside space-y-1"&gt;
+    &lt;li&gt;Email e obrigatorio&lt;/li&gt;
+    &lt;li&gt;Senha deve ter pelo menos 8 caracteres&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- Alert de sucesso com acao --&gt;
+&lt;div class="bg-emerald-900/30 border border-emerald-800 rounded-lg p-4
+            flex items-center justify-between"&gt;
+  &lt;div class="flex items-center"&gt;
+    &lt;span class="text-emerald-400 mr-2"&gt;✓&lt;/span&gt;
+    &lt;p class="text-emerald-200"&gt;Backup criado com sucesso!&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a href="#" class="text-emerald-400 text-sm hover:underline"&gt;
+    Baixar arquivo
+  &lt;/a&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Hierarquia de Notificacoes</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Sistema de prioridade para decidir qual tipo de notificacao usar em cada situacao. Evita "notification fatigue" e garante que mensagens criticas recebam atencao proporcional.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Se tudo e "alerta urgente", nada e urgente. Hierarquia bem definida faz usuarios confiarem no sistema: toasts sao leves, modais sao serios. Misturar niveis causa confusao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+HIERARQUIA DE NOTIFICACOES:
+
+┌──────────────────────────────────────────────────┐
+│ NIVEL 1: INLINE ALERTS                           │
+│ • Menos intrusivo                                │
+│ • Contextual, no local relevante                 │
+│ • Uso: dicas, validacao, info contextual         │
+│ Exemplo: "Campo obrigatorio" abaixo do input     │
+├──────────────────────────────────────────────────┤
+│ NIVEL 2: TOASTS                                  │
+│ • Temporario (3-5s)                              │
+│ • Nao bloqueia interface                         │
+│ • Uso: confirmacao de acao, feedback rapido      │
+│ Exemplo: "Salvo com sucesso"                     │
+├──────────────────────────────────────────────────┤
+│ NIVEL 3: BANNERS                                 │
+│ • Persistente ate ser dispensado                 │
+│ • Visivel globalmente                            │
+│ • Uso: avisos de sistema, alertas importantes    │
+│ Exemplo: "Manutencao programada em 2h"           │
+├──────────────────────────────────────────────────┤
+│ NIVEL 4: MODAIS                                  │
+│ • Mais intrusivo                                 │
+│ • Bloqueia interface                             │
+│ • Uso: confirmacao destrutiva, decisao critica   │
+│ Exemplo: "Tem certeza que deseja excluir?"       │
+└──────────────────────────────────────────────────┘
+
+REGRA GERAL:
+Use o nivel MINIMO necessario para a mensagem.
+Se toast resolve, nao use modal.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-6.html" class="text-blue-400 hover:text-blue-300">← Formularios</a>
+      <a href="modulo-2-8.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Integracao de Componentes →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Notificacoes e Alertas</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

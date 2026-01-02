@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.3 - Tabelas Avancadas | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.3</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📋 Tabelas Avancadas</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Sorting, paginacao, virtualizacao e data tables profissionais para grandes volumes de dados.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Anatomia de uma Data Table</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Data Tables sao componentes complexos para exibir dados tabulares com funcionalidades como ordenacao, filtragem, selecao e acoes. Diferem de tabelas simples por serem interativas e otimizadas para grandes volumes.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Tabelas sao o coracao de dashboards administrativos. Lista de clientes, pedidos, transacoes - tudo vira tabela. Uma tabela mal projetada torna o sistema inutilizavel; bem projetada, e poderosa.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Estrutura de uma Data Table:
+
+┌─────────────────────────────────────────────────────────┐
+│ ☐ Selecionar todos    [Buscar...]    [Filtros] [Export]│ ← Toolbar
+├─────┬────────────┬──────────┬──────────┬───────────────┤
+│ ☐   │ Nome ↑↓    │ Email    │ Status   │ Acoes         │ ← Header
+├─────┼────────────┼──────────┼──────────┼───────────────┤
+│ ☐   │ Ana Silva  │ ana@...  │ ● Ativo  │ [Edit] [Del]  │ ← Row
+│ ☐   │ Bruno Lima │ bruno@.. │ ○ Inativo│ [Edit] [Del]  │
+│ ☐   │ Carla Dias │ carla@.. │ ● Ativo  │ [Edit] [Del]  │
+├─────┴────────────┴──────────┴──────────┴───────────────┤
+│ Mostrando 1-10 de 156        [<] [1] [2] [3] ... [>]   │ ← Footer
+└─────────────────────────────────────────────────────────┘
+
+Componentes:
+• Toolbar: busca, filtros, acoes em lote
+• Header: titulos ordenaveis, selecao global
+• Body: linhas de dados, selecao individual
+• Footer: paginacao, contador de resultados</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Ordenacao (Sorting)</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Ordenacao permite reorganizar dados por qualquer coluna em ordem crescente ou decrescente. Usuarios esperam clicar no cabecalho para ordenar. Suportar ordenacao multipla (shift+click) e diferencial.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Ordenacao e a funcionalidade mais usada em tabelas. "Quem sao os maiores clientes?", "Quais pedidos sao mais recentes?" - tudo requer ordenacao. Sem ela, tabelas sao estaticas e frustrantes.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Logica de ordenacao
+function sortTable(data, column, direction = 'asc') {
+  return [...data].sort((a, b) => {
+    let valA = a[column];
+    let valB = b[column];
+
+    // Tratamento de tipos
+    if (typeof valA === 'string') {
+      valA = valA.toLowerCase();
+      valB = valB.toLowerCase();
+    }
+
+    if (valA < valB) return direction === 'asc' ? -1 : 1;
+    if (valA > valB) return direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+}
+
+// Header clicavel
+&lt;th class="cursor-pointer hover:bg-dark-700 select-none"
+    onclick="handleSort('name')"&gt;
+  Nome
+  &lt;span class="ml-1"&gt;
+    {sortColumn === 'name' ? (sortDir === 'asc' ? '↑' : '↓') : '↕'}
+  &lt;/span&gt;
+&lt;/th&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Paginacao</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Paginacao divide grandes conjuntos de dados em paginas menores. Tipicamente 10, 25, 50 ou 100 itens por pagina. Essencial para performance e usabilidade quando ha centenas ou milhares de registros.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Tabelas com 1000+ linhas sem paginacao travam o navegador e sao impossiveis de navegar. Paginacao melhora performance, facilita navegacao e permite o backend enviar dados em chunks.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Componente de Paginacao --&gt;
+&lt;div class="flex items-center justify-between px-4 py-3"&gt;
+  &lt;!-- Info --&gt;
+  &lt;p class="text-sm text-neutral-400"&gt;
+    Mostrando &lt;span class="font-medium"&gt;1&lt;/span&gt; a
+    &lt;span class="font-medium"&gt;10&lt;/span&gt; de
+    &lt;span class="font-medium"&gt;156&lt;/span&gt; resultados
+  &lt;/p&gt;
+
+  &lt;!-- Navegacao --&gt;
+  &lt;div class="flex space-x-1"&gt;
+    &lt;button class="px-3 py-1 rounded bg-dark-700
+                   disabled:opacity-50" disabled&gt;←&lt;/button&gt;
+    &lt;button class="px-3 py-1 rounded bg-blue-600"&gt;1&lt;/button&gt;
+    &lt;button class="px-3 py-1 rounded bg-dark-700"&gt;2&lt;/button&gt;
+    &lt;button class="px-3 py-1 rounded bg-dark-700"&gt;3&lt;/button&gt;
+    &lt;span class="px-2"&gt;...&lt;/span&gt;
+    &lt;button class="px-3 py-1 rounded bg-dark-700"&gt;16&lt;/button&gt;
+    &lt;button class="px-3 py-1 rounded bg-dark-700"&gt;→&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+// Calculo de paginacao
+const totalPages = Math.ceil(totalItems / itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const pageData = allData.slice(startIndex, endIndex);</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Virtualizacao de Tabelas</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Virtualizacao renderiza apenas as linhas visiveis na tela, mesmo com milhares de registros. Conforme o usuario scrolla, linhas sao recicladas. Permite scroll "infinito" sem paginacao tradicional.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Para datasets enormes (10k+ linhas), paginacao ainda pode ser lenta. Virtualizacao mantem 60fps mesmo com 100k linhas. Bibliotecas como react-window e TanStack Virtual facilitam.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Como Virtualizacao Funciona:
+
+Dados: 10.000 linhas
+Viewport: mostra ~20 linhas
+
+┌──────────────────────────────┐
+│     Espaco vazio (padding)   │  ← Altura simulada
+├──────────────────────────────┤
+│ Linha 45  █████████████████  │  ← Apenas linhas
+│ Linha 46  █████████████████  │    visiveis sao
+│ Linha 47  █████████████████  │    renderizadas
+│ Linha 48  █████████████████  │
+│ Linha 49  █████████████████  │
+│ Linha 50  █████████████████  │
+├──────────────────────────────┤
+│     Espaco vazio (padding)   │  ← Altura simulada
+└──────────────────────────────┘
+
+Ao scrollar:
+- Calcula quais linhas estao visiveis
+- Renderiza apenas essas + buffer
+- Recicla elementos DOM
+
+Bibliotecas:
+• react-window / react-virtualized
+• TanStack Virtual (framework agnostic)
+• vue-virtual-scroller</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Selecao e Acoes em Lote</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Permite selecionar multiplas linhas para executar acoes em lote: deletar varios, exportar selecionados, alterar status em massa. Checkboxes nas linhas + checkbox "selecionar todos" no header.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Usuarios administrativos frequentemente precisam agir em multiplos registros. Sem selecao em lote, teriam que repetir a mesma acao dezenas de vezes. Produtividade aumenta exponencialmente.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Estado de selecao
+const [selectedIds, setSelectedIds] = useState(new Set());
+
+// Selecionar/deselecionar item
+function toggleSelect(id) {
+  const newSet = new Set(selectedIds);
+  if (newSet.has(id)) {
+    newSet.delete(id);
+  } else {
+    newSet.add(id);
+  }
+  setSelectedIds(newSet);
+}
+
+// Selecionar todos
+function toggleSelectAll() {
+  if (selectedIds.size === data.length) {
+    setSelectedIds(new Set()); // deseleciona
+  } else {
+    setSelectedIds(new Set(data.map(item => item.id)));
+  }
+}
+
+// Barra de acoes em lote (aparece quando ha selecao)
+{selectedIds.size > 0 && (
+  &lt;div class="bg-blue-900/50 p-3 flex items-center"&gt;
+    &lt;span&gt;{selectedIds.size} selecionados&lt;/span&gt;
+    &lt;button class="ml-4 text-red-400"&gt;Excluir&lt;/button&gt;
+    &lt;button class="ml-4"&gt;Exportar&lt;/button&gt;
+  &lt;/div&gt;
+)}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Colunas Responsivas e Prioridades</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Em telas menores, nem todas as colunas cabem. Estrategias incluem: scroll horizontal, esconder colunas menos importantes, ou transformar em cards. Prioridade de colunas define o que mostrar primeiro.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Dashboards sao acessados em tablets e celulares. Uma tabela de 10 colunas em mobile e inutilizavel. Definir estrategia responsiva e essencial para usabilidade multiplataforma.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Estrategia 1: Esconder colunas por breakpoint --&gt;
+&lt;table class="w-full"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nome&lt;/th&gt;                          &lt;!-- sempre --&gt;
+      &lt;th class="hidden sm:table-cell"&gt;Email&lt;/th&gt;     &lt;!-- sm+ --&gt;
+      &lt;th class="hidden md:table-cell"&gt;Telefone&lt;/th&gt;  &lt;!-- md+ --&gt;
+      &lt;th class="hidden lg:table-cell"&gt;Empresa&lt;/th&gt;   &lt;!-- lg+ --&gt;
+      &lt;th&gt;Acoes&lt;/th&gt;                         &lt;!-- sempre --&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+&lt;/table&gt;
+
+&lt;!-- Estrategia 2: Scroll horizontal --&gt;
+&lt;div class="overflow-x-auto"&gt;
+  &lt;table class="min-w-[800px] w-full"&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Estrategia 3: Card em mobile --&gt;
+&lt;div class="hidden sm:block"&gt;
+  &lt;table&gt;...&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="sm:hidden space-y-4"&gt;
+  {data.map(item =&gt; &lt;Card item={item} /&gt;)}
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-2.html" class="text-blue-400 hover:text-blue-300">← Graficos e Visualizacoes</a>
+      <a href="modulo-2-4.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Filtros e Busca →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Tabelas Avancadas</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

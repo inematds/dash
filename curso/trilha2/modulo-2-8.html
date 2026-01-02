@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.8 - Integracao de Componentes | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.8</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧩 Integracao de Componentes</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Composicao, comunicacao entre componentes, slots e patterns de reutilizacao.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Composicao de Componentes</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Composicao e o padrao de construir componentes complexos a partir de componentes menores. Um Card compoe Header, Body e Footer. Uma Table compoe Header, Row, Cell. Permite reutilizacao e flexibilidade.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Dashboards tem muita repeticao visual com variacoes sutis. Composicao permite criar variantes sem duplicar codigo. Um Card de metrica e um Card de grafico usam o mesmo Card base.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Composicao com compound components
+// Card.js
+const Card = ({ children, className }) => (
+  &lt;div className={`bg-dark-800 rounded-xl border border-dark-600
+                   ${className}`}&gt;
+    {children}
+  &lt;/div&gt;
+);
+
+Card.Header = ({ children }) => (
+  &lt;div className="px-6 py-4 border-b border-dark-600"&gt;{children}&lt;/div&gt;
+);
+
+Card.Body = ({ children }) => (
+  &lt;div className="p-6"&gt;{children}&lt;/div&gt;
+);
+
+Card.Footer = ({ children }) => (
+  &lt;div className="px-6 py-4 border-t border-dark-600 bg-dark-700/30"&gt;
+    {children}
+  &lt;/div&gt;
+);
+
+// Uso - MUITO flexivel
+&lt;Card&gt;
+  &lt;Card.Header&gt;
+    &lt;h3&gt;Titulo do Card&lt;/h3&gt;
+  &lt;/Card.Header&gt;
+  &lt;Card.Body&gt;
+    &lt;p&gt;Conteudo principal aqui&lt;/p&gt;
+    &lt;Chart data={data} /&gt;
+  &lt;/Card.Body&gt;
+  &lt;Card.Footer&gt;
+    &lt;Button&gt;Ver mais&lt;/Button&gt;
+  &lt;/Card.Footer&gt;
+&lt;/Card&gt;
+
+// Card simples (sem header/footer)
+&lt;Card&gt;
+  &lt;Card.Body&gt;Apenas conteudo&lt;/Card.Body&gt;
+&lt;/Card&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Props e Variantes</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Props sao parametros passados para componentes. Variantes sao conjuntos pre-definidos de props para casos comuns. Um Button pode ter variantes "primary", "secondary", "danger" que definem cores e estilos.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Props permitem customizacao. Variantes garantem consistencia. Sem variantes, cada uso do Button pode ter cores ligeiramente diferentes. Variantes enforçam design system.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Sistema de variantes com Tailwind
+const buttonVariants = {
+  variant: {
+    primary: 'bg-blue-600 hover:bg-blue-500 text-white',
+    secondary: 'bg-dark-700 hover:bg-dark-600 text-neutral-200',
+    danger: 'bg-red-600 hover:bg-red-500 text-white',
+    ghost: 'bg-transparent hover:bg-dark-700 text-neutral-300',
+  },
+  size: {
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-4 py-2',
+    lg: 'px-6 py-3 text-lg',
+  }
+};
+
+function Button({
+  variant = 'primary',
+  size = 'md',
+  children,
+  ...props
+}) {
+  const classes = `
+    rounded-lg font-medium transition-colors
+    ${buttonVariants.variant[variant]}
+    ${buttonVariants.size[size]}
+  `;
+
+  return &lt;button className={classes} {...props}&gt;{children}&lt;/button&gt;;
+}
+
+// Uso
+&lt;Button&gt;Primary (default)&lt;/Button&gt;
+&lt;Button variant="secondary" size="sm"&gt;Secondary Small&lt;/Button&gt;
+&lt;Button variant="danger" size="lg"&gt;Delete&lt;/Button&gt;
+
+// Com class-variance-authority (CVA) - mais robusto
+import { cva } from 'class-variance-authority';
+
+const button = cva('rounded-lg font-medium transition-colors', {
+  variants: {
+    variant: { primary: '...', secondary: '...' },
+    size: { sm: '...', md: '...' }
+  },
+  defaultVariants: { variant: 'primary', size: 'md' }
+});</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Comunicacao Entre Componentes</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Como componentes trocam informacao. Props fluem de pai para filho. Callbacks (onChange, onClick) fluem de filho para pai. Context ou state managers permitem comunicacao entre irmaos ou distantes.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Dashboards tem muita interacao entre partes. Filtro muda → tabela atualiza. Clique em grafico → mostra detalhes. Sem padrao de comunicacao, codigo vira espaguete.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// 1. PROPS DOWN (pai → filho)
+function Dashboard() {
+  const [filters, setFilters] = useState({});
+
+  return (
+    &lt;div&gt;
+      &lt;FilterBar filters={filters} /&gt;  {/* passa dados */}
+      &lt;DataTable filters={filters} /&gt;  {/* mesmo dados */}
+    &lt;/div&gt;
+  );
+}
+
+// 2. CALLBACKS UP (filho → pai)
+function FilterBar({ filters, onFilterChange }) {
+  return (
+    &lt;select onChange={(e) => onFilterChange({
+      ...filters,
+      status: e.target.value
+    })}&gt;
+      ...
+    &lt;/select&gt;
+  );
+}
+
+// Uso no pai
+&lt;FilterBar
+  filters={filters}
+  onFilterChange={(newFilters) => setFilters(newFilters)}
+/&gt;
+
+// 3. CONTEXT (qualquer nivel)
+const FilterContext = createContext();
+
+function Dashboard() {
+  const [filters, setFilters] = useState({});
+
+  return (
+    &lt;FilterContext.Provider value={{ filters, setFilters }}&gt;
+      &lt;Sidebar&gt;
+        &lt;FilterPanel /&gt;  {/* pode acessar context */}
+      &lt;/Sidebar&gt;
+      &lt;MainContent&gt;
+        &lt;DataTable /&gt;    {/* pode acessar context */}
+      &lt;/MainContent&gt;
+    &lt;/FilterContext.Provider&gt;
+  );
+}
+
+// Em qualquer componente filho
+const { filters } = useContext(FilterContext);</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Slots e Children</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Slots sao "buracos" em componentes onde conteudo custom pode ser inserido. Em React, children e o slot padrao. Named slots permitem multiplas areas de insercao: header, content, footer.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Slots permitem criar layouts flexiveis. Um Modal pode ter slot para titulo, conteudo e botoes. Usuario define o que vai em cada area, componente controla layout e comportamento.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Children como slot padrao
+function Modal({ children, isOpen }) {
+  if (!isOpen) return null;
+
+  return (
+    &lt;div className="fixed inset-0 bg-black/50 flex items-center justify-center"&gt;
+      &lt;div className="bg-dark-800 rounded-xl p-6"&gt;
+        {children}  {/* qualquer conteudo */}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Named slots com props
+function Modal({ title, children, footer, isOpen }) {
+  return (
+    &lt;div className="..."&gt;
+      &lt;div className="..."&gt;
+        {/* Slot: titulo */}
+        &lt;div className="border-b border-dark-600 pb-4 mb-4"&gt;
+          {title}
+        &lt;/div&gt;
+
+        {/* Slot: conteudo */}
+        &lt;div className="mb-4"&gt;
+          {children}
+        &lt;/div&gt;
+
+        {/* Slot: footer */}
+        &lt;div className="border-t border-dark-600 pt-4"&gt;
+          {footer}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Uso com named slots
+&lt;Modal
+  isOpen={true}
+  title={&lt;h2 className="text-xl font-bold"&gt;Confirmacao&lt;/h2&gt;}
+  footer={
+    &lt;div className="flex justify-end space-x-2"&gt;
+      &lt;Button variant="secondary"&gt;Cancelar&lt;/Button&gt;
+      &lt;Button&gt;Confirmar&lt;/Button&gt;
+    &lt;/div&gt;
+  }
+&gt;
+  &lt;p&gt;Tem certeza que deseja continuar?&lt;/p&gt;
+&lt;/Modal&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Render Props e HOCs</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Render Props passam funcao como children, permitindo que componente pai controle como filho renderiza dados. HOCs (Higher Order Components) envolvem componentes adicionando funcionalidade. Patterns avanços para reutilizacao de logica.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Sao patterns classicos de React. Embora hooks tenham substituido muitos casos, ainda sao uteis para bibliotecas de componentes e integracao com libs externas. Entender ajuda a usar libs como React Query, Formik.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// RENDER PROPS: componente fornece dados, pai decide como renderizar
+function DataFetcher({ url, children }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => { setData(data); setLoading(false); });
+  }, [url]);
+
+  // Passa dados para funcao children
+  return children({ data, loading });
+}
+
+// Uso - flexibilidade total na renderizacao
+&lt;DataFetcher url="/api/users"&gt;
+  {({ data, loading }) => (
+    loading
+      ? &lt;Skeleton /&gt;
+      : &lt;UserTable users={data} /&gt;
+  )}
+&lt;/DataFetcher&gt;
+
+// HOC: funcao que envolve componente
+function withAuth(WrappedComponent) {
+  return function AuthenticatedComponent(props) {
+    const { user } = useAuth();
+
+    if (!user) return &lt;LoginRedirect /&gt;;
+
+    return &lt;WrappedComponent {...props} user={user} /&gt;;
+  };
+}
+
+// Uso
+const ProtectedDashboard = withAuth(Dashboard);
+
+// Hoje, custom hooks sao mais comuns
+function useDataFetcher(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  // ...
+  return { data, loading };
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Patterns de Layout para Dashboards</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Patterns de layout especificos para dashboards: Sidebar + Main, Header + Sidebar + Main, Split View, Master-Detail. Cada pattern otimizado para diferentes tipos de dashboard.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Nao reinventar a roda. Patterns testados resolvem problemas comuns de navegacao, hierarquia e uso de espaco. Escolher o pattern certo acelera desenvolvimento e melhora UX.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- PATTERN 1: Sidebar + Main (mais comum) --&gt;
+&lt;div class="flex min-h-screen"&gt;
+  &lt;aside class="w-64 bg-dark-800 border-r border-dark-600 shrink-0"&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;main class="flex-1 p-6"&gt;
+    &lt;!-- Conteudo --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;!-- PATTERN 2: Header + Sidebar + Main --&gt;
+&lt;div class="flex flex-col min-h-screen"&gt;
+  &lt;header class="h-14 bg-dark-800 border-b"&gt;...&lt;/header&gt;
+  &lt;div class="flex flex-1"&gt;
+    &lt;aside class="w-64"&gt;...&lt;/aside&gt;
+    &lt;main class="flex-1"&gt;...&lt;/main&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- PATTERN 3: Master-Detail --&gt;
+&lt;div class="flex min-h-screen"&gt;
+  &lt;!-- Master: lista --&gt;
+  &lt;div class="w-80 border-r overflow-y-auto"&gt;
+    &lt;ul&gt;...items...&lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;!-- Detail: conteudo do item selecionado --&gt;
+  &lt;div class="flex-1 p-6"&gt;
+    &lt;!-- Detalhes do item --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- PATTERN 4: Split View (comparacao) --&gt;
+&lt;div class="flex min-h-screen"&gt;
+  &lt;div class="w-1/2 p-4 border-r"&gt;
+    &lt;!-- Painel A --&gt;
+  &lt;/div&gt;
+  &lt;div class="w-1/2 p-4"&gt;
+    &lt;!-- Painel B --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-7.html" class="text-blue-400 hover:text-blue-300">← Notificacoes e Alertas</a>
+      <a href="index.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Voltar para Trilha 2 →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Integracao de Componentes</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

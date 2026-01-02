@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.6 - Formularios em Dashboards | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📝 Formularios em Dashboards</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Inputs, validacao, inline editing e formularios otimizados para contexto administrativo.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Input Fields para Dark Mode</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Inputs em dashboards dark mode precisam de contraste adequado sem serem "brancos demais". Background escuro, texto claro, bordas sutis. Estados de focus, error e disabled devem ser claramente distinguiveis.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Inputs sao o ponto de entrada de dados. Mal projetados, causam erros de digitacao, confusao sobre estado, e frustração. Bem projetados, sao invisíveis - funcionam sem que usuario perceba.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Input base para dark mode --&gt;
+&lt;div class="space-y-1"&gt;
+  &lt;label class="block text-sm text-neutral-400"&gt;Email&lt;/label&gt;
+  &lt;input type="email"
+         class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
+                rounded-lg text-neutral-100 placeholder-neutral-500
+                focus:outline-none focus:border-blue-500 focus:ring-1
+                focus:ring-blue-500 transition-colors"
+         placeholder="seu@email.com" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Estados --&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;input disabled class="... opacity-50 cursor-not-allowed" /&gt;
+
+&lt;!-- Error --&gt;
+&lt;input class="... border-red-500 focus:border-red-500
+              focus:ring-red-500" /&gt;
+&lt;p class="text-red-400 text-sm mt-1"&gt;Email invalido&lt;/p&gt;
+
+&lt;!-- Success/Valid --&gt;
+&lt;input class="... border-emerald-500" /&gt;
+
+&lt;!-- Com icone --&gt;
+&lt;div class="relative"&gt;
+  &lt;span class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500"&gt;
+    🔍
+  &lt;/span&gt;
+  &lt;input class="... pl-10" /&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">Selects e Dropdowns</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Selects permitem escolher de uma lista de opcoes. Dropdowns nativos tem estilo limitado; custom dropdowns oferecem busca, multi-select e melhor UX. Combobox combina input de texto com dropdown.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Selects sao onipresentes: status, categoria, usuario, data. Custom selects permitem busca em listas longas, multi-selecao, e visual consistente com o dashboard.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Select nativo estilizado --&gt;
+&lt;select class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
+               rounded-lg text-neutral-100 appearance-none
+               focus:outline-none focus:border-blue-500
+               bg-[url('data:image/svg+xml,...')] bg-no-repeat
+               bg-[right_1rem_center]"&gt;
+  &lt;option&gt;Selecione...&lt;/option&gt;
+  &lt;option value="1"&gt;Opcao 1&lt;/option&gt;
+  &lt;option value="2"&gt;Opcao 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Custom Dropdown --&gt;
+&lt;div class="relative"&gt;
+  &lt;button class="w-full px-4 py-2.5 bg-dark-700 border border-dark-600
+                 rounded-lg text-left flex justify-between items-center"&gt;
+    &lt;span&gt;Selecione o status&lt;/span&gt;
+    &lt;span&gt;▼&lt;/span&gt;
+  &lt;/button&gt;
+
+  &lt;!-- Dropdown menu (toggle visibility) --&gt;
+  &lt;div class="absolute top-full left-0 right-0 mt-1 bg-dark-800
+              border border-dark-600 rounded-lg shadow-xl z-50"&gt;
+    &lt;!-- Search --&gt;
+    &lt;div class="p-2 border-b border-dark-600"&gt;
+      &lt;input placeholder="Buscar..." class="w-full px-3 py-2
+                                            bg-dark-700 rounded" /&gt;
+    &lt;/div&gt;
+    &lt;!-- Options --&gt;
+    &lt;div class="max-h-48 overflow-y-auto"&gt;
+      &lt;button class="w-full px-4 py-2 text-left hover:bg-dark-700"&gt;
+        Ativo
+      &lt;/button&gt;
+      &lt;button class="w-full px-4 py-2 text-left hover:bg-dark-700
+                     bg-blue-500/10 text-blue-400"&gt;
+        Pendente ✓
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Validacao em Tempo Real</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Validacao em tempo real verifica dados enquanto usuario digita ou ao sair do campo (blur). Feedback imediato sobre erros evita submissao de formularios invalidos. Inclui validacao de formato, obrigatoriedade e regras de negocio.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Validacao so no submit e frustrante - usuario preenche tudo e descobre erros no fim. Validacao em tempo real corrige problemas conforme acontecem, acelerando o processo.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Validacao basica
+const validators = {
+  required: (value) => value.trim() !== '',
+  email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+  minLength: (min) => (value) => value.length >= min,
+  cpf: (value) => validateCPF(value),
+};
+
+// Validacao on blur
+function handleBlur(field, value) {
+  const errors = [];
+
+  if (!validators.required(value)) {
+    errors.push('Campo obrigatorio');
+  } else if (field === 'email' && !validators.email(value)) {
+    errors.push('Email invalido');
+  }
+
+  setFieldErrors(field, errors);
+}
+
+// Validacao on change (debounced para performance)
+const debouncedValidate = debounce((field, value) => {
+  handleBlur(field, value);
+}, 300);
+
+&lt;!-- Input com feedback de validacao --&gt;
+&lt;div&gt;
+  &lt;input
+    onBlur={(e) => handleBlur('email', e.target.value)}
+    className={`... ${errors.email ? 'border-red-500' : ''}`}
+  /&gt;
+  {errors.email && (
+    &lt;p class="text-red-400 text-sm mt-1 flex items-center"&gt;
+      ⚠️ {errors.email[0]}
+    &lt;/p&gt;
+  )}
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Inline Editing</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Inline editing permite editar dados diretamente na visualizacao, sem abrir formulario separado. Clicar em um valor transforma-o em input. Muito usado em tabelas e cards para edicoes rapidas.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Abrir modal para mudar um campo e overkill. Inline editing reduz cliques e mantem usuario no contexto. Essencial para produtividade em dashboards de operacao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Componente de edicao inline
+function InlineEdit({ value, onSave }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState(value);
+
+  const handleSave = () => {
+    onSave(editValue);
+    setIsEditing(false);
+  };
+
+  if (!isEditing) {
+    return (
+      &lt;span
+        onClick={() => setIsEditing(true)}
+        className="cursor-pointer hover:bg-dark-700 px-2 py-1
+                   rounded border border-transparent
+                   hover:border-dark-500"&gt;
+        {value}
+        &lt;span className="ml-2 opacity-0 group-hover:opacity-100"&gt;✏️&lt;/span&gt;
+      &lt;/span&gt;
+    );
+  }
+
+  return (
+    &lt;div className="flex items-center space-x-2"&gt;
+      &lt;input
+        autoFocus
+        value={editValue}
+        onChange={(e) => setEditValue(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+        className="px-2 py-1 bg-dark-700 border border-blue-500
+                   rounded focus:outline-none"
+      /&gt;
+      &lt;button onClick={handleSave} className="text-emerald-400"&gt;✓&lt;/button&gt;
+      &lt;button onClick={() => setIsEditing(false)}
+              className="text-red-400"&gt;✗&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Toggles e Checkboxes</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Toggles (switches) sao para opcoes on/off com efeito imediato. Checkboxes sao para multipla selecao ou confirmacao antes de acao. Cada um tem proposito especifico; usar errado confunde usuarios.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Configuracoes de dashboard usam toggles (dark mode, notificacoes). Filtros e termos de uso usam checkboxes. Saber quando usar cada um e crucial para UX intuitiva.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Toggle Switch --&gt;
+&lt;label class="relative inline-flex items-center cursor-pointer"&gt;
+  &lt;input type="checkbox" class="sr-only peer" /&gt;
+  &lt;div class="w-11 h-6 bg-dark-600 rounded-full
+              peer-checked:bg-blue-600
+              peer-focus:ring-2 peer-focus:ring-blue-500
+              after:content-[''] after:absolute after:top-0.5 after:left-0.5
+              after:bg-white after:rounded-full after:h-5 after:w-5
+              after:transition-all peer-checked:after:translate-x-5"&gt;
+  &lt;/div&gt;
+  &lt;span class="ml-3 text-sm"&gt;Notificacoes por email&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Checkbox customizado --&gt;
+&lt;label class="flex items-center cursor-pointer group"&gt;
+  &lt;input type="checkbox" class="sr-only peer" /&gt;
+  &lt;div class="w-5 h-5 border-2 border-dark-500 rounded
+              peer-checked:bg-blue-600 peer-checked:border-blue-600
+              flex items-center justify-center
+              group-hover:border-dark-400"&gt;
+    &lt;svg class="w-3 h-3 text-white hidden peer-checked:block"&gt;
+      &lt;path d="M5 13l4 4L19 7" stroke="currentColor"
+            stroke-width="2" fill="none"/&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;span class="ml-2 text-sm"&gt;Li e aceito os termos&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- QUANDO USAR CADA UM --&gt;
+Toggle: efeito imediato (salva automatico)
+  - Dark mode on/off
+  - Ativar/desativar feature
+
+Checkbox: parte de formulario (requer submit)
+  - Aceitar termos
+  - Selecionar multiplos itens</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Form Layout e Organizacao</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Organizacao visual de formularios: agrupamento logico de campos, hierarquia, espacamento. Formularios longos podem usar secoes, accordions ou wizard steps. Layout afeta taxa de conclusao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Formulario mal organizado e abandonado. Campos relacionados devem estar juntos. Campos opcionais devem parecer opcionais. Bom layout guia usuario naturalmente do inicio ao fim.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Formulario com secoes --&gt;
+&lt;form class="space-y-8"&gt;
+
+  &lt;!-- Secao 1: Dados Pessoais --&gt;
+  &lt;section&gt;
+    &lt;h3 class="text-lg font-semibold mb-4 pb-2 border-b
+               border-dark-600"&gt;
+      Dados Pessoais
+    &lt;/h3&gt;
+    &lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;
+      &lt;div&gt;&lt;!-- Nome --&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;!-- Sobrenome --&gt;&lt;/div&gt;
+      &lt;div class="md:col-span-2"&gt;&lt;!-- Email (largura total) --&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Secao 2: Endereco --&gt;
+  &lt;section&gt;
+    &lt;h3 class="text-lg font-semibold mb-4 pb-2 border-b
+               border-dark-600"&gt;
+      Endereco
+    &lt;/h3&gt;
+    &lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;
+      &lt;div class="md:col-span-2"&gt;&lt;!-- Rua --&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;!-- Numero --&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;!-- Cidade --&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;!-- Estado --&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;!-- CEP --&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Acoes --&gt;
+  &lt;div class="flex justify-end space-x-3 pt-4 border-t border-dark-600"&gt;
+    &lt;button type="button" class="px-6 py-2 text-neutral-400"&gt;
+      Cancelar
+    &lt;/button&gt;
+    &lt;button type="submit" class="px-6 py-2 bg-blue-600 rounded-lg"&gt;
+      Salvar
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/form&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="modulo-2-5.html" class="text-blue-400 hover:text-blue-300">← Estados e Feedback</a>
+      <a href="modulo-2-7.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Proximo: Notificacoes e Alertas →</a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Formularios em Dashboards</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
