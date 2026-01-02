@@ -1,412 +1,212 @@
-# Content Structure - Supercurso Nano Banana
+# Content Structure - Dashboard Mastery
 
-Documentação da estrutura e metodologia de criação de conteúdo para os módulos do curso.
+Documentacao da estrutura e metodologia de criacao de conteudo para os modulos do curso.
 
 ---
 
-## 1. Estrutura Geral de um Módulo
+## 1. Estrutura Geral de um Modulo
 
-Cada módulo segue uma estrutura pedagógica consistente:
+Cada modulo segue uma estrutura pedagogica consistente:
 
 ```
 1. HEADER
-   └── Badge da categoria
-   └── Título com emoji
-   └── Descrição (1-2 linhas)
+   └── Badge da trilha (cor correspondente)
+   └── Titulo com emoji
+   └── Descricao (1-2 linhas)
 
 2. STATS BANNER
-   └── 3-5 métricas-chave do módulo
+   └── 3-4 metricas-chave do modulo (Topicos, Duracao, Nivel, Tipo)
 
-3. CONCEITOS PRINCIPAIS (2-4 seções)
-   └── Cada conceito em seção própria
-   └── Ordem: mais importante primeiro
+3. TOPICOS EXPANSIVEIS (6 por modulo)
+   └── Numero em circulo + emoji + titulo
+   └── 3 secoes internas obrigatorias
+   └── Comportamento accordion
 
 4. ELEMENTOS DE SUPORTE
-   └── Exemplos práticos
-   └── Comparações (fazer/não fazer)
+   └── Exemplos praticos
+   └── Comparacoes (fazer/nao fazer)
    └── Dados e pesquisas
 
 5. RESUMO/CHECKLIST
-   └── Síntese dos pontos principais
-   └── CTA para voltar ao curso
+   └── Sintese dos pontos principais
+   └── CTA para proximo modulo
 ```
 
 ---
 
-## 2. Anatomia de uma Seção de Conceito
+## 2. Estrutura de um Topico Expansivel
 
-### 2.1 Estrutura Padrão
+### 2.1 Cabecalho do Topico
 
-```
-SEÇÃO DE CONCEITO
-├── Header (emoji + título + subtítulo)
-├── Parágrafo de Introdução
-│   └── Explicação do "O QUÊ" e "POR QUÊ"
-├── Box de Detalhamento
-│   └── Explicação técnica/aprofundada
-│   └── Diagramas visuais (se aplicável)
-├── Grid de Aplicação
-│   └── Coluna 1: Positivo/Fazer
-│   └── Coluna 2: Negativo/Evitar
-├── Box de Dados/Pesquisa
-│   └── Estatísticas com fonte
-│   └── Dados que validam o conceito
-└── Box de Dica Prática
-    └── Como aplicar na prática
-    └── Exemplo concreto
+```html
+<button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center...">
+  <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span>
+  <span class="text-lg">🎯</span>
+  <div>
+    <span class="font-medium">Titulo do Topico</span>
+    <span class="text-neutral-500 text-sm ml-2">- Descricao breve</span>
+  </div>
+</button>
 ```
 
-### 2.2 Exemplo Real (Módulo 2 - Algoritmo)
+### 2.2 Conteudo Interno (3 Secoes Obrigatorias)
 
-```
-SEÇÃO: Watch Time
-├── Header: ⏱️ "A Métrica Rainha: Watch Time"
-├── Intro: "O Watch Time Completion Rate é o fator mais importante..."
-├── Box: Benchmarks visuais com barras de progresso
-│   └── <30% = Vermelho (distribuição cortada)
-│   └── 30-50% = Amarelo (alcance limitado)
-│   └── 50-75% = Azul (bom desempenho)
-│   └── 75%+ = Verde (potencial viral)
-├── Grid:
-│   └── ✓ Técnicas que Aumentam (loops, pattern interrupts...)
-│   └── ✗ Erros que Destroem (intros longas, ritmo lento...)
-└── Dica: Como aplicar na prática
+Cada topico DEVE ter estas 3 secoes:
+
+| Secao | Descricao |
+|-------|-----------|
+| **O que e** | Definicao clara e objetiva do conceito |
+| **Por que aprender** | Justificativa e beneficios praticos |
+| **Conceitos-chave** | Lista dos pontos principais a memorizar |
+
+**HTML:**
+```html
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+  <div>
+    <span class="text-emerald-400 font-semibold">O que e:</span>
+    <p class="text-neutral-300 text-sm">Dashboard e uma interface visual...</p>
+  </div>
+  <div>
+    <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+    <p class="text-neutral-300 text-sm">Reduz tempo de analise em 80%...</p>
+  </div>
+  <div>
+    <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+    <p class="text-neutral-300 text-sm">Consolidacao, tempo real, interatividade...</p>
+  </div>
+</div>
 ```
 
 ---
 
-## 3. Tipos de Boxes de Conteúdo
+## 3. Tipos de Boxes de Conteudo
 
 ### 3.1 Box de Conceito Principal
-- **Cor:** Gradiente da cor temática do módulo
+- **Cor:** Gradiente da cor tematica da trilha
 - **Uso:** Explicar o conceito central
-- **Elementos:** Título, parágrafo explicativo, diagrama/visual
+- **Exemplo:** `bg-gradient-to-br from-emerald-900/30 to-dark-800`
 
-### 3.2 Box de Detalhamento Técnico
-- **Cor:** `dark-700/50` (cinza neutro)
-- **Uso:** Aprofundar com detalhes técnicos
+### 3.2 Box de Detalhamento Tecnico
+- **Cor:** `bg-dark-700/50` (cinza neutro)
+- **Uso:** Aprofundar com detalhes tecnicos
 - **Elementos:** Listas, grids, timelines
 
 ### 3.3 Box de Dados/Pesquisa
-- **Cor:** `blue-900/20` com borda `blue-500/30`
-- **Uso:** Apresentar estatísticas e fontes
-- **Elementos:** Bullets com dados, link da fonte
+- **Cor:** `bg-blue-900/20` com borda `border-blue-500/30`
+- **Uso:** Apresentar estatisticas e fontes
 
-### 3.4 Box de Dica Prática
-- **Cor:** `primary/10` com borda `primary/30`
-- **Uso:** Aplicação prática do conceito
-- **Elementos:** Lista numerada de passos
+### 3.4 Box de Dica Pratica
+- **Cor:** `bg-primary/10` com borda `border-primary/30`
+- **Uso:** Aplicacao pratica do conceito
 
-### 3.5 Box de Alerta/Importante
-- **Cor:** Varia por contexto (emerald, red, yellow)
-- **Uso:** Destacar pontos críticos
-- **Elementos:** Ícone + texto direto
-
-### 3.6 Grid de Comparação
-- **Cores:** `emerald-900/20` vs `red-900/20`
-- **Uso:** Contrastar práticas corretas e incorretas
-- **Elementos:** Duas colunas com listas
+### 3.5 Grid de Comparacao
+- **Cores:** `bg-emerald-900/20` vs `bg-red-900/20`
+- **Uso:** Contrastar praticas corretas e incorretas
 
 ---
 
-## 4. Metodologia de Enriquecimento de Conteúdo
+## 4. Estrutura da Pagina de Trilha (Index)
 
-### 4.1 De Conteúdo Básico para Enriquecido
-
-**ANTES (Básico):**
 ```
-## Watch Time
-- Acima de 75% é bom
-- Mantenha a atenção do espectador
+TRILHA INDEX
+├── Navigation Global (com INEMA.CLUB)
+├── Header
+│   └── Badge da trilha
+│   └── Titulo + emoji
+│   └── Descricao
+│   └── Stats (Modulos, Topicos, Duracao, Nivel)
+├── Modulos (8 por trilha)
+│   └── Modulo Card
+│       ├── Header (numero, titulo, descricao)
+│       ├── Topicos Expansiveis (6 por modulo)
+│       │   └── Numero em circulo (nao seta)
+│       │   └── Emoji + titulo + subtitulo
+│       │   └── Conteudo com 3 secoes
+│       └── Botoes (ESQUERDA)
+│           └── Ver em Modal
+│           └── Ver Completo
+└── Footer
 ```
-
-**DEPOIS (Enriquecido):**
-```
-## ⏱️ A Métrica Rainha: Watch Time
-
-O Watch Time Completion Rate é o fator mais importante para o algoritmo.
-Não basta ter visualizações - você precisa que as pessoas assistam ATÉ O FINAL.
-
-### 📈 Benchmarks de Watch Time
-
-[Barra visual: <30% = Vermelho, 30-50% = Amarelo, 50-75% = Azul, 75%+ = Verde]
-
-### Técnicas que Aumentam vs Erros que Destroem
-
-[Grid comparativo com ✓ e ✗]
-
-### 📊 Dados de Pesquisa
-- 65% dos espectadores decidem nos primeiros 3 segundos
-- Vídeos com loop perfeito têm 300% mais replay rate
-
-💡 Dica Pro: Para um vídeo de 31 segundos, planeje 10-15 mudanças visuais...
-```
-
-### 4.2 Checklist de Enriquecimento
-
-Para cada conceito, adicionar:
-
-- [ ] **Contexto:** Por que isso importa?
-- [ ] **Explicação técnica:** Como funciona?
-- [ ] **Visualização:** Diagrama, barra, timeline
-- [ ] **Exemplos:** Casos reais, hooks prontos
-- [ ] **Comparação:** Certo vs Errado
-- [ ] **Dados:** Estatísticas com fonte
-- [ ] **Aplicação:** Como usar na prática
 
 ---
 
-## 5. Padrões de Escrita
+## 5. Estrutura da Pagina Completa de Modulo
 
-### 5.1 Tom de Voz
-- **Direto e prático:** Sem enrolação
-- **Conversacional:** Como se falasse com um amigo
-- **Confiante:** Afirmações claras, não "talvez" ou "pode ser"
-- **Empolgante:** Usar destaques em **negrito** para pontos-chave
+```
+MODULO COMPLETO
+├── Navigation Global (com INEMA.CLUB)
+├── Breadcrumb (Inicio / Trilha X / Modulo X.X)
+├── Header
+│   └── Badge do modulo
+│   └── Titulo + emoji
+│   └── Descricao
+│   └── Stats (Topicos, Duracao, Nivel, Tipo)
+├── Topicos (6 secoes completas)
+│   └── Section por topico
+│       ├── Numero em circulo + titulo
+│       ├── Paragrafo introdutorio
+│       ├── Boxes de detalhamento
+│       ├── Grids de comparacao
+│       └── Dicas praticas
+├── Resumo Final
+│   └── O que aprendemos (checklist)
+│   └── Proximo modulo
+│   └── CTAs de navegacao
+└── Footer
+```
 
-### 5.2 Estrutura de Parágrafos
-- **Máximo 3-4 linhas** por parágrafo
+---
+
+## 6. Cores por Trilha
+
+| Trilha | Nome | Cor Principal | Classes |
+|--------|------|---------------|---------|
+| Trilha 1 | Fundamentos | Emerald | `text-emerald-400`, `bg-emerald-500/20`, `border-emerald-500/30` |
+| Trilha 2 | Tecnicas | Blue | `text-blue-400`, `bg-blue-500/20`, `border-blue-500/30` |
+| Trilha 3 | Avancado | Purple | `text-purple-400`, `bg-purple-500/20`, `border-purple-500/30` |
+
+---
+
+## 7. Padroes de Escrita
+
+### 7.1 Tom de Voz
+- **Direto e pratico:** Sem enrolacao
+- **Profissional:** Foco em dashboards empresariais
+- **Confiante:** Afirmacoes claras
+- **Didatico:** Explicacoes passo a passo
+
+### 7.2 Estrutura de Paragrafos
+- **Maximo 3-4 linhas** por paragrafo
 - **Primeira frase:** Conceito principal
-- **Restante:** Explicação ou exemplo
-- **Destaque:** Palavra-chave em **negrito** ou cor
+- **Destaque:** Palavra-chave em **negrito** ou cor da trilha
 
-### 5.3 Uso de Listas
-- **Bullets (•):** Para itens sem ordem específica
-- **Números (1, 2, 3):** Para passos sequenciais
-- **Símbolos (✓, ✗, ▶):** Para destacar tipo de item
-
-### 5.4 Exemplos e Hooks
-Sempre incluir exemplos concretos e prontos para usar:
-
-```
-❌ Ruim: "Use hooks impactantes"
-✓ Bom: "Use hooks como: 'PARE! Você precisa ver isso antes de...'"
-```
+### 7.3 Uso de Listas
+- **Bullets (•):** Para itens sem ordem especifica
+- **Numeros (1, 2, 3):** Para passos sequenciais
+- **Simbolos (check, X):** Para fazer/nao fazer
 
 ---
 
-## 6. Estrutura por Tipo de Módulo
-
-### 6.1 Módulo Conceitual (ex: Mentalidade, Algoritmo)
-
-```
-1. Conceito Principal
-   └── O que é
-   └── Por que importa
-   └── Como funciona (técnico)
-
-2. Conceitos Secundários (2-3)
-   └── Cada um com sua seção
-
-3. Conexões
-   └── Como os conceitos se relacionam
-
-4. Aplicação
-   └── Resumo prático
-   └── Checklist de ação
-```
-
-### 6.2 Módulo Técnico (ex: Tempo, Conteúdo)
-
-```
-1. Framework/Estrutura Principal
-   └── Visão geral
-   └── Timeline/Blueprint visual
-
-2. Detalhamento por Parte
-   └── Cada seção do framework explicada
-   └── Timing específico
-
-3. Técnicas Complementares
-   └── Loops, pattern interrupts, etc.
-
-4. Template Prático
-   └── Modelo pronto para usar
-   └── Checklist
-```
-
-### 6.3 Módulo Psicológico (ex: Gatilhos)
-
-```
-1. Introdução à Psicologia
-   └── Por que funciona no cérebro
-   └── Dados de comportamento
-
-2. Cada Gatilho (seção própria)
-   └── Nome + emoji identificador
-   └── Como funciona no cérebro
-   └── Tipos/variações
-   └── Exemplos de hooks prontos
-   └── Dica de aplicação
-
-3. Combinações
-   └── Como usar 2-3 gatilhos juntos
-
-4. Resumo em Tabela
-   └── Visão geral de todos
-```
-
-### 6.4 Módulo Prático (ex: Roteiros)
-
-```
-1. Como Usar (instruções)
-   └── Passos para adaptar
-   └── Legenda de símbolos
-
-2. Roteiros por Nicho (1 seção cada)
-   └── Header com duração e formato
-   └── Tags de hook e gatilhos usados
-   └── Timeline detalhada segundo a segundo
-   └── Dicas específicas do nicho
-
-3. Resumo Comparativo
-   └── Tabela com todos os roteiros
-```
-
----
-
-## 7. Elementos Visuais de Conteúdo
-
-### 7.1 Timeline/Passos
-Usar para processos sequenciais:
-
-```
-[0-3s] HOOK ─────────────────────────────────>
-       │
-       ├── Visual: Close no produto
-       ├── Texto: "PARE!"
-       └── Som: ASMR satisfatório
-
-[3-8s] CONTEXTO ─────────────────────────────>
-       ...
-```
-
-### 7.2 Diagrama de Fluxo
-Usar para mostrar processos:
-
-```
-📱 Upload → 🧪 Teste (300-500 views) → 📊 Avaliação → 🚀 Escala
-```
-
-### 7.3 Barras de Progresso
-Usar para benchmarks e comparações:
-
-```
-<30%  [████░░░░░░░░░░░░░░░░] Distribuição cortada
-75%+  [████████████████████] Potencial viral
-```
-
-### 7.4 Grid de Comparação
-Usar para contrastar opções:
-
-```
-┌─────────────────────┬─────────────────────┐
-│ ✓ FAZER             │ ✗ NÃO FAZER         │
-├─────────────────────┼─────────────────────┤
-│ Hooks impactantes   │ Intros longas       │
-│ Cortes rápidos      │ Cenas estáticas     │
-└─────────────────────┴─────────────────────┘
-```
-
----
-
-## 8. Fontes e Referências
-
-### 8.1 Onde Buscar Dados
-- Pesquisas do próprio TikTok
-- Relatórios de marketing (Influencer Marketing Hub, etc.)
-- Cases de marcas reais
-- Estatísticas de comportamento do consumidor
-
-### 8.2 Como Citar
-```html
-<p class="text-xs text-neutral-500 mt-4">
-  Fonte: <a href="URL" class="text-blue-400 hover:underline" target="_blank">
-    Nome da Fonte - Título do Artigo
-  </a>
-</p>
-```
-
-### 8.3 Dados Utilizados no Curso
-| Dado | Fonte |
-|------|-------|
-| 75%+ watch time = viral | TikTok Creator Portal |
-| 83% compras por impulso | Influencer Marketing Hub |
-| 65% decisão em 3 segundos | Estudos de atenção digital |
-| Framework 90 dias | Análise de contas de sucesso |
-| Efeito Halo | Marketing multi-channel research |
-
----
-
-## 9. Checklist de Qualidade do Conteúdo
+## 8. Checklist de Qualidade do Conteudo
 
 ### Antes de Publicar, Verificar:
 
 **Estrutura:**
-- [ ] Header completo (badge, título, descrição)
-- [ ] Stats banner com métricas relevantes
-- [ ] Seções bem separadas e identificáveis
+- [ ] Navigation com INEMA.CLUB (sky-400)
+- [ ] Trilhas com descricao (Fundamentos, Tecnicas, Avancado)
+- [ ] Header completo (badge, titulo, descricao)
+- [ ] Stats banner com metricas relevantes
+- [ ] Topicos com numeros (nao setas)
+- [ ] 3 secoes por topico (O que e, Por que, Conceitos)
+- [ ] Botoes a esquerda (justify-start)
 - [ ] Resumo/checklist no final
-- [ ] CTA de volta ao curso
-
-**Conteúdo:**
-- [ ] Cada conceito tem explicação do "por quê"
-- [ ] Há exemplos práticos e hooks prontos
-- [ ] Comparações certo/errado quando aplicável
-- [ ] Dados com fontes citadas
-- [ ] Dicas de aplicação prática
 
 **Visual:**
+- [ ] Cores seguem o padrao da trilha
 - [ ] Emojis usados consistentemente
-- [ ] Cores seguem o padrão do módulo
-- [ ] Elementos visuais (barras, grids, timelines)
-- [ ] Hierarquia visual clara
-
-**Técnico:**
 - [ ] Dark/light mode funcionando
-- [ ] Responsivo em mobile
+
+**Tecnico:**
 - [ ] Links funcionando
-- [ ] Sem erros de português
-
----
-
-## 10. Template de Criação de Novo Módulo
-
-```markdown
-# Planejamento do Módulo X: [Nome]
-
-## Cor Temática: [cor]-500 (ex: cyan-500)
-
-## Emoji Principal: [emoji]
-
-## Stats Banner (3-5 métricas):
-1. [Métrica] - [Valor]
-2. [Métrica] - [Valor]
-3. [Métrica] - [Valor]
-
-## Conceitos Principais:
-
-### Conceito 1: [Nome]
-- O que é:
-- Por que importa:
-- Como funciona:
-- Exemplo:
-
-### Conceito 2: [Nome]
-...
-
-## Comparações Necessárias:
-- [Certo] vs [Errado]
-
-## Dados a Incluir:
-- [Estatística] (Fonte: )
-
-## Hooks/Exemplos Prontos:
-1. "[Exemplo]"
-2. "[Exemplo]"
-
-## Resumo Final:
-- Ponto 1
-- Ponto 2
-- Ponto 3
-```
+- [ ] Responsivo em mobile
+- [ ] Modal carrega conteudo completo

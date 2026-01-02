@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.5 - Sistema de Cores e Tokens | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    :not(.dark) body { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-900 { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-800 { background-color: #ffffff; }
+    :not(.dark) .dark\:bg-dark-700 { background-color: #f1f5f9; }
+    :not(.dark) .dark\:border-dark-600 { border-color: #e2e8f0; }
+    :not(.dark) .dark\:text-neutral-100 { color: #1e293b; }
+    :not(.dark) .dark\:text-neutral-300 { color: #475569; }
+    :not(.dark) .dark\:text-neutral-400 { color: #64748b; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Técnicas</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avançado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-2">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-200">Início</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-200">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400">Módulo 1.5</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MÓDULO 1.5
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎨 Sistema de Cores e Tokens</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Domine a criação de sistemas de cores profissionais usando Design Tokens.
+        Aprenda a criar paletas harmoniosas, implementar cores semânticas e garantir
+        acessibilidade WCAG em seus dashboards.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">45min</div>
+          <div class="text-xs text-neutral-400">Duração</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Básico</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Teórico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Tópico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">1</span>
+        <h2 class="text-2xl font-bold">🎯 Fundamentos da Teoria das Cores</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-emerald-400">teoria das cores</strong> é a base para criar paletas
+        harmoniosas e funcionais. Entender como as cores interagem e afetam a percepção do
+        usuário é essencial para dashboards que comunicam informações de forma eficaz.
+      </p>
+
+      <!-- Roda das Cores -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔵 A Roda de Cores (Color Wheel)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold text-neutral-200 mb-3">Cores Primárias</h4>
+            <div class="flex space-x-3 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-red-500 flex items-center justify-center text-white text-xs font-bold">R</div>
+              <div class="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center text-white text-xs font-bold">Y</div>
+              <div class="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xs font-bold">B</div>
+            </div>
+            <p class="text-sm text-neutral-400">Vermelho, Amarelo e Azul são as cores que não podem ser criadas misturando outras cores.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-neutral-200 mb-3">Cores Secundárias</h4>
+            <div class="flex space-x-3 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center text-white text-xs font-bold">O</div>
+              <div class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center text-white text-xs font-bold">G</div>
+              <div class="w-12 h-12 rounded-lg bg-purple-500 flex items-center justify-center text-white text-xs font-bold">P</div>
+            </div>
+            <p class="text-sm text-neutral-400">Laranja, Verde e Roxo são criadas misturando duas cores primárias.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Harmonias de Cores -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Harmonias de Cores para Dashboards</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-4 p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex space-x-1">
+              <div class="w-8 h-8 rounded bg-blue-500"></div>
+              <div class="w-8 h-8 rounded bg-blue-400"></div>
+              <div class="w-8 h-8 rounded bg-blue-300"></div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-neutral-200">Monocromática</h4>
+              <p class="text-sm text-neutral-400">Uma cor em diferentes tonalidades. Ideal para dashboards limpos e profissionais.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex space-x-1">
+              <div class="w-8 h-8 rounded bg-blue-500"></div>
+              <div class="w-8 h-8 rounded bg-cyan-500"></div>
+              <div class="w-8 h-8 rounded bg-teal-500"></div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-neutral-200">Análoga</h4>
+              <p class="text-sm text-neutral-400">Cores adjacentes na roda. Cria sensação de harmonia e fluidez.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex space-x-1">
+              <div class="w-8 h-8 rounded bg-blue-500"></div>
+              <div class="w-8 h-8 rounded bg-orange-500"></div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-neutral-200">Complementar</h4>
+              <p class="text-sm text-neutral-400">Cores opostas na roda. Máximo contraste, ideal para destacar elementos importantes.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex space-x-1">
+              <div class="w-8 h-8 rounded bg-blue-500"></div>
+              <div class="w-8 h-8 rounded bg-yellow-500"></div>
+              <div class="w-8 h-8 rounded bg-red-500"></div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-neutral-200">Triádica</h4>
+              <p class="text-sm text-neutral-400">Três cores equidistantes. Vibrante e equilibrada, boa para gráficos com múltiplas séries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperatura das Cores -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-orange-900/20 rounded-xl p-6 border border-orange-500/30">
+          <h3 class="text-lg font-semibold text-orange-400 mb-3">🔥 Cores Quentes</h3>
+          <div class="flex space-x-2 mb-4">
+            <div class="w-10 h-10 rounded bg-red-500"></div>
+            <div class="w-10 h-10 rounded bg-orange-500"></div>
+            <div class="w-10 h-10 rounded bg-yellow-500"></div>
+          </div>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Transmitem energia, urgência, ação</li>
+            <li>• Ideais para alertas e CTAs</li>
+            <li>• Chamam atenção imediata</li>
+            <li>• Usar com moderação</li>
+          </ul>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3">❄️ Cores Frias</h3>
+          <div class="flex space-x-2 mb-4">
+            <div class="w-10 h-10 rounded bg-blue-500"></div>
+            <div class="w-10 h-10 rounded bg-cyan-500"></div>
+            <div class="w-10 h-10 rounded bg-green-500"></div>
+          </div>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Transmitem calma, confiança, estabilidade</li>
+            <li>• Ideais para fundos e elementos principais</li>
+            <li>• Profissionalismo corporativo</li>
+            <li>• Mais usadas em dashboards</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">2</span>
+        <h2 class="text-2xl font-bold">🏷️ Design Tokens: O Que São e Por Que Usar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Design Tokens</strong> são variáveis que armazenam
+        decisões de design (cores, tipografia, espaçamento) de forma agnóstica à plataforma.
+        São o elo entre designers e desenvolvedores, garantindo consistência visual.
+      </p>
+
+      <!-- Conceito de Tokens -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📦 Anatomia de um Design Token</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+          <pre class="text-neutral-300">
+// Estrutura de um Token
+{
+  <span class="text-emerald-400">"name"</span>: <span class="text-yellow-400">"color-primary-500"</span>,
+  <span class="text-emerald-400">"value"</span>: <span class="text-yellow-400">"#3B82F6"</span>,
+  <span class="text-emerald-400">"type"</span>: <span class="text-yellow-400">"color"</span>,
+  <span class="text-emerald-400">"description"</span>: <span class="text-yellow-400">"Primary brand color"</span>
+}</pre>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Nome (Name)</h4>
+            <p class="text-sm text-neutral-400">Identificador único, semântico e descritivo</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Valor (Value)</h4>
+            <p class="text-sm text-neutral-400">O valor real: cor, tamanho, fonte</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Tipo (Type)</h4>
+            <p class="text-sm text-neutral-400">Categoria: color, spacing, typography</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hierarquia de Tokens -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🏗️ Hierarquia de Design Tokens</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+              <span class="text-purple-400 font-bold">1</span>
+            </div>
+            <div class="flex-1 bg-purple-900/20 rounded-xl p-4 border border-purple-500/30">
+              <h4 class="font-semibold text-purple-400 mb-1">Primitive Tokens (Base)</h4>
+              <p class="text-sm text-neutral-400 mb-2">Valores brutos sem semântica</p>
+              <code class="text-xs bg-dark-800 px-2 py-1 rounded text-neutral-300">blue-500: #3B82F6</code>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <span class="text-blue-400 font-bold">2</span>
+            </div>
+            <div class="flex-1 bg-blue-900/20 rounded-xl p-4 border border-blue-500/30">
+              <h4 class="font-semibold text-blue-400 mb-1">Semantic Tokens (Semânticos)</h4>
+              <p class="text-sm text-neutral-400 mb-2">Propósito e significado</p>
+              <code class="text-xs bg-dark-800 px-2 py-1 rounded text-neutral-300">color-primary: {blue-500}</code>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+              <span class="text-emerald-400 font-bold">3</span>
+            </div>
+            <div class="flex-1 bg-emerald-900/20 rounded-xl p-4 border border-emerald-500/30">
+              <h4 class="font-semibold text-emerald-400 mb-1">Component Tokens (Componentes)</h4>
+              <p class="text-sm text-neutral-400 mb-2">Específicos para componentes</p>
+              <code class="text-xs bg-dark-800 px-2 py-1 rounded text-neutral-300">button-primary-bg: {color-primary}</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefícios -->
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-4">✨ Benefícios dos Design Tokens</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Consistência Visual Garantida</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Mudanças Globais com Uma Alteração</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Ponte Design ↔ Desenvolvimento</span>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Suporte a Múltiplos Temas</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Documentação Automática</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span class="text-neutral-300">Escalabilidade do Sistema</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">3</span>
+        <h2 class="text-2xl font-bold">🔧 Criando Paletas de Cores com Tailwind</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-emerald-400">Tailwind CSS</strong> oferece um sistema de cores
+        robusto e extensível. Vamos aprender a personalizar e estender a paleta para
+        criar um design system único para seu dashboard.
+      </p>
+
+      <!-- Configuração Tailwind -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚙️ Configurando Cores no tailwind.config.js</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// tailwind.config.js</span>
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        <span class="text-emerald-400">// Cores de Marca</span>
+        primary: {
+          50:  <span class="text-yellow-400">'#eff6ff'</span>,
+          100: <span class="text-yellow-400">'#dbeafe'</span>,
+          200: <span class="text-yellow-400">'#bfdbfe'</span>,
+          300: <span class="text-yellow-400">'#93c5fd'</span>,
+          400: <span class="text-yellow-400">'#60a5fa'</span>,
+          500: <span class="text-yellow-400">'#3b82f6'</span>, <span class="text-purple-400">// Principal</span>
+          600: <span class="text-yellow-400">'#2563eb'</span>,
+          700: <span class="text-yellow-400">'#1d4ed8'</span>,
+          800: <span class="text-yellow-400">'#1e40af'</span>,
+          900: <span class="text-yellow-400">'#1e3a8a'</span>,
+        },
+        <span class="text-emerald-400">// Dark Mode</span>
+        dark: {
+          900: <span class="text-yellow-400">'#111827'</span>,
+          800: <span class="text-yellow-400">'#1f2937'</span>,
+          700: <span class="text-yellow-400">'#374151'</span>,
+          600: <span class="text-yellow-400">'#4b5563'</span>,
+        },
+      },
+    },
+  },
+}</pre>
+        </div>
+      </div>
+
+      <!-- Escala de Cores -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📊 Escala de Cores (50-950)</h3>
+        <p class="text-neutral-400 text-sm mb-4">Cada cor deve ter uma escala completa para máxima flexibilidade:</p>
+
+        <div class="space-y-4">
+          <!-- Primary Scale -->
+          <div>
+            <h4 class="font-semibold text-neutral-200 mb-2">Primary (Azul)</h4>
+            <div class="flex space-x-1">
+              <div class="flex-1 h-12 rounded bg-blue-50 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">50</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-100 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">100</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-200 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">200</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-300 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">300</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-400 flex items-end justify-center pb-1"><span class="text-[10px] text-white">400</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-500 flex items-end justify-center pb-1"><span class="text-[10px] text-white">500</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-600 flex items-end justify-center pb-1"><span class="text-[10px] text-white">600</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-700 flex items-end justify-center pb-1"><span class="text-[10px] text-white">700</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-800 flex items-end justify-center pb-1"><span class="text-[10px] text-white">800</span></div>
+              <div class="flex-1 h-12 rounded bg-blue-900 flex items-end justify-center pb-1"><span class="text-[10px] text-white">900</span></div>
+            </div>
+          </div>
+
+          <!-- Semantic Scale -->
+          <div>
+            <h4 class="font-semibold text-neutral-200 mb-2">Sucesso (Verde)</h4>
+            <div class="flex space-x-1">
+              <div class="flex-1 h-12 rounded bg-emerald-50 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">50</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-100 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">100</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-200 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">200</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-300 flex items-end justify-center pb-1"><span class="text-[10px] text-dark-900">300</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-400 flex items-end justify-center pb-1"><span class="text-[10px] text-white">400</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-500 flex items-end justify-center pb-1"><span class="text-[10px] text-white">500</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-600 flex items-end justify-center pb-1"><span class="text-[10px] text-white">600</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-700 flex items-end justify-center pb-1"><span class="text-[10px] text-white">700</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-800 flex items-end justify-center pb-1"><span class="text-[10px] text-white">800</span></div>
+              <div class="flex-1 h-12 rounded bg-emerald-900 flex items-end justify-center pb-1"><span class="text-[10px] text-white">900</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ferramentas -->
+      <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+        <h3 class="text-lg font-semibold text-blue-400 mb-3">🛠️ Ferramentas para Gerar Paletas</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Tailwind Ink</h4>
+            <p class="text-sm text-neutral-400">Gera escalas completas a partir de uma cor</p>
+            <code class="text-xs text-blue-400">ink.tailwindcss.com</code>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Coolors</h4>
+            <p class="text-sm text-neutral-400">Gerador de paletas harmoniosas</p>
+            <code class="text-xs text-blue-400">coolors.co</code>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">UI Colors</h4>
+            <p class="text-sm text-neutral-400">Paletas otimizadas para Tailwind</p>
+            <code class="text-xs text-blue-400">uicolors.app</code>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-2">Realtime Colors</h4>
+            <p class="text-sm text-neutral-400">Preview em tempo real</p>
+            <code class="text-xs text-blue-400">realtimecolors.com</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">4</span>
+        <h2 class="text-2xl font-bold">🎭 Cores Semânticas para Dashboards</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Cores semânticas</strong> atribuem significado às cores
+        baseado em seu uso, não em seu valor. Em dashboards, isso é crucial para comunicar
+        estados, alertas e informações de forma intuitiva.
+      </p>
+
+      <!-- Cores de Estado -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🚦 Sistema de Cores de Estado</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-emerald-900/30 p-4 rounded-lg border border-emerald-500/30">
+            <div class="w-12 h-12 rounded-lg bg-emerald-500 mb-3 flex items-center justify-center text-white text-xl">✓</div>
+            <h4 class="font-semibold text-emerald-400">Sucesso</h4>
+            <p class="text-xs text-neutral-400 mt-1">Ação concluída, meta atingida, status positivo</p>
+            <code class="text-xs text-neutral-500 mt-2 block">emerald-500</code>
+          </div>
+          <div class="bg-red-900/30 p-4 rounded-lg border border-red-500/30">
+            <div class="w-12 h-12 rounded-lg bg-red-500 mb-3 flex items-center justify-center text-white text-xl">✗</div>
+            <h4 class="font-semibold text-red-400">Erro / Perigo</h4>
+            <p class="text-xs text-neutral-400 mt-1">Falha crítica, alerta urgente, problema</p>
+            <code class="text-xs text-neutral-500 mt-2 block">red-500</code>
+          </div>
+          <div class="bg-yellow-900/30 p-4 rounded-lg border border-yellow-500/30">
+            <div class="w-12 h-12 rounded-lg bg-yellow-500 mb-3 flex items-center justify-center text-dark-900 text-xl">⚠</div>
+            <h4 class="font-semibold text-yellow-400">Alerta</h4>
+            <p class="text-xs text-neutral-400 mt-1">Atenção necessária, risco moderado</p>
+            <code class="text-xs text-neutral-500 mt-2 block">yellow-500</code>
+          </div>
+          <div class="bg-blue-900/30 p-4 rounded-lg border border-blue-500/30">
+            <div class="w-12 h-12 rounded-lg bg-blue-500 mb-3 flex items-center justify-center text-white text-xl">ℹ</div>
+            <h4 class="font-semibold text-blue-400">Informação</h4>
+            <p class="text-xs text-neutral-400 mt-1">Dados neutros, dicas, informações</p>
+            <code class="text-xs text-neutral-500 mt-2 block">blue-500</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cores para KPIs -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📈 Cores para KPIs e Métricas</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-8 rounded bg-emerald-500"></div>
+              <div>
+                <span class="font-medium text-neutral-200">Positivo / Crescimento</span>
+                <p class="text-xs text-neutral-400">+15% vs mês anterior</p>
+              </div>
+            </div>
+            <span class="text-emerald-400 font-bold">↑ +15%</span>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-8 rounded bg-red-500"></div>
+              <div>
+                <span class="font-medium text-neutral-200">Negativo / Queda</span>
+                <p class="text-xs text-neutral-400">-8% vs mês anterior</p>
+              </div>
+            </div>
+            <span class="text-red-400 font-bold">↓ -8%</span>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-dark-800/50 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-8 rounded bg-neutral-500"></div>
+              <div>
+                <span class="font-medium text-neutral-200">Neutro / Estável</span>
+                <p class="text-xs text-neutral-400">0% vs mês anterior</p>
+              </div>
+            </div>
+            <span class="text-neutral-400 font-bold">→ 0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementação CSS Variables -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementação com CSS Variables</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">/* Definição de variáveis semânticas */</span>
+:root {
+  <span class="text-emerald-400">--color-success:</span> <span class="text-yellow-400">#10b981</span>;
+  <span class="text-emerald-400">--color-error:</span> <span class="text-yellow-400">#ef4444</span>;
+  <span class="text-emerald-400">--color-warning:</span> <span class="text-yellow-400">#f59e0b</span>;
+  <span class="text-emerald-400">--color-info:</span> <span class="text-yellow-400">#3b82f6</span>;
+
+  <span class="text-emerald-400">--color-text-primary:</span> <span class="text-yellow-400">#f5f5f5</span>;
+  <span class="text-emerald-400">--color-text-secondary:</span> <span class="text-yellow-400">#a3a3a3</span>;
+
+  <span class="text-emerald-400">--color-bg-primary:</span> <span class="text-yellow-400">#111827</span>;
+  <span class="text-emerald-400">--color-bg-secondary:</span> <span class="text-yellow-400">#1f2937</span>;
+}
+
+<span class="text-purple-400">/* Uso no CSS */</span>
+.alert-success {
+  background-color: <span class="text-blue-400">var(--color-success)</span>;
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">5</span>
+        <h2 class="text-2xl font-bold">♿ Acessibilidade e Contraste de Cores</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-emerald-400">acessibilidade de cores</strong> garante que todos os
+        usuários possam perceber e distinguir as informações visuais. O padrão WCAG define
+        níveis mínimos de contraste para texto e elementos interativos.
+      </p>
+
+      <!-- WCAG Guidelines -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📋 Diretrizes WCAG 2.1</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded">AA</span>
+              <h4 class="font-semibold text-neutral-200">Nível AA (Mínimo)</h4>
+            </div>
+            <ul class="space-y-2 text-sm text-neutral-400">
+              <li>• Texto normal: <strong class="text-neutral-200">4.5:1</strong></li>
+              <li>• Texto grande (18px+): <strong class="text-neutral-200">3:1</strong></li>
+              <li>• Elementos gráficos: <strong class="text-neutral-200">3:1</strong></li>
+            </ul>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded">AAA</span>
+              <h4 class="font-semibold text-neutral-200">Nível AAA (Aprimorado)</h4>
+            </div>
+            <ul class="space-y-2 text-sm text-neutral-400">
+              <li>• Texto normal: <strong class="text-neutral-200">7:1</strong></li>
+              <li>• Texto grande (18px+): <strong class="text-neutral-200">4.5:1</strong></li>
+              <li>• Recomendado para apps críticos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exemplos de Contraste -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔍 Exemplos de Contraste</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 bg-dark-900 rounded-lg">
+            <div>
+              <span class="text-white font-medium">Branco sobre Preto</span>
+              <p class="text-sm text-neutral-400">Máximo contraste</p>
+            </div>
+            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-bold rounded">21:1 ✓</span>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-dark-800 rounded-lg">
+            <div>
+              <span class="text-neutral-300 font-medium">Cinza claro sobre Cinza escuro</span>
+              <p class="text-sm text-neutral-400">Comum em dark mode</p>
+            </div>
+            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-bold rounded">7.5:1 ✓</span>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
+            <div>
+              <span class="text-neutral-500 font-medium">Cinza médio sobre Cinza</span>
+              <p class="text-sm text-neutral-400">Cuidado: pode falhar</p>
+            </div>
+            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-sm font-bold rounded">3.2:1 ⚠</span>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-blue-500 rounded-lg">
+            <div>
+              <span class="text-blue-200 font-medium">Azul claro sobre Azul</span>
+              <p class="text-sm text-blue-100">Problema comum</p>
+            </div>
+            <span class="px-3 py-1 bg-red-500/20 text-red-400 text-sm font-bold rounded">2.1:1 ✗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ferramentas de Contraste -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl p-6 border border-emerald-500/30">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-3">✓ Boas Práticas</h3>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• Nunca usar apenas cor para transmitir informação</li>
+            <li>• Adicionar ícones ou padrões junto com cores</li>
+            <li>• Testar com simuladores de daltonismo</li>
+            <li>• Usar ferramentas de verificação de contraste</li>
+            <li>• Manter texto legível em todos os fundos</li>
+          </ul>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3">🛠️ Ferramentas de Verificação</h3>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• <strong>WebAIM Contrast Checker</strong></li>
+            <li>• <strong>Stark</strong> (plugin Figma)</li>
+            <li>• <strong>Color Contrast Analyzer</strong></li>
+            <li>• <strong>axe DevTools</strong> (extensão Chrome)</li>
+            <li>• <strong>Lighthouse</strong> (auditoria automática)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Daltonismo -->
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">👁️ Considerando o Daltonismo</h3>
+        <p class="text-neutral-300 text-sm mb-4">
+          Cerca de 8% dos homens e 0.5% das mulheres têm algum tipo de daltonismo.
+          Evite depender apenas de vermelho/verde para diferenciar estados.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center space-x-2 bg-dark-800/50 px-3 py-2 rounded-lg">
+            <div class="w-4 h-4 rounded bg-emerald-500"></div>
+            <span class="text-sm">+ Ícone ✓</span>
+          </div>
+          <div class="flex items-center space-x-2 bg-dark-800/50 px-3 py-2 rounded-lg">
+            <div class="w-4 h-4 rounded bg-red-500"></div>
+            <span class="text-sm">+ Ícone ✗</span>
+          </div>
+          <div class="flex items-center space-x-2 bg-dark-800/50 px-3 py-2 rounded-lg">
+            <div class="w-4 h-4 rounded-full border-2 border-emerald-500"></div>
+            <span class="text-sm">+ Forma diferente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">6</span>
+        <h2 class="text-2xl font-bold">🌓 Cores para Dark Mode e Light Mode</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Implementar <strong class="text-emerald-400">temas claro e escuro</strong> requer
+        planejamento cuidadoso. Não basta inverter cores - cada modo precisa de sua
+        própria paleta otimizada para legibilidade e conforto visual.
+      </p>
+
+      <!-- Comparação de Modos -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔄 Mapeamento de Cores Entre Modos</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-3 px-4 text-neutral-400">Token</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Dark Mode</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Light Mode</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-600">
+              <tr>
+                <td class="py-3 px-4 font-medium text-neutral-200">bg-primary</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-900 border border-dark-600"></div><span class="text-neutral-400">#111827</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-50 border border-slate-200"></div><span class="text-neutral-400">#f8fafc</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-medium text-neutral-200">bg-card</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-800 border border-dark-600"></div><span class="text-neutral-400">#1f2937</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-white border border-slate-200"></div><span class="text-neutral-400">#ffffff</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-medium text-neutral-200">text-primary</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-neutral-100 border border-dark-600"></div><span class="text-neutral-400">#f5f5f5</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-800 border border-slate-200"></div><span class="text-neutral-400">#1e293b</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-medium text-neutral-200">text-secondary</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-neutral-400 border border-dark-600"></div><span class="text-neutral-400">#a3a3a3</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-600 border border-slate-200"></div><span class="text-neutral-400">#475569</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-medium text-neutral-200">border</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-600 border border-dark-600"></div><span class="text-neutral-400">#4b5563</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-200 border border-slate-300"></div><span class="text-neutral-400">#e2e8f0</span></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Implementação Tailwind -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementação com Tailwind Dark Mode</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- HTML com class-based dark mode --&gt;</span>
+&lt;html class="<span class="text-emerald-400">dark</span>"&gt;
+
+<span class="text-purple-400">&lt;!-- Componente com suporte a ambos modos --&gt;</span>
+&lt;div class="
+  <span class="text-blue-400">bg-white dark:bg-dark-800</span>
+  <span class="text-blue-400">text-slate-800 dark:text-neutral-100</span>
+  <span class="text-blue-400">border-slate-200 dark:border-dark-600</span>
+"&gt;
+  Conteúdo do card
+&lt;/div&gt;
+
+<span class="text-purple-400">// JavaScript para toggle</span>
+document.documentElement.classList.toggle('<span class="text-emerald-400">dark</span>');</pre>
+        </div>
+      </div>
+
+      <!-- Cores de Marca -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Cores de Marca nos Modos</h3>
+          <p class="text-sm text-neutral-400 mb-4">
+            Cores de marca podem precisar de ajustes sutis para cada modo:
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-neutral-300">Primary (Dark)</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded bg-blue-500"></div>
+                <span class="text-xs text-neutral-400">500</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-neutral-300">Primary (Light)</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded bg-blue-600"></div>
+                <span class="text-xs text-neutral-400">600</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-dark-800/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚡ Sombras e Elevação</h3>
+          <p class="text-sm text-neutral-400 mb-4">
+            Dark mode usa bordas ao invés de sombras:
+          </p>
+          <div class="space-y-3">
+            <div class="p-3 bg-white rounded-lg shadow-md">
+              <span class="text-slate-800 text-sm">Light: shadow-md</span>
+            </div>
+            <div class="p-3 bg-dark-700 rounded-lg border border-dark-600">
+              <span class="text-neutral-200 text-sm">Dark: border</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica Profissional</h3>
+        <p class="text-neutral-300 text-sm">
+          Sempre projete primeiro para o modo que será mais usado (geralmente dark mode para dashboards).
+          Depois adapte para o modo secundário, testando cuidadosamente o contraste e a legibilidade.
+          Lembre-se: um bom design de cores funciona igualmente bem em ambos os modos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        <span class="mr-3">📝</span> Resumo do Módulo
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">O que aprendemos:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Teoria das cores e harmonias</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Design Tokens e sua hierarquia</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Criação de paletas com Tailwind</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Cores semânticas para dashboards</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Acessibilidade e contraste WCAG</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Implementação de Dark/Light mode</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">Próximo módulo:</h3>
+          <p class="text-neutral-300 mb-4">
+            No Módulo 1.6, você aprenderá sobre <strong>Navegação e Sidebar</strong> -
+            criando sistemas de navegação intuitivos, menus responsivos e sidebars
+            funcionais para dashboards profissionais.
+          </p>
+          <a href="modulo-1-6.html" class="text-emerald-400 hover:text-emerald-300 font-medium">
+            Ir para Módulo 1.6 →
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-1-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+          ← Módulo Anterior
+        </a>
+        <a href="modulo-1-6.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+          Próximo Módulo →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-800/50 border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-neutral-400 text-sm">
+        📊 Dashboard Mastery - Supercurso de Dashboards Profissionais
+      </p>
+      <p class="text-neutral-500 text-xs mt-2">
+        © 2025 INEMA.CLUB - Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

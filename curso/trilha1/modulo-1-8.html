@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.8 - Dark Mode e Temas | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    :not(.dark) body { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-900 { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-800 { background-color: #ffffff; }
+    :not(.dark) .dark\:bg-dark-700 { background-color: #f1f5f9; }
+    :not(.dark) .dark\:border-dark-600 { border-color: #e2e8f0; }
+    :not(.dark) .dark\:text-neutral-100 { color: #1e293b; }
+    :not(.dark) .dark\:text-neutral-300 { color: #475569; }
+    :not(.dark) .dark\:text-neutral-400 { color: #64748b; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Técnicas</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avançado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-2">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-200">Início</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-200">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400">Módulo 1.8</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MÓDULO 1.8
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌓 Dark Mode e Temas</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Aprenda a implementar sistemas de tema completos em dashboards. Domine dark mode
+        com Tailwind, persistência de preferências, respeito às configurações do sistema
+        e criação de temas personalizáveis.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">45min</div>
+          <div class="text-xs text-neutral-400">Duração</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Básico</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Prático</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Tópico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">1</span>
+        <h2 class="text-2xl font-bold">🌙 Por Que Dark Mode em Dashboards</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Dark mode</strong> não é apenas uma tendência estética -
+        é uma necessidade funcional para dashboards. Usuários frequentemente passam horas
+        analisando dados, e o modo escuro reduz fadiga visual significativamente.
+      </p>
+
+      <!-- Benefícios -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">✨ Benefícios do Dark Mode</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-emerald-400">
+            <h4 class="font-semibold text-emerald-400 mb-2">👁️ Reduz Fadiga Visual</h4>
+            <p class="text-sm text-neutral-400">Menos luz emitida = menos esforço para os olhos em uso prolongado</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-blue-400">
+            <h4 class="font-semibold text-blue-400 mb-2">🔋 Economia de Bateria</h4>
+            <p class="text-sm text-neutral-400">Em telas OLED, pixels pretos = pixels desligados</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-purple-400">
+            <h4 class="font-semibold text-purple-400 mb-2">🌃 Uso Noturno</h4>
+            <p class="text-sm text-neutral-400">Reduz interrupção do ciclo circadiano</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-yellow-400">
+            <h4 class="font-semibold text-yellow-400 mb-2">🎯 Foco no Conteúdo</h4>
+            <p class="text-sm text-neutral-400">Dados e gráficos se destacam mais no fundo escuro</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-pink-400">
+            <h4 class="font-semibold text-pink-400 mb-2">😎 Estética Moderna</h4>
+            <p class="text-sm text-neutral-400">Aparência profissional e sofisticada</p>
+          </div>
+          <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-orange-400">
+            <h4 class="font-semibold text-orange-400 mb-2">♿ Acessibilidade</h4>
+            <p class="text-sm text-neutral-400">Beneficia usuários com sensibilidade à luz</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estatísticas -->
+      <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-3">📊 Dados de Pesquisa</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-400 mb-1">82%</div>
+            <p class="text-sm text-neutral-400">dos desenvolvedores preferem dark mode</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-400 mb-1">64%</div>
+            <p class="text-sm text-neutral-400">dos usuários Android usam dark mode</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-400 mb-1">30%</div>
+            <p class="text-sm text-neutral-400">menos energia em telas OLED</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quando usar cada modo -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-dark-800/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-neutral-200 mb-3">🌙 Dark Mode é Melhor Para:</h3>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• Dashboards de monitoramento 24/7</li>
+            <li>• Ambientes com pouca luz</li>
+            <li>• Sessões longas de análise de dados</li>
+            <li>• Command centers e NOCs</li>
+            <li>• Aplicativos de trading</li>
+          </ul>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+          <h3 class="text-lg font-semibold text-slate-800 mb-3">☀️ Light Mode é Melhor Para:</h3>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li>• Ambientes muito iluminados</li>
+            <li>• Leitura de textos longos</li>
+            <li>• Documentação e relatórios</li>
+            <li>• Impressão de conteúdo</li>
+            <li>• Preferência pessoal do usuário</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">2</span>
+        <h2 class="text-2xl font-bold">⚙️ Configurando Dark Mode no Tailwind</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-emerald-400">Tailwind CSS</strong> oferece suporte nativo a dark
+        mode com duas estratégias: baseada em classe (class) ou na preferência do sistema (media).
+        Para dashboards, a estratégia baseada em classe oferece mais controle.
+      </p>
+
+      <!-- Estratégias -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔄 Estratégias de Dark Mode</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-dark-800 rounded-lg p-4">
+            <h4 class="font-semibold text-emerald-400 mb-3">✓ Class Strategy (Recomendado)</h4>
+            <div class="bg-dark-900 rounded p-3 font-mono text-sm mb-3 overflow-x-auto">
+              <pre class="text-neutral-300">
+<span class="text-purple-400">// tailwind.config.js</span>
+module.exports = {
+  <span class="text-emerald-400">darkMode: 'class'</span>,
+}</pre>
+            </div>
+            <ul class="space-y-1 text-xs text-neutral-400">
+              <li>• Controle total via JavaScript</li>
+              <li>• Toggle manual do usuário</li>
+              <li>• Pode respeitar preferência do sistema</li>
+              <li>• Persistência em localStorage</li>
+            </ul>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4">
+            <h4 class="font-semibold text-blue-400 mb-3">Media Strategy</h4>
+            <div class="bg-dark-900 rounded p-3 font-mono text-sm mb-3 overflow-x-auto">
+              <pre class="text-neutral-300">
+<span class="text-purple-400">// tailwind.config.js</span>
+module.exports = {
+  <span class="text-blue-400">darkMode: 'media'</span>,
+}</pre>
+            </div>
+            <ul class="space-y-1 text-xs text-neutral-400">
+              <li>• Automático via prefers-color-scheme</li>
+              <li>• Zero JavaScript necessário</li>
+              <li>• Usuário não pode escolher</li>
+              <li>• Mais simples, menos flexível</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uso das classes -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Usando Classes dark:</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- O modificador dark: aplica estilos quando .dark está no html --&gt;</span>
+
+&lt;div class="
+  <span class="text-emerald-400">bg-white</span>              <span class="text-purple-400">{/* Light mode: fundo branco */}</span>
+  <span class="text-blue-400">dark:bg-dark-800</span>      <span class="text-purple-400">{/* Dark mode: fundo escuro */}</span>
+
+  <span class="text-emerald-400">text-slate-800</span>        <span class="text-purple-400">{/* Light mode: texto escuro */}</span>
+  <span class="text-blue-400">dark:text-neutral-100</span> <span class="text-purple-400">{/* Dark mode: texto claro */}</span>
+
+  <span class="text-emerald-400">border-slate-200</span>      <span class="text-purple-400">{/* Light mode: borda clara */}</span>
+  <span class="text-blue-400">dark:border-dark-600</span>  <span class="text-purple-400">{/* Dark mode: borda escura */}</span>
+"&gt;
+  Card com suporte a ambos os modos
+&lt;/div&gt;
+
+<span class="text-purple-400">&lt;!-- Ativando dark mode --&gt;</span>
+&lt;html class="<span class="text-emerald-400">dark</span>"&gt;  <span class="text-purple-400">&lt;!-- Adicione esta classe --&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Paleta de Cores -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Paleta Recomendada para Dashboard</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-3 px-4 text-neutral-400">Uso</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Light Mode</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Dark Mode</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-600">
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Background Principal</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-50 border"></div><span class="text-neutral-400 text-xs">slate-50</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-900 border border-dark-600"></div><span class="text-neutral-400 text-xs">dark-900</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Cards/Containers</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-white border"></div><span class="text-neutral-400 text-xs">white</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-800 border border-dark-600"></div><span class="text-neutral-400 text-xs">dark-800</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Texto Principal</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-800 border"></div><span class="text-neutral-400 text-xs">slate-800</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-neutral-100 border border-dark-600"></div><span class="text-neutral-400 text-xs">neutral-100</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Texto Secundário</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-500 border"></div><span class="text-neutral-400 text-xs">slate-500</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-neutral-400 border border-dark-600"></div><span class="text-neutral-400 text-xs">neutral-400</span></div></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Bordas</td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-slate-200 border"></div><span class="text-neutral-400 text-xs">slate-200</span></div></td>
+                <td class="py-3 px-4"><div class="flex items-center space-x-2"><div class="w-6 h-6 rounded bg-dark-600 border border-dark-500"></div><span class="text-neutral-400 text-xs">dark-600</span></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">3</span>
+        <h2 class="text-2xl font-bold">💾 Persistência e Preferências do Sistema</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma implementação profissional de dark mode deve <strong class="text-emerald-400">respeitar
+        a preferência do sistema</strong> por padrão, mas permitir que o usuário escolha
+        e <strong class="text-emerald-400">persistir essa escolha</strong> entre sessões.
+      </p>
+
+      <!-- Fluxo de Decisão -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔄 Fluxo de Decisão do Tema</h3>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="bg-dark-800 p-4 rounded-lg text-center flex-1">
+            <div class="text-2xl mb-2">💾</div>
+            <h4 class="font-semibold text-neutral-200 text-sm">1. localStorage</h4>
+            <p class="text-xs text-neutral-400">Usuário já escolheu?</p>
+          </div>
+          <div class="text-neutral-600 text-2xl">→</div>
+          <div class="bg-dark-800 p-4 rounded-lg text-center flex-1">
+            <div class="text-2xl mb-2">🖥️</div>
+            <h4 class="font-semibold text-neutral-200 text-sm">2. Sistema</h4>
+            <p class="text-xs text-neutral-400">prefers-color-scheme</p>
+          </div>
+          <div class="text-neutral-600 text-2xl">→</div>
+          <div class="bg-dark-800 p-4 rounded-lg text-center flex-1">
+            <div class="text-2xl mb-2">🌙</div>
+            <h4 class="font-semibold text-neutral-200 text-sm">3. Fallback</h4>
+            <p class="text-xs text-neutral-400">Dark mode (padrão)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementação Completa -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementação Completa</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// Script que deve rodar ANTES do conteúdo (no &lt;head&gt;)</span>
+&lt;script&gt;
+  <span class="text-emerald-400">// Evita flash de tema errado (FOUC)</span>
+  (<span class="text-blue-400">function</span>() {
+    <span class="text-blue-400">const</span> stored = localStorage.getItem(<span class="text-yellow-400">'theme'</span>);
+    <span class="text-blue-400">const</span> prefersDark = window.matchMedia(<span class="text-yellow-400">'(prefers-color-scheme: dark)'</span>).matches;
+
+    <span class="text-purple-400">// Prioridade: localStorage > sistema > dark (padrão)</span>
+    <span class="text-blue-400">if</span> (stored === <span class="text-yellow-400">'light'</span>) {
+      document.documentElement.classList.remove(<span class="text-yellow-400">'dark'</span>);
+    } <span class="text-blue-400">else if</span> (stored === <span class="text-yellow-400">'dark'</span>) {
+      document.documentElement.classList.add(<span class="text-yellow-400">'dark'</span>);
+    } <span class="text-blue-400">else if</span> (prefersDark) {
+      document.documentElement.classList.add(<span class="text-yellow-400">'dark'</span>);
+    } <span class="text-blue-400">else</span> {
+      document.documentElement.classList.remove(<span class="text-yellow-400">'dark'</span>);
+    }
+  })();
+&lt;/script&gt;
+
+<span class="text-purple-400">// Função de toggle (pode ser chamada pelo botão)</span>
+<span class="text-blue-400">function</span> toggleTheme() {
+  <span class="text-blue-400">const</span> html = document.documentElement;
+  <span class="text-blue-400">const</span> isDark = html.classList.toggle(<span class="text-yellow-400">'dark'</span>);
+
+  <span class="text-purple-400">// Persiste a escolha</span>
+  localStorage.setItem(<span class="text-yellow-400">'theme'</span>, isDark ? <span class="text-yellow-400">'dark'</span> : <span class="text-yellow-400">'light'</span>);
+}
+
+<span class="text-purple-400">// Botão de toggle</span>
+&lt;button onclick="<span class="text-emerald-400">toggleTheme()</span>" class="..."&gt;
+  &lt;span class="<span class="text-emerald-400">dark:hidden</span>"&gt;🌙&lt;/span&gt;
+  &lt;span class="<span class="text-emerald-400">hidden dark:inline</span>"&gt;☀️&lt;/span&gt;
+&lt;/button&gt;</pre>
+        </div>
+      </div>
+
+      <!-- React Hook -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚛️ Hook React para Dark Mode</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// hooks/useTheme.ts</span>
+<span class="text-blue-400">import</span> { useState, useEffect } <span class="text-blue-400">from</span> <span class="text-yellow-400">'react'</span>;
+
+<span class="text-blue-400">export function</span> useTheme() {
+  <span class="text-blue-400">const</span> [theme, setTheme] = useState&lt;<span class="text-emerald-400">'light' | 'dark'</span>&gt;(<span class="text-yellow-400">'dark'</span>);
+
+  useEffect(() =&gt; {
+    <span class="text-purple-400">// Carrega preferência salva ou do sistema</span>
+    <span class="text-blue-400">const</span> stored = localStorage.getItem(<span class="text-yellow-400">'theme'</span>) <span class="text-blue-400">as</span> <span class="text-emerald-400">'light' | 'dark'</span> | <span class="text-emerald-400">null</span>;
+    <span class="text-blue-400">const</span> prefersDark = window.matchMedia(<span class="text-yellow-400">'(prefers-color-scheme: dark)'</span>).matches;
+
+    <span class="text-blue-400">const</span> initialTheme = stored || (prefersDark ? <span class="text-yellow-400">'dark'</span> : <span class="text-yellow-400">'light'</span>);
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle(<span class="text-yellow-400">'dark'</span>, initialTheme === <span class="text-yellow-400">'dark'</span>);
+  }, []);
+
+  <span class="text-blue-400">const</span> toggleTheme = () =&gt; {
+    <span class="text-blue-400">const</span> newTheme = theme === <span class="text-yellow-400">'dark'</span> ? <span class="text-yellow-400">'light'</span> : <span class="text-yellow-400">'dark'</span>;
+    setTheme(newTheme);
+    localStorage.setItem(<span class="text-yellow-400">'theme'</span>, newTheme);
+    document.documentElement.classList.toggle(<span class="text-yellow-400">'dark'</span>, newTheme === <span class="text-yellow-400">'dark'</span>);
+  };
+
+  <span class="text-blue-400">return</span> { theme, toggleTheme };
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">4</span>
+        <h2 class="text-2xl font-bold">🎨 Componentes para Ambos os Modos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Ao criar componentes, é essencial <strong class="text-emerald-400">pensar em ambos os
+        modos desde o início</strong>. Algumas cores funcionam bem em dark mode mas têm
+        problemas de contraste em light mode, e vice-versa.
+      </p>
+
+      <!-- Exemplo de Card -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📦 Card com Suporte Dual</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+          <!-- Dark Mode Preview -->
+          <div class="bg-dark-900 p-4 rounded-lg">
+            <p class="text-xs text-neutral-500 mb-2">Dark Mode</p>
+            <div class="bg-dark-800 rounded-xl p-4 border border-dark-600">
+              <h4 class="font-semibold text-neutral-100">Vendas Mensais</h4>
+              <p class="text-2xl font-bold text-emerald-400 mt-2">R$ 45.230</p>
+              <p class="text-sm text-neutral-400 mt-1">+12% vs mês anterior</p>
+            </div>
+          </div>
+          <!-- Light Mode Preview -->
+          <div class="bg-slate-100 p-4 rounded-lg">
+            <p class="text-xs text-slate-500 mb-2">Light Mode</p>
+            <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+              <h4 class="font-semibold text-slate-800">Vendas Mensais</h4>
+              <p class="text-2xl font-bold text-emerald-600 mt-2">R$ 45.230</p>
+              <p class="text-sm text-slate-500 mt-1">+12% vs mês anterior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- Card KPI com classes para ambos os modos --&gt;</span>
+&lt;div class="
+  <span class="text-emerald-400">bg-white dark:bg-dark-800</span>
+  <span class="text-emerald-400">border border-slate-200 dark:border-dark-600</span>
+  <span class="text-emerald-400">shadow-sm dark:shadow-none</span>
+  <span class="text-emerald-400">rounded-xl p-4</span>
+"&gt;
+  &lt;h4 class="<span class="text-emerald-400">font-semibold text-slate-800 dark:text-neutral-100</span>"&gt;
+    Vendas Mensais
+  &lt;/h4&gt;
+  &lt;p class="<span class="text-emerald-400">text-2xl font-bold text-emerald-600 dark:text-emerald-400</span> mt-2"&gt;
+    R$ 45.230
+  &lt;/p&gt;
+  &lt;p class="<span class="text-emerald-400">text-sm text-slate-500 dark:text-neutral-400</span> mt-1"&gt;
+    +12% vs mês anterior
+  &lt;/p&gt;
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+
+      <!-- Ajustes de Cores -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎯 Ajustes de Intensidade por Modo</h3>
+        <p class="text-sm text-neutral-400 mb-4">
+          Cores de marca/accent frequentemente precisam de ajustes entre modos:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-3 px-4 text-neutral-400">Tipo</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Light Mode</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Dark Mode</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Por quê</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-600">
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Primary</td>
+                <td class="py-3 px-4"><span class="text-blue-600">blue-600</span></td>
+                <td class="py-3 px-4"><span class="text-blue-400">blue-400</span></td>
+                <td class="py-3 px-4 text-xs text-neutral-400">Mais vibrante no escuro</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Success</td>
+                <td class="py-3 px-4"><span class="text-emerald-600">emerald-600</span></td>
+                <td class="py-3 px-4"><span class="text-emerald-400">emerald-400</span></td>
+                <td class="py-3 px-4 text-xs text-neutral-400">Contraste adequado</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Error</td>
+                <td class="py-3 px-4"><span class="text-red-600">red-600</span></td>
+                <td class="py-3 px-4"><span class="text-red-400">red-400</span></td>
+                <td class="py-3 px-4 text-xs text-neutral-400">Legibilidade</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-300">Background accent</td>
+                <td class="py-3 px-4"><span class="text-blue-100">blue-100</span></td>
+                <td class="py-3 px-4"><span class="text-blue-500/20">blue-500/20</span></td>
+                <td class="py-3 px-4 text-xs text-neutral-400">Opacidade funciona melhor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">5</span>
+        <h2 class="text-2xl font-bold">🖌️ Criando Temas Personalizados</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Além de dark/light mode, dashboards corporativos frequentemente precisam de
+        <strong class="text-emerald-400">temas customizados</strong> que reflitam a
+        identidade visual da empresa - cores de marca, fontes específicas, etc.
+      </p>
+
+      <!-- CSS Variables -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Sistema de Temas com CSS Variables</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">/* styles/themes.css */</span>
+
+<span class="text-purple-400">/* Tema Base (Dark - Padrão) */</span>
+:root {
+  <span class="text-emerald-400">--color-primary:</span> <span class="text-yellow-400">#3b82f6</span>;
+  <span class="text-emerald-400">--color-primary-light:</span> <span class="text-yellow-400">#60a5fa</span>;
+  <span class="text-emerald-400">--color-bg:</span> <span class="text-yellow-400">#111827</span>;
+  <span class="text-emerald-400">--color-surface:</span> <span class="text-yellow-400">#1f2937</span>;
+  <span class="text-emerald-400">--color-text:</span> <span class="text-yellow-400">#f5f5f5</span>;
+  <span class="text-emerald-400">--color-text-secondary:</span> <span class="text-yellow-400">#a3a3a3</span>;
+  <span class="text-emerald-400">--color-border:</span> <span class="text-yellow-400">#4b5563</span>;
+}
+
+<span class="text-purple-400">/* Tema Light */</span>
+:root.light {
+  <span class="text-emerald-400">--color-primary:</span> <span class="text-yellow-400">#2563eb</span>;
+  <span class="text-emerald-400">--color-primary-light:</span> <span class="text-yellow-400">#3b82f6</span>;
+  <span class="text-emerald-400">--color-bg:</span> <span class="text-yellow-400">#f8fafc</span>;
+  <span class="text-emerald-400">--color-surface:</span> <span class="text-yellow-400">#ffffff</span>;
+  <span class="text-emerald-400">--color-text:</span> <span class="text-yellow-400">#1e293b</span>;
+  <span class="text-emerald-400">--color-text-secondary:</span> <span class="text-yellow-400">#64748b</span>;
+  <span class="text-emerald-400">--color-border:</span> <span class="text-yellow-400">#e2e8f0</span>;
+}
+
+<span class="text-purple-400">/* Tema Corporativo (Exemplo: Empresa Verde) */</span>
+:root.theme-corporate {
+  <span class="text-emerald-400">--color-primary:</span> <span class="text-yellow-400">#059669</span>;
+  <span class="text-emerald-400">--color-primary-light:</span> <span class="text-yellow-400">#10b981</span>;
+  <span class="text-purple-400">/* ...outras variáveis mantêm valores do dark/light */</span>
+}</pre>
+        </div>
+      </div>
+
+      <!-- Integração Tailwind -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚙️ Integração com Tailwind</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// tailwind.config.js</span>
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        <span class="text-purple-400">// Cores que usam CSS variables</span>
+        theme: {
+          primary: <span class="text-yellow-400">'var(--color-primary)'</span>,
+          <span class="text-yellow-400">'primary-light'</span>: <span class="text-yellow-400">'var(--color-primary-light)'</span>,
+          bg: <span class="text-yellow-400">'var(--color-bg)'</span>,
+          surface: <span class="text-yellow-400">'var(--color-surface)'</span>,
+          text: <span class="text-yellow-400">'var(--color-text)'</span>,
+          <span class="text-yellow-400">'text-secondary'</span>: <span class="text-yellow-400">'var(--color-text-secondary)'</span>,
+          border: <span class="text-yellow-400">'var(--color-border)'</span>,
+        }
+      }
+    }
+  }
+}
+
+<span class="text-purple-400">// Uso em componentes</span>
+&lt;div class="<span class="text-emerald-400">bg-theme-surface text-theme-text border-theme-border</span>"&gt;</pre>
+        </div>
+      </div>
+
+      <!-- Seletor de Tema -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎛️ UI de Seleção de Tema</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            <p class="text-sm text-neutral-400 mb-2">Exemplo de seletor:</p>
+            <div class="bg-dark-800 p-4 rounded-lg space-y-3">
+              <button class="w-full flex items-center justify-between p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">🌙</span>
+                  <span class="font-medium text-emerald-400">Dark Mode</span>
+                </div>
+                <span class="text-emerald-400">✓</span>
+              </button>
+              <button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-dark-700 border border-dark-600">
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">☀️</span>
+                  <span class="font-medium text-neutral-300">Light Mode</span>
+                </div>
+              </button>
+              <button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-dark-700 border border-dark-600">
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">🖥️</span>
+                  <span class="font-medium text-neutral-300">Sistema</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <p class="text-sm text-neutral-400 mb-2">Cores de marca:</p>
+            <div class="bg-dark-800 p-4 rounded-lg">
+              <p class="text-xs text-neutral-500 mb-3">Selecione a cor primária:</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="w-10 h-10 rounded-lg bg-blue-500 ring-2 ring-offset-2 ring-offset-dark-800 ring-blue-500"></button>
+                <button class="w-10 h-10 rounded-lg bg-emerald-500 hover:ring-2 hover:ring-offset-2 hover:ring-offset-dark-800 hover:ring-emerald-500"></button>
+                <button class="w-10 h-10 rounded-lg bg-purple-500 hover:ring-2 hover:ring-offset-2 hover:ring-offset-dark-800 hover:ring-purple-500"></button>
+                <button class="w-10 h-10 rounded-lg bg-orange-500 hover:ring-2 hover:ring-offset-2 hover:ring-offset-dark-800 hover:ring-orange-500"></button>
+                <button class="w-10 h-10 rounded-lg bg-pink-500 hover:ring-2 hover:ring-offset-2 hover:ring-offset-dark-800 hover:ring-pink-500"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">6</span>
+        <h2 class="text-2xl font-bold">⚡ Transições e Animações de Tema</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma troca de tema abrupta pode ser visualmente desconfortável.
+        <strong class="text-emerald-400">Transições suaves</strong> criam uma experiência
+        mais polida e profissional para o usuário.
+      </p>
+
+      <!-- Transição Global -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎬 Transição Global de Cores</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">/* CSS Global - Transição suave para TODAS as cores */</span>
+
+<span class="text-emerald-400">*</span>,
+<span class="text-emerald-400">*::before</span>,
+<span class="text-emerald-400">*::after</span> {
+  transition:
+    background-color <span class="text-yellow-400">200ms</span> ease-in-out,
+    border-color <span class="text-yellow-400">200ms</span> ease-in-out,
+    color <span class="text-yellow-400">200ms</span> ease-in-out,
+    fill <span class="text-yellow-400">200ms</span> ease-in-out,
+    stroke <span class="text-yellow-400">200ms</span> ease-in-out;
+}
+
+<span class="text-purple-400">/* Ou, mais performático, apenas em elementos específicos */</span>
+.theme-transition {
+  transition:
+    background-color <span class="text-yellow-400">200ms</span>,
+    border-color <span class="text-yellow-400">200ms</span>,
+    color <span class="text-yellow-400">200ms</span>;
+}</pre>
+        </div>
+      </div>
+
+      <!-- Técnicas Avançadas -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🚀 Técnicas Avançadas</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-dark-800 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-3">View Transitions API</h4>
+            <div class="bg-dark-900 rounded p-3 font-mono text-xs overflow-x-auto">
+              <pre class="text-neutral-300">
+<span class="text-purple-400">// Transição nativa do navegador</span>
+<span class="text-blue-400">async function</span> toggleTheme() {
+  <span class="text-blue-400">if</span> (!document.startViewTransition) {
+    <span class="text-purple-400">// Fallback para navegadores antigos</span>
+    updateTheme();
+    <span class="text-blue-400">return</span>;
+  }
+
+  <span class="text-blue-400">await</span> document.startViewTransition(() =&gt; {
+    updateTheme();
+  });
+}</pre>
+            </div>
+            <p class="text-xs text-neutral-400 mt-2">Suporte: Chrome 111+, Edge 111+</p>
+          </div>
+
+          <div class="bg-dark-800 p-4 rounded-lg">
+            <h4 class="font-semibold text-neutral-200 mb-3">Animação Circular</h4>
+            <div class="bg-dark-900 rounded p-3 font-mono text-xs overflow-x-auto">
+              <pre class="text-neutral-300">
+<span class="text-purple-400">/* CSS para efeito circular */</span>
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: <span class="text-emerald-400">reveal 0.3s</span>;
+  clip-path: circle(0%);
+}
+
+@keyframes reveal {
+  to { clip-path: circle(100%); }
+}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica de Performance -->
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica de Performance</h3>
+        <p class="text-neutral-300 text-sm mb-3">
+          Evite transições em muitos elementos simultaneamente. Prefira:
+        </p>
+        <ul class="space-y-2 text-sm text-neutral-300">
+          <li>• Transições apenas em elementos visíveis</li>
+          <li>• Duração curta (150-300ms)</li>
+          <li>• Usar <code class="bg-dark-800 px-1 rounded">transform</code> e <code class="bg-dark-800 px-1 rounded">opacity</code> quando possível (GPU accelerated)</li>
+          <li>• Desativar transições para usuários com <code class="bg-dark-800 px-1 rounded">prefers-reduced-motion</code></li>
+        </ul>
+      </div>
+
+      <!-- Acessibilidade -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">♿ Respeitando prefers-reduced-motion</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">/* Desativa transições para quem prefere movimento reduzido */</span>
+@media (<span class="text-emerald-400">prefers-reduced-motion: reduce</span>) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: <span class="text-yellow-400">0.01ms</span> !important;
+    animation-iteration-count: <span class="text-yellow-400">1</span> !important;
+    transition-duration: <span class="text-yellow-400">0.01ms</span> !important;
+  }
+}
+
+<span class="text-purple-400">/* Ou com Tailwind */</span>
+&lt;div class="<span class="text-emerald-400">transition-colors duration-200 motion-reduce:transition-none</span>"&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        <span class="mr-3">📝</span> Resumo do Módulo
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">O que aprendemos:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Benefícios do dark mode para dashboards</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Configuração de dark mode no Tailwind</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Persistência e preferências do sistema</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Componentes para ambos os modos</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Criação de temas personalizados</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Transições e animações de tema</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">Conclusão da Trilha 1:</h3>
+          <p class="text-neutral-300 mb-4">
+            Parabéns! Você completou a <strong>Trilha 1 - Fundamentos</strong>.
+            Agora você tem a base sólida para criar dashboards profissionais.
+            Na <strong>Trilha 2 - Técnicas</strong>, você aprenderá a construir
+            componentes de dados, gráficos e visualizações avançadas.
+          </p>
+          <a href="../trilha2/index.html" class="text-blue-400 hover:text-blue-300 font-medium">
+            Iniciar Trilha 2: Técnicas →
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-1-7.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+          ← Módulo Anterior
+        </a>
+        <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+          Iniciar Trilha 2 →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-800/50 border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-neutral-400 text-sm">
+        📊 Dashboard Mastery - Supercurso de Dashboards Profissionais
+      </p>
+      <p class="text-neutral-500 text-xs mt-2">
+        © 2025 INEMA.CLUB - Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

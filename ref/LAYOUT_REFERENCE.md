@@ -1,6 +1,6 @@
-# Layout Reference - Supercurso Nano Banana
+# Layout Reference - Dashboard Mastery
 
-Documentação do sistema de layout e design utilizado nas páginas de conteúdo do curso.
+Documentacao do sistema de layout e design utilizado nas paginas do curso.
 
 ---
 
@@ -12,7 +12,7 @@ Documentação do sistema de layout e design utilizado nas páginas de conteúdo
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Título do Módulo] | TikTok Shop Academy 2025</title>
+  <title>[Titulo] | Dashboard Mastery</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,8 +20,7 @@ Documentação do sistema de layout e design utilizado nas páginas de conteúdo
       theme: {
         extend: {
           colors: {
-            primary: '#CDDC39',
-            accent: '#E040FB',
+            primary: '#FACC15',
             dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
           }
         }
@@ -32,28 +31,11 @@ Documentação do sistema de layout e design utilizado nas páginas de conteúdo
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
-    html:not(.dark) body { background-color: #f8fafc; }
-    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
-    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
-    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
-    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
-    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
-    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
-    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
-    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+    /* Light mode overrides... */
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <!-- Conteúdo aqui -->
-
-  <script>
-    // Theme initialization
-    if (localStorage.getItem('color-theme') === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <!-- Conteudo -->
 </body>
 </html>
 ```
@@ -62,467 +44,319 @@ Documentação do sistema de layout e design utilizado nas páginas de conteúdo
 
 ## 2. Paleta de Cores
 
-### Dark Mode (Padrão)
-| Nome | Código | Uso |
+### Dark Mode (Padrao)
+
+| Nome | Codigo | Uso |
 |------|--------|-----|
-| `dark-900` | `#111827` | Fundo principal da página |
+| `dark-900` | `#111827` | Fundo principal |
 | `dark-800` | `#1f2937` | Cards, containers |
-| `dark-700` | `#374151` | Elementos internos, hover states |
+| `dark-700` | `#374151` | Elementos internos |
 | `dark-600` | `#4b5563` | Bordas, divisores |
 
-### Light Mode
-| Nome | Código | Uso |
-|------|--------|-----|
-| Background | `#f8fafc` | Fundo principal |
-| Cards | `#ffffff` | Cards, containers |
-| Elementos | `#f1f5f9` | Elementos internos |
-| Bordas | `#e2e8f0` | Bordas, divisores |
+### Cores das Trilhas
 
-### Cores de Destaque
-| Nome | Código | Uso |
-|------|--------|-----|
-| `primary` | `#CDDC39` | CTAs, destaques principais, botões |
-| `accent` | `#E040FB` | Elementos secundários, badges |
+| Trilha | Nome | Cor | Uso |
+|--------|------|-----|-----|
+| Trilha 1 | Fundamentos | Emerald | `text-emerald-400`, `bg-emerald-500/20` |
+| Trilha 2 | Tecnicas | Blue | `text-blue-400`, `bg-blue-500/20` |
+| Trilha 3 | Avancado | Purple | `text-purple-400`, `bg-purple-500/20` |
 
-### Cores Semânticas (Tailwind)
-| Cor | Uso |
-|-----|-----|
-| `emerald-400/500` | Sucesso, positivo, "fazer" |
-| `red-400/500` | Erro, alerta, "não fazer" |
-| `blue-400/500` | Informação, dados |
-| `yellow-400/500` | Aviso, atenção, logo Nano Banana |
-| `purple-400/500` | Especial, premium |
-| `cyan-400/500` | Tech, inovação |
-| `sky-400/500` | Links externos (INEMA.CLUB) |
-| `pink-400/500` | Beleza, feminino |
-| `orange-400/500` | Energia, urgência |
-| `amber-400/500` | Destaque suave |
+### Cores Especiais
+
+| Cor | Codigo | Uso |
+|-----|--------|-----|
+| Primary (Yellow) | `#FACC15` | Logo, CTAs, destaques |
+| Sky | `text-sky-400` | Link INEMA.CLUB |
 
 ---
 
-## 3. Componentes de Layout
+## 3. Navigation Global (OBRIGATORIO)
 
-### 3.1 Navigation Global (Sticky Top)
+O menu global DEVE aparecer em TODAS as paginas do curso.
 
-> ⚠️ **OBRIGATÓRIO**: O menu global DEVE aparecer em **TODAS as páginas** do curso, sem exceção.
+### Elementos Obrigatorios
 
-#### Elementos Obrigatórios do Menu:
-
-1. **Logo SHIA** (🧠) - Link para index.html
-2. **INEMA.CLUB** - Link externo OBRIGATÓRIO em sky-400, abre em nova aba
-3. **Links para TODAS as 4 Trilhas** (0, 1, 2, 3) - Sempre visíveis
-4. **Theme Toggle** - Botão para alternar dark/light mode
+1. **Logo** (📊 Dashboard Mastery) - Link para index.html
+2. **INEMA.CLUB** - Link externo em sky-400
+3. **Trilhas** com descricao (Fundamentos, Tecnicas, Avancado)
+4. **Theme Toggle** - Botao dark/light
 
 ```html
-<!-- Navigation Global - OBRIGATÓRIO EM TODAS AS PÁGINAS -->
 <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14">
-      <!-- Logo + INEMA.CLUB (OBRIGATÓRIO) -->
-      <div class="flex items-center space-x-3">
-        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
-          <span class="text-2xl">🧠</span>
-          <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+      <!-- Logo + INEMA.CLUB -->
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📊</span>
+          <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
         </a>
-        <span class="text-neutral-500 hidden sm:inline">|</span>
-        <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
-          INEMA.CLUB
-        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
       </div>
 
-      <!-- TODAS as 4 Trilhas + Theme Toggle (OBRIGATÓRIO) -->
+      <!-- Trilhas com descricao -->
       <div class="flex items-center space-x-1 sm:space-x-2">
-        <!-- Trilha 0 - Amarelo -->
-        <a href="curso/trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
-          <span class="hidden sm:inline">Trilha </span>0
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+          <span class="sm:hidden">T1</span>
+          <span class="hidden sm:inline">Fundamentos</span>
         </a>
-        <!-- Trilha 1 - Verde -->
-        <a href="curso/trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
-          <span class="hidden sm:inline">Trilha </span>1
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10">
+          <span class="sm:hidden">T2</span>
+          <span class="hidden sm:inline">Tecnicas</span>
         </a>
-        <!-- Trilha 2 - Azul -->
-        <a href="curso/trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
-          <span class="hidden sm:inline">Trilha </span>2
+        <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10">
+          <span class="sm:hidden">T3</span>
+          <span class="hidden sm:inline">Avancado</span>
         </a>
-        <!-- Trilha 3 - Roxo -->
-        <a href="curso/trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
-          <span class="hidden sm:inline">Trilha </span>3
-        </a>
-
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
-          <!-- SVG icons para dark/light mode -->
-        </button>
       </div>
     </div>
   </div>
 </nav>
 ```
 
-#### Cores das Trilhas (OBRIGATÓRIO)
+---
 
-| Trilha | Cor | Classes Ativa | Classes Inativa |
-|--------|-----|---------------|-----------------|
-| **Trilha 0** | Amarelo | `bg-yellow-500/20 text-yellow-400 border border-yellow-500/30` | `text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10` |
-| **Trilha 1** | Verde | `bg-emerald-500/20 text-emerald-400 border border-emerald-500/30` | `text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10` |
-| **Trilha 2** | Azul | `bg-blue-500/20 text-blue-400 border border-blue-500/30` | `text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10` |
-| **Trilha 3** | Roxo | `bg-purple-500/20 text-purple-400 border border-purple-500/30` | `text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10` |
+## 4. Estrutura de Pagina de Trilha (Index)
 
-**Propriedades:**
-- Posição: `sticky top-0`
-- Z-index: `50`
-- Altura: `h-14` (56px)
-- Background: `bg-dark-900/95 backdrop-blur-sm`
-- Logo: 🧠 SHIA (yellow-400)
-- **INEMA.CLUB**: OBRIGATÓRIO - Link externo em sky-400 (azul claro), separado por `|`, abre em nova aba
-- **4 Trilhas**: OBRIGATÓRIO - Todas sempre visíveis no menu
-- Trilha ativa: fundo e borda coloridos
-- Responsivo: texto compacto em mobile
+```
+TRILHA INDEX
+├── Navigation Global (com INEMA.CLUB)
+├── Header
+│   └── Badge da trilha
+│   └── Titulo + emoji
+│   └── Descricao
+│   └── Stats (Modulos, Topicos, Duracao, Nivel)
+├── Modulos (8 por trilha)
+│   └── Modulo Card
+│       ├── Header (numero, titulo, descricao)
+│       ├── Topicos Expansiveis (6 por modulo)
+│       │   └── Numero em circulo (NAO seta)
+│       │   └── Emoji + titulo + subtitulo
+│       │   └── Conteudo com 3 secoes
+│       └── Botoes (ESQUERDA - justify-start)
+│           └── Ver em Modal
+│           └── Ver Completo
+└── Footer
+```
 
-### 3.2 Header do Módulo
+---
+
+## 5. Estrutura de Pagina Completa de Modulo
+
+```
+MODULO COMPLETO
+├── Navigation Global (com INEMA.CLUB)
+├── Breadcrumb (Inicio / Trilha X / Modulo X.X)
+├── Header
+│   └── Badge do modulo
+│   └── Titulo + emoji
+│   └── Descricao
+│   └── Stats (Topicos, Duracao, Nivel, Tipo)
+├── Topicos (6 secoes completas)
+│   └── Section por topico
+│       ├── Numero em circulo + titulo
+│       ├── Paragrafo introdutorio
+│       ├── Boxes de detalhamento
+│       ├── Grids de comparacao
+│       └── Dicas praticas
+├── Resumo Final
+│   └── O que aprendemos (checklist)
+│   └── Proximo modulo
+│   └── CTAs de navegacao
+└── Footer
+```
+
+---
+
+## 6. Componentes de Layout
+
+### 6.1 Header do Modulo
+
 ```html
-<div class="text-center mb-12">
-  <span class="inline-block px-4 py-2 bg-[COR]-500/20 text-[COR]-400 rounded-full text-sm font-semibold mb-4">
-    MÓDULO X - CATEGORIA
-  </span>
-  <h1 class="text-4xl sm:text-5xl font-bold mb-4">[EMOJI] Título do Módulo</h1>
-  <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
-    Descrição breve do módulo em 1-2 linhas.
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+      MODULO 1.1
+    </span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">📊 Titulo do Modulo</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Descricao do modulo...</p>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-emerald-400">6</div>
+        <div class="text-xs text-neutral-400">Topicos</div>
+      </div>
+      <!-- mais stats... -->
+    </div>
+  </div>
+</header>
+```
+
+### 6.2 Section de Topico
+
+```html
+<section id="topico-1" class="mb-16">
+  <div class="flex items-center space-x-3 mb-6">
+    <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">1</span>
+    <h2 class="text-2xl font-bold">🎯 Titulo do Topico</h2>
+  </div>
+
+  <p class="text-neutral-300 mb-6 leading-relaxed">
+    Paragrafo introdutorio com <strong class="text-emerald-400">destaque</strong>...
   </p>
-</div>
-```
 
-### 3.3 Stats Banner (Métricas)
-```html
-<div class="grid grid-cols-3 gap-4 mb-12">
-  <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
-    <div class="text-2xl font-bold text-[COR]-400">XX</div>
-    <div class="text-xs text-neutral-400">Label</div>
-  </div>
-  <!-- Repetir para cada métrica -->
-</div>
-```
-
-### 3.4 Section com Gradiente
-```html
-<section class="mb-12">
-  <div class="bg-gradient-to-br from-[COR]-900/30 to-dark-800 rounded-2xl p-8 border border-[COR]-500/30">
-    <div class="flex items-center mb-6">
-      <span class="text-4xl mr-4">[EMOJI]</span>
-      <div>
-        <h2 class="text-2xl font-bold text-[COR]-400">Título da Seção</h2>
-        <p class="text-neutral-400">Subtítulo explicativo</p>
-      </div>
-    </div>
-    <!-- Conteúdo -->
-  </div>
+  <!-- Boxes de conteudo... -->
 </section>
 ```
 
-### 3.5 Section Simples (Card)
+### 6.3 Box de Detalhamento
+
 ```html
-<section class="mb-12">
-  <div class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
-    <div class="flex items-center mb-6">
-      <span class="text-4xl mr-4">[EMOJI]</span>
-      <div>
-        <h2 class="text-2xl font-bold text-neutral-100">Título</h2>
-        <p class="text-neutral-400">Subtítulo</p>
-      </div>
+<div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+  <h3 class="text-lg font-semibold text-emerald-400 mb-4">Titulo</h3>
+  <!-- Conteudo -->
+</div>
+```
+
+### 6.4 Box de Dados/Pesquisa
+
+```html
+<div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30 mb-6">
+  <h3 class="text-lg font-semibold text-blue-400 mb-3">📊 Dados de Pesquisa</h3>
+  <ul class="space-y-2 text-neutral-300">...</ul>
+</div>
+```
+
+### 6.5 Dica Pratica
+
+```html
+<div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+  <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica Pratica</h3>
+  <p class="text-neutral-300">...</p>
+</div>
+```
+
+### 6.6 Grid de Comparacao
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+  <div class="bg-emerald-900/20 rounded-xl p-6 border border-emerald-500/30">
+    <h3 class="text-lg font-semibold text-emerald-400 mb-4">✓ Fazer</h3>
+    <ul class="space-y-3 text-neutral-300">...</ul>
+  </div>
+  <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+    <h3 class="text-lg font-semibold text-red-400 mb-4">✗ Nao Fazer</h3>
+    <ul class="space-y-3 text-neutral-300">...</ul>
+  </div>
+</div>
+```
+
+### 6.7 Timeline de Passos
+
+```html
+<div class="space-y-4">
+  <div class="flex items-start space-x-4">
+    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+      <span class="text-emerald-400 font-bold">1</span>
     </div>
-    <!-- Conteúdo -->
-  </div>
-</section>
-```
-
-### 3.6 Box de Informação Interna
-```html
-<div class="bg-dark-700/50 rounded-xl p-6 mb-6">
-  <h3 class="text-xl font-bold text-[COR]-400 mb-4">[EMOJI] Título</h3>
-  <!-- Conteúdo -->
-</div>
-```
-
-### 3.7 Alerta/Destaque Colorido
-```html
-<div class="bg-[COR]-900/20 p-6 rounded-xl border border-[COR]-500/30">
-  <h4 class="font-bold text-[COR]-400 mb-3">[EMOJI] Título</h4>
-  <p class="text-neutral-300">Conteúdo do alerta...</p>
-</div>
-```
-
-### 3.8 Grid de Comparação (Fazer/Não Fazer)
-```html
-<div class="grid md:grid-cols-2 gap-6 mb-6">
-  <div class="bg-emerald-900/20 p-6 rounded-xl border border-emerald-500/30">
-    <h4 class="font-bold text-emerald-400 mb-4">✓ O que FAZER</h4>
-    <ul class="space-y-3 text-neutral-300">
-      <li class="flex items-start">
-        <span class="text-emerald-400 mr-2">✓</span>
-        <span>Item positivo</span>
-      </li>
-    </ul>
-  </div>
-  <div class="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
-    <h4 class="font-bold text-red-400 mb-4">✗ O que NÃO fazer</h4>
-    <ul class="space-y-3 text-neutral-300">
-      <li class="flex items-start">
-        <span class="text-red-400 mr-2">✗</span>
-        <span>Item negativo</span>
-      </li>
-    </ul>
+    <div class="flex-1 bg-dark-700/50 rounded-xl p-4 border border-dark-600">
+      <h4 class="font-semibold text-neutral-200 mb-1">Titulo do Passo</h4>
+      <p class="text-sm text-neutral-400">Descricao...</p>
+    </div>
   </div>
 </div>
 ```
 
-### 3.9 Timeline/Passos Numerados
-```html
-<div class="flex items-start mb-8">
-  <div class="w-16 h-16 bg-[COR]-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-    1
-  </div>
-  <div>
-    <h4 class="text-xl font-bold text-[COR]-400">Título do Passo</h4>
-    <p class="text-neutral-400">Descrição</p>
-  </div>
-</div>
-```
+### 6.8 Resumo Final
 
-### 3.10 Barra de Progresso
 ```html
-<div>
-  <div class="flex justify-between mb-1">
-    <span class="text-sm text-neutral-300">Label</span>
-    <span class="text-sm text-[COR]-400">XX%</span>
-  </div>
-  <div class="w-full bg-dark-600 rounded-full h-4">
-    <div class="bg-[COR]-500 h-4 rounded-full" style="width: XX%"></div>
-  </div>
-</div>
-```
+<section class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+  <h2 class="text-2xl font-bold mb-6 flex items-center">
+    <span class="mr-3">📝</span> Resumo do Modulo
+  </h2>
 
-### 3.11 Checklist Interativo
-```html
-<div class="flex items-center bg-dark-800/50 p-3 rounded-lg">
-  <input type="checkbox" class="mr-3 w-5 h-5 accent-primary">
-  <span class="text-neutral-300">Item do checklist</span>
-</div>
-```
-
-### 3.12 Tabela
-```html
-<div class="overflow-x-auto">
-  <table class="w-full text-sm">
-    <thead>
-      <tr class="border-b border-dark-600">
-        <th class="text-left py-3 px-4 text-neutral-400">Coluna 1</th>
-        <th class="text-left py-3 px-4 text-neutral-400">Coluna 2</th>
-      </tr>
-    </thead>
-    <tbody class="text-neutral-300">
-      <tr class="border-b border-dark-700">
-        <td class="py-3 px-4">Dado 1</td>
-        <td class="py-3 px-4">Dado 2</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-```
-
-### 3.13 CTA Final / Resumo
-```html
-<section class="mb-12">
-  <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
-    <h2 class="text-2xl font-bold text-primary mb-6 text-center">[EMOJI] Título do Resumo</h2>
-    <!-- Conteúdo -->
-    <div class="text-center mt-8">
-      <a href="../index.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
-        <span>Voltar para o Curso</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div>
+      <h3 class="font-semibold text-emerald-400 mb-3">O que aprendemos:</h3>
+      <ul class="space-y-2 text-neutral-300">...</ul>
+    </div>
+    <div>
+      <h3 class="font-semibold text-emerald-400 mb-3">Proximo modulo:</h3>
+      <p class="text-neutral-300 mb-4">...</p>
+      <a href="modulo-1-2.html" class="text-emerald-400 hover:text-emerald-300">
+        Ir para Modulo 1.2 →
       </a>
     </div>
   </div>
+
+  <div class="flex flex-col sm:flex-row gap-4">
+    <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600">
+      ← Voltar para Trilha 1
+    </a>
+    <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500">
+      Proximo Modulo →
+    </a>
+  </div>
 </section>
 ```
 
-### 3.14 Footer
-```html
-<footer class="bg-dark-900 border-t border-dark-700 py-8">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <p class="text-neutral-500 text-sm">
-      TikTok Shop Academy 2025 - [Nome do Módulo]
-    </p>
-  </div>
-</footer>
-```
-
 ---
 
-## 4. Padrões de Espaçamento
+## 7. Padroes de Espacamento
 
 | Classe | Uso |
 |--------|-----|
-| `mb-12` | Entre seções principais |
-| `mb-6` | Entre sub-seções |
-| `mb-4` | Entre elementos dentro de uma seção |
-| `mb-2` | Entre linhas de texto |
+| `mb-16` | Entre secoes principais (topicos) |
+| `mb-8` | Antes do resumo final |
+| `mb-6` | Entre boxes dentro de uma secao |
+| `mb-4` | Entre elementos menores |
 | `p-8` | Padding de cards principais |
 | `p-6` | Padding de boxes internos |
-| `p-4` | Padding de elementos menores |
-| `p-3` | Padding de itens de lista |
-| `gap-4` | Espaço entre itens de grid |
-| `gap-6` | Espaço maior entre itens de grid |
-| `space-y-3` | Espaço vertical entre itens de lista |
+| `gap-4` | Grid de cards |
+| `gap-6` | Grid de comparacao |
 
 ---
 
-## 5. Tipografia
-
-| Elemento | Classes |
-|----------|---------|
-| Título da página (h1) | `text-4xl sm:text-5xl font-bold` |
-| Título de seção (h2) | `text-2xl font-bold` |
-| Título de sub-seção (h3) | `text-xl font-bold` |
-| Título pequeno (h4) | `font-bold` ou `font-semibold` |
-| Parágrafo destaque | `text-lg text-neutral-300` |
-| Parágrafo normal | `text-neutral-300` |
-| Texto secundário | `text-neutral-400` |
-| Texto pequeno | `text-sm text-neutral-300` |
-| Texto muito pequeno | `text-xs text-neutral-400` |
-| Badge/Tag | `text-sm font-semibold` |
-
----
-
-## 6. Container Principal
-
-Todas as páginas usam `max-w-4xl` para largura máxima do conteúdo:
+## 8. Responsividade
 
 ```html
-<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <!-- Conteúdo -->
-</main>
+<!-- Grid responsivo -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<!-- Texto responsivo -->
+<h1 class="text-3xl sm:text-4xl font-bold">
+
+<!-- Padding responsivo -->
+<div class="px-4 sm:px-6 lg:px-8">
+
+<!-- Visibilidade -->
+<span class="sm:hidden">T1</span>
+<span class="hidden sm:inline">Fundamentos</span>
 ```
 
 ---
 
-## 7. Responsividade
+## 9. Checklist de Criacao de Pagina
 
-- Grid de 2 colunas: `grid md:grid-cols-2`
-- Grid de 3 colunas: `grid md:grid-cols-3`
-- Grid de 4 colunas: `grid grid-cols-2 md:grid-cols-4`
-- Texto responsivo: `text-4xl sm:text-5xl`
-- Padding responsivo: `px-4 sm:px-6 lg:px-8`
-
----
-
-## 8. Efeitos Visuais
-
-| Efeito | Classes |
-|--------|---------|
-| Blur no background | `backdrop-blur-sm` |
-| Transparência | `bg-dark-900/95` (95% opacidade) |
-| Gradiente | `bg-gradient-to-br from-[cor]-900/30 to-dark-800` |
-| Hover em link | `hover:text-primary transition-colors` |
-| Hover em botão | `hover:bg-primary/90 transition-colors` |
-| Borda colorida à esquerda | `border-l-4 border-[cor]-500` |
-
----
-
-## 9. Emojis por Categoria
-
-| Categoria | Emojis Sugeridos |
-|-----------|------------------|
-| Mentalidade | 🧠 💡 ⏰ ✨ 🎯 |
-| Algoritmo | ⚙️ 🤖 📊 🔄 🎯 |
-| Tempo | ⏱️ 🏗️ 🔄 ⚡ 📐 |
-| Conteúdo | 🎬 📋 🪝 ✓ |
-| Gatilhos | 💡 😲 ✓ 🎯 💭 ⭐ |
-| Roteiros | 📝 🏠 💄 👗 🎧 🧹 |
-| Sucesso | ✅ ✓ 🎉 🚀 |
-| Alerta | ⚠️ ❌ ✗ |
-| Info | 📊 📈 💡 ℹ️ |
-
----
-
-## 10. Especificações de Imagens
-
-> ⚠️ **OBRIGATÓRIO**: Todas as imagens do projeto devem seguir estas especificações para garantir performance.
-
-### Formato e Otimização
-
-| Propriedade | Valor | Descrição |
-|-------------|-------|-----------|
-| **Formato** | WebP | Obrigatório - melhor compressão |
-| **Largura máxima** | 1200px | Redimensionar imagens maiores |
-| **Qualidade** | 80 | Balanço entre qualidade e tamanho |
-| **Otimização** | optimize=True | Usar compressão otimizada |
-
-### Script de Otimização (Python/Pillow)
-
-```python
-from PIL import Image
-import os
-
-def optimize_image(filepath, max_width=1200, quality=80):
-    img = Image.open(filepath)
-
-    # Redimensiona se maior que max_width
-    if img.size[0] > max_width:
-        ratio = max_width / img.size[0]
-        new_height = int(img.size[1] * ratio)
-        img = img.resize((max_width, new_height), Image.LANCZOS)
-
-    # Salva como WebP otimizado
-    output_path = filepath.rsplit('.', 1)[0] + '.webp'
-    img.save(output_path, 'WEBP', quality=quality, optimize=True)
-    return output_path
-```
-
-### Estrutura de Pastas de Imagens
-
-```
-doc/imagens/
-├── geral/           # Imagens da página principal
-├── introducao/      # Trilha 0
-├── arte/            # Trilha 1
-├── engenharia/      # Trilha 2
-└── educadores/      # Trilha 3
-```
-
-### Uso em HTML
-
-```html
-<img
-  src="doc/imagens/geral/nome_imagem.webp"
-  alt="Descrição acessível da imagem"
-  class="w-full max-w-4xl mx-auto rounded-2xl shadow-xl border border-dark-600/50"
-/>
-```
-
-### Checklist de Imagens
-
-- [ ] Formato WebP (não PNG/JPG)
-- [ ] Largura máxima 1200px
-- [ ] Qualidade 80
-- [ ] Alt text descritivo
-- [ ] Classes de estilo consistentes
-
----
-
-## 11. Checklist de Criação de Página
-
-- [ ] Estrutura HTML base com Tailwind config
-- [ ] Navigation sticky com INEMA.CLUB e 4 trilhas (OBRIGATÓRIO)
-- [ ] Header com badge, título e descrição
-- [ ] Stats banner (se aplicável)
-- [ ] Seções com gradiente para conceitos principais
-- [ ] Boxes de comparação (fazer/não fazer)
-- [ ] Alertas coloridos para dicas
-- [ ] Resumo final com CTA
+- [ ] Navigation Global com INEMA.CLUB (sky-400)
+- [ ] Trilhas com descricao (Fundamentos, Tecnicas, Avancado)
+- [ ] Breadcrumb (em paginas de modulo)
+- [ ] Header com badge, titulo e descricao
+- [ ] Stats banner
+- [ ] 6 topicos completos
+- [ ] Cada topico com numero em circulo
+- [ ] Boxes variados (detalhamento, dados, dica, comparacao)
+- [ ] Resumo final com checklist
+- [ ] CTAs de navegacao
 - [ ] Footer
-- [ ] Script de inicialização do tema
-- [ ] Verificar responsividade
-- [ ] Verificar dark/light mode
-- [ ] Imagens otimizadas (WebP, 1200px, quality 80)
+- [ ] Dark/light mode funcionando
+- [ ] Responsivo
+
+---
+
+**Ultima atualizacao:** 2025-12-26
+**Projeto:** Dashboard Mastery

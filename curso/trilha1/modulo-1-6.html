@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.6 - Navegação e Sidebar | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    :not(.dark) body { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-900 { background-color: #f8fafc; }
+    :not(.dark) .dark\:bg-dark-800 { background-color: #ffffff; }
+    :not(.dark) .dark\:bg-dark-700 { background-color: #f1f5f9; }
+    :not(.dark) .dark\:border-dark-600 { border-color: #e2e8f0; }
+    :not(.dark) .dark\:text-neutral-100 { color: #1e293b; }
+    :not(.dark) .dark\:text-neutral-300 { color: #475569; }
+    :not(.dark) .dark\:text-neutral-400 { color: #64748b; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Técnicas</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avançado</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-2">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-200">Início</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-200">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400">Módulo 1.6</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MÓDULO 1.6
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧭 Navegação e Sidebar</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Aprenda a criar sistemas de navegação intuitivos e profissionais. Domine sidebars
+        responsivas, menus multinível, breadcrumbs e padrões de navegação que
+        facilitam a experiência do usuário em dashboards complexos.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">50min</div>
+          <div class="text-xs text-neutral-400">Duração</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Básico</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Prático</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Tópico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">1</span>
+        <h2 class="text-2xl font-bold">🏗️ Anatomia de uma Navegação de Dashboard</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-emerald-400">navegação de um dashboard</strong> é composta por
+        múltiplos elementos que trabalham juntos para orientar o usuário. Entender cada
+        componente é essencial para criar interfaces funcionais e intuitivas.
+      </p>
+
+      <!-- Estrutura da Navegação -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📐 Estrutura Padrão de Dashboard</h3>
+        <div class="bg-dark-800 rounded-lg overflow-hidden border border-dark-600">
+          <!-- Mockup do Layout -->
+          <div class="flex flex-col">
+            <!-- Top Bar -->
+            <div class="bg-dark-900 h-12 border-b border-dark-600 flex items-center px-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-yellow-400/20"></div>
+                <div class="w-24 h-4 rounded bg-dark-600"></div>
+              </div>
+              <div class="ml-auto flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-dark-600"></div>
+                <div class="w-8 h-8 rounded-full bg-dark-600"></div>
+              </div>
+            </div>
+
+            <div class="flex">
+              <!-- Sidebar -->
+              <div class="w-48 bg-dark-800 border-r border-dark-600 p-4 space-y-2">
+                <div class="h-8 rounded bg-emerald-500/20 border border-emerald-500/30"></div>
+                <div class="h-8 rounded bg-dark-700"></div>
+                <div class="h-8 rounded bg-dark-700"></div>
+                <div class="h-8 rounded bg-dark-700"></div>
+                <div class="mt-4 pt-4 border-t border-dark-600 space-y-2">
+                  <div class="h-8 rounded bg-dark-700"></div>
+                  <div class="h-8 rounded bg-dark-700"></div>
+                </div>
+              </div>
+
+              <!-- Main Content -->
+              <div class="flex-1 p-4 min-h-[200px]">
+                <!-- Breadcrumb -->
+                <div class="flex items-center space-x-2 mb-4">
+                  <div class="w-12 h-4 rounded bg-dark-600"></div>
+                  <span class="text-dark-600">/</span>
+                  <div class="w-16 h-4 rounded bg-dark-600"></div>
+                  <span class="text-dark-600">/</span>
+                  <div class="w-20 h-4 rounded bg-emerald-500/30"></div>
+                </div>
+                <!-- Content Grid -->
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="h-20 rounded bg-dark-700"></div>
+                  <div class="h-20 rounded bg-dark-700"></div>
+                  <div class="h-20 rounded bg-dark-700"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+          <div class="bg-dark-800/50 p-3 rounded-lg border-l-4 border-yellow-400">
+            <h4 class="font-semibold text-yellow-400 text-sm">Top Bar</h4>
+            <p class="text-xs text-neutral-400 mt-1">Logo, busca, notificações, perfil</p>
+          </div>
+          <div class="bg-dark-800/50 p-3 rounded-lg border-l-4 border-emerald-400">
+            <h4 class="font-semibold text-emerald-400 text-sm">Sidebar</h4>
+            <p class="text-xs text-neutral-400 mt-1">Menu principal, seções, ações</p>
+          </div>
+          <div class="bg-dark-800/50 p-3 rounded-lg border-l-4 border-blue-400">
+            <h4 class="font-semibold text-blue-400 text-sm">Breadcrumb</h4>
+            <p class="text-xs text-neutral-400 mt-1">Localização, hierarquia, navegação</p>
+          </div>
+          <div class="bg-dark-800/50 p-3 rounded-lg border-l-4 border-purple-400">
+            <h4 class="font-semibold text-purple-400 text-sm">Content Area</h4>
+            <p class="text-xs text-neutral-400 mt-1">Área principal, visualizações</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Padrões de Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-3">📍 Sidebar Fixa</h3>
+          <div class="bg-dark-800 rounded-lg p-3 mb-3 flex h-24">
+            <div class="w-8 bg-emerald-500/20 rounded-l"></div>
+            <div class="flex-1 bg-dark-700 rounded-r"></div>
+          </div>
+          <p class="text-sm text-neutral-400">Sempre visível, ideal para apps com muitas seções</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-3">📍 Sidebar Colapsável</h3>
+          <div class="bg-dark-800 rounded-lg p-3 mb-3 flex h-24">
+            <div class="w-3 bg-emerald-500/20 rounded-l flex items-center justify-center">
+              <span class="text-[8px] text-emerald-400">›</span>
+            </div>
+            <div class="flex-1 bg-dark-700 rounded-r"></div>
+          </div>
+          <p class="text-sm text-neutral-400">Maximiza espaço de conteúdo quando necessário</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-3">📍 Top Navigation</h3>
+          <div class="bg-dark-800 rounded-lg p-3 mb-3 h-24 flex flex-col">
+            <div class="h-6 bg-emerald-500/20 rounded-t"></div>
+            <div class="flex-1 bg-dark-700 rounded-b"></div>
+          </div>
+          <p class="text-sm text-neutral-400">Para dashboards simples com poucas seções</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">2</span>
+        <h2 class="text-2xl font-bold">📋 Construindo uma Sidebar Profissional</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-emerald-400">sidebar</strong> é o coração da navegação de um dashboard.
+        Uma sidebar bem projetada organiza conteúdo, facilita a descoberta de funcionalidades
+        e mantém o usuário orientado durante toda a experiência.
+      </p>
+
+      <!-- Componentes da Sidebar -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🧩 Componentes Essenciais</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Sidebar Demo -->
+          <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+            <div class="p-4 border-b border-dark-600">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-yellow-400/20 flex items-center justify-center">
+                  <span class="text-lg">📊</span>
+                </div>
+                <div>
+                  <div class="font-bold text-neutral-200">Dashboard</div>
+                  <div class="text-xs text-neutral-400">Admin Panel</div>
+                </div>
+              </div>
+            </div>
+
+            <nav class="p-4 space-y-1">
+              <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <span>📈</span>
+                <span class="font-medium">Overview</span>
+              </a>
+              <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                <span>📊</span>
+                <span>Analytics</span>
+              </a>
+              <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                <span>👥</span>
+                <span>Usuários</span>
+                <span class="ml-auto bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">12</span>
+              </a>
+              <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                <span>📦</span>
+                <span>Produtos</span>
+              </a>
+
+              <div class="pt-4 mt-4 border-t border-dark-600">
+                <p class="text-xs text-neutral-500 uppercase tracking-wider mb-2 px-3">Sistema</p>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                  <span>⚙️</span>
+                  <span>Configurações</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                  <span>❓</span>
+                  <span>Ajuda</span>
+                </a>
+              </div>
+            </nav>
+
+            <div class="p-4 border-t border-dark-600 mt-auto">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm font-bold">JD</div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium text-neutral-200 text-sm truncate">John Doe</div>
+                  <div class="text-xs text-neutral-400 truncate">admin@email.com</div>
+                </div>
+                <button class="text-neutral-400 hover:text-neutral-200">
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explicações -->
+          <div class="space-y-4">
+            <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-yellow-400">
+              <h4 class="font-semibold text-yellow-400">Header / Logo</h4>
+              <p class="text-sm text-neutral-400 mt-1">Identidade visual e nome do app. Clicável para home.</p>
+            </div>
+            <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-emerald-400">
+              <h4 class="font-semibold text-emerald-400">Menu Principal</h4>
+              <p class="text-sm text-neutral-400 mt-1">Links para seções principais. Item ativo destacado.</p>
+            </div>
+            <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-blue-400">
+              <h4 class="font-semibold text-blue-400">Badges e Contadores</h4>
+              <p class="text-sm text-neutral-400 mt-1">Indicadores de notificações ou itens pendentes.</p>
+            </div>
+            <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-purple-400">
+              <h4 class="font-semibold text-purple-400">Seções Secundárias</h4>
+              <p class="text-sm text-neutral-400 mt-1">Agrupamento lógico com labels de seção.</p>
+            </div>
+            <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-pink-400">
+              <h4 class="font-semibold text-pink-400">User Footer</h4>
+              <p class="text-sm text-neutral-400 mt-1">Perfil do usuário logado e ação de logout.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Código da Sidebar -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Código Base da Sidebar</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- Sidebar Container --&gt;</span>
+&lt;aside class="<span class="text-emerald-400">w-64 bg-dark-800 border-r border-dark-600
+              flex flex-col h-screen sticky top-0</span>"&gt;
+
+  <span class="text-purple-400">&lt;!-- Logo Header --&gt;</span>
+  &lt;div class="<span class="text-blue-400">p-4 border-b border-dark-600</span>"&gt;
+    &lt;a href="/" class="<span class="text-blue-400">flex items-center space-x-3</span>"&gt;
+      &lt;span class="text-2xl"&gt;📊&lt;/span&gt;
+      &lt;span class="font-bold"&gt;Dashboard&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+  <span class="text-purple-400">&lt;!-- Navigation --&gt;</span>
+  &lt;nav class="<span class="text-blue-400">flex-1 p-4 space-y-1 overflow-y-auto</span>"&gt;
+    &lt;a href="#" class="<span class="text-blue-400">flex items-center px-3 py-2 rounded-lg
+                       bg-emerald-500/10 text-emerald-400</span>"&gt;
+      &lt;span class="mr-3"&gt;📈&lt;/span&gt;
+      Overview
+    &lt;/a&gt;
+    <span class="text-purple-400">&lt;!-- More items... --&gt;</span>
+  &lt;/nav&gt;
+
+  <span class="text-purple-400">&lt;!-- User Footer --&gt;</span>
+  &lt;div class="<span class="text-blue-400">p-4 border-t border-dark-600</span>"&gt;
+    <span class="text-purple-400">&lt;!-- User info... --&gt;</span>
+  &lt;/div&gt;
+&lt;/aside&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">3</span>
+        <h2 class="text-2xl font-bold">🔽 Menus Multinível e Submenus</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Menus multinível</strong> são essenciais para dashboards
+        com muitas funcionalidades. Eles permitem organizar opções em hierarquias lógicas
+        sem sobrecarregar a interface principal.
+      </p>
+
+      <!-- Submenu Demo -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📂 Exemplo de Menu com Submenu</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Menu Demo -->
+          <div class="bg-dark-800 rounded-xl p-4 border border-dark-600">
+            <nav class="space-y-1">
+              <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700">
+                <span>📈</span>
+                <span>Dashboard</span>
+              </a>
+
+              <!-- Menu com Submenu Aberto -->
+              <div class="space-y-1">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-dark-700 text-neutral-200">
+                  <div class="flex items-center space-x-3">
+                    <span>📊</span>
+                    <span>Relatórios</span>
+                  </div>
+                  <span class="text-neutral-400 transform rotate-90">›</span>
+                </button>
+
+                <!-- Submenu Items -->
+                <div class="ml-6 space-y-1 border-l-2 border-dark-600 pl-4">
+                  <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg text-emerald-400 bg-emerald-500/10">
+                    <span class="text-sm">📄</span>
+                    <span class="text-sm">Vendas</span>
+                  </a>
+                  <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                    <span class="text-sm">📄</span>
+                    <span class="text-sm">Marketing</span>
+                  </a>
+                  <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700 hover:text-neutral-200">
+                    <span class="text-sm">📄</span>
+                    <span class="text-sm">Financeiro</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Menu Fechado -->
+              <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-neutral-400 hover:bg-dark-700">
+                <div class="flex items-center space-x-3">
+                  <span>⚙️</span>
+                  <span>Configurações</span>
+                </div>
+                <span class="text-neutral-500">›</span>
+              </button>
+            </nav>
+          </div>
+
+          <!-- Padrões -->
+          <div class="space-y-4">
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h4 class="font-semibold text-emerald-400 mb-2">✓ Boas Práticas</h4>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Máximo 2 níveis de profundidade</li>
+                <li>• Indicador visual de expansão (seta)</li>
+                <li>• Manter submenus visualmente conectados</li>
+                <li>• Animação suave ao expandir/colapsar</li>
+                <li>• Persistir estado de expansão</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+              <h4 class="font-semibold text-red-400 mb-2">✗ Evitar</h4>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Mais de 3 níveis (confuso)</li>
+                <li>• Submenus sem indicação visual</li>
+                <li>• Muitos itens no mesmo nível (5-7 max)</li>
+                <li>• Misturar links e expandidores</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Código Submenu -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementação com React</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// Componente de Menu com Submenu</span>
+<span class="text-blue-400">function</span> MenuItem({ icon, label, children }) {
+  <span class="text-blue-400">const</span> [isOpen, setIsOpen] = useState(<span class="text-yellow-400">false</span>);
+
+  <span class="text-blue-400">if</span> (!children) {
+    <span class="text-blue-400">return</span> (
+      &lt;a href="#" className="<span class="text-emerald-400">flex items-center px-3 py-2 rounded-lg
+                              hover:bg-dark-700</span>"&gt;
+        {icon} {label}
+      &lt;/a&gt;
+    );
+  }
+
+  <span class="text-blue-400">return</span> (
+    &lt;div&gt;
+      &lt;button
+        onClick={() =&gt; setIsOpen(!isOpen)}
+        className="<span class="text-emerald-400">w-full flex items-center justify-between</span>"
+      &gt;
+        &lt;span&gt;{icon} {label}&lt;/span&gt;
+        &lt;ChevronIcon className={isOpen ? '<span class="text-emerald-400">rotate-90</span>' : ''} /&gt;
+      &lt;/button&gt;
+
+      {isOpen && (
+        &lt;div className="<span class="text-emerald-400">ml-6 mt-1 space-y-1 border-l-2 pl-4</span>"&gt;
+          {children}
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">4</span>
+        <h2 class="text-2xl font-bold">🍞 Breadcrumbs e Navegação Contextual</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Breadcrumbs</strong> mostram a localização do usuário
+        na hierarquia do site e permitem navegação rápida para níveis anteriores. São
+        essenciais em dashboards com múltiplas camadas de conteúdo.
+      </p>
+
+      <!-- Exemplos de Breadcrumb -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📍 Estilos de Breadcrumb</h3>
+        <div class="space-y-6">
+          <!-- Estilo 1: Simples -->
+          <div class="bg-dark-800 rounded-lg p-4">
+            <p class="text-xs text-neutral-500 mb-2">Estilo Simples (Mais Comum)</p>
+            <nav class="flex items-center space-x-2 text-sm">
+              <a href="#" class="text-neutral-400 hover:text-neutral-200">Dashboard</a>
+              <span class="text-neutral-600">/</span>
+              <a href="#" class="text-neutral-400 hover:text-neutral-200">Relatórios</a>
+              <span class="text-neutral-600">/</span>
+              <span class="text-emerald-400">Vendas Mensais</span>
+            </nav>
+          </div>
+
+          <!-- Estilo 2: Com Ícones -->
+          <div class="bg-dark-800 rounded-lg p-4">
+            <p class="text-xs text-neutral-500 mb-2">Com Ícones</p>
+            <nav class="flex items-center space-x-2 text-sm">
+              <a href="#" class="text-neutral-400 hover:text-neutral-200 flex items-center">
+                <span class="mr-1">🏠</span>
+                <span>Home</span>
+              </a>
+              <span class="text-neutral-600">›</span>
+              <a href="#" class="text-neutral-400 hover:text-neutral-200 flex items-center">
+                <span class="mr-1">📊</span>
+                <span>Analytics</span>
+              </a>
+              <span class="text-neutral-600">›</span>
+              <span class="text-emerald-400 flex items-center">
+                <span class="mr-1">📈</span>
+                <span>Crescimento</span>
+              </span>
+            </nav>
+          </div>
+
+          <!-- Estilo 3: Pills -->
+          <div class="bg-dark-800 rounded-lg p-4">
+            <p class="text-xs text-neutral-500 mb-2">Estilo Pills</p>
+            <nav class="flex items-center space-x-1 text-sm">
+              <a href="#" class="px-3 py-1 rounded-full bg-dark-700 text-neutral-400 hover:bg-dark-600">Dashboard</a>
+              <span class="text-neutral-600">→</span>
+              <a href="#" class="px-3 py-1 rounded-full bg-dark-700 text-neutral-400 hover:bg-dark-600">Usuários</a>
+              <span class="text-neutral-600">→</span>
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400">Perfil</span>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementação -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Componente Breadcrumb</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">// Componente Breadcrumb reutilizável</span>
+<span class="text-blue-400">function</span> Breadcrumb({ items }) {
+  <span class="text-blue-400">return</span> (
+    &lt;nav className="<span class="text-emerald-400">flex items-center space-x-2 text-sm</span>"&gt;
+      {items.map((item, index) =&gt; (
+        &lt;React.Fragment key={item.href || item.label}&gt;
+          {index > <span class="text-yellow-400">0</span> && (
+            &lt;span className="<span class="text-emerald-400">text-neutral-600</span>"&gt;/&lt;/span&gt;
+          )}
+
+          {item.href ? (
+            &lt;Link
+              href={item.href}
+              className="<span class="text-emerald-400">text-neutral-400 hover:text-neutral-200</span>"
+            &gt;
+              {item.label}
+            &lt;/Link&gt;
+          ) : (
+            &lt;span className="<span class="text-emerald-400">text-emerald-400</span>"&gt;
+              {item.label}
+            &lt;/span&gt;
+          )}
+        &lt;/React.Fragment&gt;
+      ))}
+    &lt;/nav&gt;
+  );
+}
+
+<span class="text-purple-400">// Uso</span>
+&lt;Breadcrumb items={[
+  { label: 'Dashboard', href: '/' },
+  { label: 'Relatórios', href: '/reports' },
+  { label: 'Vendas' } <span class="text-purple-400">// Último item sem href</span>
+]} /&gt;</pre>
+        </div>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica de Acessibilidade</h3>
+        <p class="text-neutral-300 text-sm">
+          Use <code class="bg-dark-800 px-2 py-1 rounded text-xs">&lt;nav aria-label="Breadcrumb"&gt;</code>
+          e <code class="bg-dark-800 px-2 py-1 rounded text-xs">aria-current="page"</code> no item atual
+          para melhorar a acessibilidade do breadcrumb para leitores de tela.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">5</span>
+        <h2 class="text-2xl font-bold">📱 Navegação Mobile e Responsiva</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-emerald-400">navegação mobile</strong> requer considerações
+        especiais. Sidebars tradicionais não funcionam bem em telas pequenas, então
+        precisamos adaptar para drawer, bottom navigation ou menu hamburger.
+      </p>
+
+      <!-- Padrões Mobile -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📲 Padrões de Navegação Mobile</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Drawer -->
+          <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+            <div class="p-3 border-b border-dark-600 flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <div class="w-6 h-0.5 bg-neutral-400 rounded"></div>
+                <div class="w-6 h-0.5 bg-neutral-400 rounded"></div>
+                <div class="w-6 h-0.5 bg-neutral-400 rounded"></div>
+              </div>
+              <span class="text-sm font-medium text-neutral-200">Dashboard</span>
+              <div class="w-6 h-6 rounded-full bg-dark-600"></div>
+            </div>
+            <div class="p-4 h-32 bg-dark-700/50 flex items-center justify-center">
+              <span class="text-xs text-neutral-500">Conteúdo</span>
+            </div>
+            <div class="p-2 bg-dark-800 border-t border-dark-600">
+              <p class="text-xs text-neutral-500 text-center">Drawer / Hamburger Menu</p>
+            </div>
+          </div>
+
+          <!-- Bottom Nav -->
+          <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+            <div class="p-3 border-b border-dark-600">
+              <span class="text-sm font-medium text-neutral-200">Dashboard</span>
+            </div>
+            <div class="p-4 h-32 bg-dark-700/50 flex items-center justify-center">
+              <span class="text-xs text-neutral-500">Conteúdo</span>
+            </div>
+            <div class="grid grid-cols-4 gap-1 p-2 bg-dark-900 border-t border-dark-600">
+              <div class="flex flex-col items-center py-1">
+                <span class="text-emerald-400 text-xs">📈</span>
+                <span class="text-[10px] text-emerald-400">Home</span>
+              </div>
+              <div class="flex flex-col items-center py-1">
+                <span class="text-neutral-500 text-xs">📊</span>
+                <span class="text-[10px] text-neutral-500">Stats</span>
+              </div>
+              <div class="flex flex-col items-center py-1">
+                <span class="text-neutral-500 text-xs">🔔</span>
+                <span class="text-[10px] text-neutral-500">Alerts</span>
+              </div>
+              <div class="flex flex-col items-center py-1">
+                <span class="text-neutral-500 text-xs">👤</span>
+                <span class="text-[10px] text-neutral-500">Perfil</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Bar -->
+          <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+            <div class="p-3 border-b border-dark-600 flex items-center space-x-2">
+              <span class="text-sm font-medium text-neutral-200">Dashboard</span>
+            </div>
+            <div class="flex border-b border-dark-600">
+              <button class="flex-1 py-2 text-xs text-emerald-400 border-b-2 border-emerald-400">Geral</button>
+              <button class="flex-1 py-2 text-xs text-neutral-500">Vendas</button>
+              <button class="flex-1 py-2 text-xs text-neutral-500">Equipe</button>
+            </div>
+            <div class="p-4 h-24 bg-dark-700/50 flex items-center justify-center">
+              <span class="text-xs text-neutral-500">Conteúdo</span>
+            </div>
+            <div class="p-2 bg-dark-800 border-t border-dark-600">
+              <p class="text-xs text-neutral-500 text-center">Tab Bar / Segmented</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breakpoints -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📏 Estratégia de Breakpoints</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-3 px-4 text-neutral-400">Breakpoint</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Largura</th>
+                <th class="text-left py-3 px-4 text-neutral-400">Navegação</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-600">
+              <tr>
+                <td class="py-3 px-4 text-neutral-200">Mobile</td>
+                <td class="py-3 px-4 text-neutral-400">&lt; 768px</td>
+                <td class="py-3 px-4 text-neutral-400">Bottom nav + Drawer</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-200">Tablet</td>
+                <td class="py-3 px-4 text-neutral-400">768px - 1024px</td>
+                <td class="py-3 px-4 text-neutral-400">Sidebar colapsada (ícones)</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-neutral-200">Desktop</td>
+                <td class="py-3 px-4 text-neutral-400">&gt; 1024px</td>
+                <td class="py-3 px-4 text-neutral-400">Sidebar expandida (ícones + texto)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Código Responsivo -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Sidebar Responsiva com Tailwind</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- Layout Principal --&gt;</span>
+&lt;div class="<span class="text-emerald-400">flex min-h-screen</span>"&gt;
+
+  <span class="text-purple-400">&lt;!-- Sidebar: hidden em mobile, visível em desktop --&gt;</span>
+  &lt;aside class="
+    <span class="text-emerald-400">hidden md:flex</span>          <span class="text-purple-400">{/* Oculta mobile */}</span>
+    <span class="text-emerald-400">md:w-16 lg:w-64</span>         <span class="text-purple-400">{/* Largura responsiva */}</span>
+    <span class="text-emerald-400">flex-col</span>
+    <span class="text-emerald-400">bg-dark-800 border-r</span>
+  "&gt;
+    <span class="text-purple-400">&lt;!-- Logo --&gt;</span>
+    &lt;div class="<span class="text-blue-400">p-4 flex items-center</span>"&gt;
+      &lt;span class="text-2xl"&gt;📊&lt;/span&gt;
+      &lt;span class="<span class="text-emerald-400">hidden lg:inline</span> ml-3 font-bold"&gt;
+        Dashboard
+      &lt;/span&gt;
+    &lt;/div&gt;
+
+    <span class="text-purple-400">&lt;!-- Menu Items --&gt;</span>
+    &lt;nav class="<span class="text-blue-400">flex-1 p-4</span>"&gt;
+      &lt;a class="<span class="text-emerald-400">flex items-center justify-center lg:justify-start</span>"&gt;
+        &lt;span&gt;📈&lt;/span&gt;
+        &lt;span class="<span class="text-emerald-400">hidden lg:inline</span> ml-3"&gt;Overview&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  <span class="text-purple-400">&lt;!-- Mobile Bottom Nav --&gt;</span>
+  &lt;nav class="
+    <span class="text-emerald-400">fixed bottom-0 left-0 right-0</span>
+    <span class="text-emerald-400">md:hidden</span>                <span class="text-purple-400">{/* Só mobile */}</span>
+    <span class="text-emerald-400">flex justify-around</span>
+    <span class="text-emerald-400">bg-dark-900 border-t p-2</span>
+  "&gt;
+    &lt;a&gt;📈&lt;/a&gt;
+    &lt;a&gt;📊&lt;/a&gt;
+    &lt;a&gt;⚙️&lt;/a&gt;
+  &lt;/nav&gt;
+
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">6</span>
+        <h2 class="text-2xl font-bold">⚡ Estados e Feedback de Navegação</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Feedback visual</strong> na navegação ajuda os usuários
+        a entenderem onde estão e o que podem fazer. Estados hover, active, focus e loading
+        são essenciais para uma experiência fluida.
+      </p>
+
+      <!-- Estados Visuais -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎨 Estados de Item de Menu</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            <!-- Default -->
+            <div class="flex items-center justify-between p-3 rounded-lg bg-dark-800 border border-dark-600">
+              <div class="flex items-center space-x-3">
+                <span>📊</span>
+                <span class="text-neutral-400">Analytics</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded bg-dark-700 text-neutral-500">Default</span>
+            </div>
+
+            <!-- Hover -->
+            <div class="flex items-center justify-between p-3 rounded-lg bg-dark-700 border border-dark-600">
+              <div class="flex items-center space-x-3">
+                <span>📊</span>
+                <span class="text-neutral-200">Analytics</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400">Hover</span>
+            </div>
+
+            <!-- Active/Current -->
+            <div class="flex items-center justify-between p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
+              <div class="flex items-center space-x-3">
+                <span>📊</span>
+                <span class="text-emerald-400 font-medium">Analytics</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded bg-emerald-500/20 text-emerald-400">Active</span>
+            </div>
+
+            <!-- Disabled -->
+            <div class="flex items-center justify-between p-3 rounded-lg bg-dark-800/50 border border-dark-600 opacity-50 cursor-not-allowed">
+              <div class="flex items-center space-x-3">
+                <span>🔒</span>
+                <span class="text-neutral-500">Premium</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded bg-dark-700 text-neutral-500">Disabled</span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-dark-800/50 p-4 rounded-lg">
+              <h4 class="font-semibold text-neutral-200 mb-2">Estados Essenciais</h4>
+              <ul class="space-y-2 text-sm text-neutral-400">
+                <li><strong class="text-neutral-300">Default:</strong> Estado normal, sem interação</li>
+                <li><strong class="text-neutral-300">Hover:</strong> Mouse sobre o elemento</li>
+                <li><strong class="text-neutral-300">Active:</strong> Página/seção atual</li>
+                <li><strong class="text-neutral-300">Focus:</strong> Navegação por teclado</li>
+                <li><strong class="text-neutral-300">Disabled:</strong> Indisponível</li>
+              </ul>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h4 class="font-semibold text-blue-400 mb-2">🎯 Focus para Acessibilidade</h4>
+              <p class="text-sm text-neutral-400">
+                Sempre inclua <code class="bg-dark-800 px-1 rounded">focus:ring-2</code>
+                para usuários que navegam por teclado (Tab).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicadores de Loading -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⏳ Indicadores de Navegação</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-dark-800 p-4 rounded-lg text-center">
+            <div class="w-8 h-8 mx-auto mb-3 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-sm text-neutral-400">Loading Spinner</p>
+            <p class="text-xs text-neutral-500 mt-1">Durante carregamento de página</p>
+          </div>
+          <div class="bg-dark-800 p-4 rounded-lg text-center">
+            <div class="h-1 bg-dark-600 rounded-full mb-3 overflow-hidden">
+              <div class="h-full w-2/3 bg-emerald-400 rounded-full"></div>
+            </div>
+            <p class="text-sm text-neutral-400">Progress Bar</p>
+            <p class="text-xs text-neutral-500 mt-1">Para processos com progresso conhecido</p>
+          </div>
+          <div class="bg-dark-800 p-4 rounded-lg text-center">
+            <div class="space-y-2 mb-3">
+              <div class="h-4 bg-dark-600 rounded animate-pulse"></div>
+              <div class="h-4 bg-dark-600 rounded animate-pulse w-3/4"></div>
+            </div>
+            <p class="text-sm text-neutral-400">Skeleton</p>
+            <p class="text-xs text-neutral-500 mt-1">Placeholder enquanto carrega</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Classes Tailwind -->
+      <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Classes Tailwind para Estados</h3>
+        <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-neutral-300">
+<span class="text-purple-400">&lt;!-- Item de navegação completo --&gt;</span>
+&lt;a
+  href="/analytics"
+  class="
+    <span class="text-emerald-400">flex items-center px-3 py-2 rounded-lg</span>
+    <span class="text-emerald-400">transition-colors duration-150</span>
+
+    <span class="text-blue-400">{/* Default */}</span>
+    <span class="text-emerald-400">text-neutral-400</span>
+
+    <span class="text-blue-400">{/* Hover */}</span>
+    <span class="text-emerald-400">hover:bg-dark-700 hover:text-neutral-200</span>
+
+    <span class="text-blue-400">{/* Focus (teclado) */}</span>
+    <span class="text-emerald-400">focus:outline-none focus:ring-2 focus:ring-emerald-500</span>
+
+    <span class="text-blue-400">{/* Active (página atual) - adicionar condicionalmente */}</span>
+    <span class="text-emerald-400">aria-current:bg-emerald-500/10 aria-current:text-emerald-400</span>
+  "
+  aria-current={isActive ? 'page' : undefined}
+&gt;
+  &lt;span class="mr-3"&gt;📊&lt;/span&gt;
+  Analytics
+&lt;/a&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        <span class="mr-3">📝</span> Resumo do Módulo
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">O que aprendemos:</h3>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Anatomia da navegação de dashboard</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Construção de sidebar profissional</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Menus multinível e submenus</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Breadcrumbs e navegação contextual</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Navegação mobile e responsiva</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Estados e feedback visual</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-emerald-400 mb-3">Próximo módulo:</h3>
+          <p class="text-neutral-300 mb-4">
+            No Módulo 1.7, você aprenderá sobre <strong>Responsividade</strong> -
+            dominando técnicas avançadas de design responsivo, mobile-first,
+            container queries e layouts fluidos para dashboards.
+          </p>
+          <a href="modulo-1-7.html" class="text-emerald-400 hover:text-emerald-300 font-medium">
+            Ir para Módulo 1.7 →
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-1-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+          ← Módulo Anterior
+        </a>
+        <a href="modulo-1-7.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+          Próximo Módulo →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-800/50 border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-neutral-400 text-sm">
+        📊 Dashboard Mastery - Supercurso de Dashboards Profissionais
+      </p>
+      <p class="text-neutral-500 text-xs mt-2">
+        © 2025 INEMA.CLUB - Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
