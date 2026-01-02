@@ -978,18 +978,18 @@
   </main>
 
   <!-- Modal -->
-  <div id="module-modal" class="fixed inset-0 z-50 hidden">
+  <div id="module-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="absolute inset-4 sm:inset-8 lg:inset-16 bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden flex flex-col">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600 bg-dark-900/50">
-        <div>
-          <span id="modal-module-id" class="text-emerald-400 font-bold text-sm"></span>
-          <h3 id="modal-title" class="text-xl font-bold text-neutral-100"></h3>
-        </div>
+    <div class="relative w-full max-w-4xl h-[85vh] bg-dark-800 rounded-xl border border-dark-600 overflow-hidden flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-dark-600 bg-dark-900/80">
         <div class="flex items-center space-x-3">
-          <a id="modal-full-link" href="#" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">📄 Ver Completo</a>
-          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span id="modal-module-id" class="text-emerald-400 font-bold text-sm"></span>
+          <h3 id="modal-title" class="text-lg font-bold text-neutral-100"></h3>
+        </div>
+        <div class="flex items-center space-x-2">
+          <a id="modal-full-link" href="#" class="px-3 py-1.5 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">📄 Ver Completo</a>
+          <button onclick="closeModal()" class="p-1.5 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
