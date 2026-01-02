@@ -12,60 +12,115 @@
         extend: {
           colors: {
             primary: '#FACC15',
-            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+            dark: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 600: '#475569' }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'gradient': 'gradient 8s ease infinite',
           }
         }
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .dark body { background-color: #111827; }
+    .dark body { background-color: #0f172a; }
     html:not(.dark) body { background-color: #f8fafc; }
     html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
     html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
     html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
     html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
     html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
     html:not(.dark) .text-neutral-200 { color: #334155 !important; }
     html:not(.dark) .text-neutral-300 { color: #475569 !important; }
     html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+    html:not(.dark) .text-neutral-500 { color: #94a3b8 !important; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-delayed { animation: float 6s ease-in-out infinite; animation-delay: 2s; }
+    .animate-float-delayed-2 { animation: float 6s ease-in-out infinite; animation-delay: 4s; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b, #fbbf24);
+      background-size: 200% 200%;
+      animation: gradient 4s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-glow:hover {
+      box-shadow: 0 0 40px rgba(250, 204, 21, 0.15);
+    }
+
+    .trilha-emerald:hover { box-shadow: 0 0 60px rgba(16, 185, 129, 0.2); }
+    .trilha-blue:hover { box-shadow: 0 0 60px rgba(59, 130, 246, 0.2); }
+    .trilha-purple:hover { box-shadow: 0 0 60px rgba(168, 85, 247, 0.2); }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(250, 204, 21, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 204, 21, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .scroll-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<body class="bg-dark-900 text-neutral-100 min-h-screen overflow-x-hidden">
 
   <!-- Navigation Global -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-14">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-xl border-b border-dark-700/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
         <!-- Logo -->
         <div class="flex items-center space-x-4">
-          <a href="index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
-            <span class="text-2xl">📊</span>
-            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          <a href="index.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-shadow">
+              <span class="text-xl">📊</span>
+            </div>
+            <span class="font-bold text-lg hidden sm:inline text-white">Dashboard Mastery</span>
           </a>
-          <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+          <span class="text-dark-600 hidden sm:inline">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-semibold hidden sm:inline transition-colors">INEMA.CLUB</a>
         </div>
 
         <!-- Trilhas + Theme Toggle -->
-        <div class="flex items-center space-x-1 sm:space-x-2">
-          <a href="curso/trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+        <div class="flex items-center space-x-1 sm:space-x-3">
+          <a href="curso/trilha1/index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all">
             <span class="sm:hidden">T1</span>
             <span class="hidden sm:inline">Fundamentos</span>
           </a>
-          <a href="curso/trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <a href="curso/trilha2/index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-all">
             <span class="sm:hidden">T2</span>
             <span class="hidden sm:inline">Tecnicas</span>
           </a>
-          <a href="curso/trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+          <a href="curso/trilha3/index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-all">
             <span class="sm:hidden">T3</span>
             <span class="hidden sm:inline">Avancado</span>
           </a>
 
           <!-- Theme Toggle -->
-          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <button id="theme-toggle" class="p-2.5 rounded-xl bg-dark-800 hover:bg-dark-700 border border-dark-600 transition-all ml-2">
             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
             </svg>
@@ -79,148 +134,551 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-dark-800 via-dark-900 to-dark-800 py-20 border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-6">
-        SUPERCURSO COMPLETO
-      </span>
-      <h1 class="text-4xl sm:text-6xl font-bold mb-6">
-        📊 Dashboard Mastery
+  <section class="relative min-h-screen flex items-center justify-center hero-grid pt-16">
+    <!-- Background Decorations -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-float-delayed"></div>
+      <div class="absolute top-1/2 right-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed-2"></div>
+    </div>
+
+    <!-- Floating Dashboard Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
+      <!-- Mini Card 1 -->
+      <div class="absolute top-32 left-[10%] animate-float">
+        <div class="bg-dark-800/80 backdrop-blur-sm rounded-xl p-4 border border-dark-600 shadow-xl w-48">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-emerald-400 text-xs font-medium">Receita</span>
+            <span class="text-emerald-400 text-xs">+12%</span>
+          </div>
+          <div class="text-xl font-bold">R$ 48.2K</div>
+          <div class="mt-2 h-1 bg-dark-700 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 w-3/4 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini Card 2 -->
+      <div class="absolute top-48 right-[8%] animate-float-delayed">
+        <div class="bg-dark-800/80 backdrop-blur-sm rounded-xl p-4 border border-dark-600 shadow-xl w-44">
+          <div class="text-blue-400 text-xs font-medium mb-2">Usuarios</div>
+          <div class="text-2xl font-bold">2,847</div>
+          <div class="flex items-center mt-2 text-xs text-neutral-400">
+            <span class="text-emerald-400 mr-1">↑</span> 156 hoje
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini Chart -->
+      <div class="absolute bottom-32 left-[12%] animate-float-delayed-2">
+        <div class="bg-dark-800/80 backdrop-blur-sm rounded-xl p-4 border border-dark-600 shadow-xl">
+          <div class="flex items-end space-x-1 h-16">
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 40%"></div>
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 60%"></div>
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 45%"></div>
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 80%"></div>
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 55%"></div>
+            <div class="w-3 bg-purple-400 rounded-t" style="height: 100%"></div>
+            <div class="w-3 bg-purple-500/60 rounded-t" style="height: 70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini Table -->
+      <div class="absolute bottom-40 right-[10%] animate-float">
+        <div class="bg-dark-800/80 backdrop-blur-sm rounded-xl p-3 border border-dark-600 shadow-xl w-52">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Produto A</span>
+              <span class="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">Ativo</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Produto B</span>
+              <span class="text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded">Pendente</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Produto C</span>
+              <span class="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">Ativo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+      <!-- Badge -->
+      <div class="inline-flex items-center space-x-2 px-4 py-2 bg-yellow-500/10 border border-yellow-500/20 rounded-full mb-8">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+        <span class="text-yellow-400 text-sm font-semibold tracking-wide">SUPERCURSO COMPLETO 2025</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+        <span class="gradient-text">Dashboard</span>
+        <br>
+        <span class="text-white">Mastery</span>
       </h1>
-      <p class="text-xl sm:text-2xl text-neutral-400 max-w-3xl mx-auto mb-8">
-        Domine a criação de dashboards profissionais com Next.js, React e as melhores práticas de UI/UX
+
+      <!-- Subtitle -->
+      <p class="text-xl sm:text-2xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Domine a criacao de <span class="text-white font-semibold">dashboards profissionais</span> com as melhores praticas de UI/UX e frontend moderno
       </p>
 
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="curso/trilha1/index.html" class="group inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-dark-900 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-0.5 transition-all">
+          <span>Comecar Agora</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+        <a href="#trilhas" class="inline-flex items-center space-x-2 px-8 py-4 bg-dark-800 border border-dark-600 text-neutral-200 rounded-xl font-semibold text-lg hover:bg-dark-700 hover:border-dark-500 transition-all">
+          <span>Ver Trilhas</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+      </div>
+
       <!-- Stats Banner -->
-      <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600">
-          <div class="text-2xl font-bold text-yellow-400">3</div>
-          <div class="text-xs text-neutral-400">Trilhas</div>
+      <div class="grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto">
+        <div class="bg-dark-800/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-dark-600 card-glow transition-all hover:-translate-y-1">
+          <div class="text-3xl sm:text-5xl font-black text-yellow-400 mb-1">3</div>
+          <div class="text-sm sm:text-base text-neutral-400 font-medium">Trilhas</div>
+          <div class="text-xs text-neutral-500 mt-1 hidden sm:block">Completas</div>
         </div>
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600">
-          <div class="text-2xl font-bold text-yellow-400">24</div>
-          <div class="text-xs text-neutral-400">Módulos</div>
+        <div class="bg-dark-800/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-dark-600 card-glow transition-all hover:-translate-y-1">
+          <div class="text-3xl sm:text-5xl font-black text-yellow-400 mb-1">24</div>
+          <div class="text-sm sm:text-base text-neutral-400 font-medium">Modulos</div>
+          <div class="text-xs text-neutral-500 mt-1 hidden sm:block">Detalhados</div>
         </div>
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600">
-          <div class="text-2xl font-bold text-yellow-400">144</div>
-          <div class="text-xs text-neutral-400">Tópicos</div>
+        <div class="bg-dark-800/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-dark-600 card-glow transition-all hover:-translate-y-1">
+          <div class="text-3xl sm:text-5xl font-black text-yellow-400 mb-1">144</div>
+          <div class="text-sm sm:text-base text-neutral-400 font-medium">Topicos</div>
+          <div class="text-xs text-neutral-500 mt-1 hidden sm:block">Praticos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- What You'll Learn Section -->
+  <section class="py-24 bg-dark-800/30 border-y border-dark-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-fade">
+        <span class="inline-block px-4 py-2 bg-blue-500/10 text-blue-400 rounded-full text-sm font-semibold mb-4">O QUE VOCE VAI APRENDER</span>
+        <h2 class="text-3xl sm:text-5xl font-bold mb-4">Habilidades <span class="text-yellow-400">Essenciais</span></h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Do zero ao dashboard profissional com tecnologias modernas</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-fade">
+        <!-- Skill 1 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 hover:border-yellow-500/30 transition-all group">
+          <div class="w-14 h-14 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="text-2xl">🎨</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Design de Interface</h3>
+          <p class="text-neutral-400 text-sm">Principios de UI/UX aplicados a dashboards de alta performance</p>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 hover:border-yellow-500/30 transition-all group">
+          <div class="w-14 h-14 bg-gradient-to-br from-emerald-400/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Visualizacao de Dados</h3>
+          <p class="text-neutral-400 text-sm">Graficos, KPIs e tabelas que comunicam insights de forma clara</p>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 hover:border-yellow-500/30 transition-all group">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Interatividade</h3>
+          <p class="text-neutral-400 text-sm">Animacoes, transicoes e micro-interacoes que encantam usuarios</p>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 hover:border-yellow-500/30 transition-all group">
+          <div class="w-14 h-14 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="text-2xl">🔗</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Integracoes</h3>
+          <p class="text-neutral-400 text-sm">Conexao com APIs, ERPs, CRMs e bancos de dados empresariais</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trilhas Section -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Escolha sua Trilha</h2>
-      <p class="text-neutral-400">Progressão do básico ao avançado com integrações empresariais</p>
+  <!-- Learning Path Section -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-fade">
+        <span class="inline-block px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full text-sm font-semibold mb-4">JORNADA DE APRENDIZADO</span>
+        <h2 class="text-3xl sm:text-5xl font-bold mb-4">Sua <span class="text-yellow-400">Trilha</span> de Evolucao</h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Progressao estruturada do basico ao avancado</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative scroll-fade">
+        <!-- Connection Line (Desktop) -->
+        <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500 -translate-y-1/2 rounded-full opacity-30"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <!-- Step 1 -->
+          <div class="relative">
+            <div class="hidden lg:flex absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-emerald-500 rounded-full items-center justify-center text-dark-900 font-bold text-sm z-10 shadow-lg shadow-emerald-500/30">1</div>
+            <div class="bg-gradient-to-br from-emerald-900/40 to-dark-800 rounded-2xl p-8 border border-emerald-500/30 hover:border-emerald-400 transition-all lg:mt-8">
+              <div class="flex items-center space-x-3 mb-4">
+                <span class="text-4xl">🌱</span>
+                <div>
+                  <span class="text-xs text-emerald-400 font-semibold">TRILHA 1</span>
+                  <h3 class="text-2xl font-bold text-emerald-400">Fundamentos</h3>
+                </div>
+              </div>
+              <p class="text-neutral-400 mb-6">Construa uma base solida em design de dashboards, principios visuais e estruturacao de layouts profissionais.</p>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-emerald-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Introducao a Dashboards
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-emerald-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Principios de Design
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-emerald-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Layout e Hierarquia
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">8 Modulos • 48 Topicos</span>
+                <a href="curso/trilha1/index.html" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center space-x-1">
+                  <span>Acessar</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative">
+            <div class="hidden lg:flex absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full items-center justify-center text-dark-900 font-bold text-sm z-10 shadow-lg shadow-blue-500/30">2</div>
+            <div class="bg-gradient-to-br from-blue-900/40 to-dark-800 rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400 transition-all lg:mt-8">
+              <div class="flex items-center space-x-3 mb-4">
+                <span class="text-4xl">🔧</span>
+                <div>
+                  <span class="text-xs text-blue-400 font-semibold">TRILHA 2</span>
+                  <h3 class="text-2xl font-bold text-blue-400">Tecnicas</h3>
+                </div>
+              </div>
+              <p class="text-neutral-400 mb-6">Domine componentes avancados, tabelas de dados, graficos interativos e formularios profissionais.</p>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Componentes de Dashboard
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Tabelas e Graficos
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Animacoes e Transicoes
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">8 Modulos • 48 Topicos</span>
+                <a href="curso/trilha2/index.html" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center space-x-1">
+                  <span>Acessar</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative">
+            <div class="hidden lg:flex absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-purple-500 rounded-full items-center justify-center text-dark-900 font-bold text-sm z-10 shadow-lg shadow-purple-500/30">3</div>
+            <div class="bg-gradient-to-br from-purple-900/40 to-dark-800 rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400 transition-all lg:mt-8">
+              <div class="flex items-center space-x-3 mb-4">
+                <span class="text-4xl">🚀</span>
+                <div>
+                  <span class="text-xs text-purple-400 font-semibold">TRILHA 3</span>
+                  <h3 class="text-2xl font-bold text-purple-400">Avancado</h3>
+                </div>
+              </div>
+              <p class="text-neutral-400 mb-6">Integracoes empresariais com ERPs, CRMs, seguranca avancada e projeto final completo.</p>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-purple-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Integracao com ERP/CRM
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-purple-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Seguranca e RBAC
+                </div>
+                <div class="flex items-center text-sm text-neutral-300">
+                  <svg class="w-4 h-4 text-purple-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  Projeto Final Completo
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">8 Modulos • 48 Topicos</span>
+                <a href="curso/trilha3/index.html" class="text-purple-400 hover:text-purple-300 font-semibold flex items-center space-x-1">
+                  <span>Acessar</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- Trilhas Detail Section -->
+  <section id="trilhas" class="py-24 bg-dark-800/30 border-y border-dark-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-fade">
+        <span class="inline-block px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-full text-sm font-semibold mb-4">CONTEUDO COMPLETO</span>
+        <h2 class="text-3xl sm:text-5xl font-bold mb-4">Explore as <span class="text-yellow-400">Trilhas</span></h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Cada trilha possui 8 modulos com 6 topicos praticos cada</p>
+      </div>
 
-      <!-- Trilha 1 - Fundamentos -->
-      <a href="curso/trilha1/index.html" class="group">
-        <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-2xl p-8 border border-emerald-500/30 hover:border-emerald-400 transition-all hover:-translate-y-1 hover:shadow-xl">
-          <div class="text-4xl mb-4">🌱</div>
-          <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
-            TRILHA 1
-          </span>
-          <h3 class="text-2xl font-bold text-emerald-400 mb-2">Fundamentos</h3>
-          <p class="text-neutral-400 mb-6 text-sm">
-            Base sólida para dashboards profissionais. Princípios de design, layout, cores e navegação.
-          </p>
-          <div class="flex justify-between text-xs text-neutral-500">
-            <span>8 Módulos</span>
-            <span>48 Tópicos</span>
-          </div>
-          <div class="mt-4 pt-4 border-t border-dark-600">
-            <ul class="space-y-1 text-xs text-neutral-400">
-              <li>• Introdução a Dashboards</li>
-              <li>• Princípios de Design</li>
-              <li>• Tech Stack Moderna</li>
-              <li>• Layout e Hierarquia</li>
-            </ul>
-          </div>
-        </div>
-      </a>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-fade">
 
-      <!-- Trilha 2 - Técnicas -->
-      <a href="curso/trilha2/index.html" class="group">
-        <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400 transition-all hover:-translate-y-1 hover:shadow-xl">
-          <div class="text-4xl mb-4">🔧</div>
-          <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
-            TRILHA 2
-          </span>
-          <h3 class="text-2xl font-bold text-blue-400 mb-2">Técnicas</h3>
-          <p class="text-neutral-400 mb-6 text-sm">
-            Componentes e interações. Tabelas, gráficos, formulários e data layer.
-          </p>
-          <div class="flex justify-between text-xs text-neutral-500">
-            <span>8 Módulos</span>
-            <span>48 Tópicos</span>
-          </div>
-          <div class="mt-4 pt-4 border-t border-dark-600">
-            <ul class="space-y-1 text-xs text-neutral-400">
-              <li>• Tabelas de Dados</li>
-              <li>• Gráficos Funcionais</li>
-              <li>• Padrões de Interação</li>
-              <li>• Data Layer</li>
-            </ul>
-          </div>
-        </div>
-      </a>
+        <!-- Trilha 1 Card -->
+        <a href="curso/trilha1/index.html" class="group">
+          <div class="h-full bg-dark-800 rounded-2xl p-8 border border-emerald-500/20 hover:border-emerald-400/50 trilha-emerald transition-all hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <span class="text-3xl">🌱</span>
+              </div>
+              <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full">TRILHA 1</span>
+            </div>
+            <h3 class="text-2xl font-bold text-emerald-400 mb-3 group-hover:text-emerald-300 transition-colors">Fundamentos</h3>
+            <p class="text-neutral-400 mb-6">Base solida para dashboards profissionais. Principios de design, layout, cores e navegacao.</p>
 
-      <!-- Trilha 3 - Avançado -->
-      <a href="curso/trilha3/index.html" class="group">
-        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400 transition-all hover:-translate-y-1 hover:shadow-xl">
-          <div class="text-4xl mb-4">🚀</div>
-          <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">
-            TRILHA 3
-          </span>
-          <h3 class="text-2xl font-bold text-purple-400 mb-2">Avançado</h3>
-          <p class="text-neutral-400 mb-6 text-sm">
-            Integrações empresariais. ERP, CRM, banco de dados avançado e segurança.
-          </p>
-          <div class="flex justify-between text-xs text-neutral-500">
-            <span>8 Módulos</span>
-            <span>48 Tópicos</span>
-          </div>
-          <div class="mt-4 pt-4 border-t border-dark-600">
-            <ul class="space-y-1 text-xs text-neutral-400">
-              <li>• Integração com ERP</li>
-              <li>• Integração com CRM</li>
-              <li>• Segurança & RBAC</li>
-              <li>• Projeto Final</li>
-            </ul>
-          </div>
-        </div>
-      </a>
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Modulos</span>
+                <span class="text-neutral-300 font-medium">8</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Topicos</span>
+                <span class="text-neutral-300 font-medium">48</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Nivel</span>
+                <span class="text-emerald-400 font-medium">Iniciante</span>
+              </div>
+            </div>
 
+            <div class="pt-6 border-t border-dark-600">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-neutral-400">Ver modulos</span>
+                <div class="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center group-hover:bg-emerald-500 transition-colors">
+                  <svg class="w-5 h-5 text-emerald-400 group-hover:text-dark-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Trilha 2 Card -->
+        <a href="curso/trilha2/index.html" class="group">
+          <div class="h-full bg-dark-800 rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/50 trilha-blue transition-all hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <span class="text-3xl">🔧</span>
+              </div>
+              <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full">TRILHA 2</span>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">Tecnicas</h3>
+            <p class="text-neutral-400 mb-6">Componentes e interacoes. Tabelas, graficos, formularios e camada de dados.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Modulos</span>
+                <span class="text-neutral-300 font-medium">8</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Topicos</span>
+                <span class="text-neutral-300 font-medium">48</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Nivel</span>
+                <span class="text-blue-400 font-medium">Intermediario</span>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-dark-600">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-neutral-400">Ver modulos</span>
+                <div class="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+                  <svg class="w-5 h-5 text-blue-400 group-hover:text-dark-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Trilha 3 Card -->
+        <a href="curso/trilha3/index.html" class="group">
+          <div class="h-full bg-dark-800 rounded-2xl p-8 border border-purple-500/20 hover:border-purple-400/50 trilha-purple transition-all hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+                <span class="text-3xl">🚀</span>
+              </div>
+              <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full">TRILHA 3</span>
+            </div>
+            <h3 class="text-2xl font-bold text-purple-400 mb-3 group-hover:text-purple-300 transition-colors">Avancado</h3>
+            <p class="text-neutral-400 mb-6">Integracoes empresariais. ERP, CRM, banco de dados avancado e seguranca.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Modulos</span>
+                <span class="text-neutral-300 font-medium">8</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Topicos</span>
+                <span class="text-neutral-300 font-medium">48</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-neutral-500">Nivel</span>
+                <span class="text-purple-400 font-medium">Avancado</span>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-dark-600">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-neutral-400">Ver modulos</span>
+                <div class="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center group-hover:bg-purple-500 transition-colors">
+                  <svg class="w-5 h-5 text-purple-400 group-hover:text-dark-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-fade">
+        <span class="inline-block px-4 py-2 bg-yellow-500/10 text-yellow-400 rounded-full text-sm font-semibold mb-4">DIFERENCIAIS</span>
+        <h2 class="text-3xl sm:text-5xl font-bold mb-4">Por que <span class="text-yellow-400">Dashboard Mastery</span>?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-fade">
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">📚</div>
+          <h3 class="text-lg font-bold mb-2">Conteudo Estruturado</h3>
+          <p class="text-neutral-400 text-sm">144 topicos organizados em progressao logica do basico ao avancado</p>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">💻</div>
+          <h3 class="text-lg font-bold mb-2">Exemplos Praticos</h3>
+          <p class="text-neutral-400 text-sm">Codigo real em cada topico que voce pode usar imediatamente</p>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">🎯</div>
+          <h3 class="text-lg font-bold mb-2">Foco em Resultados</h3>
+          <p class="text-neutral-400 text-sm">Projetos finais em cada trilha para consolidar o aprendizado</p>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">🌙</div>
+          <h3 class="text-lg font-bold mb-2">Dark/Light Mode</h3>
+          <p class="text-neutral-400 text-sm">Interface adaptavel para estudar em qualquer ambiente</p>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">📱</div>
+          <h3 class="text-lg font-bold mb-2">100% Responsivo</h3>
+          <p class="text-neutral-400 text-sm">Acesse de qualquer dispositivo - desktop, tablet ou mobile</p>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-2xl p-6 border border-dark-600">
+          <div class="text-3xl mb-4">🔄</div>
+          <h3 class="text-lg font-bold mb-2">Atualizacoes Constantes</h3>
+          <p class="text-neutral-400 text-sm">Conteudo sempre atualizado com as ultimas tendencias</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30 text-center">
-      <h2 class="text-2xl font-bold text-primary mb-4">🎯 Pronto para começar?</h2>
-      <p class="text-neutral-400 mb-6 max-w-2xl mx-auto">
-        Comece pela Trilha 1 e construa uma base sólida. Cada módulo tem 6 tópicos práticos com exemplos reais.
-      </p>
-      <a href="curso/trilha1/index.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
-        <span>Começar Trilha 1</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-      </a>
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-fade">
+      <div class="bg-gradient-to-br from-yellow-500/10 via-dark-800 to-orange-500/10 rounded-3xl p-12 border border-yellow-500/20 text-center relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10">
+          <div class="text-5xl mb-6">🚀</div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Pronto para dominar dashboards?</h2>
+          <p class="text-neutral-400 text-lg mb-8 max-w-2xl mx-auto">
+            Comece agora mesmo pela Trilha 1 e construa uma base solida. Cada modulo tem 6 topicos praticos com exemplos reais.
+          </p>
+          <a href="curso/trilha1/index.html" class="group inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-dark-900 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-yellow-500/30 hover:-translate-y-1 transition-all">
+            <span>Comecar Trilha 1</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark-900 border-t border-dark-700 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <p class="text-neutral-500 text-sm">
-        Dashboard Mastery 2025 - Supercurso de Dashboards Profissionais
-      </p>
+  <footer class="bg-dark-900 border-t border-dark-700 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
+            <span class="text-xl">📊</span>
+          </div>
+          <div>
+            <div class="font-bold text-white">Dashboard Mastery</div>
+            <div class="text-sm text-neutral-500">Supercurso de Dashboards Profissionais</div>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+          <a href="curso/trilha1/index.html" class="text-neutral-400 hover:text-emerald-400 text-sm transition-colors">Trilha 1</a>
+          <a href="curso/trilha2/index.html" class="text-neutral-400 hover:text-blue-400 text-sm transition-colors">Trilha 2</a>
+          <a href="curso/trilha3/index.html" class="text-neutral-400 hover:text-purple-400 text-sm transition-colors">Trilha 3</a>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-semibold transition-colors">INEMA.CLUB</a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-dark-700 text-center">
+        <p class="text-neutral-500 text-sm">
+          2025 Dashboard Mastery - Todos os direitos reservados
+        </p>
+      </div>
     </div>
   </footer>
 
@@ -249,6 +707,35 @@
         document.documentElement.classList.add('dark');
         localStorage.setItem('color-theme', 'dark');
       }
+    });
+
+    // Scroll Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-fade').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
 
