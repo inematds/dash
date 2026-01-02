@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.1 - Componentes de Dados | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">← Trilha 2</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📦 Componentes de Dados</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">Cards, KPIs, metricas e componentes visuais para exibir dados de forma clara e impactante.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Topico 1 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">1</span>
+        <h2 class="text-2xl font-bold">Anatomia de um Card de Dados</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Um Card de Dados e a unidade fundamental de informacao em dashboards. E um container visual que agrupa um valor principal, rotulo descritivo, indicador de tendencia e contexto adicional. Diferente de cards decorativos, cards de dados sao otimizados para leitura rapida e tomada de decisao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Cards bem projetados permitem que usuarios compreendam metricas em menos de 3 segundos. Sao o primeiro elemento que executivos olham ao abrir um dashboard. Um card mal projetado causa confusao e desconfianca nos dados.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+┌─────────────────────────────────────┐
+│  💰 Receita Total                   │  ← Rotulo + Icone
+│                                     │
+│  R$ 1.234.567                      │  ← Valor Principal (destaque)
+│                                     │
+│  ▲ 12.5% vs mes anterior           │  ← Tendencia (verde/vermelho)
+│  Meta: R$ 1.500.000                │  ← Contexto adicional
+└─────────────────────────────────────┘
+
+Hierarquia Visual:
+1. Valor Principal - maior, mais contraste
+2. Rotulo - menor, neutro
+3. Tendencia - cor semantica
+4. Contexto - discreto</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+  &lt;div class="flex items-center justify-between mb-2"&gt;
+    &lt;span class="text-neutral-400 text-sm"&gt;Receita Total&lt;/span&gt;
+    &lt;span class="text-2xl"&gt;💰&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="text-3xl font-bold mb-2"&gt;R$ 1.234.567&lt;/div&gt;
+  &lt;div class="flex items-center text-sm"&gt;
+    &lt;span class="text-emerald-400"&gt;▲ 12.5%&lt;/span&gt;
+    &lt;span class="text-neutral-500 ml-2"&gt;vs mes anterior&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">2</span>
+        <h2 class="text-2xl font-bold">KPIs - Key Performance Indicators</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">KPIs sao metricas criticas que medem o sucesso de um objetivo. Diferente de metricas comuns, KPIs estao sempre ligados a metas especificas e sao usados para tomada de decisao estrategica. Em dashboards, KPIs ocupam posicao de destaque e tem tratamento visual diferenciado.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Saber distinguir KPIs de metricas secundarias e crucial. KPIs mal escolhidos levam a decisoes erradas. A visualizacao correta de KPIs permite identificar problemas antes que se tornem criticos.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Tipos de KPIs em Dashboards:
+
+1. RESULTADO (Lagging)
+   - Receita, Lucro, Churn
+   - Mostram o que JA aconteceu
+   - Cor: neutro ou baseado em meta
+
+2. DIRECIONADORES (Leading)
+   - Leads, Conversoes, NPS
+   - Preveem resultados futuros
+   - Cor: destaque para atencao
+
+3. OPERACIONAIS
+   - Tempo de resposta, Uptime
+   - Saude do sistema
+   - Cor: verde/amarelo/vermelho
+
+Layout Recomendado:
+┌─────────┬─────────┬─────────┬─────────┐
+│  KPI 1  │  KPI 2  │  KPI 3  │  KPI 4  │
+│ RECEITA │ CLIENTES│  CHURN  │   NPS   │
+└─────────┴─────────┴─────────┴─────────┘
+     ↑ Maximo 4-6 KPIs visiveis</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- KPI com Progress Ring --&gt;
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+  &lt;div class="flex items-center justify-between"&gt;
+    &lt;div&gt;
+      &lt;p class="text-neutral-400 text-sm mb-1"&gt;Meta Mensal&lt;/p&gt;
+      &lt;p class="text-3xl font-bold"&gt;78%&lt;/p&gt;
+      &lt;p class="text-sm text-neutral-500"&gt;R$ 780k de R$ 1M&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="relative w-16 h-16"&gt;
+      &lt;svg class="w-16 h-16 -rotate-90"&gt;
+        &lt;circle cx="32" cy="32" r="28" stroke="#374151"
+                stroke-width="4" fill="none"/&gt;
+        &lt;circle cx="32" cy="32" r="28" stroke="#3b82f6"
+                stroke-width="4" fill="none"
+                stroke-dasharray="175.9"
+                stroke-dashoffset="38.7"/&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">3</span>
+        <h2 class="text-2xl font-bold">Formatacao de Numeros e Valores</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Formatacao de numeros e a arte de exibir valores de forma legivel e apropriada ao contexto. Inclui abreviacao de grandes numeros (1.2M ao inves de 1.234.567), formatacao de moeda, percentuais, datas e numeros negativos. E crucial para a usabilidade do dashboard.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Numeros mal formatados causam confusao e erros de interpretacao. "1234567" e muito mais dificil de ler que "R$ 1.23M". A formatacao correta reduz a carga cognitiva e acelera a tomada de decisao.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Regras de Formatacao:
+
+MOEDA
+  ✓ R$ 1.234,56    (valores pequenos)
+  ✓ R$ 1.2M        (milhoes)
+  ✓ R$ 3.4B        (bilhoes)
+  ✗ R$ 1234567.89  (nunca!)
+
+PERCENTUAIS
+  ✓ 12.5%          (uma casa decimal)
+  ✓ 0.05%          (valores pequenos)
+  ✗ 12.456789%     (precisao excessiva)
+
+GRANDES NUMEROS
+  1.000      → 1K
+  1.000.000  → 1M
+  1.000.000.000 → 1B
+
+DATAS
+  ✓ 15 Jan 2024    (legivel)
+  ✓ Ontem, 14:30   (relativo)
+  ✗ 2024-01-15T14:30:00Z (tecnico)</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+// Funcao de formatacao
+function formatNumber(value, type = 'number') {
+  if (type === 'currency') {
+    if (value >= 1e9) return `R$ ${(value/1e9).toFixed(1)}B`;
+    if (value >= 1e6) return `R$ ${(value/1e6).toFixed(1)}M`;
+    if (value >= 1e3) return `R$ ${(value/1e3).toFixed(1)}K`;
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency', currency: 'BRL'
+    }).format(value);
+  }
+
+  if (type === 'percent') {
+    return `${value.toFixed(1)}%`;
+  }
+
+  return new Intl.NumberFormat('pt-BR').format(value);
+}
+
+// Uso
+formatNumber(1234567, 'currency') // "R$ 1.2M"
+formatNumber(0.125, 'percent')     // "12.5%"</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">4</span>
+        <h2 class="text-2xl font-bold">Indicadores de Tendencia</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Indicadores de tendencia mostram a direcao e magnitude da mudanca de uma metrica ao longo do tempo. Podem ser setas, percentuais de variacao, sparklines ou comparacoes com periodos anteriores. Sao essenciais para contexto temporal.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Um numero sozinho nao tem significado. "R$ 100.000" e bom ou ruim? Depende se subiu 50% ou caiu 30%. Tendencias transformam dados estaticos em insights acionaveis.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Tipos de Indicadores:
+
+1. SETA + PERCENTUAL
+   ▲ 12.5%  (verde = positivo)
+   ▼ 8.3%   (vermelho = negativo)
+   → 0.0%   (neutro = estavel)
+
+2. COMPARATIVO
+   vs ontem: +R$ 5.000
+   vs mes passado: -3.2%
+   vs meta: 78% atingido
+
+3. SPARKLINE (mini grafico)
+   ▁▂▃▄▅▆▇█▇▆  (tendencia visual)
+
+4. CORES SEMANTICAS
+   Verde  = positivo/meta atingida
+   Amarelo = atencao/proximo do limite
+   Vermelho = negativo/abaixo da meta
+
+CUIDADO: Nem sempre "subiu" = bom
+- Churn subiu → RUIM (vermelho)
+- Custo subiu → RUIM (vermelho)
+- Reclamacoes subiram → RUIM</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Indicador de Tendencia --&gt;
+&lt;div class="flex items-center space-x-2"&gt;
+  &lt;!-- Valor positivo --&gt;
+  &lt;span class="flex items-center text-emerald-400"&gt;
+    &lt;svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"&gt;
+      &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4" /&gt;
+    &lt;/svg&gt;
+    12.5%
+  &lt;/span&gt;
+  &lt;span class="text-neutral-500 text-sm"&gt;vs mes anterior&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Valor negativo (para metricas onde queda e ruim) --&gt;
+&lt;div class="flex items-center text-red-400"&gt;
+  &lt;svg class="w-4 h-4 mr-1 rotate-180" fill="currentColor" viewBox="0 0 20 20"&gt;
+    &lt;path d="M5.293 9.707l4-4a1 1 0 011.414 0l4 4" /&gt;
+  &lt;/svg&gt;
+  8.3%
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">5</span>
+        <h2 class="text-2xl font-bold">Stat Cards e Metric Grids</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Stat Cards sao componentes padronizados para exibir metricas. Metric Grids sao layouts que organizam multiplos cards de forma consistente. Juntos, formam a "area de resumo executivo" do dashboard, geralmente no topo da pagina.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Padronizacao e crucial. Cards com tamanhos e estilos diferentes confundem o usuario. Um grid bem organizado permite comparacao rapida entre metricas e cria hierarquia visual clara.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Grid de Metricas - Layout Padrao:
+
+Desktop (4 colunas):
+┌─────────┬─────────┬─────────┬─────────┐
+│ Receita │ Clientes│ Pedidos │  Ticket │
+│  R$1.2M │   4.523 │  1.234  │  R$ 890 │
+│  ▲12.5% │  ▲8.3%  │  ▼2.1%  │  ▲5.7%  │
+└─────────┴─────────┴─────────┴─────────┘
+
+Tablet (2 colunas):
+┌─────────┬─────────┐
+│ Receita │ Clientes│
+├─────────┼─────────┤
+│ Pedidos │  Ticket │
+└─────────┴─────────┘
+
+Mobile (1 coluna):
+┌─────────┐
+│ Receita │
+├─────────┤
+│ Clientes│
+├─────────┤
+│ Pedidos │
+├─────────┤
+│  Ticket │
+└─────────┘
+
+Tailwind Grid:
+grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Metric Grid Responsivo --&gt;
+&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"&gt;
+
+  &lt;!-- Card 1 --&gt;
+  &lt;div class="bg-dark-800 rounded-xl p-5 border border-dark-600"&gt;
+    &lt;div class="flex items-center justify-between mb-3"&gt;
+      &lt;span class="text-neutral-400 text-sm"&gt;Receita&lt;/span&gt;
+      &lt;span class="w-8 h-8 rounded-lg bg-blue-500/20
+                  flex items-center justify-center"&gt;💰&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class="text-2xl font-bold mb-1"&gt;R$ 1.2M&lt;/p&gt;
+    &lt;p class="text-emerald-400 text-sm"&gt;▲ 12.5%&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Card 2, 3, 4... mesmo padrao --&gt;
+
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center mr-4">6</span>
+        <h2 class="text-2xl font-bold">Componentes de Comparacao</h2>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 space-y-6">
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">O que e</h3>
+          <p class="text-neutral-300">Componentes de Comparacao permitem visualizar dados lado a lado: atual vs meta, este mes vs mes anterior, produto A vs produto B. Incluem barras de progresso, gauges, bullet charts e tabelas comparativas.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Por que aprender</h3>
+          <p class="text-neutral-300">Comparacao e fundamental para decisoes. Sem contexto comparativo, numeros sao apenas numeros. "Vendemos R$ 100k" so faz sentido comparando com a meta ou periodo anterior.</p>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm">
+            <pre class="text-neutral-300">
+Tipos de Componentes Comparativos:
+
+1. BARRA DE PROGRESSO
+   Meta: R$ 1M
+   ████████░░░░░░░░ 78%
+   Atual: R$ 780k
+
+2. BULLET CHART (mais informacao)
+   ┌──────────────────────────────┐
+   │░░░░░░░░░░░░░░░░│█████│     │
+   │     ruim      │ ok  │ bom │ ← Ranges
+   │               ▼             │ ← Marcador
+   └──────────────────────────────┘
+
+3. GAUGE (velocimetro)
+       ╭─────────╮
+      ╱    75%    ╲
+     ▕      ▲      ▏
+      ╲           ╱
+       ╰─────────╯
+
+4. COMPARACAO LADO A LADO
+   ┌─────────────┬─────────────┐
+   │  Este Mes   │  Mes Passado│
+   │   R$ 120k   │    R$ 100k  │
+   │   ▲ 20%     │             │
+   └─────────────┴─────────────┘</pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-blue-400 font-semibold mb-2">Exemplo Pratico</h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">
+&lt;!-- Barra de Progresso com Meta --&gt;
+&lt;div class="bg-dark-800 rounded-xl p-6 border border-dark-600"&gt;
+  &lt;div class="flex justify-between text-sm mb-2"&gt;
+    &lt;span class="text-neutral-400"&gt;Progresso da Meta&lt;/span&gt;
+    &lt;span class="text-neutral-300"&gt;78% (R$ 780k / R$ 1M)&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Barra --&gt;
+  &lt;div class="h-3 bg-dark-700 rounded-full overflow-hidden"&gt;
+    &lt;div class="h-full bg-gradient-to-r from-blue-600 to-blue-400
+                rounded-full transition-all duration-500"
+         style="width: 78%"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Legenda --&gt;
+  &lt;div class="flex justify-between text-xs mt-2 text-neutral-500"&gt;
+    &lt;span&gt;0&lt;/span&gt;
+    &lt;span&gt;Meta: R$ 1M&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-dark-600">
+      <a href="index.html" class="text-blue-400 hover:text-blue-300">← Voltar para Trilha 2</a>
+      <a href="modulo-2-2.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Proximo: Graficos e Visualizacoes →</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Componentes de Dados</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
